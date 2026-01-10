@@ -132,18 +132,18 @@ const RAW_SLIDES: SlideData[] = [
   // 🧱 FOUNDATION LAYER — Energy, Work, Sovereignty
   // ═══════════════════════════════════════════════════════════════════
 
-  // SHIFT 11: The Cost (Energy) — INTRO
+  // SHIFT 01: The Cost (Energy) — INTRO
   {
     id: 8,
-    title: 'shift 11: the cost → physical limits',
+    title: 'shift 01: the cost → physical limits',
     subtitle: 'from digital abundance to energy scarcity',
     visual: 'battery',
     layout: 'loop-intro',
   },
-  // SHIFT 11: The Cost (Energy) — FULL
+  // SHIFT 01: The Cost (Energy) — FULL
   {
     id: 9,
-    title: 'shift 11: the cost → physical limits',
+    title: 'shift 01: the cost → physical limits',
     subtitle: 'physics takes revenge. the constraint for 2026 isn\'t chips; it\'s "intelligence per watt."',
     visual: 'battery',
     layout: 'loop',
@@ -159,13 +159,13 @@ const RAW_SLIDES: SlideData[] = [
       { label: 'No Priors Ep 144 — Elad Gil on Intelligence/Watt', url: 'https://www.no-priors.com/' },
     ],
   },
-  // SHIFT 11: Energy — EVIDENCE
+  // SHIFT 01: Energy — EVIDENCE
   {
     id: 100,
     title: 'the cost: the evidence',
     visual: 'battery',
     layout: 'loop-evidence',
-    loopNumber: 11,
+    loopNumber: 1,
     evidenceData: {
       keyStats: [
         { value: '160%', label: 'AI energy demand surge by 2030', source: 'IEA / Goldman Sachs' },
@@ -203,18 +203,18 @@ const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // SHIFT 04: The Displacement (Agentic Labor) — INTRO
+  // SHIFT 02: The Displacement (Agentic Labor) — INTRO
   {
     id: 10,
-    title: 'shift 04: the displacement (agentic labor)',
+    title: 'shift 02: the displacement (agentic labor)',
     subtitle: 'from copilot → autonomous coworker',
     visual: 'factory',
     layout: 'loop-intro',
   },
-  // SHIFT 04: The Displacement (Agentic Labor) — FULL
+  // SHIFT 02: The Displacement (Agentic Labor) — FULL
   {
     id: 11,
-    title: 'shift 04: the displacement (agentic labor)',
+    title: 'shift 02: the displacement (agentic labor)',
     subtitle: 'the death of middle management.',
     visual: 'factory',
     layout: 'loop',
@@ -230,13 +230,13 @@ const RAW_SLIDES: SlideData[] = [
       { label: 'x402 — Agent Payments Protocol', url: 'https://www.x402.org/' },
     ],
   },
-  // SHIFT 04: Displacement — EVIDENCE
+  // SHIFT 02: Displacement — EVIDENCE
   {
     id: 101,
     title: 'the displacement: the evidence',
     visual: 'factory',
     layout: 'loop-evidence',
-    loopNumber: 4,
+    loopNumber: 2,
     evidenceData: {
       keyStats: [
         { value: '88% vs 6%', label: 'Adoption rate vs transformation rate - execution gap', source: 'McKinsey' },
@@ -275,18 +275,18 @@ const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // SHIFT 09: The Sovereignty (The Splinternet) — INTRO
+  // SHIFT 03: The Sovereignty (The Splinternet) — INTRO
   {
     id: 20,
-    title: 'shift 09: the sovereignty (the splinternet)',
+    title: 'shift 03: the sovereignty (the splinternet)',
     subtitle: 'from global openness → fragmented stacks',
     visual: 'globe',
     layout: 'loop-intro',
   },
-  // SHIFT 09: The Sovereignty (Splinternet) — FULL
+  // SHIFT 03: The Sovereignty (Splinternet) — FULL
   {
     id: 21,
-    title: 'shift 09: the sovereignty (the splinternet)',
+    title: 'shift 03: the sovereignty (the splinternet)',
     subtitle: 'whose switch is it?',
     visual: 'globe',
     layout: 'loop',
@@ -302,13 +302,13 @@ const RAW_SLIDES: SlideData[] = [
       { label: 'Balaji Srinivasan — Network State', url: 'https://thenetworkstate.com/' },
     ],
   },
-  // SHIFT 09: Sovereignty — EVIDENCE
+  // SHIFT 03: Sovereignty — EVIDENCE
   {
     id: 106,
     title: 'the sovereignty: the evidence',
     visual: 'globe',
     layout: 'loop-evidence',
-    loopNumber: 9,
+    loopNumber: 3,
     evidenceData: {
       keyStats: [
         { value: '3%', label: 'Paying users for AI (97% are the product)', source: 'Goldman Sachs' },
@@ -351,18 +351,18 @@ const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // SHIFT 01: The Reasoning (The Brain) — INTRO
+  // SHIFT 04: The Reasoning (The Brain) — INTRO
   {
     id: 12,
-    title: 'shift 01: the reasoning (the brain)',
+    title: 'shift 04: the reasoning (the brain)',
     subtitle: 'from chatbots to thinking models',
     visual: 'audit',
     layout: 'loop-intro',
   },
-  // SHIFT 01: The Reasoning (The Brain) — FULL
+  // SHIFT 04: The Reasoning (The Brain) — FULL
   {
     id: 13,
-    title: 'shift 01: the reasoning (the brain)',
+    title: 'shift 04: the reasoning (the brain)',
     subtitle: 'from probabilistic prediction → inference-time logic (system 2 thinking)',
     visual: 'audit',
     layout: 'loop',
@@ -378,13 +378,13 @@ const RAW_SLIDES: SlideData[] = [
       { label: 'Korra AI — Reasoning Reliability Gap', url: 'https://korra.ai/' },
     ],
   },
-  // SHIFT 01: Reasoning — EVIDENCE
+  // SHIFT 04: Reasoning — EVIDENCE
   {
     id: 102,
     title: 'the reasoning: the evidence',
     visual: 'audit',
     layout: 'loop-evidence',
-    loopNumber: 1,
+    loopNumber: 4,
     evidenceData: {
       keyStats: [
         { value: '126%', label: 'Productivity boost from AI Copilots', source: 'Qodo' },
@@ -423,18 +423,18 @@ const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // SHIFT 02: The Knowledge (The Memory) — INTRO
+  // SHIFT 05: The Knowledge (The Memory) — INTRO
   {
     id: 22,
-    title: 'shift 02: the knowledge (the memory)',
+    title: 'shift 05: the knowledge (the memory)',
     subtitle: 'from information hoarding to context filtering',
     visual: 'tangle',
     layout: 'loop-intro',
   },
-  // SHIFT 02: The Knowledge (The Memory) — FULL
+  // SHIFT 05: The Knowledge (The Memory) — FULL
   {
     id: 23,
-    title: 'shift 02: the knowledge (the memory)',
+    title: 'shift 05: the knowledge (the memory)',
     subtitle: 'from information access → context architecture',
     visual: 'tangle',
     layout: 'loop',
@@ -450,13 +450,13 @@ const RAW_SLIDES: SlideData[] = [
       { label: 'Gartner — Knowledge Management', url: 'https://www.gartner.com/' },
     ],
   },
-  // SHIFT 02: The Knowledge (The Memory) — EVIDENCE
+  // SHIFT 05: The Knowledge (The Memory) — EVIDENCE
   {
     id: 107,
     title: 'the knowledge: the evidence',
     visual: 'tangle',
     layout: 'loop-evidence',
-    loopNumber: 2,
+    loopNumber: 5,
     evidenceData: {
       keyStats: [
         { value: '$67B', label: 'Annual financial risk from unmanaged context/hallucinations', source: 'Korra AI' },
