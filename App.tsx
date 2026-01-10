@@ -153,7 +153,7 @@ const PrintDeck: React.FC<{ slides: SlideData[] }> = ({ slides }) => {
 };
 
 const AppContent: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
   const [showTOC, setShowTOC] = useState(false);
   const initialPrint = useMemo(() => getInitialPrintState(), []);
@@ -171,7 +171,48 @@ const AppContent: React.FC = () => {
   const [pendingExport, setPendingExport] = useState<{ mode: PdfMode; slideIdx: number } | null>(null);
   const [showSources, setShowSources] = useState(false);
 
+  // Dynamic slides loading from JSON with fallback to hardcoded
+  const [slides, setSlides] = useState<SlideData[]>(SLIDES);
+  const [sections] = useState(SECTIONS);
+
   const exportPassword = useMemo(() => getExportPassword(), []);
+
+  // Load slides from JSON
+  useEffect(() => {
+    async function loadSlidesFromJson() {
+      try {
+        const locale = lang || 'en';
+        const response = await fetch(`/locales/${locale}/slides.json`);
+        
+        if (!response.ok) {
+          console.warn('JSON slides not found, using hardcoded slides');
+          return;
+        }
+
+        const data = await response.json();
+        const loadedSlides = data.slides || [];
+        
+        if (loadedSlides.length === 0) {
+          console.warn('Empty slides array in JSON, using hardcoded slides');
+          return;
+        }
+
+        // Add sequential IDs
+        const slidesWithIds = loadedSlides.map((slide: SlideData, index: number) => ({
+          ...slide,
+          id: index + 1,
+        }));
+
+        setSlides(slidesWithIds);
+        console.log(`Loaded ${slidesWithIds.length} slides from JSON`);
+      } catch (error) {
+        console.error('Failed to load slides from JSON:', error);
+        console.log('Using hardcoded slides as fallback');
+      }
+    }
+
+    loadSlidesFromJson();
+  }, [lang]);
 
   // On-screen fit: ensure each slide fits within the viewport stage (no clipping)
   // by scaling down a tiny bit when content overflows.
@@ -287,7 +328,7 @@ const AppContent: React.FC = () => {
 
     let cancelled = false;
     const run = async () => {
-      const slidesToExport = pdfJob.mode === 'deck' ? SLIDES : [SLIDES[pdfJob.slideIdx]];
+      const slidesToExport = pdfJob.mode === 'deck' ? slides : [slides[pdfJob.slideIdx]];
       setPdfProgress({ current: 0, total: slidesToExport.length });
 
       try {
@@ -357,8 +398,8 @@ const AppContent: React.FC = () => {
   }, [pdfJob, triggerPrint]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlideIdx((prev) => Math.min(prev + 1, SLIDES.length - 1));
-  }, []);
+    setCurrentSlideIdx((prev) => Math.min(prev + 1, slides.length - 1));
+  }, [slides.length]);
 
   const prevSlide = useCallback(() => {
     setCurrentSlideIdx((prev) => Math.max(prev - 1, 0));
@@ -479,7 +520,7 @@ const AppContent: React.FC = () => {
   });
 
   if (printMode !== 'off') {
-    const slidesToPrint = printMode === 'deck' ? SLIDES : [SLIDES[printSlideIdx]];
+    const slidesToPrint = printMode === 'deck' ? slides : [slides[printSlideIdx]];
     return <PrintDeck slides={slidesToPrint} />;
   }
 
@@ -504,7 +545,7 @@ const AppContent: React.FC = () => {
         <MotionConfig reducedMotion="always">
           <div className="pdf-export-root">
             <div ref={pdfRootRef}>
-              {(pdfJob.mode === 'deck' ? SLIDES : [SLIDES[pdfJob.slideIdx]]).map((slide, idx) => (
+              {(pdfJob.mode === 'deck' ? slides : [slides[pdfJob.slideIdx]]).map((slide, idx) => (
                 <div key={`${slide.id}-${idx}`} className="pdf-export-page">
                   <div className="pdf-scale-root">
                     <Slide data={slide} index={pdfJob.mode === 'deck' ? idx : pdfJob.slideIdx} />
@@ -532,7 +573,7 @@ const AppContent: React.FC = () => {
       <div className="fixed top-0 left-0 w-full h-1 bg-neutral-100 z-50 no-print">
         <motion.div
           className="h-full bg-red-600"
-          animate={{ width: `${((currentSlideIdx + 1) / SLIDES.length) * 100}%` }}
+          animate={{ width: `${((currentSlideIdx + 1) / slides.length) * 100}%` }}
           transition={{ duration: 0.5 }}
         />
       </div>
@@ -612,13 +653,13 @@ const AppContent: React.FC = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <h2 className="text-lg font-bold uppercase tracking-wider">{t.contents}</h2>
                   <span className="text-xs font-mono text-neutral-400 bg-neutral-100 px-2 py-1 rounded">
-                    {currentSlideIdx + 1}/{SLIDES.length}
+                    {currentSlideIdx + 1}/{slides.length}
                   </span>
                 </div>
-                {SECTIONS.map((section, sIdx) => {
-                  const nextSectionStart = SECTIONS[sIdx + 1]?.startSlide ?? SLIDES.length;
+                {sections.map((section, sIdx) => {
+                  const nextSectionStart = sections[sIdx + 1]?.startSlide ?? slides.length;
                   const isCurrentSection = currentSlideIdx >= section.startSlide && currentSlideIdx < nextSectionStart;
-                  const slidesInSection = SLIDES.slice(section.startSlide, nextSectionStart);
+                  const slidesInSection = slides.slice(section.startSlide, nextSectionStart);
 
                   return (
                     <div key={sIdx} className="mb-5">
@@ -718,7 +759,7 @@ const AppContent: React.FC = () => {
           className="w-full h-[calc(100vh-3.5rem)] min-h-[600px] overflow-hidden"
         >
           <div ref={stageScaleRootRef} className="w-full h-full">
-            <Slide data={SLIDES[currentSlideIdx]} index={currentSlideIdx} />
+            <Slide data={slides[currentSlideIdx]} index={currentSlideIdx} />
           </div>
         </motion.div>
       </AnimatePresence>
@@ -732,8 +773,8 @@ const AppContent: React.FC = () => {
 
         {/* Slide dots - centered, grouped by section with hover tooltips */}
         <div className="flex-1 flex justify-center items-center gap-0.5">
-          {SECTIONS.map((section, sIdx) => {
-            const nextStart = SECTIONS[sIdx + 1]?.startSlide ?? SLIDES.length;
+          {sections.map((section, sIdx) => {
+            const nextStart = sections[sIdx + 1]?.startSlide ?? slides.length;
             const count = nextStart - section.startSlide;
             const isLoopsSection = section.title === '10 loops';
 
@@ -748,7 +789,7 @@ const AppContent: React.FC = () => {
                 </div>
                 {Array.from({ length: count }).map((_, idx) => {
                   const slideIdx = section.startSlide + idx;
-                  const slide = SLIDES[slideIdx];
+                  const slide = slides[slideIdx];
                   // Extract loop number if present
                   const loopMatch = slide.title?.match(/LOOP\s*(\d+)/i);
                   const loopNum = loopMatch ? parseInt(loopMatch[1], 10) : null;
@@ -819,7 +860,7 @@ const AppContent: React.FC = () => {
           </span>
           <button
             onClick={nextSlide}
-            disabled={currentSlideIdx === SLIDES.length - 1}
+            disabled={currentSlideIdx === slides.length - 1}
             className="p-1.5 rounded hover:bg-neutral-100 transition-colors disabled:opacity-30"
           >
             <ChevronRight size={18} className="text-neutral-600" />
