@@ -137,7 +137,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 8,
     title: 'shift 11: the cost → physical limits',
     subtitle: 'from digital abundance to energy scarcity',
-    visual: 'locked',
+    visual: 'battery',
     layout: 'loop-intro',
   },
   // SHIFT 11: The Cost (Energy) — FULL
@@ -145,7 +145,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 9,
     title: 'shift 11: the cost → physical limits',
     subtitle: 'physics takes revenge. the constraint for 2026 isn\'t chips; it\'s "intelligence per watt."',
-    visual: 'locked',
+    visual: 'battery',
     layout: 'loop',
     loopData: {
       machine: '**the energy wall:** ai demand for data center power projected to grow **160% by 2030**. the physical grid cannot be built fast enough to support ai expansion.\n\n**intelligence/watt:** the focus shifts from raw compute to "inference efficiency" as the critical metric. more compute doesn\'t equal more value if it can\'t be powered.\n\n**$7 trillion** event: big tech capex for 2025 alone is **$200b+**. the **40x investment-value gap**: $600b needed in annual revenue to justify infrastructure spend, but consumer spend is only $12b.',
@@ -163,7 +163,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 100,
     title: 'the cost: the evidence',
-    visual: 'locked',
+    visual: 'battery',
     layout: 'loop-evidence',
     loopNumber: 11,
     evidenceData: {
@@ -208,7 +208,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 10,
     title: 'shift 04: the displacement (agentic labor)',
     subtitle: 'from copilot → autonomous coworker',
-    visual: 'overload',
+    visual: 'factory',
     layout: 'loop-intro',
   },
   // SHIFT 04: The Displacement (Agentic Labor) — FULL
@@ -216,7 +216,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 11,
     title: 'shift 04: the displacement (agentic labor)',
     subtitle: 'the death of middle management.',
-    visual: 'overload',
+    visual: 'factory',
     layout: 'loop',
     loopData: {
       machine: '**the klarna benchmark:** one ai assistant replaced **700 full-time agents**, slashed resolution time (11m → 2m), drove **$40m profit**, and achieved **25% fewer repeat inquiries** than humans.\n\n**the agentic enterprise:** transition from "assistant" to "autonomous coworker." **76% of executives** view ai as a "coworker" rather than a tool. agents receive wallets (x402 protocol), tools (mcp), and "hr for ai."\n\n**service-as-software:** saas model shifts to agents that execute complete workflows. from selling "software licenses" to selling "executed outcomes."',
@@ -234,7 +234,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 101,
     title: 'the displacement: the evidence',
-    visual: 'overload',
+    visual: 'factory',
     layout: 'loop-evidence',
     loopNumber: 4,
     evidenceData: {
@@ -280,7 +280,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 20,
     title: 'shift 09: the sovereignty (the splinternet)',
     subtitle: 'from global openness → fragmented stacks',
-    visual: 'locked',
+    visual: 'globe',
     layout: 'loop-intro',
   },
   // SHIFT 09: The Sovereignty (Splinternet) — FULL
@@ -288,7 +288,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 21,
     title: 'shift 09: the sovereignty (the splinternet)',
     subtitle: 'whose switch is it?',
-    visual: 'locked',
+    visual: 'globe',
     layout: 'loop',
     loopData: {
       machine: '**geopolitical fragmentation - the splinternet:** the end of "global ai." three distinct stacks emerge: **us ai** (corporate/closed - openai, anthropic), **china ai** (state-controlled - deepseek bypassing us norms), **eu ai** (regulated - ai act compliance). agi is now a national security asset on "war footing."\n\n**the copyright war - nyt vs. openai:** battle for "sovereignty of culture." nyt lawsuit alleges models **memorize and regurgitate** copyrighted content verbatim. the case determines if human culture belongs to creators or model weights.\n\n**eu ai act:** first comprehensive ai regulation. creates **regulatory gap** - eu ai is "safe but slow," us/china ai is "dangerous but fast."',
@@ -306,7 +306,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 106,
     title: 'the sovereignty: the evidence',
-    visual: 'locked',
+    visual: 'globe',
     layout: 'loop-evidence',
     loopNumber: 9,
     evidenceData: {
@@ -356,7 +356,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 12,
     title: 'shift 01: the reasoning (the brain)',
     subtitle: 'from chatbots to thinking models',
-    visual: 'trust',
+    visual: 'audit',
     layout: 'loop-intro',
   },
   // SHIFT 01: The Reasoning (The Brain) — FULL
@@ -364,7 +364,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 13,
     title: 'shift 01: the reasoning (the brain)',
     subtitle: 'from probabilistic prediction → inference-time logic (system 2 thinking)',
-    visual: 'trust',
+    visual: 'audit',
     layout: 'loop',
     loopData: {
       machine: '**sequoia\'s act two:** the fundamental shift from "act 1" (probabilistic token prediction - chatgpt era) to **"act 2"** (reasoning and inference-time compute - o1 era). "act 1 was about prompts. act 2 is about reasoning."\n\n**system 1 vs system 2 architecture:** transition from fast, instinctive responses (system 1) to slow, deliberate, multi-step logical reasoning (system 2). models use **chain of thought (cot)** and **star** via reinforcement learning to "think" before answering.\n\n**scientific compression:** condensing **100 years of scientific progress into 10 years**. prediction: models will exceed nobel-level intelligence in specialized domains (biology, math, physics) by 2026.',
@@ -382,7 +382,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 102,
     title: 'the reasoning: the evidence',
-    visual: 'trust',
+    visual: 'audit',
     layout: 'loop-evidence',
     loopNumber: 1,
     evidenceData: {
@@ -428,7 +428,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 22,
     title: 'shift 02: the knowledge (the memory)',
     subtitle: 'from information hoarding to context filtering',
-    visual: 'overload',
+    visual: 'tangle',
     layout: 'loop-intro',
   },
   // SHIFT 02: The Knowledge (The Memory) — FULL
@@ -436,7 +436,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 23,
     title: 'shift 02: the knowledge (the memory)',
     subtitle: 'from information access → context architecture',
-    visual: 'overload',
+    visual: 'tangle',
     layout: 'loop',
     loopData: {
       machine: '**model context protocol (mcp):** anthropic\'s "usb port for ai" - universal standard for connecting ai to data ecosystems (google drive, slack, git) without custom integrations. this is the infrastructure answer to data silos.\n\n**the hallucination tax:** **$67 billion** in enterprise losses from context mismanagement and ai errors. the shift from "paying for ai" to "paying to fix ai mistakes."\n\n**1m token windows:** models can now hold massive context, but retrieval quality degrades beyond human working memory limits (7 items).',
@@ -454,7 +454,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 107,
     title: 'the knowledge: the evidence',
-    visual: 'overload',
+    visual: 'tangle',
     layout: 'loop-evidence',
     loopNumber: 2,
     evidenceData: {
@@ -500,7 +500,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 24,
     title: 'shift 06: the discovery (the frontier)',
     subtitle: 'from reading science → generating science',
-    visual: 'trust',
+    visual: 'spark',
     layout: 'loop-intro',
   },
   // SHIFT 06: The Discovery (The Frontier) — FULL
@@ -508,7 +508,7 @@ const RAW_SLIDES: SlideData[] = [
     id: 25,
     title: 'shift 06: the discovery (the frontier)',
     subtitle: 'from literature review to generative discovery',
-    visual: 'trust',
+    visual: 'spark',
     layout: 'loop',
     loopData: {
       machine: '**deep research agents:** ai reads millions of papers to generate hypotheses humans cannot conceive. from "literature review" to "hypothesis generation."\n\n**generative biology:** moving from "reading" biology to "writing" it. alphafold 3 predicts protein structures; next step is **designing** new proteins, materials, and molecules that don\'t exist in nature.\n\n**data limits - the exhaustion:** quality human-generated data **exhausted by 2026-2028**. models now train on **ai-generated synthetic data**, verified by system 2 reasoning.',
@@ -526,7 +526,7 @@ const RAW_SLIDES: SlideData[] = [
   {
     id: 108,
     title: 'the discovery: the evidence',
-    visual: 'trust',
+    visual: 'spark',
     layout: 'loop-evidence',
     loopNumber: 6,
     evidenceData: {
