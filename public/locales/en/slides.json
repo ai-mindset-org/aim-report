@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "version": "v4",
+    "title": "THE CONTEXT GAP",
+    "year": "2025",
+    "structure": "11 Tectonic Shifts in 4 Layers"
+  },
+  "slides": [
+    {
+      "title": "the context gap",
+      "subtitle": "ai is accelerating. humans are buffering.",
+      "visual": "hero_cover",
+      "caption": "a yearly reset artifact by ai mindset + community.\na sovereignty reset for people running their own life.",
+      "layout": "center"
+    },
+    {
+      "title": "00 / prologue",
+      "subtitle": "2025 wasn't just a year in the ai calendar.",
+      "visual": "breath",
+      "layout": "split",
+      "content": [
+        "it was the moment **context became the most expensive resource on earth**.",
+        "we called this report the context gap because it identifies the primary fracture in modern civilization: the distance between the volume of data a machine can generate and the amount of meaning a human can integrate without losing their agency, their sanity, or their will.",
+        "**machines have conquered the complexity barrier.**",
+        "**humans have hit the context wall.**",
+        "ai is accelerating. humans are buffering."
+      ],
+      "source": {
+        "label": "AI Mindset + Community",
+        "url": "https://aimindset.org"
+      }
+    }
+  ]
+}

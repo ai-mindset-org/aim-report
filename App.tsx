@@ -408,6 +408,69 @@ const AppContent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide, currentSlideIdx, requestPdfExport, pdfJob]);
 
+  // Wheel/scroll navigation with throttling
+  useEffect(() => {
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Skip if menu/sources are open
+      if (showTOC || showSources) return;
+      
+      // Skip if PDF export is running
+      if (pdfJob) return;
+
+      // Prevent multiple rapid scrolls
+      if (isScrolling) return;
+
+      const deltaY = e.deltaY;
+      const deltaX = e.deltaX;
+
+      // Determine scroll direction - vertical has priority
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        // Vertical scroll
+        if (deltaY > 0) {
+          // Scroll down = next slide
+          e.preventDefault();
+          nextSlide();
+          isScrolling = true;
+        } else if (deltaY < 0) {
+          // Scroll up = previous slide
+          e.preventDefault();
+          prevSlide();
+          isScrolling = true;
+        }
+      } else if (Math.abs(deltaX) > 10) {
+        // Horizontal scroll (trackpad swipe)
+        if (deltaX > 0) {
+          // Scroll right = next slide
+          e.preventDefault();
+          nextSlide();
+          isScrolling = true;
+        } else if (deltaX < 0) {
+          // Scroll left = previous slide
+          e.preventDefault();
+          prevSlide();
+          isScrolling = true;
+        }
+      }
+
+      // Reset scroll lock after delay
+      if (isScrolling) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+        }, 500); // 500ms throttle
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      clearTimeout(scrollTimeout);
+    };
+  }, [nextSlide, prevSlide, showTOC, showSources, pdfJob]);
+
   // Find current section
   const currentSection = SECTIONS.find((section, idx) => {
     const nextSection = SECTIONS[idx + 1];
