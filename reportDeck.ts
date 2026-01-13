@@ -21,9 +21,9 @@ import type { SlideData } from './types';
 //   10. Compute & Energy (was 6)
 // ============================================================
 
-type Section = { title: string; startSlide: number };
+export type Section = { title: string; startSlide: number };
 
-const RAW_SLIDES: SlideData[] = [
+export const RAW_SLIDES: SlideData[] = [
   // ═══════════════════════════════════════════════════════════════════
   // INTRO (Slides 0-5)
   // ═══════════════════════════════════════════════════════════════════
@@ -1181,10 +1181,7 @@ const RAW_SLIDES: SlideData[] = [
 // ============================================================
 // Build SLIDES array with proper IDs and SECTIONS
 // ============================================================
-export const SLIDES: SlideData[] = RAW_SLIDES.map((slide, index) => ({
-  ...slide,
-  id: index + 1,
-}));
+export const SLIDES = RAW_SLIDES;
 
 export const SECTIONS: Section[] = [
   { title: 'intro', startSlide: 0 },

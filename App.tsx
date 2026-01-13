@@ -173,27 +173,28 @@ const AppContent: React.FC = () => {
 
   // Dynamic slides loading from JSON with fallback to hardcoded
   const [slides, setSlides] = useState<SlideData[]>(SLIDES);
-  const [sections] = useState(SECTIONS);
+  const [sections, setSections] = useState(SECTIONS);
 
   const exportPassword = useMemo(() => getExportPassword(), []);
 
-  // Load slides from JSON
+  // Load slides and sections from JSON
   useEffect(() => {
-    async function loadSlidesFromJson() {
+    async function loadContent() {
       try {
         const locale = lang || 'en';
-        const response = await fetch(`/locales/${locale}/slides.json`);
         
-        if (!response.ok) {
-          console.warn('JSON slides not found, using hardcoded slides');
+        // Load slides
+        const slidesResponse = await fetch(`/locales/${locale}/slides.json`);
+        if (!slidesResponse.ok) {
+          console.warn('JSON slides not found, using hardcoded content');
           return;
         }
 
-        const data = await response.json();
-        const loadedSlides = data.slides || [];
+        const slidesData = await slidesResponse.json();
+        const loadedSlides = slidesData.slides || [];
         
         if (loadedSlides.length === 0) {
-          console.warn('Empty slides array in JSON, using hardcoded slides');
+          console.warn('Empty slides array in JSON, using hardcoded content');
           return;
         }
 
@@ -205,14 +206,29 @@ const AppContent: React.FC = () => {
 
         setSlides(slidesWithIds);
         console.log(`Loaded ${slidesWithIds.length} slides from JSON`);
+        
+        // Load sections
+        const sectionsResponse = await fetch(`/locales/${locale}/sections.json`);
+        if (sectionsResponse.ok) {
+          const sectionsData = await sectionsResponse.json();
+          if (sectionsData.sections) {
+            setSections(sectionsData.sections);
+            console.log(`Loaded ${sectionsData.sections.length} sections from JSON`);
+          }
+        }
+        
+        // Reset slide index if current index is out of bounds
+        if (currentSlideIdx >= slidesWithIds.length) {
+          setCurrentSlideIdx(0);
+        }
       } catch (error) {
-        console.error('Failed to load slides from JSON:', error);
-        console.log('Using hardcoded slides as fallback');
+        console.error('Failed to load content from JSON:', error);
+        console.log('Using hardcoded content as fallback');
       }
     }
 
-    loadSlidesFromJson();
-  }, [lang]);
+    loadContent();
+  }, [lang, currentSlideIdx]);
 
   // On-screen fit: ensure each slide fits within the viewport stage (no clipping)
   // by scaling down a tiny bit when content overflows.
@@ -519,6 +535,15 @@ const AppContent: React.FC = () => {
            (!nextSection || currentSlideIdx < nextSection.startSlide);
   });
 
+  // Guard: show loading if no slides or index out of bounds
+  if (slides.length === 0 || !slides[currentSlideIdx]) {
+    return (
+      <div className="w-screen h-screen bg-[#FAFAFA] flex items-center justify-center">
+        <div className="text-neutral-400 font-mono text-sm">Loading slides...</div>
+      </div>
+    );
+  }
+
   if (printMode !== 'off') {
     const slidesToPrint = printMode === 'deck' ? slides : [slides[printSlideIdx]];
     return <PrintDeck slides={slidesToPrint} />;
@@ -790,6 +815,10 @@ const AppContent: React.FC = () => {
                 {Array.from({ length: count }).map((_, idx) => {
                   const slideIdx = section.startSlide + idx;
                   const slide = slides[slideIdx];
+                  
+                  // Skip if slide doesn't exist (e.g., when loading partial JSON)
+                  if (!slide) return null;
+                  
                   // Extract loop number if present
                   const loopMatch = slide.title?.match(/LOOP\s*(\d+)/i);
                   const loopNum = loopMatch ? parseInt(loopMatch[1], 10) : null;

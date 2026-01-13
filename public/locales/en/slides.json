@@ -3,15 +3,19 @@
     "version": "v4",
     "title": "THE CONTEXT GAP",
     "year": "2025",
-    "structure": "11 Tectonic Shifts in 4 Layers"
+    "structure": "11 Tectonic Shifts in 4 Layers",
+    "lastUpdated": "2026-01-13T15:38:32.311Z"
   },
   "slides": [
     {
       "title": "the context gap",
-      "subtitle": "ai is accelerating. humans are buffering.",
+      "subtitle": "ai is accelerating. humans are changing.",
       "visual": "hero_cover",
+      "layout": "center",
       "caption": "a yearly reset artifact by ai mindset + community.\na sovereignty reset for people running their own life.",
-      "layout": "center"
+      "content": [
+        "a yearly reset artifact by ai mindset + community. a sovereignty reset for people running their own life."
+      ]
     },
     {
       "title": "00 / prologue",
@@ -19,16 +23,337 @@
       "visual": "breath",
       "layout": "split",
       "content": [
-        "it was the moment **context became the most expensive resource on earth**.",
-        "we called this report the context gap because it identifies the primary fracture in modern civilization: the distance between the volume of data a machine can generate and the amount of meaning a human can integrate without losing their agency, their sanity, or their will.",
-        "**machines have conquered the complexity barrier.**",
-        "**humans have hit the context wall.**",
-        "ai is accelerating. humans are buffering."
-      ],
-      "source": {
-        "label": "AI Mindset + Community",
-        "url": "https://aimindset.org"
-      }
+        "it was the moment **context became the most expensive resource on earth**. we called this report the context gap because it identifies the primary fracture in modern civilization: the distance between the volume of data a machine can generate and the amount of meaning a human can integrate without losing their agency, their sanity, or their will. **machines have conquered the complexity barrier.** **humans have hit the context wall.** ai is accelerating. humans are buffering."
+      ]
+    },
+    {
+      "title": "01 / the battle for agency",
+      "subtitle": "why are we doing this?",
+      "visual": "network",
+      "layout": "split",
+      "content": [
+        "in a world where generating content, code, and ideas is effectively free, the act of verifying them has become a luxury. we are currently paying a **reliability tax** with our time and attention. if you cannot audit what the algorithm proposes, you are no longer a leader—you are a passenger. this report is your perimeter defense against: **context obesity:** cognitive paralysis where you are stuffed with low-value data but starved for meaning. burnout is working memory overflow. **the reliability tax:** $67 billion in annual losses. creating is free; verifying is expensive. **the responsibility void:** decisions being made by agents for whose mistakes no human is held accountable. **data inbreeding:** if ai trains on ai-generated data recursively, models degrade. humans become the only source of clean signal."
+      ]
+    },
+    {
+      "title": "02 / about this report",
+      "subtitle": "structure & navigation",
+      "visual": "map",
+      "layout": "split",
+      "content": [
+        "- each shift has an intro + full analysis + evidence slide - scroll vertically through content - scroll horizontally to jump between shifts"
+      ]
+    },
+    {
+      "title": "03 / for the sovereign individual",
+      "subtitle": "this is for builders, leaders, and independent thinkers.",
+      "visual": "lighthouse",
+      "layout": "split",
+      "content": [
+        "- **product development** → understand how ai agents reshape user expectations - **strategy & leadership** → see the macro forces reshaping industries - **engineering & design** → learn where tooling is headed - **policy & regulation** → identify governance gaps before they explode this is not about hype. this is about **structural literacy**. the distance between understanding these shifts and not understanding them is the distance between **agency and obsolescence**."
+      ]
+    },
+    {
+      "title": "foundation layer",
+      "subtitle": "the physical & economic base",
+      "visual": "foundation",
+      "layout": "section-intro",
+      "content": [
+        "before intelligence, before interface, before intimacy—there is physics. energy. labor. sovereignty. these are not abstract concepts. they are the substrate on which everything else runs."
+      ]
+    },
+    {
+      "title": "shift 01: the cost → physical limits (energy)",
+      "subtitle": "from software utopia to hardware reality",
+      "visual": "flame",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 01: the cost → physical limits (energy)",
+      "subtitle": "ai is infrastructure, not just software. the energy bill is real.",
+      "visual": "flame",
+      "layout": "loop",
+      "content": [
+        "ai was sold as infinite scale. but **energy is finite**, and we are hitting the wall. training gpt-4: **50 GWh** (enough to power 4,600 homes for a year). global ai energy demand by 2027: **85-134 TWh** (more than the netherlands). **the constraint:** data centers now consume **1-1.5% of global electricity**. by 2030, that could double. **why it matters:** - **cost explosion:** energy bills are the new capex bottleneck - **geopolitical leverage:** whoever controls energy controls ai leadership - **sustainability crisis:** ai growth vs. climate commitments—something has to give **the shift:** from \"ai is free to scale\" to \"ai is expensive to run.\""
+      ]
+    },
+    {
+      "title": "energy: the evidence",
+      "visual": "flame",
+      "layout": "loop-evidence",
+      "loopNumber": 1,
+      "content": [
+        "- hyperscalers building new nuclear reactors **energy deals:** - microsoft + constellation: restarting three mile island reactor - google: 500 MW from renewable sources for data centers - amazon: $650M investment in nuclear-powered data center"
+      ]
+    },
+    {
+      "title": "shift 02: the displacement (agentic labor)",
+      "subtitle": "from humans in the loop to agents in the stack",
+      "visual": "pulse_workforce",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 02: the displacement (agentic labor)",
+      "subtitle": "labor is being automated at the cognitive layer, not the manual layer.",
+      "visual": "pulse_workforce",
+      "layout": "loop",
+      "content": [
+        "this is not \"robots taking factory jobs.\" this is **ai agents taking knowledge work**. **the velocity:** - **klarna:** ai agents replaced 700 customer service workers - **amazon q:** saved $260M, equivalent to 4,500 developer-years - **devin (cognition ai):** autonomous coding agent hitting 13.86% on swe-bench **the shift:** from \"ai assists humans\" to \"ai autonomously executes.\" **why it matters:** - **talent arbitrage:** if an agent can do the work, location and credentials become irrelevant - **middle management crisis:** coordinators and verifiers are the first to go - **skill half-life collapse:** what you learned 5 years ago is already obsolete **the new economy:** not \"learn to code.\" learn to **architect intent**. the premium is on **judgment**, not **execution**."
+      ]
+    },
+    {
+      "title": "displacement: the evidence",
+      "visual": "pulse_workforce",
+      "layout": "loop-evidence",
+      "loopNumber": 2
+    },
+    {
+      "title": "shift 03: the sovereignty (the splinternet)",
+      "subtitle": "from global internet to sovereign ai ecosystems",
+      "visual": "fracture",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 03: the sovereignty (the splinternet)",
+      "subtitle": "ai is fragmenting into regional blocks. the open internet is over.",
+      "visual": "fracture",
+      "layout": "loop",
+      "content": [
+        "ai is not neutral infrastructure. it is **geopolitical leverage**. china, eu, us—each building incompatible ai ecosystems. **the fracture lines:** - **us:** open weights, frontier models, tech supremacy - **china:** state-controlled models, domestic stack (deepseek, qwen) - **eu:** ai act compliance, data sovereignty, risk-averse regulation **the shift:** from \"one global internet\" to \"three incompatible ai internets.\" **why it matters:** - **compliance hell:** different rules for every region - **competitive isolation:** chinese models trained on censored data, western models on open data - **strategic decoupling:** whoever builds the best model wins the next decade **the reality:** there is no \"global ai policy.\" there are only **regional power plays**."
+      ]
+    },
+    {
+      "title": "sovereignty: the evidence",
+      "visual": "fracture",
+      "layout": "loop-evidence",
+      "loopNumber": 3
+    },
+    {
+      "title": "cognition layer",
+      "subtitle": "how machines think, learn & discover",
+      "visual": "neural_web",
+      "layout": "section-intro",
+      "content": [
+        "this is where the magic happens—and where the limits appear. reasoning. knowledge. discovery. machines are getting smarter. but they are also hitting walls we did not predict."
+      ]
+    },
+    {
+      "title": "shift 04: the reasoning (the brain)",
+      "subtitle": "from pattern matching to deliberate thought",
+      "visual": "brain",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 04: the reasoning (the brain)",
+      "subtitle": "ai is moving from system-1 (fast) to system-2 (slow, deliberate reasoning).",
+      "visual": "brain",
+      "layout": "loop",
+      "content": [
+        "from \"predict next token\" to \"think before answering.\" **why it matters:** - **reasoning = reliability:** fewer hallucinations, better multi-step tasks - **cost explosion:** o1 costs 3-5× more to run than gpt-4 - **new failure modes:** models can now overthink and get stuck in loops **the trade-off:** reasoning models are slower and more expensive. but they are also **actually intelligent**. this is the first ai that can solve problems it has never seen before."
+      ]
+    },
+    {
+      "title": "reasoning: the evidence",
+      "visual": "brain",
+      "layout": "loop-evidence",
+      "loopNumber": 4
+    },
+    {
+      "title": "shift 05: the knowledge (the memory)",
+      "subtitle": "from retrieval to reasoning over infinite context",
+      "visual": "library",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 05: the knowledge (the memory)",
+      "subtitle": "context windows are expanding from 8K → 1M+ tokens. memory is the new moat.",
+      "visual": "library",
+      "layout": "loop",
+      "content": [
+        "from \"summarize and forget\" to \"remember everything and reason over it.\" **why it matters:** - **personalization at scale:** ai that remembers every conversation - **end of search:** why search when the model already knows your context? - **privacy nightmare:** if the model remembers everything, who controls that memory? **the new primitive:** memory is not a feature. it is **the architecture**."
+      ]
+    },
+    {
+      "title": "knowledge: the evidence",
+      "visual": "library",
+      "layout": "loop-evidence",
+      "loopNumber": 5
+    },
+    {
+      "title": "shift 06: the discovery (the frontier)",
+      "subtitle": "from human-led research to ai-accelerated science",
+      "visual": "telescope",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 06: the discovery (the frontier)",
+      "subtitle": "ai is now discovering knowledge humans never could.",
+      "visual": "telescope",
+      "layout": "loop",
+      "content": [
+        "from \"ai helps researchers\" to \"ai is the researcher.\" **why it matters:** - **knowledge generation:** we are producing insights faster than humans can verify - **trust crisis:** if ai discovers it, can we trust it without understanding it? - **acceleration risk:** science moving faster than ethics, regulation, or societal adaptation **the frontier:** ai is not just reading the map. it is **drawing new territory**."
+      ]
+    },
+    {
+      "title": "discovery: the evidence",
+      "visual": "telescope",
+      "layout": "loop-evidence",
+      "loopNumber": 6
+    },
+    {
+      "title": "interface layer",
+      "subtitle": "how we build with ai & protect ourselves",
+      "visual": "interface_grid",
+      "layout": "section-intro",
+      "content": [
+        "this is where abstraction meets reality. how do we build? how do we protect ourselves? coding is becoming vibe-based. privacy is becoming status."
+      ]
+    },
+    {
+      "title": "shift 07: the craft (the end of syntax / coding)",
+      "subtitle": "from writing code to architecting intent",
+      "visual": "centaur",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 07: the craft (the end of syntax / coding)",
+      "subtitle": "coding is shifting from syntax mastery → vibe coding (and the integrity crisis).",
+      "visual": "centaur",
+      "layout": "loop",
+      "content": [
+        "from \"learn syntax\" to \"learn taste.\" **the crisis:** if you did not write the code, can you debug it? can you trust it? **why it matters:** - **skill collapse:** junior devs never learning fundamentals - **verification bottleneck:** reviewing ai code harder than writing it yourself - **new elite:** those who can architect systems, not implement them **the future:** coding becomes **curation**. the premium is on **judgment**, not **execution**."
+      ]
+    },
+    {
+      "title": "craft: the evidence",
+      "visual": "centaur",
+      "layout": "loop-evidence",
+      "loopNumber": 7
+    },
+    {
+      "title": "shift 08: on-device models ↔ privacy as status",
+      "subtitle": "smaller models get good enough and spread everywhere.",
+      "visual": "unlocked",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 08: on-device models ↔ privacy as status",
+      "subtitle": "ai is moving from cloud to device. privacy is becoming a luxury good.",
+      "visual": "unlocked",
+      "layout": "loop",
+      "content": [
+        "on-device models are smaller, less capable. but for 80% of tasks, they are **good enough**. **the new status symbol:** not having the best model. having **the most private model**."
+      ]
+    },
+    {
+      "title": "privacy: the evidence",
+      "visual": "unlocked",
+      "layout": "loop-evidence",
+      "loopNumber": 8
+    },
+    {
+      "title": "humanity layer",
+      "subtitle": "identity, intimacy & constraint tracks",
+      "visual": "human_shadow",
+      "layout": "section-intro",
+      "content": [
+        "this is where it gets weird. machines are not just tools. they are companions. mirrors. judges. and the constraints are closing in."
+      ]
+    },
+    {
+      "title": "shift 09: machine intimacy + programmable identity",
+      "subtitle": "ai moves from tool to relationship surface.",
+      "visual": "echo",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 09: machine intimacy + programmable identity",
+      "subtitle": "people are forming emotional bonds with ai. identity is becoming fluid.",
+      "visual": "echo",
+      "layout": "loop",
+      "content": [
+        "from \"ai as assistant\" to \"ai as intimate.\" **why it matters:** - **loneliness epidemic:** ai filling emotional voids - **identity fluidity:** people testing different personas with ai - **dependency risk:** what happens when your ai companion shuts down? **the question:** is this connection? or is it **simulation**?"
+      ]
+    },
+    {
+      "title": "intimacy: the evidence",
+      "visual": "echo",
+      "layout": "loop-evidence",
+      "loopNumber": 9
+    },
+    {
+      "title": "shift 10: data wall",
+      "subtitle": "high-quality human data is finite; marginal gains get expensive.",
+      "visual": "barrier",
+      "layout": "loop-intro"
+    },
+    {
+      "title": "shift 10: data wall",
+      "subtitle": "we are running out of high-quality training data. what happens next?",
+      "visual": "barrier",
+      "layout": "loop",
+      "content": [
+        "from \"data abundance\" to \"data scarcity.\" **the solutions (all risky):** - **synthetic data:** ai training on ai output (risks model collapse) - **private data deals:** reddit, stack overflow selling user content - **human data farms:** paying people to generate training data - **multimodal shift:** moving to video, audio, sensor data **the question:** if ai trains on ai, does it degrade? (yes, probably.)"
+      ]
+    },
+    {
+      "title": "data wall: the evidence",
+      "visual": "barrier",
+      "layout": "loop-evidence",
+      "loopNumber": 10
+    },
+    {
+      "title": "shift 11: compute & energy ↔ return of physics",
+      "subtitle": "ai isn't just software. it's infrastructure.",
+      "visual": "pulse",
+      "layout": "loop",
+      "dark": true,
+      "content": [
+        "ai was sold as infinite scale. but **physics is finite**. **the constraint:** training gpt-5 (rumored): **500-1000 GWh** (more than a small country). global ai energy demand by 2030: **800-1200 TWh** (10% of global electricity). **the shift:** from \"ai is software\" to \"ai is infrastructure.\" **the bottleneck:** not ideas. not talent. **energy and chips**. **why it matters:** - **geopolitical leverage:** whoever controls energy + chips controls ai - **climate crisis:** ai growth vs. sustainability—something has to give - **cost explosion:** training costs doubling every 6 months **the future:** ai leadership will be determined by **who can afford to run it**."
+      ]
+    },
+    {
+      "title": "compute: the evidence",
+      "visual": "pulse",
+      "layout": "loop-evidence",
+      "loopNumber": 11,
+      "dark": true
+    },
+    {
+      "title": "summary / the context gap",
+      "subtitle": "where are we now?",
+      "visual": "fracture",
+      "layout": "summary",
+      "content": [
+        "machines have conquered complexity. humans have hit the context wall. **the 11 shifts:** **foundation:** energy limits (01), labor displacement (02), sovereignty fracture (03). **cognition:** reasoning breakthrough (04), infinite memory (05), ai-led discovery (06). **interface:** vibe coding (07), on-device privacy (08). **humanity:** machine intimacy (09), data wall (10), compute constraint (11). **the gap:** ai is accelerating. humans are buffering. **the question:** how do we stay sovereign in a world optimized for machines?"
+      ]
+    },
+    {
+      "title": "what now?",
+      "subtitle": "how to navigate the context gap",
+      "visual": "compass",
+      "layout": "summary",
+      "content": [
+        "do not optimize for the algorithm. **optimize for agency**."
+      ]
+    },
+    {
+      "title": "contributors",
+      "subtitle": "this report was built by the ai mindset community",
+      "visual": "network",
+      "layout": "credits",
+      "content": [
+        "alex p · ray svitla · sergei khabarov · anca **research contributors:** 120+ sources integrated from extended industry research **community:** ai mindset telegram, substack, workshops **methodology:** stress-tested against field signals, enterprise benchmarks, and peer review **get involved:** subscribe: https://aimindsetspace.substack.com/ connect: https://t.me/ai_mind_set website: https://aimindset.org"
+      ]
+    },
+    {
+      "title": "end",
+      "subtitle": "thank you for reading.",
+      "visual": "fade",
+      "layout": "end",
+      "content": [
+        "**this was the context gap.** **a sovereignty reset for people running their own life.** **2025 → 2026.**"
+      ]
     }
   ]
 }

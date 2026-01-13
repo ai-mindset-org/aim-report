@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "version": "v4",
+    "lastUpdated": "2026-01-13T15:38:32.313Z"
+  },
+  "sections": [
+    {
+      "title": "intro",
+      "startSlide": 0
+    },
+    {
+      "title": "foundation",
+      "startSlide": 6
+    },
+    {
+      "title": "cognition",
+      "startSlide": 18
+    },
+    {
+      "title": "interface",
+      "startSlide": 30
+    },
+    {
+      "title": "humanity",
+      "startSlide": 38
+    },
+    {
+      "title": "summary",
+      "startSlide": 50
+    }
+  ]
+}
