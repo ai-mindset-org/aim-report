@@ -7,9 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "export:slides": "tsx scripts/export-slides-to-json.ts"
+    "export:slides": "tsx scripts/export-slides-to-json.ts",
+    "content:update": "tsx scripts/md-to-json.ts",
+    "content:watch": "tsx scripts/watch-content.ts",
+    "deploy": "./scripts/deploy.sh"
   },
   "dependencies": {
+    "@emotion/is-prop-valid": "^1.4.0",
     "framer-motion": "^12.23.26",
     "html-to-image": "^1.11.13",
     "i18next": "^25.7.4",

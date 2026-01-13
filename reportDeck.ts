@@ -598,10 +598,10 @@ export const RAW_SLIDES: SlideData[] = [
       { label: 'GitClear — Code Churn Analysis', url: 'https://www.gitclear.com/coding_on_copilot_data_2024_report' },
     ],
   },
-  // WAVE 7: On-Device Models — FULL
+  // SHIFT 08: On-Device Models — FULL
   {
     id: 17,
-    title: 'wave 7: on-device models ↔ privacy as status',
+    title: 'shift 08: on-device models ↔ privacy as status',
     subtitle: 'smaller models get good enough and spread everywhere.',
     visual: 'unlocked',
     layout: 'loop',
@@ -616,13 +616,13 @@ export const RAW_SLIDES: SlideData[] = [
       { label: 'ICO — Data Lives Year 2 Report', url: 'https://ico.org.uk/media2/m2maphry/ico-data-lives-year-2-report.pdf' },
     ],
   },
-  // WAVE 7: Privacy — EVIDENCE
+  // SHIFT 08: Privacy — EVIDENCE
   {
     id: 104,
     title: 'privacy: the evidence',
     visual: 'unlocked',
     layout: 'loop-evidence',
-    loopNumber: 7,
+    loopNumber: 8,
     evidenceData: {
       keyStats: [
         { value: '30%', label: 'Chinese open-source LLM global share (from 1.2%)', source: 'ChinaTalk 2025' },
@@ -660,18 +660,18 @@ export const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // WAVE 8: Machine Intimacy + Programmable Identity (was Wave 10) — INTRO
+  // SHIFT 09: Machine Intimacy + Programmable Identity (was Wave 10) — INTRO
   {
     id: 26,
-    title: 'wave 8: machine intimacy + programmable identity',
+    title: 'shift 09: machine intimacy + programmable identity',
     subtitle: 'ai moves from tool to relationship surface.',
     visual: 'echo',
     layout: 'loop-intro',
   },
-  // WAVE 8: Machine Intimacy — FULL
+  // SHIFT 09: Machine Intimacy — FULL
   {
     id: 27,
-    title: 'wave 8: machine intimacy + programmable identity',
+    title: 'shift 09: machine intimacy + programmable identity',
     subtitle: 'ai moves from tool to relationship surface.',
     visual: 'echo',
     layout: 'loop',
@@ -686,13 +686,13 @@ export const RAW_SLIDES: SlideData[] = [
       { label: 'Marwick & Boyd — Context Collapse', url: 'https://www.microsoft.com/en-us/research/publication/i-tweet-honestly-i-tweet-passionately-twitter-users-context-collapse-and-the-imagined-audience/' },
     ],
   },
-  // WAVE 8: Machine Intimacy — EVIDENCE
+  // SHIFT 09: Machine Intimacy — EVIDENCE
   {
     id: 109,
     title: 'intimacy: the evidence',
     visual: 'echo',
     layout: 'loop-evidence',
-    loopNumber: 8,
+    loopNumber: 9,
     evidenceData: {
       keyStats: [
         { value: '87%', label: 'Organizations attacked with AI-assisted threats', source: 'Cybersecurity surveys' },
@@ -729,18 +729,18 @@ export const RAW_SLIDES: SlideData[] = [
     layout: 'center',
   },
 
-  // WAVE 9: Data Wall (was Wave 4) — INTRO
+  // SHIFT 10: Data Wall (was Wave 4) — INTRO
   {
     id: 14,
-    title: 'wave 9: data wall',
+    title: 'shift 10: data wall',
     subtitle: 'high-quality human data is finite; marginal gains get expensive.',
     visual: 'barrier',
     layout: 'loop-intro',
   },
-  // WAVE 9: Data Wall — FULL
+  // SHIFT 10: Data Wall — FULL
   {
     id: 15,
-    title: 'wave 9: data wall',
+    title: 'shift 10: data wall',
     subtitle: 'high-quality human data is finite; marginal gains get expensive.',
     visual: 'barrier',
     layout: 'loop',
@@ -755,13 +755,13 @@ export const RAW_SLIDES: SlideData[] = [
       { label: 'AI Mindset — Team Knowledge System', url: 'https://aimindsetspace.substack.com/p/ai-ark-knowledge-system' },
     ],
   },
-  // WAVE 9: Data Wall — EVIDENCE
+  // SHIFT 10: Data Wall — EVIDENCE
   {
     id: 103,
     title: 'data wall: the evidence',
     visual: 'barrier',
     layout: 'loop-evidence',
-    loopNumber: 9,
+    loopNumber: 10,
     evidenceData: {
       keyStats: [
         { value: '$67.4B', label: 'Global enterprise losses from AI hallucinations', source: 'Korra 2025' },
@@ -783,19 +783,19 @@ export const RAW_SLIDES: SlideData[] = [
     ],
   },
 
-  // WAVE 10: Compute & Energy ↔ Return of Physics (was Wave 6) — INTRO
+  // SHIFT 11: Compute & Energy ↔ Return of Physics (was Wave 6) — INTRO
   {
     id: 18,
-    title: 'wave 10: compute & energy ↔ return of physics',
+    title: 'shift 11: compute & energy ↔ return of physics',
     subtitle: "ai isn't just software. it's infrastructure.",
     visual: 'pulse',
     layout: 'loop-intro',
     dark: true,
   },
-  // WAVE 10: Compute & Energy — FULL
+  // SHIFT 11: Compute & Energy — FULL
   {
     id: 19,
-    title: 'wave 10: compute & energy ↔ return of physics',
+    title: 'shift 11: compute & energy ↔ return of physics',
     subtitle: "ai isn't just software. it's infrastructure.",
     visual: 'pulse',
     layout: 'loop',
@@ -810,13 +810,13 @@ export const RAW_SLIDES: SlideData[] = [
       { label: 'Reuters — AI Data Centers and Peaker Plants', url: 'https://www.reuters.com/business/energy/ai-data-centers-are-forcing-obsolete-peaker-power-plants-back-into-service-2025-12-23/' },
     ],
   },
-  // WAVE 10: Compute & Energy — EVIDENCE
+  // SHIFT 11: Compute & Energy — EVIDENCE
   {
     id: 105,
     title: 'compute: the evidence',
     visual: 'pulse',
     layout: 'loop-evidence',
-    loopNumber: 10,
+    loopNumber: 11,
     dark: true,
     evidenceData: {
       keyStats: [

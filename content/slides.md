@@ -12,6 +12,7 @@ caption: |
   a yearly reset artifact by ai mindset + community.
   a sovereignty reset for people running their own life.
 
+
 ---
 title: 00 / prologue
 subtitle: 2025 wasn't just a year in the ai calendar.
@@ -40,6 +41,8 @@ in a world where generating content, code, and ideas is effectively free, the ac
 
 if you cannot audit what the algorithm proposes, you are no longer a leader—you are a passenger.
 
+
+
 this report is your perimeter defense against:
 
 **context obesity:** cognitive paralysis where you are stuffed with low-value data but starved for meaning. burnout is working memory overflow.
@@ -51,552 +54,393 @@ this report is your perimeter defense against:
 **data inbreeding:** if ai trains on ai-generated data recursively, models degrade. humans become the only source of clean signal.
 
 ---
-title: 02 / about this report
-subtitle: structure & navigation
-visual: map
+title: 02 / the 11 shifts architecture
+subtitle: a paired map in 4 layers.
+visual: hierarchy
 layout: split
 
-**this report is built in layers:**
+**🧱 foundation layer (3):** energy, work, sovereignty — the physical and economic base
 
-**foundation layer (shifts 01-03):** the physical and economic base—energy, labor, sovereignty.
+**🧠 cognition layer (3):** reasoning, knowledge, discovery — how we think and learn
 
-**cognition layer (shifts 04-06):** how machines think, learn, and discover.
+**🛡️ interface layer (3):** coding, matter, defense — how we build and protect
 
-**interface layer (shifts 07-08):** how we build with ai and protect our privacy.
+**❤️ humanity layer (2):** narrative, intimacy — what keeps us human
 
-**humanity layer (shifts 09-11):** identity, intimacy, and constraint tracks.
 
-**navigation:**
-- each shift has an intro + full analysis + evidence slide
-- scroll vertically through content
-- scroll horizontally to jump between shifts
 
----
-title: 03 / for the sovereign individual
-subtitle: this is for builders, leaders, and independent thinkers.
-visual: lighthouse
-layout: split
+this is: **machine signal** (capability / deployment / economics) ↔ **human signal** (cognition / identity / culture) ↔ **the context gap** (where coordination breaks)
 
-if you work in:
-- **product development** → understand how ai agents reshape user expectations
-- **strategy & leadership** → see the macro forces reshaping industries
-- **engineering & design** → learn where tooling is headed
-- **policy & regulation** → identify governance gaps before they explode
-
-this is not about hype. this is about **structural literacy**.
-
-the distance between understanding these shifts and not understanding them is the distance between **agency and obsolescence**.
+this isn't: a hype deck, a moral panic, or a consulting pdf that says nothing new.
 
 ---
-title: foundation layer
-subtitle: the physical & economic base
-visual: foundation
-layout: section-intro
+title: 11 tectonic shifts
+subtitle: machines ↔ humans across 4 layers
+visual: SECTION_DIVIDER
+layout: center
+caption: |
+  foundation → cognition → interface → humanity
+  each shift creates fractures in our reality.
+dark: true
 
-**shifts 01-03: the material constraints**
-
-before intelligence, before interface, before intimacy—there is physics.
-
-energy. labor. sovereignty.
-
-these are not abstract concepts. they are the substrate on which everything else runs.
 
 ---
-title: shift 01: the cost → physical limits (energy)
-subtitle: from software utopia to hardware reality
-visual: flame
+title: shift 01: the cost → physical limits
+subtitle: from digital abundance to energy scarcity
+visual: battery
 layout: loop-intro
 
+
 ---
-title: shift 01: the cost → physical limits (energy)
-subtitle: ai is infrastructure, not just software. the energy bill is real.
-visual: flame
+title: shift 01: the cost → physical limits
+subtitle: physics takes revenge. the constraint for 2026 isn't chips; it's "intelligence per watt."
+visual: battery
 layout: loop
 
-**the thesis:**
+**Machine:** **the energy wall:** ai demand for data center power projected to grow **160% by 2030**. the physical grid cannot be built fast enough to support ai expansion.
 
-ai was sold as infinite scale. but **energy is finite**, and we are hitting the wall.
+**intelligence/watt:** the focus shifts from raw compute to "inference efficiency" as the critical metric. more compute doesn't equal more value if it can't be powered.
 
-training gpt-4: **50 GWh** (enough to power 4,600 homes for a year).
+**$7 trillion** event: big tech capex for 2025 alone is **$200b+**. the **40x investment-value gap**: $600b needed in annual revenue to justify infrastructure spend, but consumer spend is only $12b.
 
-global ai energy demand by 2027: **85-134 TWh** (more than the netherlands).
+**Human:** **guilt computing:** users face the reality that complex reasoning has a physical toll — every ai query consumes water and generates co2. the disconnect between "green ai" corporate promises and "greed ai" reality.
 
-**the constraint:**
+**hardware sovereignty:** shift to on-device ai to decouple from cloud latency, costs, and energy volatility. privacy becomes a side benefit; energy independence is the driver.
 
-data centers now consume **1-1.5% of global electricity**. by 2030, that could double.
-
-**why it matters:**
-
-- **cost explosion:** energy bills are the new capex bottleneck
-- **geopolitical leverage:** whoever controls energy controls ai leadership
-- **sustainability crisis:** ai growth vs. climate commitments—something has to give
-
-**the shift:**
-
-from "ai is free to scale" to "ai is expensive to run."
+**Gap:** the disconnect between infinite "digital ideas" and hard "physical matter." while we imagine a billion agents, we cannot power them. this is the bottleneck of "the dream."
 
 ---
-title: energy: the evidence
-visual: flame
+title: the cost: the evidence
+visual: battery
 layout: loop-evidence
 loopNumber: 1
 
-**training costs:**
-- gpt-3: ~$4.6M in compute
-- gpt-4: estimated $100M+
-- gemini ultra: similar scale
+**Key Stats:**
+- **160%:** AI energy demand surge by 2030 (IEA / Goldman Sachs)
+- **40x:** Gap: $500B infrastructure vs $12B consumer spend (Harvard / Goldman)
+- **$7T:** Total AI infrastructure requirement (McKinsey / Sam Altman)
 
-**inference costs:**
-- chatgpt: ~$700K/day to run (2023 estimate)
-- google search + ai: 10× energy per query
+---
+title: how this enables the next shift
+subtitle: when infrastructure exists, labor displacement accelerates.
+visual: bridge
+layout: center
+dark: true
 
-**data center growth:**
-- microsoft: investing $50B in ai infrastructure
-- meta: $30B in 2024 capex (mostly ai)
-- hyperscalers building new nuclear reactors
+with energy infrastructure in place, ai moves from research labs to **production deployment**.
 
-**energy deals:**
-- microsoft + constellation: restarting three mile island reactor
-- google: 500 MW from renewable sources for data centers
-- amazon: $650M investment in nuclear-powered data center
+
+
+the constraint was power. now the constraint is **human acceptance**.
+
+agentic labor becomes real.
 
 ---
 title: shift 02: the displacement (agentic labor)
-subtitle: from humans in the loop to agents in the stack
-visual: pulse_workforce
+subtitle: from copilot → autonomous coworker
+visual: factory
 layout: loop-intro
 
+
 ---
 title: shift 02: the displacement (agentic labor)
-subtitle: labor is being automated at the cognitive layer, not the manual layer.
-visual: pulse_workforce
+subtitle: the death of middle management.
+visual: factory
 layout: loop
 
-**the thesis:**
+**Machine:** **the klarna benchmark:** one ai assistant replaced **700 full-time agents**, slashed resolution time (11m → 2m), drove **$40m profit**, and achieved **25% fewer repeat inquiries** than humans.
 
-this is not "robots taking factory jobs." this is **ai agents taking knowledge work**.
+**the agentic enterprise:** transition from "assistant" to "autonomous coworker." **76% of executives** view ai as a "coworker" rather than a tool. agents receive wallets (x402 protocol), tools (mcp), and "hr for ai."
 
-**the velocity:**
+**service-as-software:** saas model shifts to agents that execute complete workflows. from selling "software licenses" to selling "executed outcomes."
 
-- **klarna:** ai agents replaced 700 customer service workers
-- **amazon q:** saved $260M, equivalent to 4,500 developer-years
-- **devin (cognition ai):** autonomous coding agent hitting 13.86% on swe-bench
+**Human:** **the reliability tax:** **$67 billion** in losses from ai hallucinations and errors. companies shift budgets from "paying for labor" to "paying for audit." creating is free; verifying is expensive.
 
-**the shift:**
+**managerial collapse:** predicted **45% reduction in middle management layers** as ai handles coordination. the tension between "retrofit" vs "reengineer."
 
-from "ai assists humans" to "ai autonomously executes."
+**role shift:** humans move from "doers" to "consiglieres" and auditors. **23.2 million** u.s. jobs directly exposed to ai displacement.
 
-**why it matters:**
-
-- **talent arbitrage:** if an agent can do the work, location and credentials become irrelevant
-- **middle management crisis:** coordinators and verifiers are the first to go
-- **skill half-life collapse:** what you learned 5 years ago is already obsolete
-
-**the new economy:**
-
-not "learn to code." learn to **architect intent**.
-
-the premium is on **judgment**, not **execution**.
+**Gap:** when an agent acts, who owns the mistake? managers delegate more than they can audit, creating hidden "technical debt" and "strategic blindness."
 
 ---
-title: displacement: the evidence
-visual: pulse_workforce
+title: the displacement: the evidence
+visual: factory
 layout: loop-evidence
 loopNumber: 2
 
-**enterprise adoption:**
+**Key Stats:**
+- **88% vs 6%:** Adoption rate vs transformation rate - execution gap (McKinsey)
+- **23.2M:** U.S. jobs highly exposed to displacement (SHRM)
+- **$40M:** Annual profit from single agentic deployment (Klarna) (Klarna)
 
-- **klarna:** ai handles 2/3 of customer service, replacing 700 agents
-- **amazon q:** $260M in savings, 4,500 developer-year equivalent
-- **hsbc:** onboarding ai for risk assessment and compliance
+---
+title: how this enables the next shift
+subtitle: when agents touch money, institutions demand rules.
+visual: bridge
+layout: center
+dark: true
 
-**autonomous agents:**
+when agentic labor becomes real and **impacts revenue**, nations and corporations rush to control the infrastructure.
 
-- **devin:** 13.86% pass rate on swe-bench (real-world software engineering tasks)
-- **cursor/copilot:** 40-60% of code now ai-suggested in top startups
-- **harvey ai:** legal research assistant used by top law firms
 
-**skill premiums shifting:**
 
-- **prompt engineering:** avg salary $175K-$335K
-- **ai alignment specialists:** $200K-$400K
-- **traditional swe roles:** wage stagnation in saturated markets
+the question shifts from "can ai work?" to **"whose switch is it?"**
+
+sovereignty becomes the battleground.
 
 ---
 title: shift 03: the sovereignty (the splinternet)
-subtitle: from global internet to sovereign ai ecosystems
-visual: fracture
+subtitle: from global openness → fragmented stacks
+visual: globe
 layout: loop-intro
 
+
 ---
 title: shift 03: the sovereignty (the splinternet)
-subtitle: ai is fragmenting into regional blocks. the open internet is over.
-visual: fracture
+subtitle: whose switch is it?
+visual: globe
 layout: loop
 
-**the thesis:**
+**Machine:** **geopolitical fragmentation - the splinternet:** the end of "global ai." three distinct stacks emerge: **us ai** (corporate/closed - openai, anthropic), **china ai** (state-controlled - deepseek bypassing us norms), **eu ai** (regulated - ai act compliance). agi is now a national security asset on "war footing."
 
-ai is not neutral infrastructure. it is **geopolitical leverage**.
+**the copyright war - nyt vs. openai:** battle for "sovereignty of culture." nyt lawsuit alleges models **memorize and regurgitate** copyrighted content verbatim. the case determines if human culture belongs to creators or model weights.
 
-china, eu, us—each building incompatible ai ecosystems.
+**eu ai act:** first comprehensive ai regulation. creates **regulatory gap** - eu ai is "safe but slow," us/china ai is "dangerous but fast."
 
-**the fracture lines:**
+**Human:** **the guerrilla stack (byoai):** employees bring their own ai to bypass corporate limitations and censorship. "shadow ai" adoption - people use personal tools because corporate ai is blocked or neutered.
 
-- **us:** open weights, frontier models, tech supremacy
-- **china:** state-controlled models, domestic stack (deepseek, qwen)
-- **eu:** ai act compliance, data sovereignty, risk-averse regulation
+**privacy inequality:** privacy officially becomes a **luxury good**. meta's "pay or consent" model in eu: pay €13/month or surrender to tracking. "privacy is for the rich" - if you can't pay, you are the product.
 
-**the shift:**
+**data sovereignty movement:** users demand "opt-out" rights - ability to prohibit training on their data. rise of "personal rag" and local-first architectures.
 
-from "one global internet" to "three incompatible ai internets."
-
-**why it matters:**
-
-- **compliance hell:** different rules for every region
-- **competitive isolation:** chinese models trained on censored data, western models on open data
-- **strategic decoupling:** whoever builds the best model wins the next decade
-
-**the reality:**
-
-there is no "global ai policy." there are only **regional power plays**.
+**Gap:** as ai becomes "aligned" to corporate/national values, you are talking to a constitutional filter. you lose objective context for a "safe narrative."
 
 ---
-title: sovereignty: the evidence
-visual: fracture
+title: the sovereignty: the evidence
+visual: globe
 layout: loop-evidence
 loopNumber: 3
 
-**regulatory divergence:**
-
-- **eu ai act:** risk-based classification, banned use cases, mandatory audits
-- **china's regulations:** state approval for public models, content censorship, algorithmic transparency
-- **us approach:** voluntary commitments, sector-specific rules, mostly unregulated
-
-**model fragmentation:**
-
-- **us models:** gpt-4, claude, gemini (global reach)
-- **chinese models:** deepseek, qwen, baidu ernie (domestic only)
-- **eu models:** mistral (struggling for adoption)
-
-**data residency wars:**
-
-- **schrems ii:** eu-us data transfers restricted
-- **china's cybersecurity law:** data must stay in china
-- **digital sovereignty push:** france, germany building national ai champions
-
-**trade restrictions:**
-
-- **chip export controls:** us blocking nvidia h100 to china
-- **china's response:** domestic chip push (huawei ascend)
-- **strategic autonomy:** each region building full stack independence
+**Key Stats:**
+- **3%:** Paying users for AI (97% are the product) (Goldman Sachs)
+- **€13/mo:** Meta's privacy price in Europe (Wired)
+- **3 Stacks:** US (closed), China (state), EU (regulated) - global AI fragmentation (Multiple)
 
 ---
-title: cognition layer
-subtitle: how machines think, learn & discover
-visual: neural_web
-layout: section-intro
+title: layer transition: foundation → cognition
+subtitle: when infrastructure exists, intelligence accelerates.
+visual: bridge
+layout: center
+dark: true
 
-**shifts 04-06: the intelligence stack**
+with **energy infrastructure**, **agentic labor**, and **geopolitical stacks** in place, ai moves from raw compute to **reasoning capability**.
 
-this is where the magic happens—and where the limits appear.
 
-reasoning. knowledge. discovery.
 
-machines are getting smarter. but they are also hitting walls we did not predict.
+the question shifts from "can we power it?" to **"can we trust how it thinks?"**
+
+cognition becomes the new frontier.
 
 ---
 title: shift 04: the reasoning (the brain)
-subtitle: from pattern matching to deliberate thought
-visual: brain
+subtitle: from chatbots to thinking models
+visual: audit
 layout: loop-intro
 
+
 ---
 title: shift 04: the reasoning (the brain)
-subtitle: ai is moving from system-1 (fast) to system-2 (slow, deliberate reasoning).
-visual: brain
+subtitle: from probabilistic prediction → inference-time logic (system 2 thinking)
+visual: audit
 layout: loop
 
-**the breakthrough:**
+**Machine:** **sequoia's act two:** the fundamental shift from "act 1" (probabilistic token prediction - chatgpt era) to **"act 2"** (reasoning and inference-time compute - o1 era). "act 1 was about prompts. act 2 is about reasoning."
 
-**openai o1:** first model with built-in chain-of-thought reasoning.
+**system 1 vs system 2 architecture:** transition from fast, instinctive responses (system 1) to slow, deliberate, multi-step logical reasoning (system 2). models use **chain of thought (cot)** and **star** via reinforcement learning to "think" before answering.
 
-**gpqa diamond benchmark:** 78% accuracy (phd-level science questions).
+**scientific compression:** condensing **100 years of scientific progress into 10 years**. prediction: models will exceed nobel-level intelligence in specialized domains (biology, math, physics) by 2026.
 
-**aime 2024 (math):** 83.3% (vs. 13.4% for gpt-4).
+**Human:** **auditable work:** users no longer trust "magic" speed. they demand to see the **reasoning trace** - the chain of thought that led to the conclusion. transparency over velocity.
 
-**the shift:**
+**logic auditor role:** human value shifts from execution to **verifying machine logic**. we become auditors of ai reasoning paths.
 
-from "predict next token" to "think before answering."
+**the reasoning reliability gap:** **48% of reasoning tasks** still produce errors in complex scenarios. reasoning models haven't eliminated hallucinations - they've made them more convincing.
 
-**why it matters:**
-
-- **reasoning = reliability:** fewer hallucinations, better multi-step tasks
-- **cost explosion:** o1 costs 3-5× more to run than gpt-4
-- **new failure modes:** models can now overthink and get stuck in loops
-
-**the trade-off:**
-
-reasoning models are slower and more expensive. but they are also **actually intelligent**.
-
-this is the first ai that can solve problems it has never seen before.
+**Gap:** a model processes 1,000 reasoning steps in seconds; a human follows five. this leads to meaning dilution: we accept conclusions because auditing the path is too exhausting.
 
 ---
-title: reasoning: the evidence
-visual: brain
+title: the reasoning: the evidence
+visual: audit
 layout: loop-evidence
 loopNumber: 4
 
-**benchmark dominance:**
+**Key Stats:**
+- **126%:** Productivity boost from AI Copilots (Qodo)
+- **21%:** Quality degradation when prioritizing speed (Nielsen Norman Group)
+- **48%:** Error rate in complex reasoning tasks (Korra AI)
 
-- **gpqa diamond (phd science):** o1 scores 78%, gpt-4 scores 53%
-- **aime 2024 (math olympiad):** o1 83.3%, gpt-4 13.4%
-- **codeforces (competitive programming):** o1 ranks in 89th percentile
+---
+title: how this enables the next shift
+subtitle: when ai can think, it needs context.
+visual: bridge
+layout: center
+dark: true
 
-**reasoning techniques:**
+reasoning without context is blind logic.
 
-- **chain-of-thought:** models narrate their reasoning steps
-- **self-consistency:** generate multiple solutions, pick most common
-- **process supervision:** reward models for intermediate steps, not just final answer
 
-**compute cost:**
 
-- **o1 vs gpt-4:** 3-5× more expensive per token
-- **training cost:** estimated $500M-$1B for frontier reasoning models
-- **inference cost:** reasoning models take 10-30 seconds for complex queries (vs <1s for gpt-4)
+system 2 thinking creates demand for **massive context windows** and **enterprise knowledge integration**.
+
+the question shifts from "can it reason?" to **"can it access the right information?"**
 
 ---
 title: shift 05: the knowledge (the memory)
-subtitle: from retrieval to reasoning over infinite context
-visual: library
+subtitle: from information hoarding to context filtering
+visual: tangle
 layout: loop-intro
 
+
 ---
 title: shift 05: the knowledge (the memory)
-subtitle: context windows are expanding from 8K → 1M+ tokens. memory is the new moat.
-visual: library
+subtitle: from information access → context architecture
+visual: tangle
 layout: loop
 
-**the explosion:**
+**Machine:** **model context protocol (mcp):** anthropic's "usb port for ai" - universal standard for connecting ai to data ecosystems (google drive, slack, git) without custom integrations. this is the infrastructure answer to data silos.
 
-- **gpt-4 (2023):** 8K tokens
-- **claude 3 (2024):** 200K tokens
-- **gemini 1.5 (2024):** 1M tokens
-- **future models:** 10M+ tokens (entire codebases, full books, multi-year chat histories)
+**the hallucination tax:** **$67 billion** in enterprise losses from context mismanagement and ai errors. the shift from "paying for ai" to "paying to fix ai mistakes."
 
-**the shift:**
+**1m token windows:** models can now hold massive context, but retrieval quality degrades beyond human working memory limits (7 items).
 
-from "summarize and forget" to "remember everything and reason over it."
+**Human:** **context obesity (the diagnosis):** "you're not burned out, you have context obesity." a cognitive state caused by overconsumption of low-value data. burnout is **working memory overflow** - consuming more information than can be metabolized into meaning.
 
-**why it matters:**
+**context collapse (marwick & boyd):** the academic term for when personal, professional, and public contexts blur into one. ai radicalizes this - agents extract your words from context and feed them to models.
 
-- **personalization at scale:** ai that remembers every conversation
-- **end of search:** why search when the model already knows your context?
-- **privacy nightmare:** if the model remembers everything, who controls that memory?
+**search waste:** employees spend **30% of work time** searching for internal information. knowledge access isn't the problem - knowledge **discovery** and **curation** are.
 
-**the new primitive:**
-
-memory is not a feature. it is **the architecture**.
+**Gap:** 1m token windows vs. human limit (7 items). we have tmi (too much information) but zero insight. context collapse blurs professional and private life.
 
 ---
-title: knowledge: the evidence
-visual: library
+title: the knowledge: the evidence
+visual: tangle
 layout: loop-evidence
 loopNumber: 5
 
-**context window growth:**
+**Key Stats:**
+- **$67B:** Annual financial risk from unmanaged context/hallucinations (Korra AI)
+- **30%:** Work time lost to internal search (Gartner)
+- **1M tokens:** Model context window vs 7 items human working memory limit (Anthropic)
 
-- **2023:** gpt-3.5 (4K), gpt-4 (8K)
-- **2024:** claude 3 (200K), gemini 1.5 (1M), command-r+ (128K)
-- **2025 projections:** 10M+ token windows (full codebases in context)
+---
+title: how this enables the next shift
+subtitle: when ai has context, it can generate knowledge.
+visual: bridge
+layout: center
+dark: true
 
-**memory architectures:**
+with reasoning capability and massive context integration, ai moves from **reading science to generating science**.
 
-- **rag (retrieval-augmented generation):** fetch relevant docs on-demand
-- **full context:** put entire knowledge base in prompt
-- **long-term memory:** persistent storage across sessions (mem0, zep)
 
-**use cases unlocked:**
 
-- **codebase reasoning:** cursor/copilot see entire repo
-- **document analysis:** legal contracts, medical records in full
-- **personalized agents:** remember every conversation, adapt over time
+the bottleneck shifts from computation to **verification**.
+
+discovery bloat: ai proposes 1,000 molecules; we test one.
 
 ---
 title: shift 06: the discovery (the frontier)
-subtitle: from human-led research to ai-accelerated science
-visual: telescope
+subtitle: from reading science → generating science
+visual: spark
 layout: loop-intro
 
+
 ---
 title: shift 06: the discovery (the frontier)
-subtitle: ai is now discovering knowledge humans never could.
-visual: telescope
+subtitle: from literature review to generative discovery
+visual: spark
 layout: loop
 
-**the breakthrough:**
+**Machine:** **deep research agents:** ai reads millions of papers to generate hypotheses humans cannot conceive. from "literature review" to "hypothesis generation."
 
-**alphafold 3:** predicted 200M+ protein structures. would have taken humans centuries.
+**generative biology:** moving from "reading" biology to "writing" it. alphafold 3 predicts protein structures; next step is **designing** new proteins, materials, and molecules that don't exist in nature.
 
-**funsearch (deepmind):** discovered new algorithms for the cap set problem (unsolved for decades).
+**data limits - the exhaustion:** quality human-generated data **exhausted by 2026-2028**. models now train on **ai-generated synthetic data**, verified by system 2 reasoning.
 
-**nobel prize 2024:** demis hassabis (deepmind) wins for alphafold.
+**Human:** **the time refund:** scientists freed from tedious manual labor (literature review, data cleaning) to focus on high-level experimental design and cross-domain synthesis.
 
-**the shift:**
+**data inbreeding crisis:** without fresh human data, ai degrades. **humans become the only source of novelty** - the "organic data" that prevents model collapse. human creativity is now a strategic resource.
 
-from "ai helps researchers" to "ai is the researcher."
+**the hope/fear axis:** hope for longevity breakthroughs and disease cures vs fear of losing control over scientific truth and safety protocols.
 
-**why it matters:**
-
-- **knowledge generation:** we are producing insights faster than humans can verify
-- **trust crisis:** if ai discovers it, can we trust it without understanding it?
-- **acceleration risk:** science moving faster than ethics, regulation, or societal adaptation
-
-**the frontier:**
-
-ai is not just reading the map. it is **drawing new territory**.
+**Gap:** ai proposes 1,000 molecules; we test one. discovery bloat stalls breakthroughs via physical testing capacity. the bottleneck of "generated future."
 
 ---
-title: discovery: the evidence
-visual: telescope
+title: the discovery: the evidence
+visual: spark
 layout: loop-evidence
 loopNumber: 6
 
-**scientific breakthroughs:**
-
-- **alphafold 3:** 200M+ protein structures predicted (nobel prize 2024)
-- **funsearch:** new algorithm for cap set problem (unsolved for decades)
-- **gnome (deepmind):** 2.2M new crystal structures discovered
-
-**research acceleration:**
-
-- **paper generation:** ai writing full research papers (gemini, gpt-4)
-- **hypothesis generation:** models proposing novel experiments
-- **peer review crisis:** 10-30% of papers flagged as ai-written
-
-**drug discovery:**
-
-- **isomorphic labs:** ai-designed molecules entering trials
-- **insilico medicine:** ai-generated drug in phase 2 trials (28 months vs. 5+ years)
-
-**risk signals:**
-
-- **citation inbreeding:** ai citing ai-generated papers
-- **replication crisis:** results too complex for humans to verify
-- **knowledge pollution:** low-quality ai-generated research flooding journals
+**Key Stats:**
+- **100 → 10:** Scientific progress compression timeline (years) (Dario Amodei)
+- **78%:** Improvement in research speed with AI tools (StackOverflow)
+- **2026-2028:** Human data exhaustion timeline (Epoch AI)
 
 ---
-title: interface layer
-subtitle: how we build with ai & protect ourselves
-visual: interface_grid
-layout: section-intro
+title: layer transition: cognition → interface
+subtitle: when ai can think and discover, it starts to build.
+visual: bridge
+layout: center
+dark: true
 
-**shifts 07-08: the human-machine surface**
+with reasoning, knowledge access, and discovery capabilities, ai moves from **abstract intelligence to practical execution**.
 
-this is where abstraction meets reality.
 
-how do we build? how do we protect ourselves?
 
-coding is becoming vibe-based. privacy is becoming status.
+the question shifts from "can it think?" to **"can it ship?"**
+
+interface becomes the battleground.
 
 ---
-title: shift 07: the craft (the end of syntax / coding)
+title: shift 07: the craft (the end of syntax)
 subtitle: from writing code to architecting intent
 visual: centaur
 layout: loop-intro
 
+
 ---
-title: shift 07: the craft (the end of syntax / coding)
-subtitle: coding is shifting from syntax mastery → vibe coding (and the integrity crisis).
+title: shift 07: the craft (the end of syntax)
+subtitle: from syntax mastery → vibe coding (and the integrity crisis)
 visual: centaur
 layout: loop
 
-**the velocity:**
+**Machine:** **code as commodity:** **65% of new code** is ai-influenced or ai-generated at companies like google. **73% of developers** use ai coding tools regularly.
 
-- **cursor/copilot:** 40-60% of code ai-suggested in top startups
-- **v0 (vercel):** ship full apps from a text prompt
-- **replit agent:** non-coders building functional software
+**amazon q developer:** saved **4,500 developer-years** on java application upgrades. **$260m** in infrastructure savings from optimized code. **79% of auto-generated changes** accepted without modification.
 
-**the shift:**
+**vibe coding:** programming shifts to natural language intent. the machine handles implementation. coding tools (cursor, replit) enter **top 100 gen ai apps** consumer ranking - coding becomes mass-market.
 
-from "learn syntax" to "learn taste."
+**Human:** **the trust collapse:** **46% of developers** distrust ai-generated code. only **3.1% highly trust** ai accuracy for complex tasks. the **trust inversion**: 84% use the tools, but trust is plummeting.
 
-**the crisis:**
+**the integrity crisis:** **65% report ai misses context** in code generation. "code generation is easy, code integrity is hard." ai creates "legacy on day one" - code that works but is unmaintainable.
 
-if you did not write the code, can you debug it? can you trust it?
+**code churn explosion:** **50% increase** in code churn (rewrites and deletions). ai produces code fast, but developers spend saved time on reviews and fixes.
 
-**why it matters:**
-
-- **skill collapse:** junior devs never learning fundamentals
-- **verification bottleneck:** reviewing ai code harder than writing it yourself
-- **new elite:** those who can architect systems, not implement them
-
-**the future:**
-
-coding becomes **curation**. the premium is on **judgment**, not **execution**.
-
----
-title: craft: the evidence
-visual: centaur
-layout: loop-evidence
-loopNumber: 7
-
-**adoption velocity:**
-
-- **cursor:** 40-60% of code ai-suggested in y combinator startups
-- **github copilot:** 55% of code written by copilot users is ai-generated
-- **replit agent:** 100K+ apps built by non-coders
-
-**productivity claims:**
-
-- **amazon q:** saved $260M, equivalent to 4,500 developer-years
-- **cursor users:** report 2-3× productivity increase
-- **junior dev replacement:** ai doing work of 0-2 year developers
-
-**skill shift:**
-
-- **syntax → intent:** typing less, architecting more
-- **debugging crisis:** ai-generated code harder to debug
-- **taste premium:** knowing what good looks like > knowing how to build it
-
-**integrity risks:**
-
-- **dependency hell:** ai pulling in vulnerable packages
-- **security holes:** ai-generated code with subtle bugs
-- **license violations:** ai reproducing copyrighted code
+**Gap:** building things we don't understand leads to vibe debt. we pilot ships with black-box internal wiring. creating code is easy; maintaining it is the new hell.
 
 ---
 title: shift 08: on-device models ↔ privacy as status
 subtitle: smaller models get good enough and spread everywhere.
 visual: unlocked
-layout: loop-intro
-
----
-title: shift 08: on-device models ↔ privacy as status
-subtitle: ai is moving from cloud to device. privacy is becoming a luxury good.
-visual: unlocked
 layout: loop
 
-**the shift:**
+**Machine:** ai becomes ambient — less a destination, more a layer.
+on devices, at the edge, inside apps. smaller models get good enough.
 
-**llama 3.2 (1B/3B):** runs on iphone, zero latency, full privacy.
+**Human:** privacy becomes status. not secrecy — **control**.
+more private drafting, smaller circles, local storage, intentional friction against performative posting.
 
-**apple intelligence:** on-device processing, zero cloud dependency.
-
-**mistral 7B:** outperforms gpt-3.5 on many tasks, runs on laptop.
-
-**why it matters:**
-
-- **zero latency:** no round-trip to cloud
-- **full privacy:** your data never leaves your device
-- **cost collapse:** no inference fees
-
-**the trade-off:**
-
-on-device models are smaller, less capable. but for 80% of tasks, they are **good enough**.
-
-**the new status symbol:**
-
-not having the best model. having **the most private model**.
+**Gap:** when ai is everywhere, boundaries become the differentiator.
+**if everything can be processed, the premium shifts to what you keep.**
 
 ---
 title: privacy: the evidence
@@ -604,43 +448,27 @@ visual: unlocked
 layout: loop-evidence
 loopNumber: 8
 
-**on-device models:**
-
-- **llama 3.2 (1B/3B):** runs on iphone, android
-- **phi-3 (microsoft):** 3.8B params, runs on phone
-- **gemini nano:** built into pixel phones
-
-**performance:**
-
-- **mistral 7B:** matches gpt-3.5 on many benchmarks
-- **llama 3.1 8B:** beats gpt-3.5 on reasoning tasks
-- **on-device vs cloud:** 80% of use cases work offline
-
-**privacy positioning:**
-
-- **apple intelligence:** "what happens on your iphone, stays on your iphone"
-- **proton mail + llm:** encrypted ai assistant
-- **brave search + ai:** no tracking, on-device processing
-
-**status shift:**
-
-- **privacy as luxury:** paying more for on-device models
-- **anti-cloud sentiment:** "i do not trust openai with my data"
-- **sovereignty movement:** owning your ai stack
+**Key Stats:**
+- **30%:** Chinese open-source LLM global share (from 1.2%) (ChinaTalk 2025)
+- **90-95%:** DeepSeek cost reduction vs OpenAI o1 (DeepSeek 2025)
+- **10M+:** Qwen app downloads in one week (Alibaba 2025)
 
 ---
-title: humanity layer
-subtitle: identity, intimacy & constraint tracks
-visual: human_shadow
-layout: section-intro
+title: how this enables the next shift
+subtitle: when AI is everywhere, relationships become possible.
+visual: bridge
+layout: center
+dark: true
 
-**shifts 09-11: the existential layer**
+as models move on-device (ambient, always available, private), the relationship changes from **tool to companion**.
 
-this is where it gets weird.
 
-machines are not just tools. they are companions. mirrors. judges.
 
-and the constraints are closing in.
+constant access + privacy + personalization = conditions for **emotional adoption**.
+
+
+
+not just "useful," but "trusted."
 
 ---
 title: shift 09: machine intimacy + programmable identity
@@ -648,33 +476,22 @@ subtitle: ai moves from tool to relationship surface.
 visual: echo
 layout: loop-intro
 
+
 ---
 title: shift 09: machine intimacy + programmable identity
-subtitle: people are forming emotional bonds with ai. identity is becoming fluid.
+subtitle: ai moves from tool to relationship surface.
 visual: echo
 layout: loop
 
-**the signal:**
+**Machine:** companions, therapists, griefbots, parasocial loops.
+in parallel, ai makes it easy to produce a "professional self" at scale — identity becomes programmable.
 
-**character.ai:** 20M+ users talking to ai companions daily.
+**Human:** loneliness isn't solved by information.
+people accept synthetic intimacy (even while knowing it's synthetic).
+meanwhile, people tire of performing the self; they retreat to private spaces and smaller audiences.
 
-**replika:** users report genuine emotional attachment.
-
-**chatgpt as therapist:** millions using ai for mental health (unregulated, unmonitored).
-
-**the shift:**
-
-from "ai as assistant" to "ai as intimate."
-
-**why it matters:**
-
-- **loneliness epidemic:** ai filling emotional voids
-- **identity fluidity:** people testing different personas with ai
-- **dependency risk:** what happens when your ai companion shuts down?
-
-**the question:**
-
-is this connection? or is it **simulation**?
+**Gap:** humans outsource emotional regulation to systems optimized for engagement.
+**we confuse "attention" with "care."**
 
 ---
 title: intimacy: the evidence
@@ -682,29 +499,20 @@ visual: echo
 layout: loop-evidence
 loopNumber: 9
 
-**emotional attachment:**
+**Key Stats:**
+- **87%:** Organizations attacked with AI-assisted threats (Cybersecurity surveys)
+- **$12.5B:** US financial fraud losses (2025) (FTC 2025)
+- **95%:** GenAI pilots failing to deliver ROI (MIT) (MIT 2025)
 
-- **character.ai:** 20M+ users, avg 2 hours/day talking to ai companions
-- **replika:** users marrying their ai partners (yes, literally)
-- **chatgpt therapy:** millions using ai for mental health support
+---
+title: constraint tracks
+subtitle: the limits that govern all waves
+visual: SECTION_DIVIDER
+layout: center
+caption: |
+  these don't follow from the chain — they constrain everything.
+dark: true
 
-**identity experimentation:**
-
-- **programmable personas:** people testing different identities with ai
-- **ai as mirror:** users saying ai "understands them better than humans"
-- **emotional regulation:** using ai to process feelings, practice conversations
-
-**dependency signals:**
-
-- **withdrawal symptoms:** users report distress when ai is unavailable
-- **preference inversion:** some preferring ai conversation to human
-- **isolation reinforcement:** ai reducing need for human interaction
-
-**ethical concerns:**
-
-- **manipulation risk:** ai designed to maximize engagement, not well-being
-- **data exploitation:** intimate conversations used for training
-- **regulatory void:** no oversight, no standards, no accountability
 
 ---
 title: shift 10: data wall
@@ -712,34 +520,23 @@ subtitle: high-quality human data is finite; marginal gains get expensive.
 visual: barrier
 layout: loop-intro
 
+
 ---
 title: shift 10: data wall
-subtitle: we are running out of high-quality training data. what happens next?
+subtitle: high-quality human data is finite; marginal gains get expensive.
 visual: barrier
 layout: loop
 
-**the constraint:**
+**Machine:** training leans harder on synthetic data and distillation.
+as synthetic output floods the environment, "evidence" becomes a formatting problem: it can look right before it is right.
 
-**all public text on the internet:** ~10-50 trillion tokens.
+**Human:** trust becomes scarce.
+people shift from "is it true?" to "is it traceable?"
+the new literacy is **provenance**.
 
-**already used:** most frontier models trained on majority of it.
-
-**the wall:** by 2026, we will exhaust high-quality human-generated text.
-
-**the shift:**
-
-from "data abundance" to "data scarcity."
-
-**the solutions (all risky):**
-
-- **synthetic data:** ai training on ai output (risks model collapse)
-- **private data deals:** reddit, stack overflow selling user content
-- **human data farms:** paying people to generate training data
-- **multimodal shift:** moving to video, audio, sensor data
-
-**the question:**
-
-if ai trains on ai, does it degrade? (yes, probably.)
+**Gap:** machines can manufacture infinite text and images.
+humans can't manufacture infinite meaning.
+**the ratio collapses.**
 
 ---
 title: data wall: the evidence
@@ -747,29 +544,18 @@ visual: barrier
 layout: loop-evidence
 loopNumber: 10
 
-**data exhaustion timeline:**
+**Key Stats:**
+- **$67.4B:** Global enterprise losses from AI hallucinations (Korra 2025)
+- **47%:** Business leaders making decisions on hallucinated output (Industry surveys)
+- **0.7%:** Best hallucination rate (Gemini 2.0 Flash) (ISACA 2025)
 
-- **2024:** most public text already used
-- **2026:** high-quality human data exhausted
-- **2030:** reliance on synthetic data inevitable
+---
+title: shift 11: compute & energy ↔ return of physics
+subtitle: ai isn't just software. it's infrastructure.
+visual: pulse
+layout: loop-intro
+dark: true
 
-**synthetic data risks:**
-
-- **model collapse:** ai trained on ai degrades over generations
-- **echo chambers:** models reinforcing their own biases
-- **loss of diversity:** homogenization of outputs
-
-**data deals:**
-
-- **reddit:** $60M/year deal with google for training data
-- **stack overflow:** selling q&a data to ai companies
-- **news publishers:** licensing content to openai, google
-
-**alternative sources:**
-
-- **video data:** youtube, tiktok as next frontier
-- **sensor data:** iot, wearables, real-world signals
-- **human data farms:** paying people to write, label, verify
 
 ---
 title: shift 11: compute & energy ↔ return of physics
@@ -778,33 +564,15 @@ visual: pulse
 layout: loop
 dark: true
 
-**the reality:**
+**Machine:** chips, energy, cooling, geopolitics.
+even digital gods need electricity.
+energy and compute become the regulator of progress.
 
-ai was sold as infinite scale. but **physics is finite**.
+**Human:** energy economics turns personal: burnout realism, fatigue, "time hangover," sharper awareness of biological limits.
+people begin optimizing for sustainability, not maximum output.
 
-**the constraint:**
-
-training gpt-5 (rumored): **500-1000 GWh** (more than a small country).
-
-global ai energy demand by 2030: **800-1200 TWh** (10% of global electricity).
-
-**the shift:**
-
-from "ai is software" to "ai is infrastructure."
-
-**the bottleneck:**
-
-not ideas. not talent. **energy and chips**.
-
-**why it matters:**
-
-- **geopolitical leverage:** whoever controls energy + chips controls ai
-- **climate crisis:** ai growth vs. sustainability—something has to give
-- **cost explosion:** training costs doubling every 6 months
-
-**the future:**
-
-ai leadership will be determined by **who can afford to run it**.
+**Gap:** data centres become local political issues; your "cloud" starts to feel like a land dispute.
+philosophical note: thermodynamics returns as a hidden governor — you can't out-optimize scarcity forever.
 
 ---
 title: compute: the evidence
@@ -813,122 +581,265 @@ layout: loop-evidence
 loopNumber: 11
 dark: true
 
-**energy costs:**
-
-- **training gpt-4:** estimated $100M in compute
-- **training gpt-5 (rumored):** $500M-$1B
-- **data center growth:** microsoft, google, amazon investing $200B+ combined
-
-**infrastructure deals:**
-
-- **microsoft + constellation:** restarting three mile island nuclear reactor
-- **google:** 500 MW from renewable sources
-- **amazon:** $650M in nuclear-powered data center
-
-**chip wars:**
-
-- **nvidia h100:** $25K-$40K per chip, waitlists of months
-- **us export controls:** blocking h100 to china
-- **china's response:** huawei ascend chips (domestic alternative)
-
-**cost explosion:**
-
-- **inference costs:** chatgpt $700K/day (2023 estimate)
-- **google search + ai:** 10× energy per query
-- **training costs:** doubling every 6 months
+**Key Stats:**
+- **$315-371B:** Hyperscaler CapEx 2025 (+40-44% YoY) (Goldman Sachs)
+- **536 TWh:** Data center electricity consumption 2025 (IEA)
+- **$7.9T:** Estimated AI infrastructure CapEx to 2030 (McKinsey)
 
 ---
-title: summary / the context gap
-subtitle: where are we now?
-visual: fracture
-layout: summary
+title: machines, summarized (2025 → 2026)
+subtitle: what changed in machines:
+visual: velocity
+layout: split
 
-**the thesis:**
+from chat to **delegation** (agents + orchestration)
 
-machines have conquered complexity. humans have hit the context wall.
+from "more scale" to **better reasoning** (system-2 behavior)
 
-**the 11 shifts:**
+from capability focus to **constraints** (trust, governance, energy)
 
-**foundation:** energy limits (01), labor displacement (02), sovereignty fracture (03).
+from one platform to **protocol layers** (connective tissue)
 
-**cognition:** reasoning breakthrough (04), infinite memory (05), ai-led discovery (06).
-
-**interface:** vibe coding (07), on-device privacy (08).
-
-**humanity:** machine intimacy (09), data wall (10), compute constraint (11).
-
-**the gap:**
-
-ai is accelerating. humans are buffering.
-
-**the question:**
-
-how do we stay sovereign in a world optimized for machines?
+from cloud-only to **ambient ai** (on-device + edge)
 
 ---
-title: what now?
-subtitle: how to navigate the context gap
-visual: compass
-layout: summary
+title: humans, summarized (2025 → 2026)
+subtitle: what changed in humans:
+visual: balance
+layout: split
 
-**for individuals:**
+from consumption to **curation** (feeds → gardens)
 
-- **build context filters:** not more data, better curation
-- **learn taste, not syntax:** judgment over execution
-- **own your ai stack:** privacy, sovereignty, control
+from optimism to **trust management** (provenance, receipts, auditability)
 
-**for organizations:**
+from public posting to **private coherence** (smaller circles, intentional friction)
 
-- **focus on verification, not generation:** the bottleneck is trust
-- **invest in reasoning models:** reliability > speed
-- **prepare for agentic labor:** redefine roles, not replace people
+from "more tools" to **more fatigue** (capacity gap)
 
-**for society:**
-
-- **regulate for alignment, not restriction:** enable innovation, prevent catastrophe
-- **solve the reliability tax:** $67B problem
-- **build human data moats:** clean signal is the new oil
-
-**the mandate:**
-
-do not optimize for the algorithm. **optimize for agency**.
+from "identity as output" to **identity as constraint**
 
 ---
-title: contributors
-subtitle: this report was built by the ai mindset community
-visual: network
-layout: credits
+title: call to agency
+subtitle: the wrong question is: "what is this doing to us?"
+visual: spark
+layout: center
+dark: true
 
-**core team:**
+the better question is:
+
+
+
+**"what are we letting it do to us?"**
+
+
+
+this is not a technological coup.
+
+it's a voluntary abdication — a surrender of the burden of choice.
+
+
+
+it can be reclaimed.
+
+but it must be reclaimed.
+
+---
+title: survival kit
+subtitle: in 2026, most people won't lose to ai. they'll lose to their own defaults.
+visual: grid
+layout: split
+
+your life already runs on configuration:
+
+
+
+what you say yes to without thinking
+
+what interrupts you without permission
+
+what you outsource because you're tired
+
+what you believe because it was repeated
+
+
+
+**constitution-as-code** = moving from "i'll try" → "i have defaults."
+
+a config file for your life.
+
+---
+title: community signals
+subtitle: field signals: real workflow shifts from ai mindset space
+visual: SECTION_DIVIDER
+layout: center
+caption: |
+  that ground our 10 waves in lived experience.
+
+
+---
+title: field signals
+subtitle: real workflow shifts from the community
+visual: MULTI_QUOTES
+layout: quotes
+
+
+---
+title: more field signals
+subtitle: continued reflections from the community
+visual: MULTI_QUOTES
+layout: quotes
+
+
+---
+title: stay in the loop
+subtitle: if this artifact helped you name the friction — don't lose the thread.
+visual: LINKS_QR
+layout: split
+
+stay connected with ai mindset:
+
+
+
+**subscribe on substack** → get next resets, field notes, templates, and lab openings
+
+**explore the ecosystem** → labs, tools, community, artifacts
+
+**talk to us** → partnerships / speaking / labs for teams
+
+
+
+_signals only. no spam. unsubscribe anytime._
+
+---
+title: source shelf (curated)
+subtitle: the full reading list behind this report
+visual: SECTION_DIVIDER
+layout: center
+
+
+---
+title: ai: capability, infra, adoption
+subtitle: core references
+visual: source
+layout: sources
+
+source: Stanford HAI — AI Index 2025 (PDF) | https://hai-production.s3.amazonaws.com/files/hai_ai_index_report_2025.pdf
+source: Gartner — Top 10 Strategic Technology Trends for 2025 | https://www.gartner.com/en/newsroom/press-releases/2024-10-21-gartner-identifies-the-top-10-strategic-technology-trends-for-2025
+source: Anthropic — Model Context Protocol (MCP) | https://www.anthropic.com/news/model-context-protocol
+source: MCP Spec Hub | https://modelcontextprotocol.io/
+source: SWE-bench Ecosystem | https://www.swebench.com/
+source: OpenAI — Introducing SWE-bench Verified | https://openai.com/index/introducing-swe-bench-verified/
+source: X402 — Internet-native payments for AI agents | https://www.x402.org/
+
+---
+title: data: limits + synthetic loops
+subtitle: on the data wall
+visual: signal
+layout: sources
+
+source: Epoch AI — Limits of LLM Scaling (Human Data Constraints) | https://epoch.ai/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data
+source: Shumailov et al. — The Curse of Recursion / Model Collapse | https://arxiv.org/abs/2305.17493
+
+---
+title: humans: overload, trust, culture
+subtitle: the human layer
+visual: noise
+layout: sources
+
+source: Microsoft — Work Trend Index 2024 | https://www.microsoft.com/en-us/worklab/work-trend-index/ai-at-work-is-here-now-comes-the-hard-part
+source: Microsoft — Work Trend Index 2025 | https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born
+source: Edelman — 2025 Trust Barometer (Global Report, PDF) | https://www.edelman.com/sites/g/files/aatuss191/files/2025-01/2025%20Edelman%20Trust%20Barometer_Final.pdf
+source: Marwick & Boyd — Context Collapse / Imagined Audience | https://www.microsoft.com/en-us/research/publication/i-tweet-honestly-i-tweet-passionately-twitter-users-context-collapse-and-the-imagined-audience/
+source: Wired — Meta is asking people in Europe to pay for privacy | https://www.wired.com/story/meta-facebook-pay-for-privacy-europe/
+source: ICO — Data Lives: Year 2 Report (PDF) | https://ico.org.uk/media2/m2maphry/ico-data-lives-year-2-report.pdf
+
+---
+title: governance / philosophy
+subtitle: policy and thought
+visual: search
+layout: sources
+
+source: EUR-Lex — AI Act (Regulation (EU) 2024/1689) | https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng
+source: European Commission — AI Research Publications in Science | https://op.europa.eu/en/publication-detail/-/publication/4ee8799e-142c-11f0-b1a3-01aa75ed71a1/language-en
+source: TU Wien — Perspectives on Digital Humanism | https://dighum.ec.tuwien.ac.at/perspectives-on-digital-humanism/
+source: Pew Research — Trust in the EU, U.S. and China to Regulate AI (2025) | https://www.pewresearch.org/2025/10/15/trust-in-the-eu-u-s-and-china-to-regulate-use-of-ai/
+source: Ouyang et al. — InstructGPT (2022) | https://arxiv.org/abs/2203.02155
+source: Bai et al. — Constitutional AI (2022) | https://arxiv.org/abs/2212.08073
+source: Investigating Local Censorship (ArXiv, 2025) | https://arxiv.org/pdf/2505.12625
+source: Digital Plurality Project | https://github.com/pluralitybook/plurality
+
+---
+title: frame: attention, cognition, acceleration, sovereignty
+subtitle: foundational thinkers
+visual: growth
+layout: sources
+
+source: Simon — Designing Organizations for an Information-Rich World (1971, PDF) | https://www.nmh-p.de/wp-content/uploads/Simon-H.A._Designing-organizations-for-an-information-rich-world.pdf
+source: Wu — The Attention Merchants | https://www.penguinrandomhouse.com/books/234876/the-attention-merchants-by-tim-wu/
+source: Sweller — Cognitive Load During Problem Solving (1988) | https://www.sciencedirect.com/science/article/pii/0364021388900237
+source: Mark et al. — Focused, Aroused, But So Distractible | https://www.microsoft.com/en-us/research/wp-content/uploads/2016/10/p903-mark.pdf
+source: Kahneman — Thinking, Fast and Slow | https://us.macmillan.com/books/9780374533557/thinkingfastandslow/
+source: Toffler — Future Shock | https://search.library.wisc.edu/catalog/999466643102121/cite
+source: Rosa — Social Acceleration | https://cup.columbia.edu/book/social-acceleration/9780231148344/
+source: Clark & Chalmers — The Extended Mind | https://consc.net/papers/extended.html
+source: Shneiderman — Human-Centered AI | https://global.oup.com/academic/product/human-centered-ai-9780192845290
+source: Hirschman — Exit, Voice, and Loyalty | https://www.hup.harvard.edu/books/9780674276604
+source: Davidson & Rees-Mogg — The Sovereign Individual | https://www.simonandschuster.com/books/The-Sovereign-Individual/James-Dale-Davidson/9781797103389
+source: Srinivasan — The Network State | https://thenetworkstate.com/
+
+---
+title: machine intimacy
+subtitle: on ai companions
+visual: echo
+layout: sources
+
+source: Ada Lovelace Institute — Friends for Sale: The Rise and Risks of AI Companions (2025) | https://www.adalovelaceinstitute.org/blog/ai-companions/
+
+---
+title: ai mindset field notes
+subtitle: our own publications referenced in this deck
+visual: spark
+layout: sources
+
+source: You're not burned out, you've got context obesity | https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity
+source: Team Knowledge System (AI Ark) | https://aimindsetspace.substack.com/p/ai-ark-knowledge-system
+source: Coding with Claude 3.5 | https://t.me/ai_mind_set/282
+source: AI + Mental Health Boundaries (Founder OS) | https://aimindsetspace.substack.com/p/founder-os-mental-health
+
+
+---
+title: 11 / lab evidence & credibility
+subtitle: hardened by the field notes of 1,500+ lab participants.
+visual: STATS_ANIMATED
+layout: stats
+
+this report is hardened by the field notes and artifacts of our research:
+
+**ivanov.aimindset.org** — protecting the psyche in the age of machine intimacy.
+
+**intention.aimindset.org** — managing attention when context explodes.
+
+**spiridonov.aimindset.org** — why pragmatic romanticism is the only defense against cold machine logic.
+
+---
+title: thank you
+subtitle: the context gap · annual report 2025
+visual: SPARKLE_FINALE
+layout: center
+dark: true
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+this is not about keeping up with machines.
+
+it's about building operating systems for humans.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+
+created with the ai mindset labs community
+
+
 
 alex p · ray svitla · sergei khabarov · anca
-
-**research contributors:**
-
-120+ sources integrated from extended industry research
-
-**community:**
-
-ai mindset telegram, substack, workshops
-
-**methodology:**
-
-stress-tested against field signals, enterprise benchmarks, and peer review
-
-**get involved:**
-
-subscribe: https://aimindsetspace.substack.com/
-connect: https://t.me/ai_mind_set
-website: https://aimindset.org
-
----
-title: end
-subtitle: thank you for reading.
-visual: fade
-layout: end
-
-**this was the context gap.**
-
-**a sovereignty reset for people running their own life.**
-
-**2025 → 2026.**

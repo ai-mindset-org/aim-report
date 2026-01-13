@@ -16,6 +16,7 @@ type PdfMode = 'deck' | 'slide';
 type LeadState = LeadInfo & { capturedAt: string };
 
 const LEAD_STORAGE_KEY = 'aim_annual_report_2025_lead_v1';
+const SLIDE_POSITION_KEY = 'aim_annual_report_2025_slide_position';
 
 const loadLead = (): LeadState | null => {
   try {
@@ -32,6 +33,25 @@ const loadLead = (): LeadState | null => {
 const saveLead = (lead: LeadState) => {
   try {
     localStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(lead));
+  } catch {
+    // no-op
+  }
+};
+
+const loadSlidePosition = (): number => {
+  try {
+    const raw = localStorage.getItem(SLIDE_POSITION_KEY);
+    if (!raw) return 0;
+    const pos = Number.parseInt(raw, 10);
+    return Number.isFinite(pos) && pos >= 0 ? pos : 0;
+  } catch {
+    return 0;
+  }
+};
+
+const saveSlidePosition = (position: number) => {
+  try {
+    localStorage.setItem(SLIDE_POSITION_KEY, String(position));
   } catch {
     // no-op
   }
@@ -154,7 +174,11 @@ const PrintDeck: React.FC<{ slides: SlideData[] }> = ({ slides }) => {
 
 const AppContent: React.FC = () => {
   const { t, lang } = useLanguage();
-  const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
+  const [currentSlideIdx, setCurrentSlideIdx] = useState(() => {
+    // Restore last position from localStorage
+    return typeof window === 'undefined' ? 0 : loadSlidePosition();
+  });
+  const [isLoading, setIsLoading] = useState(true);
   const [showTOC, setShowTOC] = useState(false);
   const initialPrint = useMemo(() => getInitialPrintState(), []);
   const [printMode, setPrintMode] = useState<PrintMode>(initialPrint.mode);
@@ -177,9 +201,15 @@ const AppContent: React.FC = () => {
 
   const exportPassword = useMemo(() => getExportPassword(), []);
 
+  // Save slide position to localStorage whenever it changes
+  useEffect(() => {
+    saveSlidePosition(currentSlideIdx);
+  }, [currentSlideIdx]);
+
   // Load slides and sections from JSON
   useEffect(() => {
     async function loadContent() {
+      setIsLoading(true);
       try {
         const locale = lang || 'en';
         
@@ -187,6 +217,7 @@ const AppContent: React.FC = () => {
         const slidesResponse = await fetch(`/locales/${locale}/slides.json`);
         if (!slidesResponse.ok) {
           console.warn('JSON slides not found, using hardcoded content');
+          setIsLoading(false);
           return;
         }
 
@@ -195,6 +226,7 @@ const AppContent: React.FC = () => {
         
         if (loadedSlides.length === 0) {
           console.warn('Empty slides array in JSON, using hardcoded content');
+          setIsLoading(false);
           return;
         }
 
@@ -224,11 +256,13 @@ const AppContent: React.FC = () => {
       } catch (error) {
         console.error('Failed to load content from JSON:', error);
         console.log('Using hardcoded content as fallback');
+      } finally {
+        setIsLoading(false);
       }
     }
 
     loadContent();
-  }, [lang, currentSlideIdx]);
+  }, [lang]);
 
   // On-screen fit: ensure each slide fits within the viewport stage (no clipping)
   // by scaling down a tiny bit when content overflows.
@@ -529,17 +563,37 @@ const AppContent: React.FC = () => {
   }, [nextSlide, prevSlide, showTOC, showSources, pdfJob]);
 
   // Find current section
-  const currentSection = SECTIONS.find((section, idx) => {
-    const nextSection = SECTIONS[idx + 1];
+  const currentSection = sections.find((section, idx) => {
+    const nextSection = sections[idx + 1];
     return currentSlideIdx >= section.startSlide &&
            (!nextSection || currentSlideIdx < nextSection.startSlide);
   });
 
-  // Guard: show loading if no slides or index out of bounds
+  // Show loading state with skeleton
+  if (isLoading) {
+    return (
+      <div className="w-screen h-screen bg-[#FAFAFA] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center animate-pulse">
+            <img
+              src={assetUrl('/assets/logo_rb.png')}
+              alt="AI Mindset"
+              className="h-5 w-auto"
+            />
+          </div>
+          <div className="text-neutral-400 font-mono text-xs uppercase tracking-widest">
+            Loading The Context Gap...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Guard: show error if no slides or index out of bounds
   if (slides.length === 0 || !slides[currentSlideIdx]) {
     return (
       <div className="w-screen h-screen bg-[#FAFAFA] flex items-center justify-center">
-        <div className="text-neutral-400 font-mono text-sm">Loading slides...</div>
+        <div className="text-neutral-400 font-mono text-sm">No slides available</div>
       </div>
     );
   }
@@ -779,7 +833,7 @@ const AppContent: React.FC = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.4, ease: "easeInOut" }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
           ref={stageRef}
           className="w-full h-[calc(100vh-3.5rem)] min-h-[600px] overflow-hidden"
         >
@@ -801,7 +855,6 @@ const AppContent: React.FC = () => {
           {sections.map((section, sIdx) => {
             const nextStart = sections[sIdx + 1]?.startSlide ?? slides.length;
             const count = nextStart - section.startSlide;
-            const isLoopsSection = section.title === '10 loops';
 
             return (
               <div key={sIdx} className="flex items-center group/section relative">
@@ -885,7 +938,7 @@ const AppContent: React.FC = () => {
             <ChevronLeft size={18} className="text-neutral-600" />
           </button>
           <span className="text-red-600 font-mono text-sm min-w-[50px] text-center">
-            {currentSlideIdx + 1}/{SLIDES.length}
+            {currentSlideIdx + 1}/{slides.length}
           </span>
           <button
             onClick={nextSlide}
