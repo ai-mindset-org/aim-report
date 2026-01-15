@@ -45,6 +45,7 @@ jobs:
         run: |
           mkdir -p _site
           cp -r dist/* _site/
+          cp -r public/* _site/
           mkdir -p _site/landing
           cp -r landing-2026/dist/* _site/landing/
           touch _site/.nojekyll
