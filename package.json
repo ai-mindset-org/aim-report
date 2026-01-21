@@ -10,6 +10,7 @@
     "export:slides": "tsx scripts/export-slides-to-json.ts",
     "content:update": "tsx scripts/md-to-json.ts",
     "content:watch": "tsx scripts/watch-content.ts",
+    "about:update": "tsx scripts/about-md-to-html.ts",
     "deploy": "./scripts/deploy.sh"
   },
   "dependencies": {

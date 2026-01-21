@@ -8,6 +8,8 @@ const __dirname = dirname(__filename);
 interface SlideMetadata {
   title: string;
   subtitle?: string;
+  supertitle?: string;
+  alternativeSubtitle?: string;
   visual?: string;
   layout?: string;
   caption?: string;
@@ -21,6 +23,7 @@ interface Slide extends SlideMetadata {
     label: string;
     url: string;
   }>;
+  tags?: string[];
 }
 
 function parseMarkdownSlides(markdown: string): Slide[] {
@@ -37,6 +40,7 @@ function parseMarkdownSlides(markdown: string): Slide[] {
     const metadata: SlideMetadata = { title: '' };
     const contentLines: string[] = [];
     const sources: Array<{ label: string; url: string }> = [];
+    const tags: string[] = [];
     let inMetadata = true;
     
     for (let line of lines) {
@@ -48,6 +52,13 @@ function parseMarkdownSlides(markdown: string): Slide[] {
         continue;
       }
       
+      // Parse Tags line
+      if (!inMetadata && trimmedLine.startsWith('**Tags:**')) {
+        const tagsValue = trimmedLine.substring(9).trim();
+        tags.push(...tagsValue.split(',').map(t => t.trim()));
+        continue;
+      }
+      
       // Parse YAML-style metadata (must not start with -, *, or **)
       if (inMetadata && trimmedLine.includes(':') && !trimmedLine.startsWith('-') && !trimmedLine.startsWith('*')) {
         const colonIndex = trimmedLine.indexOf(':');
@@ -56,6 +67,21 @@ function parseMarkdownSlides(markdown: string): Slide[] {
         
         if (key === 'title') metadata.title = value;
         else if (key === 'subtitle') metadata.subtitle = value;
+        else if (key === 'supertitle') {
+          // Handle multiline supertitle with |
+          if (value === '|') {
+            let supertitleLines: string[] = [];
+            let i = lines.indexOf(line) + 1;
+            while (i < lines.length && lines[i].trim() && !lines[i].trim().match(/^[a-z]+:/)) {
+              supertitleLines.push(lines[i].trim());
+              i++;
+            }
+            metadata.supertitle = supertitleLines.join('\n');
+          } else {
+            metadata.supertitle = value;
+          }
+        }
+        else if (key === 'alternativeSubtitle') metadata.alternativeSubtitle = value;
         else if (key === 'visual') metadata.visual = value;
         else if (key === 'layout') metadata.layout = value;
         else if (key === 'caption') {
@@ -83,8 +109,8 @@ function parseMarkdownSlides(markdown: string): Slide[] {
           const url = sourceValue.substring(pipeIndex + 1).trim();
           sources.push({ label, url });
         }
-      } else if (!inMetadata && trimmedLine) {
-        // Content after metadata
+      } else if (!inMetadata) {
+        // Content after metadata - keep empty lines as paragraph separators
         contentLines.push(trimmedLine);
       }
     }
@@ -94,6 +120,11 @@ function parseMarkdownSlides(markdown: string): Slide[] {
     // Add sources if present
     if (sources.length > 0) {
       slide.sources = sources;
+    }
+    
+    // Add tags if present
+    if (tags.length > 0) {
+      slide.tags = tags;
     }
     
     // Parse content into paragraphs

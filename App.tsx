@@ -3,12 +3,13 @@ import type { SlideData } from './types';
 import { SLIDES, SECTIONS, assetUrl } from './reportDeck';
 import { Slide } from './components/Slide';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
-import { Menu, X, ChevronLeft, ChevronRight, FileDown, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, FileDown, LayoutGrid } from 'lucide-react';
 import { exportElementsToPdf } from './pdfExport';
 import { LeadGateModal, type LeadInfo } from './components/LeadGateModal';
-import { SourcesOverlay } from './components/SourcesOverlay';
+import { ContentOverlay } from './components/ContentOverlay';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { ContentCards } from './ContentCards';
 
 type PrintMode = 'off' | 'deck' | 'slide';
 type PdfMode = 'deck' | 'slide';
@@ -193,7 +194,9 @@ const AppContent: React.FC = () => {
   const [lead, setLead] = useState<LeadState | null>(() => (typeof window === 'undefined' ? null : loadLead()));
   const [leadGateOpen, setLeadGateOpen] = useState(false);
   const [pendingExport, setPendingExport] = useState<{ mode: PdfMode; slideIdx: number } | null>(null);
-  const [showSources, setShowSources] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  const [showContentCards, setShowContentCards] = useState(false);
+  const [contentCards, setContentCards] = useState<any[]>([]);
 
   // Dynamic slides loading from JSON with fallback to hardcoded
   const [slides, setSlides] = useState<SlideData[]>(SLIDES);
@@ -252,6 +255,16 @@ const AppContent: React.FC = () => {
         // Reset slide index if current index is out of bounds
         if (currentSlideIdx >= slidesWithIds.length) {
           setCurrentSlideIdx(0);
+        }
+
+        // Load content cards
+        const cardsResponse = await fetch(`/locales/${locale}/content-cards.json`);
+        if (cardsResponse.ok) {
+          const cardsData = await cardsResponse.json();
+          if (cardsData.cards) {
+            setContentCards(cardsData.cards);
+            console.log(`Loaded ${cardsData.cards.length} content cards`);
+          }
         }
       } catch (error) {
         console.error('Failed to load content from JSON:', error);
@@ -473,15 +486,17 @@ const AppContent: React.FC = () => {
         prevSlide();
       } else if (e.key === 'Escape') {
         setShowTOC(false);
-        setShowSources(false);
-      } else if (e.key === 't' || e.key === 'T' || e.key === 'е' || e.key === 'Е') {
+        setShowContent(false);
+      } else if ((e.key === 't' || e.key === 'T' || e.key === 'е' || e.key === 'Е') && !e.metaKey && !e.ctrlKey) {
         // Support both English 't' and Russian 'е' (same key position)
+        // Ignore if Command/Ctrl is pressed to avoid conflicts with other shortcuts
         e.preventDefault();
         setShowTOC(prev => !prev);
-      } else if (e.key === 's' || e.key === 'S' || e.key === 'ы' || e.key === 'Ы') {
+      } else if ((e.key === 's' || e.key === 'S' || e.key === 'ы' || e.key === 'Ы') && !e.metaKey && !e.ctrlKey) {
         // Support both English 's' and Russian 'ы' (same key position)
+        // Ignore if Command/Ctrl is pressed to avoid conflicts with other shortcuts
         e.preventDefault();
-        setShowSources(prev => !prev);
+        setShowContent(prev => !prev);
       } else if (!e.metaKey && !e.ctrlKey && !e.altKey) {
         const key = e.key.toLowerCase();
         if (key === 'p' || key === 'з') {
@@ -499,68 +514,144 @@ const AppContent: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [nextSlide, prevSlide, currentSlideIdx, requestPdfExport, pdfJob]);
 
-  // Wheel/scroll navigation with throttling
+  // Wheel/scroll navigation with simple throttling
   useEffect(() => {
-    let isScrolling = false;
-    let scrollTimeout: ReturnType<typeof setTimeout>;
+    let lastWheelTime = 0;
+    let atEdgeBottom = false;
+    let atEdgeTop = false;
+    let edgeResetTimeout: ReturnType<typeof setTimeout>;
 
     const handleWheel = (e: WheelEvent) => {
-      // Skip if menu/sources are open
-      if (showTOC || showSources) return;
-      
-      // Skip if PDF export is running
+      if (showTOC || showContent) return;
       if (pdfJob) return;
 
-      // Prevent multiple rapid scrolls
-      if (isScrolling) return;
+      const now = Date.now();
+      const container = stageRef.current;
+      if (!container) return;
 
-      const deltaY = e.deltaY;
-      const deltaX = e.deltaX;
+      const hasScrollableContent = container.scrollHeight > container.clientHeight;
+      const scrollingDown = e.deltaY > 0;
+      const scrollingUp = e.deltaY < 0;
 
-      // Determine scroll direction - vertical has priority
-      if (Math.abs(deltaY) > Math.abs(deltaX)) {
-        // Vertical scroll
-        if (deltaY > 0) {
-          // Scroll down = next slide
+      // If no scrollable content, navigate slides with STRONG throttling
+      if (!hasScrollableContent) {
+        if (now - lastWheelTime < 1500) {
           e.preventDefault();
-          nextSlide();
-          isScrolling = true;
-        } else if (deltaY < 0) {
-          // Scroll up = previous slide
-          e.preventDefault();
-          prevSlide();
-          isScrolling = true;
+          return;
         }
-      } else if (Math.abs(deltaX) > 10) {
-        // Horizontal scroll (trackpad swipe)
-        if (deltaX > 0) {
-          // Scroll right = next slide
-          e.preventDefault();
+        
+        e.preventDefault();
+        lastWheelTime = now;
+        
+        if (scrollingDown) {
           nextSlide();
-          isScrolling = true;
-        } else if (deltaX < 0) {
-          // Scroll left = previous slide
-          e.preventDefault();
+        } else if (scrollingUp) {
           prevSlide();
-          isScrolling = true;
         }
+        return;
       }
 
-      // Reset scroll lock after delay
-      if (isScrolling) {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          isScrolling = false;
-        }, 500); // 500ms throttle
-      }
+      // Has scrollable content - allow browser scrolling, NO slide navigation
+      // User can use SPACE/arrows to navigate from scrollable pages
+      return;
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => {
       window.removeEventListener('wheel', handleWheel);
-      clearTimeout(scrollTimeout);
+      clearTimeout(edgeResetTimeout);
     };
-  }, [nextSlide, prevSlide, showTOC, showSources, pdfJob]);
+  }, [nextSlide, prevSlide, showTOC, showContent, pdfJob]);
+
+  // Touch/swipe navigation for mobile
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    let isSwiping = false;
+    let isVerticalSwipe = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      // Skip if menu/sources are open
+      if (showTOC || showContent) return;
+      
+      // Skip if PDF export is running
+      if (pdfJob) return;
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isSwiping = false;
+      isVerticalSwipe = false;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (showTOC || showContent || pdfJob) return;
+      
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+      
+      const deltaX = Math.abs(touchEndX - touchStartX);
+      const deltaY = Math.abs(touchEndY - touchStartY);
+      
+      // If horizontal swipe is dominant, prevent default scrolling
+      if (deltaX > deltaY && deltaX > 30) {
+        e.preventDefault();
+        isSwiping = true;
+        isVerticalSwipe = false;
+      } else if (deltaY > deltaX && deltaY > 50) {
+        // Vertical swipe detected
+        isVerticalSwipe = true;
+        isSwiping = false;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (showTOC || showContent || pdfJob) return;
+
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      
+      // Require minimum swipe distance (50px)
+      const minSwipeDistance = 50;
+      
+      // Check if horizontal swipe is dominant
+      if (isSwiping && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX > 0) {
+          // Swipe right → previous slide
+          prevSlide();
+        } else {
+          // Swipe left → next slide
+          nextSlide();
+        }
+      }
+      // Check if vertical swipe down at bottom of content
+      else if (isVerticalSwipe && deltaY < -100) {
+        // Strong swipe down detected
+        const container = stageRef.current;
+        if (container) {
+          const hasScrollableContent = container.scrollHeight > container.clientHeight;
+          // Only navigate to next slide if NO scrollable content
+          // On scrollable pages, vertical swipe should NOT navigate
+          if (!hasScrollableContent) {
+            nextSlide();
+          }
+        }
+      }
+      
+      isSwiping = false;
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [nextSlide, prevSlide, showTOC, showContent, pdfJob]);
 
   // Find current section
   const currentSection = sections.find((section, idx) => {
@@ -618,7 +709,13 @@ const AppContent: React.FC = () => {
         }}
         onSubmit={submitLead}
       />
-      <SourcesOverlay open={showSources} onClose={() => setShowSources(false)} />
+      <ContentOverlay 
+        isOpen={showContent} 
+        onClose={() => setShowContent(false)}
+        onNavigate={(slideIndex) => setCurrentSlideIdx(slideIndex)}
+        currentSlide={currentSlideIdx}
+        slides={slides}
+      />
       {/* Hidden PDF render root (for true “Download PDF”, no print dialog) */}
       {pdfJob && (
         <MotionConfig reducedMotion="always">
@@ -657,38 +754,28 @@ const AppContent: React.FC = () => {
         />
       </div>
 
-      {/* Logo with dark circle background - smaller to avoid overlap */}
-      <div className="fixed top-3 left-3 z-[60] no-print">
-        <div className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors overflow-hidden">
-          <img
-            src={assetUrl('/assets/logo_rb.png')}
-            alt="AI Mindset"
-            className="h-5 w-auto"
-          />
-        </div>
+      {/* Logo with dark circle background - smaller to avoid overlap, hidden on small mobile screens */}
+      <div className="fixed top-3 left-3 z-[60] no-print hidden sm:block">
+        <a 
+          href="https://aimindset.org" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <div className="w-8 h-8 rounded-full bg-neutral-900 flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors overflow-hidden cursor-pointer">
+            <img
+              src={assetUrl('/assets/logo_rb.png')}
+              alt="AI Mindset"
+              className="h-5 w-auto"
+            />
+          </div>
+        </a>
       </div>
 
-      {/* Table of Contents Toggle */}
-      <button
-        onClick={() => setShowTOC(!showTOC)}
-        className="fixed top-4 right-4 z-[60] p-2 bg-white/90 backdrop-blur border border-neutral-200 rounded-lg hover:bg-white hover:border-red-200 transition-all shadow-sm no-print"
-        title="Press T to toggle table of contents"
-      >
-        {showTOC ? <X size={20} className="text-red-600" /> : <Menu size={20} />}
-      </button>
-
-      {/* Quick PDF export + Sources (no need to open TOC) */}
-      <div className="fixed top-4 right-16 z-[60] flex items-center gap-2 no-print">
+      {/* Quick PDF export + Content Navigation - responsive layout */}
+      <div className="fixed top-4 right-4 z-[60] flex items-center gap-2 no-print">
         {/* Language switcher temporarily disabled for v1 release */}
         <LanguageSwitcher />
-        <button
-          onClick={() => setShowSources(true)}
-          className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white/90 backdrop-blur px-3 py-2 text-xs font-mono text-neutral-700 hover:border-red-200 hover:text-red-600 transition-colors shadow-sm"
-          title="Sources & Credits (S)"
-        >
-          <BookOpen size={16} />
-          <span className="hidden md:inline">{t.sources}</span>
-        </button>
         <button
           onClick={() => requestPdfExport('deck')}
           disabled={!!pdfJob}
@@ -706,6 +793,14 @@ const AppContent: React.FC = () => {
         >
           <FileDown size={16} />
           <span className="hidden md:inline">{t.slidePdf}</span>
+        </button>
+        <button
+          onClick={() => setShowContent(true)}
+          className="flex items-center gap-2 rounded-lg border border-neutral-200 bg-white/90 backdrop-blur px-3 py-2 text-xs font-mono text-neutral-700 hover:border-red-200 hover:text-red-600 transition-colors shadow-sm"
+          title="Content Navigation (C)"
+        >
+          <LayoutGrid size={16} />
+          <span className="hidden md:inline">Content</span>
         </button>
       </div>
 
@@ -835,9 +930,9 @@ const AppContent: React.FC = () => {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
           ref={stageRef}
-          className="w-full h-[calc(100vh-3.5rem)] min-h-[600px] overflow-hidden"
+          className="w-full h-[calc(100vh-3.5rem)] min-h-[600px] overflow-y-auto pt-10 md:pt-0"
         >
-          <div ref={stageScaleRootRef} className="w-full h-full">
+          <div ref={stageScaleRootRef} className="w-full md:h-full">
             <Slide data={slides[currentSlideIdx]} index={currentSlideIdx} />
           </div>
         </motion.div>
@@ -850,86 +945,131 @@ const AppContent: React.FC = () => {
           {currentSection?.title || 'INTRO'}
         </div>
 
-        {/* Slide dots - centered, grouped by section with hover tooltips */}
-        <div className="flex-1 flex justify-center items-center gap-0.5">
-          {sections.map((section, sIdx) => {
-            const nextStart = sections[sIdx + 1]?.startSlide ?? slides.length;
-            const count = nextStart - section.startSlide;
-
-            return (
-              <div key={sIdx} className="flex items-center group/section relative">
-                {sIdx > 0 && <div className="w-3 h-px bg-neutral-300 mx-1.5" />}
-                {/* Section label on hover */}
+        {/* Slide dots - centered, grouped by context gap, layers, and other sections */}
+        <div className="flex-1 flex justify-center items-center gap-0.5 h-full">
+          {(() => {
+            const groups: { label: string; slides: number[]; type: 'context-gap' | 'layer' | 'section' }[] = [];
+            
+            // Intro pages FIRST: hero-scroll landing + 11 tectonic shifts divider
+            const introSlides: number[] = [];
+            const heroSlide = slides.findIndex(s => s.layout === 'hero-scroll');
+            const shiftsSlide = slides.findIndex(s => s.title?.toLowerCase().includes('11 tectonic shifts'));
+            
+            if (heroSlide >= 0) introSlides.push(heroSlide);
+            if (shiftsSlide >= 0 && shiftsSlide !== heroSlide) introSlides.push(shiftsSlide);
+            
+            if (introSlides.length > 0) {
+              groups.push({ label: 'Intro', slides: introSlides.sort((a, b) => a - b), type: 'section' });
+            }
+            
+            // Story scroll (context gap explanation) - skip if already in intro
+            const contextGapSlide = slides.findIndex(s => s.layout === 'story-scroll');
+            if (contextGapSlide >= 0 && !introSlides.includes(contextGapSlide)) {
+              groups.push({ label: 'Context Gap', slides: [contextGapSlide], type: 'context-gap' });
+            }
+            
+            // Groups: Layers (each layer divider + its shifts)
+            const layerDividers = slides.map((s, i) => ({ slide: s, index: i }))
+              .filter(({ slide }) => slide.title?.toLowerCase().includes('layer') && slide.visual === 'SECTION_DIVIDER');
+            
+            layerDividers.forEach(({ slide, index }, layerIdx) => {
+              const layerSlides = [index];
+              const nextLayerIdx = layerDividers[layerIdx + 1]?.index ?? slides.length;
+              for (let i = index + 1; i < nextLayerIdx; i++) {
+                const s = slides[i];
+                if (s.title?.toLowerCase().includes('shift') || s.layout === 'shift-scroll') {
+                  layerSlides.push(i);
+                }
+              }
+              groups.push({ label: slide.title || `Layer ${layerIdx + 1}`, slides: layerSlides, type: 'layer' });
+            });
+            
+            // Remaining pages (field signals, about, thank you, etc)
+            const usedSlides = new Set(groups.flatMap(g => g.slides));
+            const remainingSlides: number[] = [];
+            for (let i = 0; i < slides.length; i++) {
+              if (!usedSlides.has(i)) {
+                remainingSlides.push(i);
+              }
+            }
+            if (remainingSlides.length > 0) {
+              groups.push({ label: 'Pages', slides: remainingSlides, type: 'section' });
+            }
+            
+            return groups.map((group, gIdx) => (
+              <div key={gIdx} className="flex items-center justify-center group/section relative h-full">
+                {gIdx > 0 && <div className="w-3 h-px bg-neutral-300 mx-1.5 flex-shrink-0" />}
+                {/* Group label on hover */}
                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/section:opacity-100 transition-opacity pointer-events-none z-50">
-                  <div className="bg-neutral-900 text-white text-[10px] font-mono px-2 py-1 rounded whitespace-nowrap uppercase tracking-wider">
-                    {section.title}
+                  <div className={`text-[10px] font-mono px-2 py-1 rounded whitespace-nowrap uppercase tracking-wider ${
+                    group.type === 'context-gap' ? 'bg-red-600 text-white' :
+                    group.type === 'layer' ? 'bg-neutral-800 text-white' :
+                    'bg-neutral-900 text-white'
+                  }`}>
+                    {group.label}
                   </div>
                 </div>
-                {Array.from({ length: count }).map((_, idx) => {
-                  const slideIdx = section.startSlide + idx;
+                {group.slides.map(slideIdx => {
                   const slide = slides[slideIdx];
-                  
-                  // Skip if slide doesn't exist (e.g., when loading partial JSON)
                   if (!slide) return null;
                   
-                  // Extract loop number if present
-                  const loopMatch = slide.title?.match(/LOOP\s*(\d+)/i);
-                  const loopNum = loopMatch ? parseInt(loopMatch[1], 10) : null;
-                  const isLoopIntro = slide.layout === 'loop-intro';
-                  const isLoop = slide.layout === 'loop';
-                  const isSectionDivider = slide.visual === 'SECTION_DIVIDER';
-
-                  // Monochrome color for all loops (single red accent)
-                  const loopColor = 'bg-red-600';
+                  const isContextGap = group.type === 'context-gap';
+                  const isLayerDivider = slide.title?.toLowerCase().includes('layer') && slide.visual === 'SECTION_DIVIDER';
+                  const isShift = slide.title?.toLowerCase().includes('shift') || slide.layout === 'shift-scroll';
+                  const isSectionDivider = slide.visual === 'SECTION_DIVIDER' && !isLayerDivider;
 
                   return (
-                    <div key={slideIdx} className="relative group/dot flex items-center">
+                    <div key={slideIdx} className="relative group/dot flex items-center justify-center h-full">
                       <button
                         onClick={() => setCurrentSlideIdx(slideIdx)}
-                        className={`transition-all ${
-                          isSectionDivider
-                            ? `w-2 h-2 rounded-sm mx-0.5 ${
+                        className={`transition-all flex-shrink-0 hover:scale-125 ${
+                          isContextGap
+                            ? `w-3 h-3 rounded-sm mx-0.5 ${
                                 slideIdx === currentSlideIdx
-                                  ? 'bg-neutral-800 scale-125'
-                                  : 'bg-neutral-400 hover:bg-neutral-500'
+                                  ? 'bg-red-600 scale-125 ring-2 ring-white shadow-lg'
+                                  : 'bg-red-400 hover:bg-red-500'
                               }`
-                            : isLoopIntro
-                              ? `w-2 h-2 rounded-full mx-0.5 ${
+                            : isLayerDivider
+                              ? `w-2.5 h-2.5 rounded-sm mx-0.5 ${
                                   slideIdx === currentSlideIdx
-                                    ? `${loopColor} scale-125 ring-2 ring-white shadow-md`
-                                    : `${loopColor} opacity-40 hover:opacity-70`
+                                    ? 'bg-neutral-800 scale-125 ring-2 ring-white shadow-md'
+                                    : 'bg-neutral-600 hover:bg-neutral-700'
                                 }`
-                              : isLoop
-                                ? `w-2.5 h-2.5 rounded-full mx-0.5 ${
+                              : isShift
+                                ? `w-2 h-2 rounded-full mx-0.5 ${
                                     slideIdx === currentSlideIdx
-                                      ? `${loopColor} scale-125 ring-2 ring-white shadow-lg`
-                                      : `${loopColor} hover:scale-110`
+                                      ? 'bg-red-600 scale-125 ring-1 ring-white'
+                                      : 'bg-red-400 hover:bg-red-500'
                                   }`
-                                : `w-1.5 h-1.5 rounded-full mx-0.5 ${
-                                    slideIdx === currentSlideIdx
-                                      ? 'bg-red-600 scale-150'
-                                      : 'bg-neutral-300 hover:bg-neutral-400'
-                                  }`
+                                : isSectionDivider
+                                  ? `w-2 h-2 rounded-sm mx-0.5 ${
+                                      slideIdx === currentSlideIdx
+                                        ? 'bg-neutral-800 scale-125'
+                                        : 'bg-neutral-400 hover:bg-neutral-500'
+                                    }`
+                                  : `w-1.5 h-1.5 rounded-full mx-0.5 ${
+                                      slideIdx === currentSlideIdx
+                                        ? 'bg-red-600 scale-150'
+                                        : 'bg-neutral-300 hover:bg-neutral-400'
+                                    }`
                         }`}
                       />
                       {/* Individual slide tooltip */}
                       <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/dot:opacity-100 transition-opacity pointer-events-none z-50">
                         <div className="bg-neutral-900 text-white text-[10px] font-mono px-2 py-1 rounded whitespace-nowrap max-w-[200px] truncate">
-                          <span className="text-red-400 mr-1">{String(slideIdx + 1).padStart(2, '0')}</span>
-                          {loopNum && <span className="text-red-300 mr-1">[Loop {loopNum}{isLoopIntro ? ' intro' : ''}]</span>}
-                          {slide.title.replace(/LOOP\s*\d+:?\s*/i, '')}
+                          {slide.title}
                         </div>
                       </div>
                     </div>
                   );
                 })}
               </div>
-            );
-          })}
+            ));
+          })()}
         </div>
 
         {/* Navigation controls */}
-        <div className="flex items-center gap-2 min-w-[100px] justify-end">
+        <div className="flex items-center gap-2 min-w-[80px] justify-end">
           <button
             onClick={prevSlide}
             disabled={currentSlideIdx === 0}
@@ -937,9 +1077,6 @@ const AppContent: React.FC = () => {
           >
             <ChevronLeft size={18} className="text-neutral-600" />
           </button>
-          <span className="text-red-600 font-mono text-sm min-w-[50px] text-center">
-            {currentSlideIdx + 1}/{slides.length}
-          </span>
           <button
             onClick={nextSlide}
             disabled={currentSlideIdx === slides.length - 1}
@@ -967,6 +1104,15 @@ const AppContent: React.FC = () => {
           <ChevronRight size={24} className="text-neutral-300" />
         </div>
       </div>
+
+      {/* Content Cards Navigation */}
+      <ContentCards
+        isOpen={showContentCards}
+        onClose={() => setShowContentCards(false)}
+        onNavigate={(slideIndex: number) => setCurrentSlideIdx(slideIndex)}
+        cards={contentCards}
+        slides={slides}
+      />
 
     </div>
   );
