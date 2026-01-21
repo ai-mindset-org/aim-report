@@ -118,7 +118,10 @@ export interface TimelineEvent {
 
 export interface LoopData {
   machine: string;
+  machineSummary?: string; // Brief summary point for Machine block
+  postTraining?: string; // Post-training explanation - rendered outside Machine card
   human: string;
+  humanSummary?: string; // Brief summary point for Human block
   gap: string;
   move?: string; // Optional - removed from UI per Ray's feedback
   lab?: { name: string; url: string }; // Optional - link to relevant AIM lab
@@ -142,9 +145,11 @@ export interface SlideData {
   id: number;
   title: string;
   subtitle?: string;
+  supertitle?: string;
+  alternativeSubtitle?: string;
   visual: VisualType;
   caption?: string;
-  layout?: 'center' | 'split' | 'bottom' | 'text' | 'gallery' | 'stats' | 'team' | 'paired' | 'cards' | 'loop' | 'loop-intro' | 'loop-evidence' | 'manifesto' | 'timeline' | 'text-heavy' | 'metaphor' | 'product' | 'quotes' | 'sources';
+  layout?: SlideLayout;
   leftTitle?: string;
   leftContent?: string[];
   rightTitle?: string;
@@ -174,10 +179,14 @@ export interface SlideData {
   evidenceData?: {
     keyStats?: { value: string; label: string; source?: string }[];
     researchHighlights?: string[];
+    aimindsetEvidence?: string[]; // AI Mindset Evidence items - rendered separately with logo
+    communityVoices?: string[]; // Community Voices - rendered as separate block below evidence
     industryData?: string[];
   };
   // Loop number for evidence slides
   loopNumber?: number;
+  // Tags parsed from markdown
+  tags?: string[];
 }
 
 export interface SessionInfo {

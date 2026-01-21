@@ -354,10 +354,23 @@ export const ReportMetaphor: React.FC<Props> = ({ slideId, stats }) => {
         </Svg>
       );
 
-    // 05 — Reading map: checkpoints
+    // 05 — Reading map: checkpoints with flowing particles
     case 5:
       return (
         <Svg>
+          {/* Background glow */}
+          <motion.path
+            d="M260 640 C 480 360, 760 760, 980 420 C 1120 200, 1320 320, 1340 260"
+            fill="none"
+            stroke={RED}
+            strokeWidth={20}
+            opacity={0.1}
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
+          />
+          {/* Main path */}
           <motion.path
             d="M260 640 C 480 360, 760 760, 980 420 C 1120 200, 1320 320, 1340 260"
             {...StrokeBlack}
@@ -367,16 +380,80 @@ export const ReportMetaphor: React.FC<Props> = ({ slideId, stats }) => {
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 1.4, ease: 'easeOut' }}
           />
+          {/* Flowing particles along path */}
+          {[0, 0.2, 0.4, 0.6, 0.8].map((offset, idx) => (
+            <motion.circle
+              key={idx}
+              r="6"
+              fill={RED}
+              opacity={0.6}
+              initial={{ offsetDistance: '0%', opacity: 0 }}
+              animate={{ offsetDistance: '100%', opacity: [0, 0.8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: offset * 2,
+                ease: 'linear'
+              }}
+              style={{
+                offsetPath: 'path("M260 640 C 480 360, 760 760, 980 420 C 1120 200, 1320 320, 1340 260")',
+              }}
+            />
+          ))}
+          {/* Checkpoint nodes with pulse */}
           {[{ x: 260, y: 640 }, { x: 560, y: 420 }, { x: 980, y: 420 }, { x: 1340, y: 260 }].map((p, i) => (
-            <Node key={i} cx={p.x} cy={p.y} fill={i === 0 ? RED : 'white'} stroke={BLACK} delay={0.15 + i * 0.08} />
+            <g key={i}>
+              <motion.circle
+                cx={p.x}
+                cy={p.y}
+                r={24}
+                fill={i === 0 ? RED : 'white'}
+                opacity={0.2}
+                initial={{ scale: 0 }}
+                animate={{ scale: [1, 1.5, 1] }}
+                transition={{ delay: 0.15 + i * 0.08, duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+              />
+              <Node cx={p.x} cy={p.y} fill={i === 0 ? RED : 'white'} stroke={BLACK} delay={0.15 + i * 0.08} />
+            </g>
           ))}
         </Svg>
       );
 
-    // 06 — Numbers: stat tiles (unique grid)
+    // 06 — Numbers: stat tiles with animated background
     case 6:
       return (
         <Svg>
+          {/* Animated background grid lines */}
+          {[0, 1, 2].map((row) => (
+            <motion.line
+              key={`h${row}`}
+              x1="200"
+              y1={220 + row * 260}
+              x2="1400"
+              y2={220 + row * 260}
+              stroke={GRAY}
+              strokeWidth={1}
+              opacity={0.3}
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8, delay: row * 0.1 }}
+            />
+          ))}
+          {[0, 1, 2].map((col) => (
+            <motion.line
+              key={`v${col}`}
+              x1={260 + col * 380}
+              y1="180"
+              x2={260 + col * 380}
+              y2="700"
+              stroke={GRAY}
+              strokeWidth={1}
+              opacity={0.3}
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8, delay: col * 0.1 }}
+            />
+          ))}
           {Array.from({ length: 6 }).map((_, i) => {
             const col = i % 3;
             const row = Math.floor(i / 3);
@@ -384,6 +461,19 @@ export const ReportMetaphor: React.FC<Props> = ({ slideId, stats }) => {
             const y = 220 + row * 260;
             return (
               <g key={i}>
+                {/* Glow effect */}
+                <motion.rect
+                  x={x - 4}
+                  y={y - 4}
+                  width="328"
+                  height="208"
+                  rx="20"
+                  fill={RED}
+                  opacity={0}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.1, 0] }}
+                  transition={{ delay: i * 0.06 + 0.5, duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+                />
                 <motion.rect
                   x={x}
                   y={y}
@@ -394,9 +484,9 @@ export const ReportMetaphor: React.FC<Props> = ({ slideId, stats }) => {
                   stroke={BLACK}
                   strokeWidth={6}
                   {...baseStroke}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.45 }}
+                  initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: i * 0.06, duration: 0.45, type: 'spring' }}
                 />
                 {(() => {
                   const s = (stats ?? [])[i];
@@ -590,132 +680,201 @@ export const ReportMetaphor: React.FC<Props> = ({ slideId, stats }) => {
       );
     }
 
-    // 09 — Q1: reasoning spiral - lightweight
+    // 09 — Cognitive warfare: expanding spiral with particles
     case 9:
       return (
         <Svg>
-          {/* Simple spiral path */}
-          <motion.path
-            d="M800 450 Q 900 350 800 300 Q 650 350 700 450 Q 750 550 800 500"
-            fill="none"
-            stroke={RED}
-            strokeWidth={4}
-            strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-          />
-          {/* Center dot */}
+          {/* Multiple spiral layers */}
+          {[1, 0.8, 0.6].map((scale, idx) => (
+            <motion.path
+              key={idx}
+              d="M800 450 Q 900 350 800 300 Q 650 350 700 450 Q 750 550 800 500"
+              fill="none"
+              stroke={idx === 0 ? RED : BLACK}
+              strokeWidth={idx === 0 ? 6 : 2}
+              strokeLinecap="round"
+              opacity={idx === 0 ? 1 : 0.3}
+              initial={{ pathLength: 0, scale: 0 }}
+              animate={{ pathLength: 1, scale }}
+              transition={{ duration: 1.5 + idx * 0.3, ease: 'easeOut', delay: idx * 0.2 }}
+              style={{ transformOrigin: '800px 450px' }}
+            />
+          ))}
+          {/* Orbiting particles */}
+          {[0, 120, 240].map((angle, idx) => (
+            <motion.circle
+              key={idx}
+              cx="800"
+              cy="450"
+              r="6"
+              fill={RED}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 0.8, 0],
+                x: [0, Math.cos(angle * Math.PI / 180) * 100, 0],
+                y: [0, Math.sin(angle * Math.PI / 180) * 100, 0]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: idx * 0.3,
+                ease: 'easeInOut'
+              }}
+            />
+          ))}
+          {/* Pulsing center */}
           <motion.circle
             cx="800"
             cy="450"
             r="8"
             fill={RED}
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8, type: 'spring' }}
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ delay: 0.8, duration: 1.5, repeat: Infinity, type: 'spring' }}
           />
-          {/* Quarter label */}
-          <motion.text
-            x="800"
-            y="620"
-            textAnchor="middle"
-            fontFamily="IBM Plex Mono, monospace"
-            fontSize={72}
-            fontWeight="900"
-            fill={GRAY}
-            opacity={0.3}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            transition={{ delay: 0.5 }}
-          >
-            Q1
-          </motion.text>
         </Svg>
       );
 
-    // 10 — Q2: infra layers - lightweight
+    // 10 — Alignment filters: layered system with data flow
     case 10:
       return (
         <Svg>
-          {/* Simple 3 horizontal bars */}
-          {[0, 1, 2].map((i) => (
-            <motion.rect
-              key={i}
-              x="580"
-              y={350 + i * 70}
-              width="440"
-              height="50"
-              rx="4"
-              fill={i === 1 ? RED : 'none'}
-              stroke={i === 1 ? RED : GRAY}
+          {/* Background connections */}
+          {[0, 1].map((i) => (
+            <motion.line
+              key={`conn${i}`}
+              x1="800"
+              y1={385 + i * 70}
+              x2="800"
+              y2={420 + i * 70}
+              stroke={GRAY}
               strokeWidth={2}
-              opacity={i === 1 ? 0.2 : 0.5}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: i === 1 ? 0.2 : 0.5 }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              style={{ transformOrigin: '800px center' }}
+              strokeDasharray="6 6"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ delay: 0.5 + i * 0.2, duration: 0.6 }}
             />
           ))}
-          {/* Quarter label */}
-          <motion.text
-            x="800"
-            y="620"
-            textAnchor="middle"
-            fontFamily="IBM Plex Mono, monospace"
-            fontSize={72}
-            fontWeight="900"
-            fill={GRAY}
-            opacity={0.3}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            transition={{ delay: 0.5 }}
-          >
-            Q2
-          </motion.text>
+          {/* Three layered bars with different animations */}
+          {[0, 1, 2].map((i) => (
+            <g key={i}>
+              {/* Glow pulse */}
+              <motion.rect
+                x="540"
+                y={340 + i * 70}
+                width="520"
+                height="60"
+                rx="6"
+                fill={i === 1 ? RED : BLACK}
+                opacity={0}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: i === 1 ? [0, 0.15, 0] : [0, 0.05, 0] }}
+                transition={{ delay: i * 0.2 + 1, duration: 2, repeat: Infinity, repeatDelay: 1 }}
+              />
+              {/* Main bar */}
+              <motion.rect
+                x="560"
+                y={350 + i * 70}
+                width="480"
+                height="50"
+                rx="4"
+                fill={i === 1 ? RED : 'white'}
+                stroke={i === 1 ? RED : BLACK}
+                strokeWidth={i === 1 ? 4 : 2}
+                opacity={i === 1 ? 0.3 : 1}
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: i === 1 ? 0.3 : 1 }}
+                transition={{ delay: i * 0.15, duration: 0.6, type: 'spring' }}
+                style={{ transformOrigin: '800px center' }}
+              />
+              {/* Data flow particles */}
+              {i === 1 && [0, 0.3, 0.6].map((offset, idx) => (
+                <motion.circle
+                  key={idx}
+                  cy={375 + i * 70}
+                  r="4"
+                  fill={RED}
+                  initial={{ cx: 560, opacity: 0 }}
+                  animate={{ cx: 1040, opacity: [0, 1, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: offset * 1.5 + 0.8,
+                    ease: 'linear'
+                  }}
+                />
+              ))}
+            </g>
+          ))}
         </Svg>
       );
 
-    // 11 — Q3: bottleneck - lightweight
+    // 11 — Intimacy: companion funnel with flowing hearts
     case 11:
       return (
         <Svg>
-          {/* Simple hourglass/bottleneck shape */}
+          {/* Larger funnel shape */}
           <motion.path
-            d="M650 350 L950 350 L850 450 L950 550 L650 550 L750 450 Z"
-            fill="none"
-            stroke={GRAY}
-            strokeWidth={2}
+            d="M550 250 L1050 250 L900 450 L1050 650 L550 650 L700 450 Z"
+            fill="white"
+            stroke={BLACK}
+            strokeWidth={6}
+            {...baseStroke}
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 1.2 }}
           />
-          {/* Center squeeze point */}
+          {/* Red fill gradient effect */}
+          <motion.path
+            d="M700 450 L900 450 L850 550 L750 550 Z"
+            fill={RED}
+            opacity={0.15}
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            style={{ transformOrigin: '800px 500px' }}
+          />
+          {/* Falling particles (hearts/companions) */}
+          {[0, 0.25, 0.5, 0.75].map((offset, idx) => (
+            <motion.circle
+              key={idx}
+              cx={600 + idx * 100}
+              r="8"
+              fill={RED}
+              opacity={0.7}
+              initial={{ cy: 260, opacity: 0 }}
+              animate={{ cy: 640, opacity: [0, 0.8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: offset * 2,
+                ease: 'easeIn'
+              }}
+            />
+          ))}
+          {/* Pulsing center bottleneck */}
           <motion.circle
             cx="800"
             cy="450"
-            r="10"
+            r="16"
             fill={RED}
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8, type: 'spring' }}
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ delay: 0.8, duration: 1.5, repeat: Infinity, type: 'spring' }}
           />
-          {/* Quarter label */}
-          <motion.text
-            x="800"
-            y="620"
-            textAnchor="middle"
-            fontFamily="IBM Plex Mono, monospace"
-            fontSize={72}
-            fontWeight="900"
-            fill={GRAY}
-            opacity={0.3}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
-            transition={{ delay: 0.5 }}
-          >
-            Q3
-          </motion.text>
+          {/* Outer glow ring */}
+          <motion.circle
+            cx="800"
+            cy="450"
+            r="30"
+            fill="none"
+            stroke={RED}
+            strokeWidth={3}
+            opacity={0}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: [1, 1.5, 2], opacity: [0.5, 0.2, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+          />
         </Svg>
       );
 

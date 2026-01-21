@@ -1,18 +1,21 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { SlideData } from '../types';
+import { SlideData, VisualType } from '../types';
 import { VisualMetaphor } from './VisualMetaphors';
 import { PromptBlock } from './PromptBlock';
 import { LoopTransition } from './LoopTransition';
 import { SlideSource, SlideSources } from './SlideSource';
 import { useLanguage } from '../LanguageContext';
 import { getSlideContent } from '../slideContent';
+import { ShiftScrollPage } from './ShiftScrollPage';
+import { StoryScrollPage } from './StoryScrollPage';
+import { LandingPage } from './LandingPage';
 
-// Parse markdown-style formatting: **bold** and _italic_
+// Parse markdown-style formatting: **bold**, _italic_, and [links](url)
 const parseMarkdown = (text: string): React.ReactNode[] => {
   const parts: React.ReactNode[] = [];
-  // Regex to match **bold** or _italic_
-  const regex = /(\*\*[^*]+\*\*)|(_[^_]+_)/g;
+  // Match **[text](url)** (bold link), [text](url) (plain link), **bold** (but not if followed by [), or _italic_
+  const regex = /(\*\*\[([^\]]+)\]\(([^)]+)\)\*\*)|(\[([^\]]+)\]\(([^)]+)\))|(\*\*(?!\[)[^*]+\*\*)|(_[^_]+_)/g;
   let lastIndex = 0;
   let match;
   let key = 0;
@@ -24,7 +27,37 @@ const parseMarkdown = (text: string): React.ReactNode[] => {
     }
 
     const matched = match[0];
-    if (matched.startsWith('**')) {
+    if (matched.startsWith('**[')) {
+      // Bold link **[text](url)**
+      const linkText = match[2];
+      const linkUrl = match[3];
+      parts.push(
+        <a 
+          key={key++} 
+          href={linkUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="font-bold text-red-600 hover:text-neutral-400 transition-colors cursor-pointer"
+        >
+          {linkText}
+        </a>
+      );
+    } else if (matched.startsWith('[')) {
+      // Plain link [text](url)
+      const linkText = match[5];
+      const linkUrl = match[6];
+      parts.push(
+        <a 
+          key={key++} 
+          href={linkUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="font-bold text-red-600 hover:text-neutral-400 transition-colors cursor-pointer"
+        >
+          {linkText}
+        </a>
+      );
+    } else if (matched.startsWith('**')) {
       // Bold
       parts.push(
         <strong key={key++} className="font-bold text-red-600">
@@ -149,6 +182,16 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
   // Extract loop number from title if it's a loop slide (e.g., "LOOP 01 — ...")
   const loopMatch = title?.match(/LOOP\s*(\d+)/i);
   const loopNumber = loopMatch ? parseInt(loopMatch[1], 10) : undefined;
+
+  // Hero Scroll layout - landing page with Hero, VariableText, and PinnedSVG sections
+  if (data.layout === 'hero-scroll') {
+    return <LandingPage />;
+  }
+
+  // Story Scroll layout - all storytelling sections as full-screen scrollable page
+  if (data.layout === 'story-scroll') {
+    return <StoryScrollPage />;
+  }
 
   // Product layout - connects loops to AIM ecosystem
   if (data.layout === 'product') {
@@ -560,8 +603,23 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
 
   // Loop layout (Machines / Humans / Gap) - CLEAN MINIMAL DESIGN with bold numbers
   if (data.layout === 'loop') {
-    const loop = loopData;
-    if (!loop) return null;
+    let loop = loopData;
+    
+    // Fallback: parse content array if loopData is missing
+    if (!loop && content && content.length > 0) {
+      const fullText = content.join(' ');
+      const machineMatch = fullText.match(/\*\*Machine:\*\*(.*?)(?=\*\*Human:\*\*|\*\*Gap:\*\*|$)/s);
+      const humanMatch = fullText.match(/\*\*Human:\*\*(.*?)(?=\*\*Gap:\*\*|$)/s);
+      const gapMatch = fullText.match(/\*\*Gap:\*\*(.*?)$/s);
+      
+      loop = {
+        machine: machineMatch ? machineMatch[1].trim() : '',
+        human: humanMatch ? humanMatch[1].trim() : '',
+        gap: gapMatch ? gapMatch[1].trim() : ''
+      };
+    }
+    
+    if (!loop || !loop.machine) return null;
 
     return (
       <div className={`w-full h-full flex flex-col p-6 md:p-12 relative overflow-hidden ${bgClass}`}>
@@ -768,11 +826,230 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
     );
   }
 
+  // Shift Scroll layout - combines intro, loop, and evidence into one scrollable page
+  if (data.layout === 'shift-scroll') {
+    let loop = loopData || { machine: '', human: '', gap: '' };
+    let evidenceData = data.evidenceData || {};
+    let sourcesArr = data.sources || [];
+    let introSummary: string | undefined = undefined;
+    
+    // Fallback: parse content array if structured data is missing
+    if ((!loop.machine || !evidenceData.keyStats) && content && content.length > 0) {
+      const fullText = content.join(' ');
+      
+      // Parse The Machine Signal (intro summary)
+      const introSummaryMatch = fullText.match(/\*\*The Machine Signal:\*\*(.*?)(?=\*\*Machine:\*\*|\*\*Human:\*\*|$)/s);
+      introSummary = introSummaryMatch ? introSummaryMatch[1].trim() : undefined;
+      
+      // Parse Machine, Human, Gap, and their summaries
+      const machineMatch = fullText.match(/\*\*Machine:\*\*(.*?)(?=\*\*Machine Summary:\*\*|\*\*Human:\*\*|\*\*Gap:\*\*|$)/s);
+      const machineSummaryMatch = fullText.match(/\*\*Machine Summary:\*\*(.*?)(?=post-training:|\*\*Human:\*\*|\*\*Gap:\*\*|$)/s);
+      const postTrainingMatch = fullText.match(/post-training:\s*([^\n]+)/);
+      const humanMatch = fullText.match(/\*\*Human:\*\*(.*?)(?=\*\*Human Summary:\*\*|\*\*Gap:\*\*|\*\*Key Stats:\*\*|$)/s);
+      const humanSummaryMatch = fullText.match(/\*\*Human Summary:\*\*(.*?)(?=\*\*Gap:\*\*|\*\*Key Stats:\*\*|$)/s);
+      const gapMatch = fullText.match(/\*\*Gap:\*\*(.*?)(?=\*\*Key Stats:\*\*|$)/s);
+      
+      if (machineMatch || humanMatch || gapMatch) {
+        loop = {
+          machine: machineMatch ? machineMatch[1].trim() : '',
+          machineSummary: machineSummaryMatch ? machineSummaryMatch[1].trim() : undefined,
+          postTraining: postTrainingMatch ? postTrainingMatch[1].trim() : undefined,
+          human: humanMatch ? humanMatch[1].trim() : '',
+          humanSummary: humanSummaryMatch ? humanSummaryMatch[1].trim() : undefined,
+          gap: gapMatch ? gapMatch[1].trim() : ''
+        };
+      }
+      
+      // Parse Key Stats
+      const statsMatch = fullText.match(/\*\*Key Stats:\*\*\s*(.+?)(?:\*\*Research:\*\*|\*\*Industry Signals:\*\*|$)/s);
+      if (statsMatch) {
+        const statItems = statsMatch[1].split(/\s+-\s+/).map(s => s.trim()).filter(Boolean);
+        
+        evidenceData.keyStats = statItems.map(item => {
+          // Robust single-pass regex for Key Stats
+          // Handles optional leading dash, optional leading **, and colon separator variations
+          // Group 1: Value (may contain **), Group 2: Label
+          const match = item.match(/^\s*(?:[-•]\s+)?(?:\*\*)?(.+?)(?::\*\*|\*\*:\s*|:)\s*(.+)$/s);
+          
+          if (match) {
+            // Explicitly remove any remaining ** from the value
+            const value = match[1].replace(/\*\*/g, '').trim();
+            const label = match[2].trim();
+            
+            // Check for inline links to add to sources list if needed
+            if (label.includes('[') && label.includes('](')) {
+              const linkMatches = label.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g);
+              for (const linkMatch of linkMatches) {
+                const sourceLabel = linkMatch[1];
+                const sourceUrl = linkMatch[2];
+                if (!sourcesArr.some(s => s.label === sourceLabel)) {
+                  sourcesArr.push({ label: sourceLabel, url: sourceUrl });
+                }
+              }
+            }
+            
+            return { value, label };
+          }
+          return null;
+        }).filter((item): item is { value: string; label: string } => item !== null);
+      }
+      
+      // Parse AI Mindset Evidence separately
+      const aimMatch = fullText.match(/\*\*AI Mindset Evidence:\*\*\s*(.+?)(?:\*\*Tags:\*\*|\*\*Community Voices:\*\*|$)/s);
+      if (aimMatch) {
+        const aimItems = aimMatch[1]
+          .split(/(?=→ \[)/g)
+          .map(s => s.trim())
+          .filter(s => s.startsWith('→ ['));
+        
+        evidenceData.aimindsetEvidence = aimItems.map(item => {
+          const cleanItem = item.replace(/^→\s*/, '').trim();
+          return `ARROW:${cleanItem}`;
+        });
+      }
+      
+      // Parse Community Voices separately
+      const communityMatch = fullText.match(/\*\*Community Voices:\*\*\s*(.+?)(?:\s+source:|$)/s);
+      if (communityMatch) {
+        const communityItems = communityMatch[1]
+          .split(/(?=→ \*\*)/g)
+          .map(s => s.trim())
+          .filter(s => s.startsWith('→ **'));
+        
+        evidenceData.communityVoices = communityItems.map(item => {
+          const cleanItem = item.replace(/^→\s*/, '').trim();
+          return cleanItem;
+        });
+      }
+      
+      // Parse Research Highlights with URLs from sources
+      const researchMatch = fullText.match(/\*\*Research:\*\*\s*(.+?)(?:\*\*AI Mindset Evidence:\*\*|\*\*Tags:\*\*|\*\*Industry Signals:\*\*|$)/s);
+      if (researchMatch) {
+        // Split on markdown list items: - [TOP] [**Title**](url) or - [**Title**](url)
+        // This works even when lines are merged in JSON
+        const researchText = researchMatch[1];
+        const researchItems = researchText
+          .split(/(?=- (?:\[TOP\] )?\[\*\*)/g)
+          .map(s => s.trim())
+          .filter(s => s.startsWith('- ['));
+        
+        // Keep research items as-is with [TOP] prefix for important ones
+        evidenceData.researchHighlights = researchItems.map((item) => {
+          // Remove leading dash but keep [TOP] prefix and markdown
+          return item.replace(/^-\s*/, '').trim();
+        });
+      }
+      
+      // Parse Industry Signals from markdown (fallback)
+      const industryMatch = fullText.match(/\*\*Industry Signals:\*\*\s*(.+?)(?:\s+source:|$)/s);
+      if (industryMatch) {
+        evidenceData.industryData = industryMatch[1].split(',').map(s => s.trim()).filter(Boolean);
+      }
+    }
+    
+    // Use tags from JSON if available (preferred over markdown parsing)
+    if (data.tags && data.tags.length > 0) {
+      evidenceData.industryData = data.tags;
+    }
+    
+    const sources = (sourcesArr || []).map(s => ({ label: s.label, url: s.url || '' }));
+    
+    return (
+      <ShiftScrollPage
+        shiftNumber={data.loopNumber || 1}
+        title={title || ''}
+        subtitle={subtitle || ''}
+        alternativeSubtitle={data.alternativeSubtitle}
+        introSummary={introSummary}
+        caption={data.caption}
+        visual={data.visual}
+        machine={loop.machine || ''}
+        machineSummary={loop.machineSummary}
+        postTraining={loop.postTraining}
+        human={loop.human || ''}
+        humanSummary={loop.humanSummary}
+        gap={loop.gap || ''}
+        evidenceData={evidenceData}
+        sources={sources}
+        isDark={isDark}
+      />
+    );
+  }
+
   // Loop Evidence layout - dedicated slide for research data and sources per loop
   if (data.layout === 'loop-evidence') {
-    const evidenceData = data.evidenceData ?? {};
+    let evidenceData = data.evidenceData ?? {};
+    let sourcesArr = data.sources ?? [];
+    
+    // Fallback: parse content array into evidenceData if missing
+    if (!evidenceData.keyStats && content && content.length > 0) {
+      const fullText = content.join(' ');
+      
+      // Parse Key Stats - works with inline text without newlines
+      const statsMatch = fullText.match(/\*\*Key Stats:\*\*\s*(.+?)(?:\*\*Research:\*\*|\*\*Industry Signals:\*\*|$)/s);
+      if (statsMatch) {
+        const statItems = statsMatch[1].split(/\s+-\s+/).map(s => s.trim()).filter(Boolean);
+        
+        evidenceData.keyStats = statItems.map(item => {
+          // Robust single-pass regex for Key Stats
+          const match = item.match(/^\s*(?:[-•]\s+)?(?:\*\*)?(.+?)(?::\*\*|\*\*:\s*|:)\s*(.+)$/s);
+          
+          if (match) {
+            // Explicitly remove any remaining ** from the value
+            const value = match[1].replace(/\*\*/g, '').trim();
+            const label = match[2].trim();
+            
+            if (label.includes('[') && label.includes(']') && label.includes('(') && label.includes(')')) {
+              const sourceMatch = label.match(/\[(.*?)\]\((.*?)\)/);
+              if (sourceMatch) {
+                const sourceLabel = sourceMatch[1].trim();
+                const sourceUrl = sourceMatch[2].trim();
+                if (!sourcesArr.some(s => s.label === sourceLabel)) {
+                  sourcesArr.push({ label: sourceLabel, url: sourceUrl });
+                }
+              }
+            }
+            
+            return { value, label };
+          }
+          return null;
+        }).filter((item): item is { value: string; label: string; source?: string } => item !== null);
+      }
+      
+      // Parse Research Highlights with URLs from sources
+      const researchMatch = fullText.match(/\*\*Research:\*\*\s*(.+?)(?:\*\*Industry Signals:\*\*|$)/);
+      if (researchMatch) {
+        const researchItems = researchMatch[1].split(/\s+-\s+/).map(s => s.trim()).filter(Boolean);
+        
+        // Match research items with their sources based on text similarity
+        evidenceData.researchHighlights = researchItems.map((item, index) => {
+          // Remove leading '-' from first item if present
+          const cleanItem = index === 0 ? item.replace(/^-\s*/, '') : item;
+          // Find matching source by checking if source label contains key parts of research item
+          const matchingSource = sourcesArr.find(source => {
+            const labelLower = source.label.toLowerCase();
+            // Check for quoted text match or significant overlap
+            const quotedMatch = cleanItem.match(/"([^"]+)"/);
+            if (quotedMatch && labelLower.includes(quotedMatch[1].toLowerCase())) {
+              return true;
+            }
+            // Check for key phrase match (e.g., "Three Mile Island", "Brian Janous")
+            const keyPhrases = cleanItem.match(/\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b/g) || [];
+            return keyPhrases.some(phrase => labelLower.includes(phrase.toLowerCase()));
+          });
+          
+          return matchingSource ? `${cleanItem}|${matchingSource.url}` : cleanItem;
+        });
+      }
+      
+      // Parse Industry Signals
+      const industryMatch = fullText.match(/\*\*Industry Signals:\*\*\s*(.+?)(?:\s+source:|$)/s);
+      if (industryMatch) {
+        evidenceData.industryData = industryMatch[1].split(',').map(s => s.trim()).filter(Boolean);
+      }
+    }
+    
     const loopNum = data.loopNumber ?? 1;
-    const sourcesArr = data.sources ?? [];
 
     return (
       <div className={`w-full h-full flex flex-col p-6 md:p-10 relative overflow-hidden ${bgClass}`}>
@@ -913,9 +1190,6 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
             transition={{ delay: 0.5 }}
             className={`mt-4 pt-4 border-t ${isDark ? 'border-neutral-700' : 'border-neutral-200'}`}
           >
-            <div className={`flex items-center gap-2 mb-2 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
-              <span className="text-[10px] font-mono uppercase tracking-widest">Industry Signals</span>
-            </div>
             <div className="flex flex-wrap gap-2">
               {evidenceData.industryData.map((item, i) => (
                 <span
@@ -1181,7 +1455,21 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
 
   // Quotes layout - for community signals / testimonials (enhanced)
   if (data.layout === 'quotes') {
-    const quotesArr = data.quotes ?? [];
+    let quotesArr = data.quotes ?? [];
+    
+    // Fallback: parse quotes from content if quotes is null
+    if (quotesArr.length === 0 && content && content.length > 0) {
+      const fullText = content.join(' ');
+      
+      // Pattern: **"title"** > "quote text" — author name
+      const quotePattern = /\*\*"([^"]+)"\*\*\s*>\s*"([^"]+)"\s*—\s*([^*]+?)(?=\s*\*\*"|$)/g;
+      const matches = [...fullText.matchAll(quotePattern)];
+      
+      quotesArr = matches.map(match => ({
+        text: match[2].trim(),
+        author: match[3].trim()
+      })).filter(q => q.text && q.author);
+    }
     return (
       <div className={`w-full h-full flex flex-col p-6 md:p-10 relative overflow-hidden ${bgClass}`}>
         {/* Subtle diagonal pattern background */}
@@ -1646,6 +1934,18 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
                 />
               )}
 
+              {/* Supertitle - small text above title */}
+              {data.supertitle && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.5 }}
+                  className={`text-xs md:text-sm font-mono uppercase ${captionClass} tracking-wider text-center max-w-md whitespace-pre-line`}
+                >
+                  {data.supertitle}
+                </motion.div>
+              )}
+
               <motion.h1
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -1665,7 +1965,27 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
                 </motion.p>
               )}
 
-              {/* Navigation hint for first slide - more prominent */}
+              {/* Content for center layout (e.g., layer descriptions) */}
+              {data.content && data.content.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.5 }}
+                  className="mt-8 max-w-3xl text-center"
+                >
+                  {data.content.map((paragraph, i) => {
+                    // Check if paragraph is a divider line
+                    const isDivider = paragraph.trim().startsWith('━');
+                    return (
+                      <p key={i} className={`text-base md:text-lg ${textClass} leading-relaxed ${isDivider ? 'my-8' : 'mb-2'}`}>
+                        {parseMarkdown(paragraph)}
+                      </p>
+                    );
+                  })}
+                </motion.div>
+              )}
+
+              {/* Navigation hint for first slide - more prominent, responsive text */}
               {data.id === 1 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -1673,11 +1993,14 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
                   transition={{ delay: 1.2 }}
                   className="mt-12 flex flex-col items-center gap-3"
                 >
-                  <span className={`text-xs font-mono uppercase ${captionClass} tracking-[0.3em]`}>Press SPACE to Navigate</span>
+                  <span className={`text-xs font-mono uppercase ${captionClass} tracking-[0.3em] hidden sm:block`}>Press SPACE to Navigate</span>
+                  <span className={`text-xs font-mono uppercase ${captionClass} tracking-[0.3em] sm:hidden`}>Swipe Left/Right</span>
+                  
+                  {/* Desktop: Mouse scroll icon */}
                   <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="w-6 h-10 border-2 border-red-600/50 rounded-full flex justify-center pt-2"
+                    className="w-6 h-10 border-2 border-red-600/50 rounded-full justify-center pt-2 hidden sm:flex"
                   >
                     <motion.div
                       animate={{ y: [0, 8, 0], opacity: [1, 0, 1] }}
@@ -1685,7 +2008,318 @@ export const Slide: React.FC<Props> = ({ data, index }) => {
                       className="w-1.5 h-1.5 bg-red-600 rounded-full"
                     />
                   </motion.div>
+                  
+                  {/* Mobile: Swipe left/right icon */}
+                  <motion.div
+                    animate={{ x: [-5, 5, -5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="flex items-center gap-2 sm:hidden"
+                  >
+                    <motion.div
+                      animate={{ x: [-3, 0, -3], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="text-red-600 text-2xl"
+                    >
+                      ←
+                    </motion.div>
+                    <div className="w-8 h-8 border-2 border-red-600/50 rounded-full flex items-center justify-center">
+                      <div className="w-2 h-2 bg-red-600 rounded-full" />
+                    </div>
+                    <motion.div
+                      animate={{ x: [3, 0, 3], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="text-red-600 text-2xl"
+                    >
+                      →
+                    </motion.div>
+                  </motion.div>
                 </motion.div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* SUMMARY GRID LAYOUT - Machine (top left), Human (right lower), Gap (center bottom) */}
+        {data.layout === 'summary-grid' && (
+          <div className="w-full min-h-screen overflow-y-auto px-12 py-16">
+            <div className="max-w-7xl mx-auto">
+              <motion.h1
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className={`text-5xl md:text-6xl font-black tracking-tighter ${textClass} mb-4`}
+              >
+                {title}
+              </motion.h1>
+              {subtitle && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className={`text-xl ${textClass} opacity-70 mb-16`}
+                >
+                  {subtitle}
+                </motion.p>
+              )}
+              
+              {/* Grid layout: Machine left, Human right, Gap bottom center */}
+              {content && content.length > 0 && (() => {
+                const fullText = content.join('\n\n');
+                const machineMatch = fullText.match(/\*\*MACHINE:\*\*([\s\S]*?)(?=\*\*HUMAN:\*\*|$)/);
+                const humanMatch = fullText.match(/\*\*HUMAN:\*\*([\s\S]*?)(?=\*\*THE GAP:\*\*|$)/);
+                const gapMatch = fullText.match(/\*\*THE GAP:\*\*([\s\S]*?)(?=we're not a research|$)/);
+                
+                return (
+                  <>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                      {/* Machine section - top left */}
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="space-y-4"
+                      >
+                        <h2 className={`text-3xl font-bold ${textClass} mb-6`}>MACHINE</h2>
+                        <div 
+                          className={`text-base leading-relaxed ${textClass} opacity-80 space-y-3`} 
+                          dangerouslySetInnerHTML={{ __html: parseMarkdown(machineMatch?.[1]?.trim() || '') }} 
+                        />
+                      </motion.div>
+                      
+                      {/* Human section - right side, slightly lower */}
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 }}
+                        className="space-y-4 md:mt-12"
+                      >
+                        <h2 className={`text-3xl font-bold ${textClass} mb-6`}>HUMAN</h2>
+                        <div 
+                          className={`text-base leading-relaxed ${textClass} opacity-80 space-y-3`} 
+                          dangerouslySetInnerHTML={{ __html: parseMarkdown(humanMatch?.[1]?.trim() || '') }} 
+                        />
+                      </motion.div>
+                    </div>
+                    
+                    {/* Gap section - center bottom */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                      className="max-w-4xl mx-auto space-y-4 mt-16 pt-12 border-t border-current/10"
+                    >
+                      <h2 className={`text-3xl font-bold ${textClass} mb-6 text-center`}>THE GAP</h2>
+                      <div 
+                        className={`text-base leading-relaxed ${textClass} opacity-80 text-center`} 
+                        dangerouslySetInnerHTML={{ __html: parseMarkdown(gapMatch?.[1]?.trim() || '') }} 
+                      />
+                    </motion.div>
+                  </>
+                );
+              })()}
+            </div>
+          </div>
+        )}
+
+        {/* LANDING PAGE LAYOUT - for final CTA page with full storytelling */}
+        {data.layout === 'landing-page' && (
+          <div className="w-full min-h-screen overflow-y-auto px-8 md:px-16 py-24">
+            <div className="max-w-6xl mx-auto">
+              <motion.h1
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className={`text-6xl md:text-8xl font-black tracking-tighter ${textClass} mb-8 leading-[0.9]`}
+              >
+                {title}
+              </motion.h1>
+              {subtitle && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className={`text-3xl md:text-4xl ${textClass} opacity-50 mb-20 font-light leading-tight`}
+                >
+                  {subtitle}
+                </motion.p>
+              )}
+              
+              {/* Content with generous spacing for storytelling */}
+              {content && content.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className={`prose prose-xl ${isDark ? 'prose-invert' : ''} max-w-none`}
+                  dangerouslySetInnerHTML={{ __html: parseMarkdown(content.join('\n\n')) }}
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* FULL PAGE LAYOUT - unrestricted scrolling for long content */}
+        {data.layout === 'full-page' && (
+          <div className={`w-full min-h-screen overflow-y-auto ${bgClass}`}>
+            <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="prose prose-lg dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: parseMarkdown(content?.join('\n\n') || '') }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* ABOUT PAGE LAYOUT - for AI Mindset about page with labs and links */}
+        {data.layout === 'about-page' && (
+          <div className={`w-full h-full overflow-y-auto ${bgClass}`}>
+            <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24 min-h-full">
+              {/* Hero Section */}
+              <motion.div
+                initial={{ y: -30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className="mb-20"
+              >
+                <h1 className={`text-5xl md:text-8xl font-black tracking-tighter ${textClass} mb-6 leading-[0.9]`}>
+                  {title}
+                </h1>
+                {subtitle && (
+                  <p className={`text-2xl md:text-3xl ${textClass} opacity-50 font-light`}>
+                    {subtitle}
+                  </p>
+                )}
+              </motion.div>
+
+              {/* Content Blocks - parse and render each section separately */}
+              {content && content.length > 0 && (() => {
+                const fullText = content.join('\n\n');
+                const sections = fullText.split(/\*\*([^:]+):\*\*/g).filter(Boolean);
+                const blocks: { title: string; content: string }[] = [];
+                
+                for (let i = 0; i < sections.length; i += 2) {
+                  if (sections[i] && sections[i + 1]) {
+                    blocks.push({
+                      title: sections[i].trim(),
+                      content: sections[i + 1].trim()
+                    });
+                  }
+                }
+
+                return blocks.map((block, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + idx * 0.1 }}
+                    className="mb-16"
+                  >
+                    {/* Visual separator with metaphor */}
+                    {idx > 0 && (() => {
+                      const visualTypes: VisualType[] = ['network', 'velocity', 'grid'];
+                      return (
+                        <div className="flex items-center justify-center my-12">
+                          <div className="w-16 h-16 opacity-20">
+                            <VisualMetaphor type={visualTypes[idx % 3]} slideId={1000 + idx} />
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+                    {/* Block Title */}
+                    <h2 className={`text-3xl md:text-4xl font-bold ${textClass} mb-6 lowercase`}>
+                      {block.title}
+                    </h2>
+
+                    {/* Block Content with proper paragraph rendering */}
+                    <div className={`space-y-4 text-lg md:text-xl leading-relaxed ${textClass} opacity-80`}>
+                      {block.content.split('\n\n').map((para, pIdx) => {
+                        // Check if paragraph contains a link
+                        const linkMatch = para.match(/\[([^\]]+)\]\(([^)]+)\)/g);
+                        
+                        if (linkMatch) {
+                          // Render paragraph with clickable links
+                          let rendered = para;
+                          linkMatch.forEach(link => {
+                            const parts = link.match(/\[([^\]]+)\]\(([^)]+)\)/);
+                            if (parts) {
+                              const linkText = parts[1];
+                              const linkUrl = parts[2];
+                              rendered = rendered.replace(
+                                link,
+                                `<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 underline decoration-2 underline-offset-4 transition-colors">${linkText}</a>`
+                              );
+                            }
+                          });
+                          return (
+                            <p
+                              key={pIdx}
+                              dangerouslySetInnerHTML={{ __html: rendered }}
+                            />
+                          );
+                        }
+                        
+                        return <p key={pIdx}>{para}</p>;
+                      })}
+                    </div>
+                  </motion.div>
+                ));
+              })()}
+
+              {/* Closing Visual */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="flex items-center justify-center mt-20 mb-10"
+              >
+                <div className="w-32 h-32 opacity-10">
+                  <VisualMetaphor type="SPARKLE_FINALE" slideId={9999} />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+
+        {/* SCROLLABLE LAYOUT - for long content that needs to overflow */}
+        {data.layout === 'scrollable' && (
+          <div className="w-full min-h-screen overflow-y-auto px-12 py-16">
+            <div className="max-w-5xl mx-auto">
+              <motion.h1
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className={`text-5xl md:text-6xl font-black tracking-tighter ${textClass} mb-4`}
+              >
+                {title}
+              </motion.h1>
+              {subtitle && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className={`text-xl ${textClass} opacity-70 mb-12`}
+                >
+                  {subtitle}
+                </motion.p>
+              )}
+              
+              {/* Content with markdown support */}
+              {content && (
+                <div className="space-y-6">
+                  {content.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 + idx * 0.1 }}
+                      className={`text-lg leading-relaxed ${textClass}`}
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           </div>
