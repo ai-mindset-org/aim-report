@@ -1,14 +1,17 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useI18n } from '../hooks/useI18n';
 
 interface ThankYouProps {
   theme?: 'dark' | 'light';
   toggleTheme?: () => void;
   onPrev?: () => void;
+  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
-export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) => {
+export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev, lang = 'en' }) => {
   const isDark = theme === 'dark';
+  const i18n = useI18n(lang);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const bgMain = isDark ? 'bg-[#050505]' : 'bg-[#F4F4F5]';
@@ -42,10 +45,10 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
             {/* 1. TITLE GROUP */}
             <div className="thank-content text-center mb-16 md:mb-24">
                 <h1 className={`text-[15vw] md:text-[9rem] font-black leading-[0.8] tracking-tighter uppercase mb-6 select-none ${textMain}`}>
-                    Thank<br/>You
+                    {i18n?.thankYou.title || 'Thank You'}
                 </h1>
                 <p className={`font-mono ${textSecondary} text-xs md:text-sm uppercase tracking-[0.2em]`}>
-                    Created with the AI Mindset Labs Community
+                    {i18n?.thankYou.subtitle || 'for reading'}
                 </p>
             </div>
              

@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { useI18n } from '../hooks/useI18n';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  lang?: 'en' | 'ru' | 'by' | 'ro';
+}
+
+export const Hero: React.FC<HeroProps> = ({ lang = 'en' }) => {
+  const i18n = useI18n(lang);
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -92,13 +98,13 @@ export const Hero: React.FC = () => {
       <div className="z-10 text-center px-4" style={{ transformStyle: 'preserve-3d' }}>
         {/* Tighter tracking for headlines (-0.05em) makes them feel bigger and more authoritative */}
         <h1 ref={titleRef} className="text-[10vw] md:text-[9vw] leading-[0.85] font-black tracking-tighter text-[#F5F5F5] uppercase mix-blend-normal will-change-transform drop-shadow-2xl font-sans">
-          AI Mindset<br />2026 report
+          {i18n?.hero.title || 'AI Mindset 2026 report'}
         </h1>
         <div ref={subtitleRef} className="mt-8 flex flex-col items-center transform translate-z-10">
             <span className="inline-block w-12 h-[2px] bg-[#DC2626] mb-4"></span>
             {/* Wider tracking for small text (0.25em) improves readability and creates "tech" feel */}
             <p className="text-sm md:text-xl font-mono font-medium tracking-[0.25em] text-[#737373] uppercase">
-            the context gap
+            {i18n?.hero.subtitle || 'the context gap'}
             </p>
         </div>
       </div>

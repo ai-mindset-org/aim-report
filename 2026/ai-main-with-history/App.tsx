@@ -204,7 +204,7 @@ export default function App() {
   }, [viewState.view, viewState.index]);
 
   const renderContent = () => {
-    if (viewState.view === 'thankyou') return <ThankYou theme={theme} onPrev={handlePrev} />;
+    if (viewState.view === 'thankyou') return <ThankYou theme={theme} onPrev={handlePrev} lang={lang} />;
     if (viewState.view === 'conclusion') {
         const footerBg = theme === 'dark' ? 'bg-[#1a1a1a]' : 'bg-[#FAFAFA]';
         return (
@@ -214,9 +214,21 @@ export default function App() {
                     onNext={handleNext}
                     onPrev={handlePrev}
                     theme={theme} 
+                    lang={lang}
                 />
                 <div className={`h-40 ${footerBg}`}></div> 
             </div>
+        );
+    }
+    if (viewState.view === 'manifesto') {
+        return (
+            <ManifestoPage 
+                onRestart={closeReport} 
+                onNext={handleNext}
+                onPrev={handlePrev}
+                theme={theme} 
+                lang={lang}
+            />
         );
     }
     if (viewState.view === 'report') {
@@ -228,9 +240,9 @@ export default function App() {
     }
     return (
         <main className="w-full overflow-x-hidden">
-            <Hero />
-            <VariableTextSection />
-            <TectonicShifts onOpenReport={openReport} />
+            <Hero lang={lang} />
+            <VariableTextSection lang={lang} />
+            <TectonicShifts onOpenReport={openReport} lang={lang} />
             <div className={`h-10 ${theme === 'dark' ? 'bg-[#0A0A0A]' : 'bg-[#FAFAFA]'}`}></div>
         </main>
     );

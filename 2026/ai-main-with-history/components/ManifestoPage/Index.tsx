@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ManifestoPageProps } from './types';
 import { ProtocolCard } from './ProtocolCard';
 import { EcoVisual } from './EcoVisuals';
+import { useI18n } from '../../hooks/useI18n';
 
 const BLOCKED_DOMAINS = [
   'youtube.com',
@@ -26,7 +27,7 @@ const isUrlBlocked = (url: string): boolean => {
   }
 };
 
-export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext, onPrev, theme = 'dark' }) => {
+export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext, onPrev, theme = 'dark', lang = 'en' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const protocolsRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
   const [ogData, setOgData] = useState<any>(null);
   const [ogLoading, setOgLoading] = useState(false);
   const ogCache = useRef<Record<string, any>>({});
+  const i18n = useI18n(lang);
   
   const isDark = theme === 'dark';
 
@@ -198,7 +200,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
                         </div>
                         <div className="flex items-center gap-2">
                              <a href={browserUrl} target="_blank" rel="noreferrer" className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase transition-all ${isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'}`}>
-                                <span>Open in New Tab</span>
+                                <span>{i18n?.manifesto.openInNewTab || 'Open in New Tab'}</span>
                                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 0 0-2-2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                              </a>
                              <button onClick={() => setBrowserUrl(null)} className={`p-2 ${isDark ? 'hover:bg-neutral-800 text-neutral-400 hover:text-white' : 'hover:bg-neutral-200 text-neutral-500 hover:text-black'} rounded transition-colors`}>
@@ -264,16 +266,16 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
         <div ref={heroRef} onMouseMove={handleHeroMouseMove} className="relative min-h-[90vh] flex flex-col justify-center px-6 pt-20">
             <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#DC2626] opacity-[0.04] blur-[120px] pointer-events-none rounded-full transition-transform duration-200 ease-out will-change-transform" style={{ transform: `translate(${heroMouse.x * -50}px, ${heroMouse.y * -50}px)` }}></div>
             <div className="max-w-7xl mx-auto w-full z-10 relative">
-                <p className="hero-sub-text font-mono text-[#DC2626] text-sm md:text-base tracking-[0.2em] uppercase mb-6">So... what's next?</p>
+                <p className="hero-sub-text font-mono text-[#DC2626] text-sm md:text-base tracking-[0.2em] uppercase mb-6">{i18n?.manifesto.soWhatsNext || "So... what's next?"}</p>
                 <h1 className={`hero-title text-[12vw] leading-[0.85] font-black uppercase tracking-tighter mb-12 ${isDark ? 'mix-blend-lighten' : 'mix-blend-darken'} perspective-[1000px]`}>
-                    <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * 20}px)` }}>The</span>
-                    <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * -20}px)` }}>Sovereignty</span>
-                    <span className="block text-[#DC2626]" style={{ transform: `translateX(${heroMouse.x * 40}px)` }}>Reset</span>
+                    {i18n?.manifesto.title1 && <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * 20}px)` }}>{i18n.manifesto.title1}</span>}
+                    <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * -20}px)` }}>{i18n?.manifesto.title2 || 'Sovereignty'}</span>
+                    {i18n?.manifesto.title3 && <span className="block text-[#DC2626]" style={{ transform: `translateX(${heroMouse.x * 40}px)` }}>{i18n.manifesto.title3}</span>}
                 </h1>
                 <div className={`hero-line w-full h-[1px] ${isDark ? 'bg-white/20' : 'bg-black/10'} mb-12 origin-left`}></div>
                 <div className="hero-sub-text grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
                     <p className={`text-xl md:text-2xl font-light leading-relaxed ${styles.textSec}`}>
-                        This report is done by the <a href="https://aimindset.org" target="_blank" rel="noreferrer" className={`font-bold ${styles.textMain} border-b-2 border-[#DC2626] hover:bg-[#DC2626] hover:text-white transition-all px-1`}>AI Mindset</a> team. We're not a research institute. We're a <span className={`${styles.textMain} font-bold`}>lab</span> — a place where people practice AI.
+                        {i18n?.manifesto.intro || 'This report is done by the'} <a href="https://aimindset.org" target="_blank" rel="noreferrer" className={`font-bold ${styles.textMain} border-b-2 border-[#DC2626] hover:bg-[#DC2626] hover:text-white transition-all px-1`}>{i18n?.manifesto.aiMindsetTeam || 'AI Mindset'}</a> {i18n?.manifesto.notInstitute || "team. We're not a research institute. We're a"} <span className={`${styles.textMain} font-bold`}>{i18n?.manifesto.lab || 'lab'}</span> {i18n?.manifesto.practice || '— a place where people practice AI.'}
                     </p>
                 </div>
             </div>

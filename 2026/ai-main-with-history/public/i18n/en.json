@@ -11,5 +11,37 @@
     "preview": "Preview",
     "loading": "Loading...",
     "couldNotLoadPreview": "Could not load preview"
+  },
+  "hero": {
+    "title": "AI Mindset 2026 report",
+    "subtitle": "the context gap"
+  },
+  "variable": {
+    "aiEvolving": "AI Is Evolving",
+    "aiFaster": "Faster. Deeper. Smarter.",
+    "humanReacting": "Humans Are Reacting",
+    "humanSlower": "Slower. Overwhelmed. Adapting."
+  },
+  "tectonic": {
+    "title": "11 Tectonic Shifts",
+    "subtitle": "how machines and humans diverged in 2025",
+    "viewReport": "View Full Report"
+  },
+  "manifesto": {
+    "soWhatsNext": "So... what's next?",
+    "title1": "The",
+    "title2": "Sovereignty",
+    "title3": "Reset",
+    "intro": "This report is done by the",
+    "aiMindsetTeam": "AI Mindset",
+    "notInstitute": "team. We're not a research institute. We're a",
+    "lab": "lab",
+    "practice": "— a place where people practice AI.",
+    "openInNewTab": "Open in New Tab"
+  },
+  "thankYou": {
+    "title": "Thank You",
+    "subtitle": "for reading",
+    "backToStart": "Back to Start"
   }
 }

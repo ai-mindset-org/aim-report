@@ -1,11 +1,17 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useI18n } from '../hooks/useI18n';
 
 // Register globally
 gsap.registerPlugin(ScrollTrigger);
 
-export const VariableTextSection: React.FC = () => {
+interface VariableTextSectionProps {
+  lang?: 'en' | 'ru' | 'by' | 'ro';
+}
+
+export const VariableTextSection: React.FC<VariableTextSectionProps> = ({ lang = 'en' }) => {
+  const i18n = useI18n(lang);
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Captions Refs
@@ -198,8 +204,8 @@ export const VariableTextSection: React.FC = () => {
           className="absolute left-[2vw] pointer-events-none origin-left"
           style={{ top: 'calc(50% - 11vw)' }}
         >
-          <p className="font-sans text-[#DC2626] text-2xl md:text-4xl uppercase tracking-tighter font-black leading-none drop-shadow-[0_0_15px_rgba(220,38,38,0.5)]">
-            AI Is Evolving
+          <p className="font-sans text-[#F5F5F5] text-2xl md:text-4xl uppercase tracking-tighter font-black leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+            {i18n?.variable.aiEvolving || 'AI Is Evolving'}
           </p>
         </div>
 
@@ -209,8 +215,8 @@ export const VariableTextSection: React.FC = () => {
           className="absolute left-[2vw] pointer-events-none origin-left"
           style={{ top: 'calc(50% + 11vw)' }}
         >
-          <p className="font-mono text-[#737373] text-base md:text-lg uppercase tracking-widest font-bold">
-            Faster. Deeper. Smarter.
+          <p className="font-sans text-[#DC2626] text-sm md:text-lg font-bold uppercase tracking-wider leading-tight">
+            {i18n?.variable.aiFaster || 'Faster. Deeper. Smarter.'}
           </p>
         </div>
 
@@ -220,8 +226,8 @@ export const VariableTextSection: React.FC = () => {
           className="absolute right-[2vw] text-right pointer-events-none origin-right flex flex-col items-end"
           style={{ top: 'calc(50% - 11vw)' }}
         >
-          <p className="font-sans text-white text-2xl md:text-4xl uppercase tracking-tighter font-black leading-none">
-            Humans Are Reacting
+          <p className="font-sans text-[#F5F5F5] text-2xl md:text-4xl uppercase tracking-tighter font-black leading-none">
+            {i18n?.variable.humanReacting || 'Humans Are Reacting'}
           </p>
         </div>
 
@@ -231,8 +237,8 @@ export const VariableTextSection: React.FC = () => {
           className="absolute right-[2vw] text-right pointer-events-none origin-right flex flex-col items-end"
           style={{ top: 'calc(50% + 11vw)' }}
         >
-          <p className="font-mono text-[#737373] text-base md:text-lg uppercase tracking-widest font-bold">
-            Slower. Overwhelmed. Adapting.
+          <p className="font-sans text-neutral-400 text-sm md:text-lg font-bold uppercase tracking-wider leading-tight">
+            {i18n?.variable.humanSlower || 'Slower. Overwhelmed. Adapting.'}
           </p>
         </div>
 
