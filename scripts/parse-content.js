@@ -29,6 +29,7 @@ function parseLanguage(lang) {
     const slide = { metadata: {}, content: '' };
     let inMetadata = true;
     let contentLines = [];
+    let freeTextLines = [];
 
     lines.forEach(line => {
       if (line.startsWith('title:')) {
@@ -43,12 +44,16 @@ function parseLanguage(lang) {
         slide.metadata.loopNumber = line.replace('loopNumber:', '').trim();
       } else if (line.trim() === '') {
         inMetadata = false;
+      } else if (inMetadata && !line.includes(':')) {
+        // Free-text line in metadata block (likely constraint)
+        freeTextLines.push(line.trim());
       } else if (!inMetadata) {
         contentLines.push(line);
       }
     });
 
     slide.content = contentLines.join('\n').trim();
+    slide.metadata.constraint = freeTextLines.join(' ');
 
     // Determine slide type - check for layer keywords in multiple languages
     const isLayer = slide.metadata.layout === 'center' && (
@@ -64,12 +69,16 @@ function parseLanguage(lang) {
         .replace(/пласт [iv]+:\s*/i, '')
         .replace(/stratul [iv]+:\s*/i, '');
       
+      // Get description from content
+      const contentLines = slide.content.split('\n').filter(line => line.trim());
+      const desc = contentLines[0] || '';
+      
       layers.push({
         id: layerId,
         title: titleClean.toUpperCase(),
         subtitle: slide.metadata.subtitle || '',
-        desc: slide.content.split('\n')[0] || '',
-        constraint: '',
+        desc: desc,
+        constraint: slide.metadata.constraint || '',
         metaphor: 'globe'
       });
     } else if (slide.metadata.layout === 'shift-scroll') {
