@@ -1,0 +1,64 @@
+{
+  "ui": {
+    "openFull": "Deschide complet",
+    "openFullArticle": "Citește articolul",
+    "openLink": "Deschide linkul",
+    "close": "Închide",
+    "next": "Înainte",
+    "prev": "Înapoi",
+    "back": "Înapoi",
+    "index": "Index",
+    "preview": "Previzualizare",
+    "loading": "Se încarcă...",
+    "couldNotLoadPreview": "Nu s-a putut încărca previzualizarea",
+    "keyStats": "Date cheie",
+    "research": "Cercetare",
+    "industrySignals": "Semnale din industrie",
+    "dataSources": "Surse de date",
+    "voices": "Voci"
+  },
+  "hero": {
+    "title": "Raport AI Mindset 2026",
+    "subtitle": "decalajul contextual"
+  },
+  "variable": {
+    "aiEvolving": "AI evoluează",
+    "aiFaster": "Mai rapid. Mai profund. Mai inteligent.",
+    "humanReacting": "Oamenii reactionează",
+    "humanSlower": "Mai lent. Supraîncărcați. Se adaptează."
+  },
+  "tectonic": {
+    "title": "11 schimbări tectonice",
+    "subtitle": "cum mașinile și oamenii s-au distanțat în 2025",
+    "viewReport": "Vezi raportul"
+  },
+  "manifesto": {
+    "soWhatsNext": "Deci... ce urmează?",
+    "title1": "Resetarea",
+    "title2": "suveranității",
+    "title3": "",
+    "intro": "Acest raport a fost pregătit de echipa",
+    "aiMindsetTeam": "AI Mindset",
+    "notInstitute": ". Nu suntem un institut de cercetare. Suntem un",
+    "lab": "laborator",
+    "practice": "— un loc unde oamenii practică AI.",
+    "openInNewTab": "Deschide în filă nouă"
+  },
+  "thankYou": {
+    "title": "Mulțumim",
+    "subtitle": "Creat împreună cu comunitatea AI Mindset Labs",
+    "backToStart": "Înapoi la început"
+  },
+  "summary": {
+    "title1": "MAȘINI",
+    "title2": "OAMENI",
+    "badge": "Rezumat",
+    "period": "2025 → 2026",
+    "trend": "Tendința este: pe măsură ce energia devine principala limitare, agenții AI cu portofele devin actori economici autonomi într-un peisaj de suveranitate regională fragmentată și ideologie încorporată. Saturația cu date sintetice va deplasa focusul către alfabetizarea provenienței, în timp ce utilizatorii se confruntă cu obezitatea contextuală și anxietatea orchestrării. În acest mediu de încredere zero, confidențialitatea va deveni simbol de statut, alimentând criza autorului și adoptarea în masă a intimității sintetice.",
+    "finalQuote": "Decalajul dintre ceea ce generează mașinile și ceea ce pot integra oamenii este",
+    "finalQuoteHighlight": "provocarea definitorie",
+    "finalQuoteEnd": "a timpului nostru.",
+    "reviewButton": "Recenzie",
+    "manifestoButton": "Manifest"
+  }
+}

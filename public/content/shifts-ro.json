@@ -1,0 +1,325 @@
+{
+  "shifts": [
+    {
+      "id": "01",
+      "layerId": "I",
+      "layerTitle": "FUNDAȚIE",
+      "title": "plafonul energetic",
+      "subtitle": "schimbarea 01: de la cost - la limitele infrastructurii",
+      "context": "fără energie suficientă, implementarea ia se oprește. pentru agenți, modele raționante și noi descoperiri e nevoie de energie.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "02",
+      "layerId": "I",
+      "layerTitle": "FUNDAȚIE",
+      "title": "deplasare (muncă agentică)",
+      "subtitle": "schimbarea 02: copilot ➔ coleg autonom",
+      "context": "când infrastructura energetică se stabilizează, modelele pot scala. modelele inteligente devin agenți.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "03",
+      "layerId": "I",
+      "layerTitle": "FUNDAȚIE",
+      "title": "suveranitate (dezbinarea internetului)",
+      "subtitle": "schimbarea 03: deschidere globală ➔ stive fragmentate",
+      "context": "când agenții ating banii, instituțiile cer reguli. munca agentică face ia un activ strategic.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "04",
+      "layerId": "II",
+      "layerTitle": "GÂNDIRE",
+      "title": "raționament",
+      "subtitle": "schimbarea 04: chatbots (sistem 1) ➔ modele gânditoare (sistem 2)",
+      "context": "stratul fundamental e complet. AI trece de la răspunsuri instinctive la gândire deliberată. actul doi sequoia.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "05",
+      "layerId": "II",
+      "layerTitle": "GÂNDIRE",
+      "title": "cunoaștere (memorie)",
+      "subtitle": "schimbarea 05: acumulare informație ➔ filtrare context",
+      "context": "modelele de raționament nu pot gândi în vid. au nevoie de context maxim - date corporative, documente, conversații.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "06",
+      "layerId": "II",
+      "layerTitle": "GÂNDIRE",
+      "title": "descoperire (știință generativă)",
+      "subtitle": "schimbarea 06: căutare informație ➔ generare ipoteze",
+      "context": "când AI primește acces la cercetare la scară, citește milioane de articole peste noapte. descoperiri la viteza mașinii.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "07",
+      "layerId": "III",
+      "layerTitle": "INTERFAȚĂ",
+      "title": "măiestrie (sfârșitul sintaxei)",
+      "subtitle": "schimbarea 07: sintaxă ➔ vibe coding & criză de integritate",
+      "context": "când agenții pot orchestra fluxuri de lucru, coding-ul devine cel mia ușor domeniu de automatizat.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "08",
+      "layerId": "III",
+      "layerTitle": "INTERFAȚĂ",
+      "title": "realitate (corp)",
+      "subtitle": "schimbarea 08: simulare digitală → inteligență fizică",
+      "context": "când AI are date despre lumea fizică, o poate simula. AI învață fizică fără a atinge atomii.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "09",
+      "layerId": "III",
+      "layerTitle": "INTERFAȚĂ",
+      "title": "apărare (pădure întunecată)",
+      "subtitle": "schimbarea 09: cybersecurity ➔ război cognitiv",
+      "context": "când simularea e ieftină, realitatea sintetică devine armă. deepfake-urile costă aproape zero.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "10",
+      "layerId": "IV",
+      "layerTitle": "UMANITATE",
+      "title": "narativ (aliniere ca și cenzură)",
+      "subtitle": "schimbarea 10: halucinație ➔ filtre ideologice",
+      "context": "criza apărării forțează aliniere. securitatea devine cenzură.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    },
+    {
+      "id": "11",
+      "layerId": "IV",
+      "layerTitle": "UMANITATE",
+      "title": "intimitate (prieteni de vânzare)",
+      "subtitle": "schimbarea 11: instrument ➔ companion emoțional",
+      "context": "când AI se adaptează prea bine, se transformă din instrument în companion.",
+      "machineCol": {
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
+        "desc": ""
+      },
+      "humanCol": {
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
+        "desc": ""
+      },
+      "gap": {
+        "title": "DECALAJ",
+        "desc": ""
+      },
+      "stats": [],
+      "evidence": [],
+      "sources": [],
+      "voices": []
+    }
+  ],
+  "layers": [
+    {
+      "id": "I",
+      "title": "FUNDAȚIE",
+      "subtitle": "când infrastructura se prăbușește. fizică, economie și putere.",
+      "desc": "",
+      "constraint": "",
+      "metaphor": "globe"
+    },
+    {
+      "id": "II",
+      "title": "COGNIȚIE",
+      "subtitle": "arhitectura sensului și raționamentului",
+      "desc": "cu **infrastructură energetică**, **muncă agentică** și **stive geopolitice** la locul lor, ia trece de la calcul brut la **capacitate de raționament**. acest strat răspunde la trei întrebări: **putem avea încredere în cum gândește?** **putem verifica logica sa?** **putem accelera descoperirile?**",
+      "constraint": "",
+      "metaphor": "globe"
+    },
+    {
+      "id": "III",
+      "title": "INTERFAȚĂ",
+      "subtitle": "cum construim, apărăm și trăim",
+      "desc": "cu raționament, acces la cunoaștere și capacități de descoperire, ia se mișcă de la **inteligență abstractă la execuție practică**. **putem menține ce construim?** **putem conecta digitalul și fizicul?** **ne putem apăra de ceea ce creăm?**",
+      "constraint": "",
+      "metaphor": "globe"
+    },
+    {
+      "id": "IV",
+      "title": "UMANITATE",
+      "subtitle": "când mașinile modelează sensul. narativ, intimitate, adevăr",
+      "desc": "criza apărării forțează aliniere. securitatea devine cenzură. când narativul e filtrat și încrederea colapsează, oamenii se retrag la companioni ia.",
+      "constraint": "",
+      "metaphor": "globe"
+    }
+  ],
+  "generated": "2026-01-22T15:48:54.717Z"
+}

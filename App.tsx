@@ -9,7 +9,7 @@ import { LayerView } from './components/LayerView';
 import { SummaryView } from './components/SummaryView';
 import { TimelineNav, TimelineItem } from './components/TimelineNav'; 
 import { IndexNavigation } from './components/NavigationPopUp/IndexNavigation';
-import { shifts as defaultShifts, layers as defaultLayers, ShiftData, LayerData } from './components/shiftsData';
+import { ShiftData, LayerData } from './components/shiftsData';
 import { ThankYou } from './components/ThankYou';
 import { ManifestoPage } from './components/ManifestoPage/Index';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
