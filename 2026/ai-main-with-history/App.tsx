@@ -239,6 +239,21 @@ export default function App() {
 
   return (
     <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
+        {/* Fixed Logo Header */}
+        <div className="fixed top-0 left-0 z-[200] p-4 md:p-6">
+            <a 
+                href="https://aimindset.org" 
+                target="_blank" 
+                rel="noreferrer"
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all hover:bg-white/5 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            >
+                <div className="w-8 h-8 bg-[#DC2626] rounded flex items-center justify-center">
+                    <span className="text-white font-black text-xs">AI</span>
+                </div>
+                <span className="font-mono text-sm font-bold tracking-wide hidden md:inline">MINDSET</span>
+            </a>
+        </div>
+        
         {renderContent()}
         <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} lang={lang} setLang={setLang} showThemeToggle={viewState.view !== 'landing'} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
