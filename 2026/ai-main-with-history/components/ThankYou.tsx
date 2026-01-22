@@ -57,7 +57,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
                  </div>
                  <div>
                      <h4 className="text-[#DC2626] font-bold text-xl md:text-2xl mb-1 tracking-tight">alex p</h4>
-                     <p className={`font-mono text-[10px] ${textLinkDesc} uppercase tracking-widest leading-relaxed`}>ideation & lead</p>
+                     <p className={`font-mono text-[10px] ${textLinkDesc} uppercase tracking-widest leading-relaxed`}>ideation</p>
                  </div>
                  <div>
                      <h4 className="text-[#DC2626] font-bold text-xl md:text-2xl mb-1 tracking-tight">ray svitla</h4>
