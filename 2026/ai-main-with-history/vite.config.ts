@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      base: mode === 'production' ? '/aim-annual-report-2025/' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
