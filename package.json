@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/parse-ru-content.js && vite build",
+    "build": "node scripts/parse-content.js && vite build",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
-    "content:ru": "node scripts/parse-ru-content.js"
+    "content": "node scripts/parse-content.js"
   },
   "dependencies": {
     "gsap": "^3.14.2",
