@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState, useEffect, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useI18n } from '../hooks/useI18n';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,9 +56,11 @@ const CoreGeometry = React.memo(({ color, shape }: { color: string, shape: 'squa
 
 interface TectonicShiftsProps {
   onOpenReport?: () => void;
+  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
-export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) => {
+export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, lang = 'en' }) => {
+  const i18n = useI18n(lang);
   const containerRef = useRef<HTMLDivElement>(null);
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const mouseGroupRef = useRef<SVGGElement>(null); 
@@ -592,7 +595,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
              THE GAP THAT WE SEE IN
            </h2>
            <h2 className="text-[8vw] md:text-[7vw] font-black text-transparent leading-[0.85] tracking-tighter uppercase font-sans" style={{ WebkitTextStroke: "1px white", "--wght": 900 } as React.CSSProperties}>
-             11 TECTONIC SHIFTS
+             {i18n?.tectonic.title.toUpperCase() || '11 TECTONIC SHIFTS'}
            </h2>
            <p className="font-mono text-sm text-neutral-500 mt-4 tracking-widest uppercase">
               of the AI World
@@ -603,7 +606,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
             <div className="w-full max-w-7xl px-2 md:px-6 flex items-start gap-12 pointer-events-auto">
                 
                 <div className="flex flex-col gap-3 w-full max-w-full md:max-w-[450px]">
-                   <h3 className="text-[8vw] md:text-5xl font-bold text-white mb-8 leading-none tracking-tighter mix-blend-overlay font-sans">
+                   <h3 className="text-[8vw] font-bold text-white mb-8 leading-none tracking-tighter mix-blend-overlay font-sans">
                      In 4 Layers:
                    </h3>
                    {layersData.map((layer) => (
@@ -806,8 +809,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
 
         <div ref={textShiftsRef} className="absolute text-center flex flex-col items-center justify-between py-20 w-full h-full z-50 pointer-events-none will-change-transform">
           <div className="mt-[15vh] flex flex-col items-center">
-            <h2 className="vf-anim text-[8vw] font-black text-transparent leading-[0.85] tracking-tighter uppercase font-sans mb-8 md:mb-0" style={{ WebkitTextStroke: "1px white", "--wght": 1000 } as React.CSSProperties}>11 TECTONIC</h2>
-            <h2 className="vf-anim text-[8vw] font-black text-white leading-[0.85] tracking-tighter uppercase mix-blend-overlay font-sans" style={{"--wght": 1000 } as React.CSSProperties}>SHIFTS</h2>
+            <h2 className="vf-anim text-[8vw] font-black text-transparent leading-[0.85] tracking-tighter uppercase font-sans mb-8 md:mb-0" style={{ WebkitTextStroke: "1px white", "--wght": 1000 } as React.CSSProperties}>{i18n?.tectonic.title.toUpperCase() || '11 TECTONIC SHIFTS'}</h2>
           </div>
 
           <div className="flex flex-col items-center mb-10 md:mb-12">
@@ -849,7 +851,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
               }}
             >
                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-               <span className="relative font-mono text-sm tracking-[0.2em] text-white group-hover:text-black transition-colors duration-500 font-bold uppercase">Explore Report</span>
+               <span className="relative font-mono text-sm tracking-[0.2em] text-white group-hover:text-black transition-colors duration-500 font-bold uppercase">{i18n?.tectonic.viewReport || 'Explore Report'}</span>
             </button>
             
             <div ref={navInstructionsRef} className="mt-6 flex items-center gap-12 text-neutral-500">

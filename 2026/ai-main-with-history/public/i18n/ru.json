@@ -11,5 +11,37 @@
     "preview": "Превью",
     "loading": "Загрузка...",
     "couldNotLoadPreview": "Не удалось загрузить превью"
+  },
+  "hero": {
+    "title": "AI Mindset отчёт 2026",
+    "subtitle": "контекстный разрыв"
+  },
+  "variable": {
+    "aiEvolving": "ИИ эволюционирует",
+    "aiFaster": "Быстрее. Глубже. Умнее.",
+    "humanReacting": "Люди реагируют",
+    "humanSlower": "Медленнее. Перегружены. Адаптируются."
+  },
+  "tectonic": {
+    "title": "11 тектонических сдвигов",
+    "subtitle": "как машины и люди разошлись в 2025",
+    "viewReport": "Смотреть отчёт"
+  },
+  "manifesto": {
+    "soWhatsNext": "Так... что дальше?",
+    "title1": "Перезагрузка",
+    "title2": "суверенитета",
+    "title3": "",
+    "intro": "Этот отчёт подготовлен командой",
+    "aiMindsetTeam": "AI Mindset",
+    "notInstitute": ". Мы не исследовательский институт. Мы",
+    "lab": "лаборатория",
+    "practice": "— место, где люди практикуют ИИ.",
+    "openInNewTab": "Открыть в новой вкладке"
+  },
+  "thankYou": {
+    "title": "Спасибо",
+    "subtitle": "за прочтение",
+    "backToStart": "В начало"
   }
 }
