@@ -9,14 +9,18 @@ import { LayerView } from './components/LayerView';
 import { SummaryView } from './components/SummaryView';
 import { TimelineNav, TimelineItem } from './components/TimelineNav'; 
 import { IndexNavigation } from './components/NavigationPopUp/IndexNavigation';
-import { shifts, layers, ShiftData, LayerData } from './components/shiftsData';
+import { shifts as defaultShifts, layers as defaultLayers, ShiftData, LayerData } from './components/shiftsData';
 import { ThankYou } from './components/ThankYou';
 import { ManifestoPage } from './components/ManifestoPage/Index';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
+import { useShiftsData } from './hooks/useShiftsData';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
+  const [lang, setLang] = useState<'en' | 'ru' | 'by' | 'ro'>('en');
+  const { shifts, layers, loading } = useShiftsData(lang);
+
   const timeline = useMemo<TimelineItem[]>(() => {
     const items: TimelineItem[] = [];
     const sortedShifts = [...shifts].sort((a, b) => parseInt(a.id) - parseInt(b.id));
@@ -31,10 +35,10 @@ export default function App() {
 
     const summaryLayer: LayerData = {
         id: "SUM",
-        title: "EXECUTIVE SUMMARY",
-        subtitle: "11 Tectonic Shifts",
-        desc: "A consolidated view of the divergence between machine capability and human adaptation.",
-        constraint: "The Context Gap",
+        title: lang === 'ru' ? "ИСПОЛНИТЕЛЬНОЕ РЕЗЮМЕ" : "EXECUTIVE SUMMARY",
+        subtitle: lang === 'ru' ? "11 тектонических сдвигов" : "11 Tectonic Shifts",
+        desc: lang === 'ru' ? "Консолидированный взгляд на расхождение между возможностями машин и адаптацией человека." : "A consolidated view of the divergence between machine capability and human adaptation.",
+        constraint: lang === 'ru' ? "Контекстный разрыв" : "The Context Gap",
         metaphor: 'globe' 
     };
 
@@ -44,7 +48,7 @@ export default function App() {
     });
 
     return items;
-  }, []);
+  }, [shifts, layers, lang]);
 
   const getHashFromIndex = (idx: number) => {
       const item = timeline[idx];
@@ -102,7 +106,6 @@ export default function App() {
       document.body.style.backgroundColor = theme === 'dark' ? '#0A0A0A' : '#F4F4F5';
   }, [theme]);
 
-  const [lang, setLang] = useState<'en' | 'ru' | 'by' | 'ro'>('en');
   const [isNavVisible, setIsNavVisible] = useState(false);
 
   useEffect(() => {
