@@ -293,7 +293,7 @@
       "title": "FUNDAȚIE",
       "subtitle": "când infrastructura se prăbușește. fizică, economie și putere.",
       "desc": "",
-      "constraint": "",
+      "constraint": "putem asigura energia? ne putem permite? cine controlează? resurse energetice, forță de muncă, independență. constrângeri materiale care creează baza.",
       "metaphor": "globe"
     },
     {
@@ -301,7 +301,7 @@
       "title": "COGNIȚIE",
       "subtitle": "arhitectura sensului și raționamentului",
       "desc": "cu **infrastructură energetică**, **muncă agentică** și **stive geopolitice** la locul lor, ia trece de la calcul brut la **capacitate de raționament**. acest strat răspunde la trei întrebări: **putem avea încredere în cum gândește?** **putem verifica logica sa?** **putem accelera descoperirile?**",
-      "constraint": "",
+      "constraint": "cum gândim și învățăm. raționament, cunoaștere, descoperire.",
       "metaphor": "globe"
     },
     {
@@ -309,7 +309,7 @@
       "title": "INTERFAȚĂ",
       "subtitle": "cum construim, apărăm și trăim",
       "desc": "cu raționament, acces la cunoaștere și capacități de descoperire, ia se mișcă de la **inteligență abstractă la execuție practică**. **putem menține ce construim?** **putem conecta digitalul și fizicul?** **ne putem apăra de ceea ce creăm?**",
-      "constraint": "",
+      "constraint": "cum construim, apărăm și trăim",
       "metaphor": "globe"
     },
     {
@@ -317,9 +317,9 @@
       "title": "UMANITATE",
       "subtitle": "când mașinile modelează sensul. narativ, intimitate, adevăr",
       "desc": "criza apărării forțează aliniere. securitatea devine cenzură. când narativul e filtrat și încrederea colapsează, oamenii se retrag la companioni ia.",
-      "constraint": "",
+      "constraint": "stratul final. cum ne conectăm, în ce credem, cui avem încredere.",
       "metaphor": "globe"
     }
   ],
-  "generated": "2026-01-22T15:48:54.717Z"
+  "generated": "2026-01-22T16:00:44.623Z"
 }
