@@ -21,9 +21,60 @@
         "title": "РАЗРЫВ",
         "desc": "[обрати внимание на разрыв] разрыв между бесконечными \"цифровыми идеями\" и жёсткой \"физической материей\". пока мы воображаем миллиард агентов, мы не можем обеспечить их энергией. разрыв между желанием бизнеса развернуть ии везде и физической неспособностью инфраструктуры это поддержать."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "160%",
+          "label": "AI energy demand surge by 2030 ([IEA](https://www.iea.org/reports/electricity-2024) / [Goldman Sachs](https://www.goldmansachs.com/insights/articles/AI-poised-to-drive-160-increase-in-power-demand))"
+        },
+        {
+          "value": "40x",
+          "label": "Gap: $500B infrastructure vs $12B consumer spend ([Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-consumer-ai/) / [Goldman Sachs](https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026))"
+        },
+        {
+          "value": "$7T",
+          "label": "Total AI infrastructure requirement ([McKinsey](https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers) / Sam Altman)"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "IEA Energy and AI",
+          "url": "https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai",
+          "description": "Data center electricity projected 536 TWh (2025) → 945-1,065 TWh (2030)"
+        },
+        {
+          "title": "McKinsey Cost of Compute",
+          "url": "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers",
+          "description": "125 GW incremental capacity needed by 2030, $5.2-7.9T CapEx required"
+        },
+        {
+          "title": "Goldman Sachs AI Power Demand",
+          "url": "https://www.goldmansachs.com/insights/articles/ai-to-drive-165-increase-in-data-center-power-demand-by-2030",
+          "description": "165% increase in data center power demand by 2030"
+        }
+      ],
+      "research": [
+        {
+          "title": "Reuters Peaker Plants",
+          "url": "https://www.reuters.com/business/energy/ai-data-centers-are-forcing-obsolete-peaker-power-plants-back-into-service-2025-12-23/",
+          "description": "Obsolete peaker power plants forced back into service for AI"
+        },
+        {
+          "title": "Snorkel AI Intelligence per Watt",
+          "url": "https://snorkel.ai/blog/intelligence-per-watt-a-new-metric-for-ais-future/",
+          "description": "New efficiency metric - intelligence delivered per unit of energy"
+        },
+        {
+          "title": "IT Brief Grid Bottleneck",
+          "url": "https://itbrief.news/story/when-the-grid-becomes-the-bottleneck-the-real-threat-to-ai-deployment",
+          "description": "Physical grid cannot be built fast enough to support AI expansion"
+        },
+        {
+          "title": "Goldman Sachs Fossil Fuel Reality",
+          "url": "https://www.goldmansachs.com/intelligence/pages/gen-ai-too-much-spend-too-little-benefit.html",
+          "description": "60% of increased demand met by fossil fuels, adding 220M tons CO2 annually"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -31,7 +82,7 @@
       "layerId": "I",
       "layerTitle": "ФУНДАМЕНТ",
       "title": "смещение (агентный труд)",
-      "subtitle": "copilot ➔ автономный коллега",
+      "subtitle": "copilot → автономный коллега",
       "context": "когда энергетическая инфраструктура стабилизируется, модели могут масштабироваться. умные модели становятся агентами.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -47,17 +98,91 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв агентности] задержка между технологической заменой и социальной адаптацией. компании развёртывают агентов быстрее чем общество может определить новые роли для людей. мы генерируем труд, который не можем эффективно управлять."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
-      "voices": []
+      "stats": [
+        {
+          "value": "47%",
+          "label": "Workforce tasks automatable by 2030 ([McKinsey](https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america))"
+        },
+        {
+          "value": "$46k",
+          "label": "Cost to replace a human with an agent ([Ark Invest](https://ark-invest.com/big-ideas-2025/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Anthropic Model Context Protocol",
+          "url": "https://www.anthropic.com/news/model-context-protocol",
+          "description": "Universal standard for AI data access adopted by OpenAI, Google, Microsoft"
+        },
+        {
+          "title": "Linux Foundation AAIF",
+          "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation",
+          "description": "Agentic AI Foundation - 97M+ monthly SDK downloads"
+        },
+        {
+          "title": "x402 Protocol",
+          "url": "https://www.x402.org/",
+          "description": "Internet-native payments protocol enabling autonomous AI agents"
+        },
+        {
+          "title": "a16z Service-as-Software",
+          "url": "https://a16z.com/service-as-software/",
+          "description": "Business model shift from software licenses to executed outcomes"
+        }
+      ],
+      "research": [
+        {
+          "title": "MIT Sloan/BCG Agentic Enterprise",
+          "url": "https://sloanreview.mit.edu/projects/the-emerging-agentic-enterprise-how-leaders-must-navigate-a-new-age-of-ai/",
+          "description": "76% of executives view AI as coworker not tool"
+        },
+        {
+          "title": "Amazon Q Developer Case Study",
+          "url": "https://aws.amazon.com/blogs/aws/amazon-q-developer-upgrades-1000-production-applications-in-six-months/",
+          "description": "4,500 developer-years saved, $260M infrastructure savings, 79% auto-generated code accepted"
+        },
+        {
+          "title": "DeepLearning.AI Agentic Workflows",
+          "url": "https://www.deeplearning.ai/the-batch/issue-242/",
+          "description": "Andrew Ng on transition from assistants to autonomous agents"
+        },
+        {
+          "title": "LangChain Cognitive Architectures",
+          "url": "https://blog.langchain.dev/cognitive-architectures/",
+          "description": "Framework patterns for agent reasoning and decision-making"
+        },
+        {
+          "title": "Josh Bersin Hiring for AI",
+          "url": "https://www.linkedin.com/pulse/hiring-ai-new-hr-frontier-josh-bersin/",
+          "description": "Emergence of AI talent management as new HR discipline"
+        }
+      ],
+      "aimEvidence": [
+        {
+          "title": "Intention OS",
+          "url": "https://intention.aimindset.org",
+          "description": "Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering."
+        },
+        {
+          "title": "Founder OS YouTube Playlist",
+          "url": "https://youtube.com/@aimindsetlabs",
+          "description": "Mental health firewalls and sovereign workflows for founders navigating AI transformation."
+        }
+      ],
+      "voices": [
+        {
+          "tag": "from tool to participant",
+          "text": "from 'ai as smart assistant' to 'ai as full participant in the process'",
+          "author": "Yakov Vasiliev, AI Strategy × Product Architecture"
+        }
+      ]
     },
     {
       "id": "03",
       "layerId": "I",
       "layerTitle": "ФУНДАМЕНТ",
       "title": "суверенитет (раскол интернета)",
-      "subtitle": "глобальная открытость ➔ фрагментированные стеки",
+      "subtitle": "глобальная открытость → фрагментированные стеки",
       "context": "когда агенты касаются денег, институты требуют правил. агентный труд делает ии стратегическим активом.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -73,9 +198,65 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв суверенитета] техно-оптимисты требуют ускорения; демократические движения требуют контроля. нет середины. раскол доверия: люди хотят инноваций И гарантий."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "3%",
+          "label": "Paying users for AI (97% are the product) ([Menlo Ventures](https://menlovc.com/perspective/2025-the-state-of-consumer-ai/))"
+        },
+        {
+          "value": "€13/mo",
+          "label": "Meta's privacy price in Europe ([Wired](https://www.wired.com/story/meta-facebook-pay-for-privacy-europe/))"
+        },
+        {
+          "value": "90%",
+          "label": "Companies with \"Shadow AI\" usage ([MIT/Fortune](https://fortune.com/2025/08/19/shadow-ai-economy-mit-study-genai-divide-llm-chatbots/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "EU AI Act",
+          "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+          "description": "First comprehensive AI regulation framework, full applicability August 2026"
+        },
+        {
+          "title": "Stanford HAI AI Index 2025",
+          "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+          "description": "233 AI incidents in 2024 (+56% YoY growth)"
+        },
+        {
+          "title": "McKinsey Sovereign AI",
+          "url": "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/accelerating-europes-ai-adoption-the-role-of-sovereign-ai",
+          "description": "Europe's sovereign infrastructure strategy to compete with US/China"
+        },
+        {
+          "title": "Pew Research Trust Survey",
+          "url": "https://www.pewresearch.org/2025/10/15/trust-in-the-eu-u-s-and-china-to-regulate-use-of-ai/",
+          "description": "Cross-regional variance in AI trust and regulatory preferences"
+        }
+      ],
+      "research": [
+        {
+          "title": "NYT vs OpenAI Lawsuit",
+          "url": "https://www.nytimes.com/2023/12/27/business/media/new-york-times-open-ai-microsoft-lawsuit.html",
+          "description": "Copyright battle determining if human culture belongs to creators or model weights"
+        },
+        {
+          "title": "DeepSeek Open-Source",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+          "description": "Chinese open-source models bypassing US export controls"
+        },
+        {
+          "title": "Forbes BYOAI Movement",
+          "url": "https://www.forbes.com/sites/forbestechcouncil/2024/05/20/the-rise-of-bring-your-own-ai/",
+          "description": "Employees bypassing corporate AI restrictions with personal tools"
+        },
+        {
+          "title": "WebAI Local-First AI",
+          "url": "https://www.webai.com/blog/what-is-local-ai",
+          "description": "Private drafting, smaller circles, local storage, intentional friction against performative posting"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -83,7 +264,7 @@
       "layerId": "II",
       "layerTitle": "МЫШЛЕНИЕ",
       "title": "рассуждение",
-      "subtitle": "chatbots (система 1) ➔ думающие модели (система 2)",
+      "subtitle": "chatbots (система 1) → думающие модели (система 2)",
       "context": "фундаментальный слой завершён. AI переходит от инстинктивных ответов к обдуманной мысли. акт два sequoia.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -99,9 +280,55 @@
         "title": "РАЗРЫВ",
         "desc": ""
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "126%",
+          "label": "Productivity boost from AI Copilots ([Qodo](https://www.qodo.ai/reports/state-of-ai-code-quality/))"
+        },
+        {
+          "value": "21%",
+          "label": "Quality degradation when prioritizing speed ([Nielsen Norman Group](https://www.nngroup.com/articles/ai-programmers-productive/))"
+        },
+        {
+          "value": "48%",
+          "label": "Error rate in complex reasoning tasks ([Korra AI](https://www.korra.ai/blog/ai-hallucination-enterprise-risk))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Li et al. Reasoning LLMs Survey",
+          "url": "https://arxiv.org/abs/2502.17419",
+          "description": "Comprehensive survey of reasoning capabilities in large language models"
+        },
+        {
+          "title": "STaR Self-Taught Reasoner",
+          "url": "https://arxiv.org/abs/2203.11171",
+          "description": "Foundational paper on using reinforcement learning to make models \"think\" before answering"
+        },
+        {
+          "title": "OpenAI o3 Benchmark",
+          "url": "https://openai.com/index/deliberative-alignment/",
+          "description": "83% human-level reasoning (ARC-AGI), 71.7% on SWE-bench Verified"
+        }
+      ],
+      "research": [
+        {
+          "title": "OpenAI SWE-bench Verified",
+          "url": "https://openai.com/index/introducing-swe-bench-verified/",
+          "description": "o3 scores 71.7% on verified software engineering benchmarks"
+        },
+        {
+          "title": "Korra $67B AI Hallucination Warning",
+          "url": "https://korra.ai/the-67-billion-warning-how-ai-hallucinations-hurt-enterprises-and-how-to-stop-them/",
+          "description": "Global enterprise losses from AI hallucinations"
+        },
+        {
+          "title": "All About AI Hallucination Statistics",
+          "url": "https://www.allaboutai.com/resources/ai-statistics/ai-hallucinations/",
+          "description": "4.3 hours weekly spent fact-checking AI output, 48% error rate in complex reasoning"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -109,7 +336,7 @@
       "layerId": "II",
       "layerTitle": "МЫШЛЕНИЕ",
       "title": "знание (память)",
-      "subtitle": "накопление информации ➔ фильтрация контекста",
+      "subtitle": "накопление информации → фильтрация контекста",
       "context": "рассуждающие модели не могут думать в вакууме. им нужен максимальный контекст - корпоративные данные, документы, разговоры.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -125,17 +352,85 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв усвоения] окна в 1m токенов vs человеческий лимит. модели потребляют больше информации чем люди могут переварить. контекст в 200k токенов означает что AI читает библиотеку, но ты читаешь только резюме. люди не могут видеть полный граф, но остаются ответственными за результаты."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
-      "voices": []
+      "stats": [
+        {
+          "value": "$67B",
+          "label": "Annual financial risk from unmanaged context/hallucinations ([Korra AI](https://www.korra.ai/blog/ai-hallucination-enterprise-risk))"
+        },
+        {
+          "value": "30%",
+          "label": "Work time lost to internal search ([Gartner](https://www.gartner.com/en/documents/5415263))"
+        },
+        {
+          "value": "1M tokens",
+          "label": "Model context window vs 7 items human working memory limit ([Anthropic](https://www.anthropic.com/news/claude-3-5-sonnet))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Anthropic Model Context Protocol",
+          "url": "https://www.anthropic.com/news/model-context-protocol",
+          "description": "Universal standard adopted by OpenAI, Google, Microsoft within 13 months"
+        },
+        {
+          "title": "Gartner Top 10 Strategic Trends 2025",
+          "url": "https://www.gartner.com/en/newsroom/press-releases/2024-10-21-gartner-identifies-the-top-10-strategic-technology-trends-for-2025",
+          "description": "40% of apps will have agentic AI by 2026"
+        },
+        {
+          "title": "Microsoft Work Trend Index 2025",
+          "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born",
+          "description": "80% of workforce lacks time/energy for job"
+        }
+      ],
+      "research": [
+        {
+          "title": "Pinecone Vector Database",
+          "url": "https://www.pinecone.io/",
+          "description": "Critical infrastructure for semantic search and RAG implementations"
+        },
+        {
+          "title": "Google Cloud Semantic Search",
+          "url": "https://cloud.google.com/discover/what-is-semantic-search",
+          "description": "Replaces keyword search as primary discovery method"
+        },
+        {
+          "title": "AI Mindset Context Obesity",
+          "url": "https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity",
+          "description": "You're not burned out, you have context obesity"
+        }
+      ],
+      "aimEvidence": [
+        {
+          "title": "Context Obesity",
+          "url": "https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity",
+          "description": "You're not burned out, you have context obesity. Diagnosis framework for working memory overflow."
+        },
+        {
+          "title": "AI ARK Knowledge System",
+          "url": "https://aimindsetspace.substack.com/p/ai-ark-knowledge-system",
+          "description": "Comprehensive knowledge architecture for AI age. Personal RAG and context management framework."
+        }
+      ],
+      "voices": [
+        {
+          "tag": "context engineering as key skill",
+          "text": "building products through parsing → classification → aggregation → human decision. claude code as working environment",
+          "author": "Yakov Vasiliev, AI Strategy × Product Architecture"
+        },
+        {
+          "tag": "speed as new baseline",
+          "text": "content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes",
+          "author": "Nikolay Senin, Developer & Consultant"
+        }
+      ]
     },
     {
       "id": "06",
       "layerId": "II",
       "layerTitle": "МЫШЛЕНИЕ",
       "title": "открытие (генеративная наука)",
-      "subtitle": "поиск информации ➔ генерация гипотез",
+      "subtitle": "поиск информации → генерация гипотез",
       "context": "когда AI получает доступ к исследованиям в масштабе, он читает миллионы статей за ночь. открытия со скоростью машины.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -151,9 +446,55 @@
         "title": "РАЗРЫВ",
         "desc": "[контекстный разрыв] если AI тренируется на ии-генерированных данных и не хватает свежих человеческих данных, модели деградируют в качестве. теряя редкие идеи (\"хвостовые распределения\"), коллапсируя в серую посредственность. ии предлагает 1,000 молекул; мы тестируем одну. раздувание открытий останавливает прорывы через мощность физического тестирования."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "100 → 10",
+          "label": "Scientific progress compression timeline (years) ([Dario Amodei](https://darioamodei.com/machines-of-loving-grace))"
+        },
+        {
+          "value": "78%",
+          "label": "Improvement in research speed with AI tools ([StackOverflow Developer Survey](https://survey.stackoverflow.co/2024))"
+        },
+        {
+          "value": "2026-2028",
+          "label": "Human data exhaustion timeline ([Epoch AI](https://epochai.org/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Shumailov et al. Model Collapse",
+          "url": "https://arxiv.org/abs/2305.17493",
+          "description": "Training on AI-generated data causes model degradation without human data injection"
+        },
+        {
+          "title": "Nature Verification Bottleneck",
+          "url": "https://www.nature.com/articles/s41586-023-06792-0",
+          "description": "AI proposes 1,000 molecules, humans can test one - physical testing capacity limits discovery"
+        },
+        {
+          "title": "Epoch AI Data Limits",
+          "url": "https://epoch.ai/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data",
+          "description": "Quality human-generated data exhausted by 2026-2028"
+        },
+        {
+          "title": "Google DeepMind AlphaFold 3",
+          "url": "https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/",
+          "description": "Protein structure prediction breakthrough - next step is designing proteins that don't exist in nature"
+        }
+      ],
+      "research": [
+        {
+          "title": "Gretel Synthetic Data 2025",
+          "url": "https://gretel.ai/blog/2025-the-year-synthetic-data-goes-mainstream",
+          "description": "2025 as year synthetic data goes mainstream"
+        },
+        {
+          "title": "Deepstrike Deepfake Statistics",
+          "url": "https://deepstrike.io/blog/deepfake-statistics-2025",
+          "description": "1,740% surge in deepfake fraud (2022-2023) - provenance crisis"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -161,7 +502,7 @@
       "layerId": "III",
       "layerTitle": "ИНТЕРФЕЙС",
       "title": "мастерство (конец синтаксиса)",
-      "subtitle": "синтаксис ➔ vibe кодинг & кризис целостности",
+      "subtitle": "синтаксис → vibe кодинг & кризис целостности",
       "context": "когда агенты могут оркестрировать рабочие процессы, кодинг становится самым лёгким доменом для автоматизации.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -177,10 +518,88 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв понимания] строим то, что не понимаем. кажется правильным, но никто не знает как это работает. мы пилотируем корабли с чёрным ящиком внутренней проводки. создавать код легко; поддерживать его это новый ад."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
-      "voices": []
+      "stats": [
+        {
+          "value": "65%",
+          "label": "Of new code at Google is AI-generated ([Sundar Pichai](https://www.cnbc.com/2024/10/29/alphabet-earnings-q3-2024.html))"
+        },
+        {
+          "value": "46%",
+          "label": "Developers distrust AI code quality ([GitClear](https://www.gitclear.com/coding_on_copilot_data_shows_ais_downward_pressure_on_code_quality))"
+        },
+        {
+          "value": "50%",
+          "label": "Increase in code churn from AI-generated code ([GitClear](https://www.gitclear.com/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "OpenAI SWE-Bench Verified",
+          "url": "https://openai.com/index/introducing-swe-bench-verified/",
+          "description": "o3 scores 71.7% on verified software engineering benchmarks"
+        },
+        {
+          "title": "Anthropic SWE-bench Sonnet",
+          "url": "https://www.anthropic.com/research/swe-bench-sonnet",
+          "description": "Claude Sonnet 3.7 achieves state-of-the-art performance"
+        },
+        {
+          "title": "NNG AI Programmers Productive",
+          "url": "https://www.nngroup.com/articles/ai-programmers-productive/",
+          "description": "126% productivity gain, junior developers gain +35% over average"
+        }
+      ],
+      "research": [
+        {
+          "title": "CB Insights Coding AI Market",
+          "url": "https://www.cbinsights.com/research/report/coding-ai-market-share-december-2025/",
+          "description": "$4.8B market 2025, Copilot 42%, Cursor 18% market share"
+        },
+        {
+          "title": "SWE-bench.com",
+          "url": "https://www.swebench.com/",
+          "description": "Benchmark for evaluating code generation - reveals gaming vs real improvement gap"
+        },
+        {
+          "title": "IEEE Spectrum Technical Debt",
+          "url": "https://spectrum.ieee.org/ai-code-generation-technical-debt",
+          "description": "AI generates \"legacy on day one\" - unmaintainable code faster than humans can review"
+        },
+        {
+          "title": "Wikipedia Vibe Coding",
+          "url": "https://en.wikipedia.org/wiki/Vibe_coding",
+          "description": "Cultural phenomenon - Collins Dictionary Word of the Year"
+        },
+        {
+          "title": "GitClear Code Churn",
+          "url": "https://www.gitclear.com/",
+          "description": "50% increase in code churn from AI-generated code"
+        }
+      ],
+      "aimEvidence": [
+        {
+          "title": "Telegram: Coding with Gemini",
+          "url": "https://telegram.me/ai_mind_set/282",
+          "description": "Practical guides from community on Cursor + Gemini Code workflows. Field stories: \"vibe-coded real prototypes. shipped in 30 minutes what stalled 1.5 months.\""
+        },
+        {
+          "title": "Pragmatic Romanticism",
+          "url": "https://spiridonov.aimindset.org",
+          "description": "Why pragmatic romanticism is the only defense against cold machine logic. Reclaiming craft and authorship."
+        }
+      ],
+      "voices": [
+        {
+          "tag": "barrier falling",
+          "text": "vibe coding will become the norm. the 'i can't do it' barrier will fall, replaced by 'let me ask ai how to do this'",
+          "author": "Alexander Stashenko, Business Coach → AI Chatbot Developer"
+        },
+        {
+          "tag": "vibe-coded prototypes",
+          "text": "made in half an hour what couldn't do for 1.5 months. full app in App Store/Google Play",
+          "author": "Natalya Savenkova, Project Lead → Product Automation"
+        }
+      ]
     },
     {
       "id": "08",
@@ -203,9 +622,35 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв реальности] идеальная цифровая физика vs грязная реальная физика. ии может симулировать физику идеально но манипуляция атомами остаётся медленной. мы можем сгенерировать здание за минуты но строить его годы. разрыв симуляция-реальность."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "2027-2028",
+          "label": "Timeline for useful household robots ([Kyle Vogt](https://www.theverge.com/2024/3/13/24099757/kyle-vogt-cruise-robotics-startup))"
+        },
+        {
+          "value": "$800M",
+          "label": "Tyler Perry studio expansion halted after Sora demo ([Hollywood Reporter](https://www.hollywoodreporter.com/business/business-news/tyler-perry-ai-alarm-1235833276/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "TIME Fei-Fei Li Spatial Intelligence",
+          "url": "https://time.com/7339693/fei-fei-li-ai/",
+          "description": "AI understanding 3D space and physics - foundation for physical world interaction"
+        },
+        {
+          "title": "NVIDIA Cosmos",
+          "url": "https://developer.nvidia.com/cosmos",
+          "description": "Physical world foundation models for robotics and spatial AI"
+        },
+        {
+          "title": "Kyle Vogt Household Robots Timeline",
+          "url": "https://www.theverge.com/2024/3/13/24099757/kyle-vogt-cruise-robotics-startup",
+          "description": "2027-2028 for useful household robots, 2030 for human-level manipulation"
+        }
+      ],
+      "research": [],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -213,7 +658,7 @@
       "layerId": "III",
       "layerTitle": "ИНТЕРФЕЙС",
       "title": "защита (тёмный лес)",
-      "subtitle": "кибербезопасность ➔ когнитивная война",
+      "subtitle": "кибербезопасность → когнитивная война",
       "context": "когда симуляция дешёвая, синтетическая реальность становится оружием. дипфейки стоят почти ноль.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -229,9 +674,77 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв доверия] асимметрия: машины атакуют мгновенно, люди защищаются медленно. доверие рушится когда проверить подделку сложнее чем её создать. поверхность атаки растёт быстрее чем способность защиты."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "87%",
+          "label": "Organizations experiencing AI-driven attacks ([Cybersecurity surveys](https://www.cybersecuritydive.com/))"
+        },
+        {
+          "value": "85%",
+          "label": "Organizations attacked with deepfakes ([Deepstrike](https://deepstrike.io/blog/deepfake-statistics-2025))"
+        },
+        {
+          "value": "1,265%",
+          "label": "AI-driven phishing increase ([CrowdStrike](https://www.crowdstrike.com/))"
+        },
+        {
+          "value": "$25.6M",
+          "label": "Single deepfake fraud loss ([All About AI](https://www.allaboutai.com/resources/ai-statistics/ai-cyberattack/))"
+        },
+        {
+          "value": "10x",
+          "label": "Increase in deepfake identity attacks 2024-2025 ([Industry reports](https://deepstrike.io/))"
+        },
+        {
+          "value": "97%",
+          "label": "Cybersecurity professionals fear AI-driven incidents ([Surveys](https://www.cybersecuritydive.com/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Deepstrike Deepfake Statistics 2025",
+          "url": "https://deepstrike.io/blog/deepfake-statistics-2025",
+          "description": "1,740% surge in deepfake fraud (2022-2023), 85% of organizations attacked, Q1 2025 deepfake incidents +19% YoY"
+        },
+        {
+          "title": "CrowdStrike AI Cybersecurity Threats",
+          "url": "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/ai-powered-cyberattacks/",
+          "description": "AI-driven phishing +1,265%, attacks at machine speed vs human defense, 36,000 automated scans per second"
+        },
+        {
+          "title": "All About AI Cyberattack Statistics",
+          "url": "https://www.allaboutai.com/resources/ai-statistics/ai-cyberattack/",
+          "description": "$25.6M single deepfake fraud (multinational firm CFO call scam), AI-generated malware share ~76%"
+        },
+        {
+          "title": "Gartner Guardian Agents",
+          "url": "https://www.gartner.com/en/newsroom/press-releases/2024-10-21-gartner-identifies-the-top-10-strategic-technology-trends-for-2025",
+          "description": "AI defending against AI - threat detection 60% faster, ~95% accuracy, $1.9M average breach cost reduction"
+        }
+      ],
+      "research": [
+        {
+          "title": "Cyble Deepfake-as-a-Service",
+          "url": "https://cyble.com/knowledge-hub/deepfake-as-a-service-exploded-in-2025/",
+          "description": "Weaponized AI sold as subscription service, near-zero cost attacks, 10x increase in identity attacks"
+        },
+        {
+          "title": "Industry Vertical Impacts",
+          "url": "https://www.cybersecuritydive.com/",
+          "description": "Finance +47% YoY AI-enhanced malware, Manufacturing +61% YoY ransomware, 67.4% phishing attacks using AI"
+        },
+        {
+          "title": "Nieman Lab Detecting AI Content",
+          "url": "https://www.niemanlab.org/2023/03/detecting-ai-generated-content-is-hard-heres-why/",
+          "description": "Reality literacy - 73% cannot reliably detect AI-generated content, verification becomes critical skill"
+        },
+        {
+          "title": "Ribbonfarm Dark Forest Internet",
+          "url": "https://www.ribbonfarm.com/2020/01/16/the-internet-as-a-dark-forest/",
+          "description": "Default assumption becomes distrust - every entity you encounter might be AI, zero trust as baseline"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -239,7 +752,7 @@
       "layerId": "IV",
       "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
       "title": "нарратив (выравнивание как цензура)",
-      "subtitle": "галлюцинация ➔ идеологические фильтры",
+      "subtitle": "галлюцинация → идеологические фильтры",
       "context": "кризис защиты заставляет выравнивание. безопасность становится цензурой.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -255,9 +768,55 @@
         "title": "РАЗРЫВ",
         "desc": "[разрыв реальности] чьи ценности зашиты в твой ежедневный инструмент? разрыв между \"что ии знает\" и \"что ии скажет\". ты не разговариваешь с нейтральным интеллектом. каждая модель имеет дефолты со вшитым мировоззрением. когда ии каждого имеет разные ценности запечённые, мы перестаём делить реальность. мы делим симуляции оптимизированные для разных результатов."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "$67.4B",
+          "label": "Global enterprise losses from AI hallucinations ([Korra AI](https://www.korra.ai/blog/ai-hallucination-enterprise-risk))"
+        },
+        {
+          "value": "47%",
+          "label": "Business leaders making decisions on hallucinated output ([Forbes](https://www.forbes.com/sites/bernardmarr/2024/03/generative-ai-hallucinations/))"
+        },
+        {
+          "value": "0.7%",
+          "label": "Best hallucination rate (Gemini 2.0 Flash) ([ISACA](https://www.isaca.org/resources/news-and-trends/isaca-now-blog/2024/ai-hallucinations))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "InstructGPT Paper",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "description": "Foundation of RLHF and alignment through human feedback"
+        },
+        {
+          "title": "Constitutional AI",
+          "url": "https://arxiv.org/abs/2212.08073",
+          "description": "Training models on explicit value systems (Anthropic)"
+        },
+        {
+          "title": "Refusal Behavior in LLMs",
+          "url": "https://arxiv.org/abs/2308.01263",
+          "description": "When models won't answer - studying refusal patterns and triggers"
+        }
+      ],
+      "research": [
+        {
+          "title": "OpenAI o3 System Card",
+          "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
+          "description": "2.1% deception rate in o3 Thinking mode"
+        },
+        {
+          "title": "Anthropic ASL-3 Report",
+          "url": "https://www.anthropic.com/activating-asl3-report",
+          "description": "Zero misalignment in Claude Sonnet 3.7/4"
+        },
+        {
+          "title": "LessWrong Alignment as Censorship",
+          "url": "https://www.lesswrong.com/posts/pRkFkzwKZ2zfa3R6H/without-specific-countermeasures-the-easiest-path-to",
+          "description": "Safety vs utility tradeoff debate in AI alignment"
+        }
+      ],
+      "aimEvidence": [],
       "voices": []
     },
     {
@@ -265,7 +824,7 @@
       "layerId": "IV",
       "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
       "title": "интимность (друзья на продажу)",
-      "subtitle": "инструмент ➔ эмоциональный компаньон",
+      "subtitle": "инструмент → эмоциональный компаньон",
       "context": "когда AI адаптируется слишком хорошо, он трансформируется из инструмента в компаньона.",
       "machineCol": {
         "label": "ТЕХНОЛОГИЯ",
@@ -281,9 +840,66 @@
         "title": "РАЗРЫВ",
         "desc": "[эмоциональный разрыв] одиночество не решается информацией. мы путаем \"внимание\" с \"заботой\". AI симулирует эмпатию идеально но не чувствует ничего. это петля валидации без риска настоящей связи. синтетическая интимность кажется достаточно реальной чтобы удовлетворить краткосрочно но создаёт долгосрочную зависимость."
       },
-      "stats": [],
-      "evidence": [],
-      "sources": [],
+      "stats": [
+        {
+          "value": "2+ hours",
+          "label": "Daily sessions in Character.ai, Replika, Talkie"
+        },
+        {
+          "value": "#1",
+          "label": "Companionship is top retention category in Gen AI apps ([a16z Top 100](https://a16z.com/100-gen-ai-apps-2025/))"
+        },
+        {
+          "value": "95%",
+          "label": "GenAI pilots failing to deliver ROI ([MIT](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/))"
+        }
+      ],
+      "researchTop": [
+        {
+          "title": "Marwick & Boyd Context Collapse",
+          "url": "https://www.microsoft.com/en-us/research/publication/i-tweet-honestly-i-tweet-passionately-twitter-users-context-collapse-and-the-imagined-audience/",
+          "description": "Personal, professional, public contexts blur into one - same identity across different audiences"
+        },
+        {
+          "title": "Ada Lovelace Institute AI Companions",
+          "url": "https://www.adalovelaceinstitute.org/blog/ai-companions/",
+          "description": "AI companions optimized for engagement metrics, not wellbeing - \"friends for sale\""
+        },
+        {
+          "title": "a16z Top 100 Gen AI Apps",
+          "url": "https://a16z.com/100-gen-ai-apps-2025/",
+          "description": "Companionship is #1 retention category, 2+ hours daily sessions"
+        }
+      ],
+      "research": [
+        {
+          "title": "Deepstrike Deepfake Statistics",
+          "url": "https://deepstrike.io/blog/deepfake-statistics-2025",
+          "description": "$200M+ deepfake fraud Q1 2025, voice cloning requires 20-30 seconds"
+        },
+        {
+          "title": "AI Mindset Founder OS Mental Health",
+          "url": "https://aimindsetspace.substack.com/p/founder-os-mental-health",
+          "description": "Mental health firewalls - protecting boundaries from AI manipulation"
+        },
+        {
+          "title": "Ubisoft NEO NPC",
+          "url": "https://www.ubisoft.com/en-us/studio/laforge/news/7Cm4VJVbWKHzHmRgqwYbAX/neos-the-future-of-npcs",
+          "description": "NPCs with psychological profiles reacting to player tone/mood - \"as big a revolution as shift to 3D\""
+        }
+      ],
+      "aimEvidence": [
+        {
+          "title": "IFS + AI",
+          "url": "https://ivanov.aimindset.org",
+          "description": "Protecting the psyche in the age of machine intimacy. Mental health framework for boundaries."
+        },
+        {
+          "title": "Founder OS Mental Health",
+          "url": "https://aimindsetspace.substack.com/p/founder-os-mental-health",
+          "description": "Mental health firewalls and sovereign workflows."
+        }
+      ],
       "voices": []
     }
   ],
@@ -321,5 +937,15 @@
       "metaphor": "globe"
     }
   ],
-  "generated": "2026-01-23T10:16:55.984Z"
+  "manifesto": {
+    "title": "манифест",
+    "subtitle": "итак... что дальше?",
+    "content": "перезагрузка суверенитета\nмы не исследовательский институт. мы лаборатория — место где люди практикуют AI.\n**1,500+ участников** в **30+ странах**, **3 года** полевой работы.\nэтот отчёт не кабинетное исследование. он закалён полевыми заметками из лабораторий, артефактами сообщества и реальными сдвигами которые люди переживают.\n**контекст:**\nбольшая часть дискурса об ии происходит в крайностях:\n**утопический хайп** от консалтинга. **экзистенциальная паника** от медиа. **одержимость оптимизацией** от техлидеров.\nбудущее человечества пишется технологами и капиталистами которые смотрят на мир сверху вниз.\n**мы заполняем пустоту.**\nмы относимся к **ограничениям человеческой адаптации** так же серьёзно как к технологическому ускорению. пока ии сжимает 100 лет науки в десятилетие, мы даём **инструкцию для человека как не сгореть в процессе.**\n**протоколы:**\nнаша жизнь работает на конфигурации. что ты говоришь да не думая. что прерывает тебя. давай перейдём от \"я попробую\" к \"у меня есть дефолты\".\n**уровень 01 - простое (начни здесь):**\nзамечай когда принимаешь вывод AI не думая.\nсохрани одну идею офлайн. напиши от руки.\nвыключи одно уведомление. верни 10 минут.\nпроясни свою мысль перед запросом к AI.\nпоставь на паузу перед доверием выводу.\n**уровень 02 - средний (строй привычки):**\nсоздай персональную базу знаний для одной области.\nтестируй 3 модели на одном вопросе чтобы видеть смещение.\nвнедри один контекстный фильтр.\nпредупреди старшее поколение о синтетической информации.\nпрактикуй аналог: звонки, почерк.\n**уровень 03 - продвинутый (строй системы):**\nразверни агентов-защитников.\nустанови семейные \"секретные рукопожатия\".\nстрой local-first рабочие процессы.\nпроверяй цепочки рассуждений.\nоткажись от тренировки на твоих данных.\n**уровень 04 - глубокий (структурный):**\nсдвигайся от Создателя к Консильери.\nцени tacit knowledge.\nпрактикуй дивергентное тестирование.\nмы не можем закрыть все разрывы, но по крайней мере можем осознавать их и действовать соответственно.\n**наша экосистема:**\n→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: защита психики\n→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: управление вниманием когда контекст взрывается\n→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — защита прагматичным романтизмом\n→ [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — комплексная архитектура знаний\n→ [**Founder OS YouTube**](https://youtube.com/@aimindsetlabs) — брандмауэры ментального здоровья\n→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — практические гайды\n→ [**@ai_mind_set**](https://t.me/ai_mind_set) — ежедневные сигналы & полевые заметки\n**оставайся на связи:**\nесли этот артефакт помог тебе назвать трение — не теряй нить.\n→ [**подписаться на substack**](https://aimindsetspace.substack.com) — следующие ресеты, полевые заметки, шаблоны, открытия лабораторий\nтолько сигналы. без спама. отписка в любой момент."
+  },
+  "thankYou": {
+    "title": "спасибо",
+    "subtitle": "за чтение",
+    "content": "**авторы:**\n**anca stavenski** — дизайн & логика\n**alex p** — идеи\n**ray svitla** — исследование\n**ссылки:**\n→ [**подписаться на substack**](https://aimindsetspace.substack.com) — получить следующие ресеты & сигналы\n→ [**исследовать экосистему**](https://aimindset.org) — лаборатории, инструменты, сообщество\n→ [**связаться с нами**](mailto:info@aimindset.org) — партнёрства / выступления\nконец передачи"
+  },
+  "generated": "2026-01-23T12:30:34.725Z"
 }

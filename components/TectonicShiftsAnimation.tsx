@@ -603,7 +603,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
             <div className="w-full max-w-7xl px-2 md:px-6 flex items-start gap-12 pointer-events-auto">
                 
                 <div className="flex flex-col gap-3 w-full max-w-full md:max-w-[450px]">
-                   <h3 className="text-[8vw] font-bold text-white mb-8 leading-none tracking-tighter mix-blend-overlay font-sans">
+                   <h3 className="text-[4vw] font-bold text-white mb-8 leading-none tracking-tighter mix-blend-overlay font-sans">
                      In 4 Layers:
                    </h3>
                    {layersData.map((layer) => (
