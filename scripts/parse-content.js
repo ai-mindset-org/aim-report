@@ -126,6 +126,16 @@ function parseEnglishEvidence() {
         });
       }
       
+      // Parse source: lines (additional links after Tags)
+      const sourceMatches = shiftContent.matchAll(/^source:\s*(.+?)\s*—\s*(.+?)\s*\|\s*(.+?)$/gm);
+      for (const match of sourceMatches) {
+        evidence.research.push({
+          title: match[1].replace(/^"|"$/g, '').trim(),
+          url: match[3].trim(),
+          description: match[2].trim()
+        });
+      }
+      
       evidenceMap[shiftId] = evidence;
     }
   });
