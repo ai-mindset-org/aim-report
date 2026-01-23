@@ -4,6 +4,7 @@ import { ManifestoPageProps } from './types';
 import { ProtocolCard } from './ProtocolCard';
 import { EcoVisual } from './EcoVisuals';
 import { useI18n } from '../../hooks/useI18n';
+import { useManifestoData } from '../../hooks/useManifestoData';
 
 const BLOCKED_DOMAINS = [
   'youtube.com',
@@ -43,6 +44,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
   const [ogLoading, setOgLoading] = useState(false);
   const ogCache = useRef<Record<string, any>>({});
   const i18n = useI18n(lang);
+  const { manifesto, loading: manifestoLoading } = useManifestoData(lang);
   
   const isDark = theme === 'dark';
 
@@ -272,16 +274,32 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
         <div ref={heroRef} onMouseMove={handleHeroMouseMove} className="relative min-h-[90vh] flex flex-col justify-center px-6 pt-20">
             <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-[#DC2626] opacity-[0.04] blur-[120px] pointer-events-none rounded-full transition-transform duration-200 ease-out will-change-transform" style={{ transform: `translate(${heroMouse.x * -50}px, ${heroMouse.y * -50}px)` }}></div>
             <div className="max-w-7xl mx-auto w-full z-10 relative">
-                <p className="hero-sub-text font-mono text-[#DC2626] text-sm md:text-base tracking-[0.2em] uppercase mb-6">{i18n?.manifesto.soWhatsNext || "So... what's next?"}</p>
+                <p className="hero-sub-text font-mono text-[#DC2626] text-sm md:text-base tracking-[0.2em] uppercase mb-6">
+                  {manifesto?.subtitle || i18n?.manifesto.soWhatsNext || "so... what's next?"}
+                </p>
                 <h1 className={`hero-title text-[12vw] leading-[0.85] font-black uppercase tracking-tighter mb-12 ${isDark ? 'mix-blend-lighten' : 'mix-blend-darken'} perspective-[1000px]`}>
-                    {i18n?.manifesto.title1 && <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * 20}px)` }}>{i18n.manifesto.title1}</span>}
-                    <span className={`block ${styles.textMain}`} style={{ transform: `translateX(${heroMouse.x * -20}px)` }}>{i18n?.manifesto.title2 || 'Sovereignty'}</span>
-                    {i18n?.manifesto.title3 && <span className="block text-[#DC2626]" style={{ transform: `translateX(${heroMouse.x * 40}px)` }}>{i18n.manifesto.title3}</span>}
+                    {(() => {
+                      const titleLines = manifesto?.content.split('\n')[0].split(' ') || ['the', 'sovereignty', 'reset'];
+                      return titleLines.map((word, i) => (
+                        <span 
+                          key={i} 
+                          className={`block ${i === titleLines.length - 1 ? 'text-[#DC2626]' : styles.textMain}`} 
+                          style={{ transform: `translateX(${heroMouse.x * (20 - i * 20)}px)` }}
+                        >
+                          {word}
+                        </span>
+                      ));
+                    })()}
                 </h1>
                 <div className={`hero-line w-full h-[1px] ${isDark ? 'bg-white/20' : 'bg-black/10'} mb-12 origin-left`}></div>
                 <div className="hero-sub-text grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl">
                     <p className={`text-xl md:text-2xl font-light leading-relaxed ${styles.textSec}`}>
-                        {i18n?.manifesto.intro || 'This report is done by the'} <a href="https://aimindset.org" target="_blank" rel="noreferrer" className={`font-bold ${styles.textMain} border-b-2 border-[#DC2626] hover:bg-[#DC2626] hover:text-white transition-all px-1`}>{i18n?.manifesto.aiMindsetTeam || 'AI Mindset'}</a> {i18n?.manifesto.notInstitute || "team. We're not a research institute. We're a"} <span className={`${styles.textMain} font-bold`}>{i18n?.manifesto.lab || 'lab'}</span> {i18n?.manifesto.practice || '— a place where people practice AI.'}
+                        {(() => {
+                          if (!manifesto?.content) return i18n?.manifesto.intro || "we're not a research institute. we're a lab — a place where people practice AI.";
+                          const lines = manifesto.content.split('\n');
+                          const introLine = lines.find(l => l.includes('lab')) || lines[1] || '';
+                          return introLine;
+                        })()}
                     </p>
                 </div>
             </div>
@@ -289,9 +307,28 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
 
         <div className={`stats-row border-y ${styles.border} ${isDark ? 'bg-white/5' : 'bg-black/5'} backdrop-blur-sm`}>
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>1,500+</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Participants</span></div>
-                <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>30+</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Countries</span></div>
-                <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>3 Years</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Field Work</span></div>
+                {(() => {
+                  if (!manifesto?.content) {
+                    return (
+                      <>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>1,500+</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Participants</span></div>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>30+</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Countries</span></div>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>3 Years</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Field Work</span></div>
+                      </>
+                    );
+                  }
+                  const statsMatch = manifesto.content.match(/\*\*(\d[^*]+)\*\*[^\n]*(\d[^*]+)[^\n]*\*\*(\d[^*]+)\*\*/);
+                  if (statsMatch) {
+                    return (
+                      <>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>{statsMatch[1].trim()}</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Participants</span></div>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>{statsMatch[2].trim()}</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Countries</span></div>
+                        <div className="stat-item group cursor-default"><span className={`block text-5xl md:text-6xl font-black ${styles.textMain} mb-2 group-hover:text-[#DC2626] transition-colors`}>{statsMatch[3].trim()}</span><span className={`font-mono text-xs uppercase tracking-widest text-[#DC2626] ${styles.statGroup} transition-colors`}>Field Work</span></div>
+                      </>
+                    );
+                  }
+                  return null;
+                })()}
             </div>
         </div>
 

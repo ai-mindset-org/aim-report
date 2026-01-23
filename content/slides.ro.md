@@ -58,7 +58,7 @@ loopNumber: 1
 **decalaj:** [observă decalajul] decalajul dintre "ideile digitale" infinite și "materia fizică" dură. în timp ce imaginăm un miliard de agenți, nu-i putem alimenta. decalajul dintre dorința business-ului de a implementa ia peste tot și incapacitatea fizică a infrastructurii de a susține asta.
 
 ---
-title: schimbarea 02: copilot ➔ coleg autonom
+title: schimbarea 02: copilot → coleg autonom
 subtitle: deplasare (muncă agentică)
 alternativeSubtitle: când infrastructura energetică se stabilizează, modelele pot scala. modelele inteligente devin agenți.
 caption: |
@@ -86,7 +86,7 @@ benchmark klarna: un asistent ia a înlocuit **700 de agenți full-time**, a red
 **decalaj:** [decalaj de agentivitate] întârzierea dintre **înlocuirea tehnologică** și **adaptarea socială**. companiile implementează agenți mia rapid decât societatea poate defini noi roluri pentru oameni. generăm muncă pe care nu o putem gestiona eficient.
 
 ---
-title: schimbarea 03: deschidere globală ➔ stive fragmentate
+title: schimbarea 03: deschidere globală → stive fragmentate
 subtitle: suveranitate (dezbinarea internetului)
 alternativeSubtitle: când agenții ating banii, instituțiile cer reguli. munca agentică face ia un activ strategic.
 caption: |
@@ -134,7 +134,7 @@ dark: true
 cu **infrastructură energetică**, **muncă agentică** și **stive geopolitice** la locul lor, ia trece de la calcul brut la **capacitate de raționament**. acest strat răspunde la trei întrebări: **putem avea încredere în cum gândește?** **putem verifica logica sa?** **putem accelera descoperirile?**
 
 ---
-title: schimbarea 04: chatbots (sistem 1) ➔ modele gânditoare (sistem 2)
+title: schimbarea 04: chatbots (sistem 1) → modele gânditoare (sistem 2)
 subtitle: raționament
 alternativeSubtitle: stratul fundamental e complet. AI trece de la răspunsuri instinctive la gândire deliberată. actul doi sequoia.
 caption: |
@@ -162,7 +162,7 @@ loopNumber: 4
 **decalaj de audit:** modelul procesează 1,000 pași de raționament în secunde; omul urmărește cinci. aceasta duce la spălare de sens: acceptăm concluzii pentru că verificarea căii e prea obositoare. paradox: modelele devin mia bune la matematică dar MAI RELE la adevăr. raționează frumos despre fapte greșite.
 
 ---
-title: schimbarea 05: acumulare informație ➔ filtrare context
+title: schimbarea 05: acumulare informație → filtrare context
 subtitle: cunoaștere (memorie)
 alternativeSubtitle: modelele de raționament nu pot gândi în vid. au nevoie de context maxim - date corporative, documente, conversații.
 caption: |
@@ -190,7 +190,7 @@ loopNumber: 5
 **decalaj:** [decalaj de metabolizare] ferestre de 1m tokeni vs limita umană. modelele consumă mia multă informație decât pot metaboliza oamenii. context de 200k tokeni înseamnă că AI citește o bibliotecă, dar tu citești doar rezumatul. oamenii nu pot vedea graful complet, dar rămân responsabili pentru rezultate.
 
 ---
-title: schimbarea 06: căutare informație ➔ generare ipoteze
+title: schimbarea 06: căutare informație → generare ipoteze
 subtitle: descoperire (știință generativă)
 alternativeSubtitle: când AI primește acces la cercetare la scară, citește milioane de articole peste noapte. descoperiri la viteza mașinii.
 caption: |
@@ -227,7 +227,7 @@ dark: true
 cu raționament, acces la cunoaștere și capacități de descoperire, ia se mișcă de la **inteligență abstractă la execuție practică**. **putem menține ce construim?** **putem conecta digitalul și fizicul?** **ne putem apăra de ceea ce creăm?**
 
 ---
-title: schimbarea 07: sintaxă ➔ vibe coding & criză de integritate
+title: schimbarea 07: sintaxă → vibe coding & criză de integritate
 subtitle: măiestrie (sfârșitul sintaxei)
 alternativeSubtitle: când agenții pot orchestra fluxuri de lucru, coding-ul devine cel mia ușor domeniu de automatizat.
 caption: |
@@ -273,7 +273,7 @@ loopNumber: 8
 **decalaj:** [decalaj de realitate] fizică digitală perfectă vs fizică reală murdară. ia poate simula fizica perfect dar manipularea atomilor rămâne lentă.
 
 ---
-title: schimbarea 09: cybersecurity ➔ război cognitiv
+title: schimbarea 09: cybersecurity → război cognitiv
 subtitle: apărare (pădure întunecată)
 alternativeSubtitle: când simularea e ieftină, realitatea sintetică devine armă. deepfake-urile costă aproape zero.
 caption: |
@@ -309,7 +309,7 @@ dark: true
 criza apărării forțează aliniere. securitatea devine cenzură. când narativul e filtrat și încrederea colapsează, oamenii se retrag la companioni ia.
 
 ---
-title: schimbarea 10: halucinație ➔ filtre ideologice
+title: schimbarea 10: halucinație → filtre ideologice
 subtitle: narativ (aliniere ca și cenzură)
 alternativeSubtitle: criza apărării forțează aliniere. securitatea devine cenzură.
 caption: |
@@ -333,7 +333,7 @@ loopNumber: 10
 **decalaj:** [decalaj de realitate] ale cui valori sunt integrate în instrumentul pe care îl folosești zilnic? când ia-ul fiecăruia are valori diferite integrate, încetăm să împărtășim realitatea.
 
 ---
-title: schimbarea 11: instrument ➔ companion emoțional
+title: schimbarea 11: instrument → companion emoțional
 subtitle: intimitate (prieteni de vânzare)
 alternativeSubtitle: când AI se adaptează prea bine, se transformă din instrument în companion.
 caption: |
@@ -411,24 +411,125 @@ framework-uri testate în teren, instrumente și resurse comunitate:
 → [**@ia_mind_set channel**](https://t.me/ia_mind_set) — semnale zilnice, note de teren și actualizări comunitate
 
 ---
-title: mulțumesc
-subtitle: decalajul contextual · annual report 2025
-visual: SPARKLE_FINALE
-layout: center
+title: manifest
+subtitle: deci... ce urmează?
+layout: manifesto
 dark: true
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-nu e despre a ajunge mașinile din urmă.
-e despre construirea sistemelor de operare pentru oameni.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-creat cu comunitatea ia mindset labs
-**anca stavenski** — design, storytelling, shift logic
-**alex p** — idei, project lead
-**ray svitla** — link-uri, proofread, colectare evidence
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-**[subscribe on substack](https://iamindsetspace.substack.com/)** → primește următoarele resetări, note de teren, template-uri și descoperiri lab
-**[explore the ecosystem](https://iam-ecosystem-map.netlify.app/)** → laboratoare, instrumente, comunitate, artefacte
-**[talk to us](https://t.me/alex_named)** → parteneriate / speaking / lab-uri pentru echipe
+resetarea suveranității
 
-End of Transmission
-____
+nu suntem institut de cercetare. suntem laborator — un loc unde oamenii practică AI.
+
+**1,500+ participanți** în **30+ țări**, **3 ani** de muncă în teren.
+
+acest raport nu e cercetare de birou. e întărit cu note de teren din laboratoare, artefacte din comunitate și schimbări reale pe care le trăiesc oamenii.
+
+**contextul:**
+
+majoritatea discursului despre ia se întâmplă la extreme:
+
+**hype utopic** de la consultanță. **panică existențială** de la media. **obsesie optimizare** de la tech leaders.
+
+viitorul umanității e scris de tehnologi și capitaliști care privesc lumea de sus în jos.
+
+**noi umplem vidul.**
+
+tratăm **constrângerile adaptării umane** la fel de serios ca accelerarea tehnologică. în timp ce ia comprimă 100 ani de știință într-un deceniu, oferim **manualul pentru ființa umană ca să nu se ardă în proces.**
+
+**protocoale:**
+
+viața noastră funcționează pe configurație. la ce spui da fără să gândești. ce te întrerupe. să trecem de la "o să încerc" la "am default-uri".
+
+**nivel 01 - simplu (începe aici):**
+
+observă când accepți output AI fără să gândești.
+
+salvează o idee offline. scrie de mână.
+
+oprește o notificare. recuperează 10 minute.
+
+clarifică-ți gândirea înainte să întrebi AI.
+
+pune pe pauză înainte să ai încredere în output.
+
+**nivel 02 - mediu (construiește obiceiuri):**
+
+creează o bază personală de cunoștințe pentru un domeniu.
+
+testează 3 modele pe aceeași întrebare să vezi bias.
+
+implementează un filtru contextual.
+
+avertizează generația în vârstă despre informația sintetică.
+
+practică analog: apeluri, scriere de mână.
+
+**nivel 03 - avansat (construiește sisteme):**
+
+implementează agenți gardieni.
+
+stabilește "strângeri de mână secrete" familiale.
+
+construiește fluxuri local-first.
+
+auditează trasee de raționament.
+
+refuză antrenarea pe datele tale.
+
+**nivel 04 - profund (structural):**
+
+treci de la Creator la Consigliere.
+
+prețuiește tacit knowledge.
+
+practică testare divergentă.
+
+nu putem închide toate decalajele, dar măcar putem fi conștienți de ele și acționa în consecință.
+
+**ecosistemul nostru:**
+
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: apărarea psihicului
+
+→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: gestionarea atenției când contextul explodează
+
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — apărare prin romantism pragmatic
+
+→ [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — arhitectură comprehensivă de cunoaștere
+
+→ [**Founder OS YouTube**](https://youtube.com/@aimindsetlabs) — firewall-uri sănătate mentală
+
+→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — ghiduri practice
+
+→ [**@ai_mind_set**](https://t.me/ai_mind_set) — semnale zilnice & note de teren
+
+**rămâi conectat:**
+
+dacă acest artefact te-a ajutat să numești frecarea — nu pierde firul.
+
+→ [**abonează-te pe substack**](https://aimindsetspace.substack.com) — următoarele resetări, note de teren, template-uri, deschideri lab
+
+doar semnale. fără spam. dezabonare oricând.
+
+---
+title: mulțumesc
+subtitle: pentru citit
+layout: thank-you
+dark: true
+
+**credite:**
+
+**anca stavenski** — design & logică
+
+**alex p** — idei
+
+**ray svitla** — cercetare
+
+**link-uri:**
+
+→ [**abonează-te pe substack**](https://aimindsetspace.substack.com) — primește următoarele resetări & semnale
+
+→ [**explorează ecosistemul**](https://aimindset.org) — laboratoare, instrumente, comunitate
+
+→ [**vorbește cu noi**](mailto:info@aimindset.org) — parteneriate / speaking
+
+sfârșit de transmisie

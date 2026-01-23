@@ -8,6 +8,131 @@ const __dirname = path.dirname(__filename);
 // Languages to process
 const languages = ['ru', 'by', 'ro'];
 
+// Parse evidence data from English slides.md
+function parseEnglishEvidence() {
+  const englishPath = path.join(__dirname, '../content/slides.md');
+  if (!fs.existsSync(englishPath)) {
+    console.warn('⚠ English slides.md not found');
+    return {};
+  }
+  
+  const content = fs.readFileSync(englishPath, 'utf-8');
+  const sections = content.split('---').slice(1);
+  const evidenceMap = {};
+  
+  sections.forEach((section) => {
+    const lines = section.trim().split('\n');
+    const metadata = {};
+    let contentStart = 0;
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (line.includes(':') && !line.startsWith(' ')) {
+        const [key, ...valueParts] = line.split(':');
+        metadata[key.trim()] = valueParts.join(':').trim();
+      } else if (line.trim() === '') {
+        contentStart = i + 1;
+        break;
+      }
+    }
+    
+    if (metadata.layout === 'shift-scroll' && metadata.loopNumber) {
+      const shiftContent = lines.slice(contentStart).join('\n');
+      const shiftId = metadata.loopNumber.toString().padStart(2, '0');
+      
+      const evidence = {
+        stats: [],
+        researchTop: [],
+        research: [],
+        aimEvidence: [],
+        voices: []
+      };
+      
+      // Parse Key Stats
+      const statsMatch = shiftContent.match(/\*\*Key Stats:\*\*(.*?)(?=\*\*Research:|$)/s);
+      if (statsMatch) {
+        const statLines = statsMatch[1].split('\n').filter(l => l.trim().startsWith('-'));
+        statLines.forEach(line => {
+          const match = line.match(/^-\s*\*\*([^:*]+):\*\*\s*(.+)/);
+          if (match) {
+            evidence.stats.push({
+              value: match[1].trim(),
+              label: match[2].trim()
+            });
+          }
+        });
+      }
+      
+      // Parse Research
+      const researchMatch = shiftContent.match(/\*\*Research:\*\*(.*?)(?=\*\*AI Mindset Evidence:|$)/s);
+      if (researchMatch) {
+        const researchLines = researchMatch[1].split('\n').filter(l => l.trim().startsWith('-'));
+        researchLines.forEach(line => {
+          const linkMatch = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
+          if (linkMatch) {
+            const title = linkMatch[1].replace(/^\*\*|\*\*$/g, '').trim();
+            const url = linkMatch[2].trim();
+            const description = line.split(/\)\s*:\s*/)[1] || '';
+            
+            const isTop = line.includes('[TOP]');
+            const researchItem = {
+              title: title,
+              url: url,
+              description: description.trim()
+            };
+            
+            if (isTop) {
+              evidence.researchTop.push(researchItem);
+            } else {
+              evidence.research.push(researchItem);
+            }
+          }
+        });
+      }
+      
+      // Parse AI Mindset Evidence
+      const aimMatch = shiftContent.match(/\*\*AI Mindset Evidence:\*\*(.*?)(?=\*\*Tags:|$)/s);
+      if (aimMatch) {
+        const aimLines = aimMatch[1].split('\n').filter(l => l.trim().startsWith('→'));
+        aimLines.forEach(line => {
+          const linkMatch = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
+          if (linkMatch) {
+            const title = linkMatch[1].replace(/^\*\*|\*\*$/g, '').trim();
+            const url = linkMatch[2].trim();
+            const description = line.split(/—\s*/)[1] || '';
+            
+            evidence.aimEvidence.push({
+              title: title,
+              url: url,
+              description: description.trim()
+            });
+          }
+        });
+      }
+      
+      // Parse Community Voices
+      const voicesMatch = shiftContent.match(/\*\*Community Voices:\*\*(.*?)(?=source:|$)/s);
+      if (voicesMatch) {
+        const voiceLines = voicesMatch[1].split('\n').filter(l => l.trim().startsWith('→'));
+        voiceLines.forEach(line => {
+          const quoteMatch = line.match(/\*\*"([^"]+)"\*\*\s*—\s*"(.+?)"\s*\(([^)]+)\)/);
+          if (quoteMatch) {
+            evidence.voices.push({
+              tag: quoteMatch[1].trim(),
+              text: quoteMatch[2].trim(),
+              author: quoteMatch[3].trim()
+            });
+          }
+        });
+      }
+      
+      evidenceMap[shiftId] = evidence;
+    }
+  });
+  
+  return evidenceMap;
+}
+
 function parseLanguage(lang) {
   const inputPath = path.join(__dirname, `../content/slides.${lang}.md`);
   const outputPath = path.join(__dirname, `../public/content/shifts-${lang}.json`);
@@ -20,9 +145,14 @@ function parseLanguage(lang) {
 
   const content = fs.readFileSync(inputPath, 'utf-8');
   const sections = content.split('---').slice(1);
+  
+  // Get evidence from English
+  const englishEvidence = parseEnglishEvidence();
 
   const layers = [];
   const shifts = [];
+  let manifesto = null;
+  let thankYou = null;
 
   sections.forEach((section, index) => {
     const lines = section.trim().split('\n');
@@ -110,6 +240,16 @@ function parseLanguage(lang) {
         'IV': { ru: 'ЧЕЛОВЕЧНОСТЬ', by: 'ЧАЛАВЕЧНАСЦЬ', ro: 'UMANITATE' }
       };
       
+      // Get evidence from English file
+      const shiftId = shiftNum.toString().padStart(2, '0');
+      const evidence = englishEvidence[shiftId] || {
+        stats: [],
+        researchTop: [],
+        research: [],
+        aimEvidence: [],
+        voices: []
+      };
+      
       shifts.push({
         id: shiftNum.toString().padStart(2, '0'),
         layerId: layerId,
@@ -131,17 +271,32 @@ function parseLanguage(lang) {
           title: lang === 'ru' ? 'РАЗРЫВ' : lang === 'by' ? 'РАЗРЫЎ' : 'DECALAJ',
           desc: gapSection
         },
-        stats: [],
-        evidence: [],
-        sources: [],
-        voices: []
+        stats: evidence.stats,
+        researchTop: evidence.researchTop,
+        research: evidence.research,
+        aimEvidence: evidence.aimEvidence,
+        voices: evidence.voices
       });
+    } else if (slide.metadata.layout === 'manifesto') {
+      manifesto = {
+        title: slide.metadata.title || '',
+        subtitle: slide.metadata.subtitle || '',
+        content: slide.content
+      };
+    } else if (slide.metadata.layout === 'thank-you') {
+      thankYou = {
+        title: slide.metadata.title || '',
+        subtitle: slide.metadata.subtitle || '',
+        content: slide.content
+      };
     }
   });
 
   const output = {
     shifts,
     layers,
+    manifesto,
+    thankYou,
     generated: new Date().toISOString()
   };
 

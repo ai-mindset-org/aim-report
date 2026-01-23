@@ -261,6 +261,13 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
                 <p className={`font-mono ${textSecondary} text-sm md:text-lg tracking-wide max-w-2xl mx-auto mt-4`}>{data.context}</p>
             </div>
          </div>
+         
+         {/* Scroll down indicator */}
+         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={isDark ? 'text-white' : 'text-black'}>
+               <path d="M12 5L12 19M12 19L5 12M12 19L19 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+         </div>
       </section>
 
       {/* THE DIVIDE SECTION */}
@@ -357,14 +364,59 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
           <div className="max-w-7xl mx-auto">
               <h2 className={`text-5xl md:text-7xl font-black ${textMain} uppercase tracking-tighter leading-none mb-12`}>{i18n?.ui.dataSources || 'Data Sources'}</h2>
               
-              {data.evidence && data.evidence.length > 0 && (
-                  <div className="mb-16">
-                      <h3 className="font-mono text-[#DC2626] text-xs uppercase tracking-widest font-bold mb-8">{i18n?.ui.research || 'Research'}</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {data.evidence.map((item, idx) => (
+              {/* TOP RESEARCH */}
+              {data.researchTop && data.researchTop.length > 0 && (
+                  <div className="mb-12">
+                      <h3 className="font-mono text-[#DC2626] text-xs uppercase tracking-widest font-bold mb-6 flex items-center gap-2">
+                        <span className="px-2 py-1 bg-[#DC2626] text-white rounded text-[10px]">TOP</span>
+                        {i18n?.ui.research || 'Research'}
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {data.researchTop.map((item, idx) => (
                               <button 
                                   key={idx} 
-                                  onClick={() => handleOpenSource({ ...item, type: "Evidence", author: "AIM Lab" })} 
+                                  onClick={() => handleOpenSource({ title: item.title, url: item.url, type: "Research", author: "Research" })} 
+                                  onMouseEnter={() => item.url && prefetchOgData(item.url)}
+                                  className={`group block w-full text-left p-6 rounded-lg border-2 border-[#DC2626] ${bgCard} hover:bg-[#DC2626]/10 transition-all`}>
+                                  <h4 className="text-lg font-bold text-[#DC2626] mb-2">{item.title}</h4>
+                                  <p className={`text-sm leading-relaxed ${textSecondary}`}>{item.description}</p>
+                              </button>
+                          ))}
+                      </div>
+                  </div>
+              )}
+
+              {/* REGULAR RESEARCH */}
+              {data.research && data.research.length > 0 && (
+                  <div className="mb-12">
+                      <h3 className="font-mono text-neutral-500 text-xs uppercase tracking-widest font-bold mb-6">{i18n?.ui.research || 'Research'}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                          {data.research.map((item, idx) => (
+                              <button 
+                                  key={idx} 
+                                  onClick={() => handleOpenSource({ title: item.title, url: item.url, type: "Research", author: "Research" })} 
+                                  onMouseEnter={() => item.url && prefetchOgData(item.url)}
+                                  className={`group block w-full text-left p-4 rounded-lg border ${borderMain} ${bgCard} hover:border-[#DC2626] transition-all`}>
+                                  <h4 className="text-sm font-bold ${textMain} mb-1 group-hover:text-[#DC2626] transition-colors">{item.title}</h4>
+                                  <p className={`text-xs leading-relaxed ${textSecondary}`}>{item.description}</p>
+                              </button>
+                          ))}
+                      </div>
+                  </div>
+              )}
+
+              {/* AI MINDSET EVIDENCE */}
+              {data.aimEvidence && data.aimEvidence.length > 0 && (
+                  <div className="mb-12">
+                      <h3 className="font-mono text-[#DC2626] text-xs uppercase tracking-widest font-bold mb-6 flex items-center gap-2">
+                        <AIMindsetLogo className="w-4 h-4" color="#DC2626" />
+                        AI Mindset Evidence
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {data.aimEvidence.map((item, idx) => (
+                              <button 
+                                  key={idx} 
+                                  onClick={() => handleOpenSource({ title: item.title, url: item.url, type: "AI Mindset", author: "AI Mindset" })} 
                                   onMouseEnter={() => item.url && prefetchOgData(item.url)}
                                   className={`evidence-card group block w-full text-left p-8 rounded-lg border ${borderMain} ${bgCard} hover:border-[#DC2626] transition-all shadow-md`}>
                                   <div className="flex items-center gap-3 mb-4">
@@ -372,31 +424,12 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
                                       <span className="font-mono text-xs text-neutral-500 tracking-wide">[ai mindset]</span>
                                   </div>
                                   <h4 className="text-xl md:text-2xl font-bold text-[#DC2626] mb-3">{item.title}</h4>
-                                  <p className={`font-mono text-sm leading-relaxed ${textSecondary}`}>{item.desc}</p>
+                                  <p className={`font-mono text-sm leading-relaxed ${textSecondary}`}>{item.description}</p>
                               </button>
                           ))}
                       </div>
                   </div>
               )}
-
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  {data.sources.map((source) => (
-                      <div 
-                          key={source.id} 
-                          onClick={() => handleOpenSource(source)} 
-                          onMouseEnter={() => source.url && prefetchOgData(source.url)}
-                          className={`group flex flex-col justify-between p-5 ${bgCard} border ${borderMain} hover:border-[#DC2626] transition-colors rounded cursor-pointer ${getGridClass(source.type)}`}>
-                          <div className="mb-4">
-                              <div className={`font-mono text-[9px] ${textSecondary} uppercase tracking-widest mb-2`}>{source.type}</div>
-                              <span className={`text-sm md:text-lg font-bold leading-tight block ${textMain}`}>{source.title}</span>
-                          </div>
-                          <div className="flex justify-between items-end border-t border-white/10 pt-3 mt-auto">
-                              <span className="text-[10px] text-neutral-500 font-mono truncate">{source.author}</span>
-                              <svg className={`w-3 h-3 ${textSecondary} group-hover:text-[#DC2626]`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                          </div>
-                      </div>
-                  ))}
-              </div>
           </div>
       </section>
 

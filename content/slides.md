@@ -36,7 +36,7 @@ caption: |
 dark: true
 
 ---
-title: shift 01: chip supply ➔ power supply
+title: shift 01: chip supply → power supply
 subtitle: the energy wall
 alternativeSubtitle: without energy infrastructure, ai deployment stalls. before agents, reasoning, or discovery - we need power.
 caption: |
@@ -80,7 +80,7 @@ source: Intelligence per Watt — Snorkel AI / McKinsey | https://snorkel.ai/blo
 source: $7T Total AI infrastructure requirement — McKinsey | https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-cost-of-compute-a-7-trillion-dollar-race-to-scale-data-centers
 
 ---
-title: shift 02: copilot ➔ autonomous coworker
+title: shift 02: copilot → autonomous coworker
 subtitle: the displacement (agentic labor)
 alternativeSubtitle: once energy infrastructure stabilizes, models can scale. smarter models become agents.
 caption: |
@@ -133,7 +133,7 @@ the klarna benchmark: one ai assistant replaced **700 full-time agents**, slashe
 source: SHRM — 23.2M Jobs Exposed to AI | https://www.shrm.org/about/press-room/ai-s-wake-up-call--new-shrm-research-reveals-23-2-million-americ
 
 ---
-title: shift 03: global openness ➔ fragmented stacks
+title: shift 03: global openness → fragmented stacks
 subtitle: the sovereignty (the splinternet)
 alternativeSubtitle: when agents touch money, institutions demand rules. agentic labor makes AI a strategic asset.
 caption: |
@@ -202,7 +202,7 @@ dark: true
 with **energy infrastructure**, **agentic labor**, and **geopolitical stacks** in place, ai moves from raw compute to **reasoning capability**. this layer answers three questions: **can we trust how it thinks?** **can we find what we need?** **can we accelerate discovery?**
 
 ---
-title: shift 04: chatbots (system 1) ➔ thinking models (system 2)
+title: shift 04: chatbots (system 1) → thinking models (system 2)
 subtitle: the reasoning
 alternativeSubtitle: foundation layer complete. AI transitions from instinctive responses to deliberate thought. sequoia's act two.
 caption: |
@@ -250,7 +250,7 @@ source: Qodo — State of AI Code Quality | https://www.qodo.ai/reports/state-of
 source: OpenAI — o3 and o4-mini System Card | https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
 
 ---
-title: shift 05: information hoarding ➔ context filtering
+title: shift 05: information hoarding → context filtering
 subtitle: the knowledge (memory)
 alternativeSubtitle: reasoning models can't think in vacuum. they need maximum context - enterprise data, docs, conversations.
 caption: |
@@ -303,7 +303,7 @@ loopNumber: 5
 source: Gartner — Getting Started with RAG | https://www.gartner.com/en/documents/5415263
 
 ---
-title: shift 06: information retrieval ➔ hypothesis generation
+title: shift 06: information retrieval → hypothesis generation
 subtitle: the discovery (generative science)
 alternativeSubtitle: when AI accesses research at scale, it reads millions of papers overnight. discovery at machine speed.
 caption: |
@@ -362,7 +362,7 @@ dark: true
 with reasoning, knowledge access, and discovery capabilities, ai moves from **abstract intelligence to practical execution**. **can we maintain what we build?** **can we bridge digital and physical?** **can we defend against what we create?** **the interface layer determines what ai can build** and what humans can control.
 
 ---
-title: shift 07: syntax ➔ vibe coding & integrity crisis
+title: shift 07: syntax → vibe coding & integrity crisis
 subtitle: the craft (the end of syntax)
 alternativeSubtitle: when agents can orchestrate workflows, coding becomes the easiest domain to automate.
 caption: |
@@ -409,7 +409,7 @@ role shift: the programmer transforms into an architect who verifies systems rat
 - [**GitClear Code Churn**](https://www.gitclear.com/): 50% increase in code churn from AI-generated code
 
 **AI Mindset Evidence:**
-→ [**Telegram: Coding with Claude 3.5**](https://telegram.me/ai_mind_set/282) — Practical guides from community on Cursor + Claude Code workflows. Field stories: "vibe-coded real prototypes. shipped in 30 minutes what stalled 1.5 months."
+→ [**Telegram: Coding with Gemini**](https://telegram.me/ai_mind_set/282) — Practical guides from community on Cursor + Gemini Code workflows. Field stories: "vibe-coded real prototypes. shipped in 30 minutes what stalled 1.5 months."
 → [**Pragmatic Romanticism**](https://spiridonov.aimindset.org) — Why pragmatic romanticism is the only defense against cold machine logic. Reclaiming craft and authorship.
 
 **Tags:** AI Coding Tools, Vibe Coding, Code Generation, Developer Productivity
@@ -465,7 +465,7 @@ source: Tyler Perry — $800M Studio Halt | https://www.hollywoodreporter.com/bu
 source: NVIDIA Cosmos | https://developer.nvidia.com/cosmos
 
 ---
-title: shift 09: cybersecurity ➔ cognitive warfare
+title: shift 09: cybersecurity → cognitive warfare
 subtitle: the defense (the dark forest)
 alternativeSubtitle: when simulation is cheap, synthetic reality becomes weaponizable. deepfakes cost near-zero.
 caption: |
@@ -542,7 +542,7 @@ the defense crisis forces alignment. safety becomes censorship. when narrative i
 the question: **what happens to humanity when machines shape meaning?**
 
 ---
-title: shift 10: hallucination ➔ ideological filters
+title: shift 10: hallucination → ideological filters
 subtitle: the narrative (alignment as censorship)
 alternativeSubtitle: defense crisis forces alignment. safety becomes censorship.
 caption: |
@@ -589,7 +589,7 @@ not just technical question but political question: who decides what's "safe"?
 **Tags:** AI Alignment, Constitutional AI, AI Safety, Censorship, Model Refusal
 
 ---
-title: shift 11: tool ➔ emotional companion
+title: shift 11: tool → emotional companion
 subtitle: the intimacy (friends for sale)
 alternativeSubtitle: when AI adapts too well, it transforms from tool to companion.
 caption: |
@@ -796,7 +796,7 @@ the field-tested frameworks, tools, and community resources:
 
 → [**Founder OS YouTube playlist**](https://youtube.com/@aimindsetlabs) — mental health firewalls and sovereign workflows
 
-→ [**Coding with Claude 3.5**](https://telegram.me/ai_mind_set/282) — practical guides from the community
+→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — practical guides from the community
 
 → [**@ai_mind_set channel**](https://t.me/ai_mind_set) — daily signals, field notes, and community updates
 
@@ -852,22 +852,126 @@ subtitle: the labs
 _signals only. no spam. unsubscribe anytime._
 
 ---
-title: thank you
-subtitle: the context gap · annual report 2025
-visual: SPARKLE_FINALE
-layout: center
+title: manifesto
+subtitle: so... what's next?
+layout: manifesto
 dark: true
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-this is not about keeping up with machines.
-it's about building operating systems for humans.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-created with the ai mindset labs community
-**anca stavenski** — design, storytelling, shift logic
-**alex p** — ideation, project lead
-**ray svitla** — links, proofread, evidence collection
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-**[subscribe on substack](https://aimindsetspace.substack.com/)** → get next resets, field notes, templates, and lab openings
-**[explore the ecosystem](https://aim-ecosystem-map.netlify.app/)** → labs, tools, community, artifacts
-**[talk to us](https://t.me/alex_named)** → partnerships / speaking / labs for teams
+the sovereignty reset
+
+we're not a research institute. we're a lab — a place where people practice AI.
+
+**1,500+ participants** across **30+ countries**, **3 years** of field work.
+
+this report isn't desk research. it's hardened by field notes from labs, artifacts from community, and real shifts people are living through.
+
+**the context:**
+
+most ai discourse happens at extremes:
+
+**utopian hype** from consultancies. **existential panic** from media. **optimization obsession** from tech leaders.
+
+the future of humanity is being written by technologists and capitalists who view the world from the top down.
+
+**we fill the void.**
+
+we take **human adaptation constraints** as seriously as technological acceleration. while ai compresses 100 years of science into a decade, we provide **the manual for the human being to not burn out in the process.**
+
+**protocols:**
+
+our life runs on configuration. what you say yes to. what interrupts you. let's move from "i'll try" to "i have defaults".
+
+**level 01 - simple (start here):**
+
+notice when you accept AI output without thinking.
+
+save one idea offline. write it by hand.
+
+turn off one notification. reclaim 10 minutes.
+
+clarify your thinking before you ask AI.
+
+pause before trusting output.
+
+**level 02 - moderate (build habits):**
+
+create a personal knowledge base for one domain.
+
+test 3 models on the same question to see bias.
+
+implement one context filter.
+
+warn the older generation about synthesized information.
+
+practice analog: phone calls, handwriting.
+
+**level 03 - advanced (build systems):**
+
+deploy guardian agents.
+
+establish family "secret handshakes".
+
+build local-first workflows.
+
+audit reasoning traces.
+
+opt out of training data.
+
+**level 04 - deep (structural):**
+
+shift from Creator to Consigliere.
+
+value tacit knowledge.
+
+practice divergent testing.
+
+we can't close all the gaps, though we at least can be aware of them and act accordingly.
+
+**our ecosystem:**
+
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: protecting the psyche
+
+→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: managing attention when context explodes
+
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — pragmatic romanticism defense
+
+→ [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — comprehensive knowledge architecture
+
+→ [**Founder OS YouTube**](https://youtube.com/@aimindsetlabs) — mental health firewalls
+
+→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — practical guides
+
+→ [**@ai_mind_set**](https://t.me/ai_mind_set) — daily signals & field notes
+
+**stay connected:**
+
+if this artifact helped you name the friction — don't lose the thread.
+
+→ [**subscribe on substack**](https://aimindsetspace.substack.com) — next resets, field notes, templates, lab openings
+
+signals only. no spam. unsubscribe anytime.
+
+---
+title: thank you
+subtitle: for reading
+layout: thank-you
+dark: true
+
+**credits:**
+
+**anca stavenski** — design & logic
+
+**alex p** — ideation
+
+**ray svitla** — research
+
+**links:**
+
+→ [**subscribe on substack**](https://aimindsetspace.substack.com) — get next resets & signals
+
+→ [**explore the ecosystem**](https://aimindset.org) — labs, tools, community
+
+→ [**talk to us**](mailto:info@aimindset.org) — partnerships / speaking
+
+end of transmission
 
