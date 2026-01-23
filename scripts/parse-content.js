@@ -235,10 +235,10 @@ function parseLanguage(lang) {
         .replace(/^schimbare \d+:\s*/i, '');  // ro
 
       const layerTitles = {
-        'I': { ru: 'ФУНДАМЕНТ', by: 'ФУНДАМЕНТ', ro: 'FUNDAȚIE' },
-        'II': { ru: 'МЫШЛЕНИЕ', by: 'МЫСЛЕННЕ', ro: 'GÂNDIRE' },
-        'III': { ru: 'ИНТЕРФЕЙС', by: 'ІНТЭРФЕЙС', ro: 'INTERFAȚĂ' },
-        'IV': { ru: 'ЧЕЛОВЕЧНОСТЬ', by: 'ЧАЛАВЕЧНАСЦЬ', ro: 'UMANITATE' }
+        'I': { en: 'FOUNDATION', ru: 'ФУНДАМЕНТ', by: 'ФУНДАМЕНТ', ro: 'FUNDAȚIE' },
+        'II': { en: 'COGNITION', ru: 'МЫШЛЕНИЕ', by: 'МЫСЛЕННЕ', ro: 'GÂNDIRE' },
+        'III': { en: 'INTERFACE', ru: 'ИНТЕРФЕЙС', by: 'ІНТЭРФЕЙС', ro: 'INTERFAȚĂ' },
+        'IV': { en: 'HUMANITY', ru: 'ЧЕЛОВЕЧНОСТЬ', by: 'ЧАЛАВЕЧНАСЦЬ', ro: 'UMANITATE' }
       };
       
       // Get evidence from English file
@@ -254,22 +254,22 @@ function parseLanguage(lang) {
       shifts.push({
         id: shiftNum.toString().padStart(2, '0'),
         layerId: layerId,
-        layerTitle: layerTitles[layerId][lang] || layerTitles[layerId]['ru'],
+        layerTitle: layerTitles[layerId][lang] || layerTitles[layerId]['en'],
         title: slide.metadata.subtitle || '',
         subtitle: shiftName || '',
         context: slide.metadata.alternativeSubtitle || '',
         machineCol: {
-          label: lang === 'ru' ? 'ТЕХНОЛОГИЯ' : lang === 'by' ? 'ТЭХНАЛОГІЯ' : 'TEHNOLOGIE',
-          title: lang === 'ru' ? 'Что строится' : lang === 'by' ? 'Што будуецца' : 'Ce se construiește',
+          label: lang === 'en' ? 'MACHINE' : lang === 'ru' ? 'ТЕХНОЛОГИЯ' : lang === 'by' ? 'ТЭХНАЛОГІЯ' : 'TEHNOLOGIE',
+          title: lang === 'en' ? 'What\'s being built' : lang === 'ru' ? 'Что строится' : lang === 'by' ? 'Што будуецца' : 'Ce se construiește',
           desc: techSection
         },
         humanCol: {
-          label: lang === 'ru' ? 'ЧЕЛОВЕК' : lang === 'by' ? 'ЧАЛАВЕК' : 'UMAN',
-          title: lang === 'ru' ? 'Как люди адаптируются' : lang === 'by' ? 'Як людзі адаптуюцца' : 'Cum se adaptează oamenii',
+          label: lang === 'en' ? 'HUMAN' : lang === 'ru' ? 'ЧЕЛОВЕК' : lang === 'by' ? 'ЧАЛАВЕК' : 'UMAN',
+          title: lang === 'en' ? 'How humans adapt' : lang === 'ru' ? 'Как люди адаптируются' : lang === 'by' ? 'Як людзі адаптуюцца' : 'Cum se adaptează oamenii',
           desc: humanSection
         },
         gap: {
-          title: lang === 'ru' ? 'РАЗРЫВ' : lang === 'by' ? 'РАЗРЫЎ' : 'DECALAJ',
+          title: lang === 'en' ? 'GAP' : lang === 'ru' ? 'РАЗРЫВ' : lang === 'by' ? 'РАЗРЫЎ' : 'DECALAJ',
           desc: gapSection
         },
         stats: evidence.stats,
