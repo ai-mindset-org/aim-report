@@ -1,19 +1,21 @@
-import React, { useLayoutEffect, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useLayoutEffect, useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
 import { gsap, ScrollTrigger } from './lib/gsap-config';
 import { Hero } from './components/Hero';
 import { TectonicShifts } from './components/TectonicShiftsAnimation';
 import { VariableTextSection } from './components/VariableTextSection';
-import { ReportView } from './components/ReportView';
-import { LayerView } from './components/LayerView';
-import { SummaryView } from './components/SummaryView';
 import { TimelineNav, TimelineItem } from './components/TimelineNav'; 
 import { IndexNavigation } from './components/NavigationPopUp/IndexNavigation';
 import { ShiftData, LayerData } from './components/shiftsData';
-import { ThankYou } from './components/ThankYou';
-import { ManifestoPage } from './components/ManifestoPage/Index';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
 import { useShiftsData } from './hooks/useShiftsData';
 import { updateMetaTags } from './lib/updateMetaTags';
+
+// Lazy load heavy components
+const ReportView = lazy(() => import('./components/ReportView').then(m => ({ default: m.ReportView })));
+const LayerView = lazy(() => import('./components/LayerView').then(m => ({ default: m.LayerView })));
+const SummaryView = lazy(() => import('./components/SummaryView').then(m => ({ default: m.SummaryView })));
+const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default: m.ThankYou })));
+const ManifestoPage = lazy(() => import('./components/ManifestoPage/Index').then(m => ({ default: m.ManifestoPage })));
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ru' | 'by' | 'ro'>(() => {
@@ -272,43 +274,58 @@ export default function App() {
     }
   }, [viewState.view, viewState.index]);
 
+  const LoadingSpinner = () => (
+    <div className={`flex items-center justify-center min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0A]' : 'bg-[#F4F4F5]'}`}>
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#DC2626]"></div>
+    </div>
+  );
+
   const renderContent = () => {
     // Show loading while shifts data is loading
     if (loading && lang !== 'en') {
-      return (
-        <div className={`flex items-center justify-center min-h-screen ${theme === 'dark' ? 'bg-[#0A0A0A]' : 'bg-[#F4F4F5]'}`}>
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#DC2626]"></div>
-        </div>
-      );
+      return <LoadingSpinner />;
     }
 
-    if (viewState.view === 'thankyou') return <ThankYou theme={theme} onPrev={handlePrev} lang={lang} />;
+    if (viewState.view === 'thankyou') {
+      return (
+        <Suspense fallback={<LoadingSpinner />}>
+          <ThankYou theme={theme} onPrev={handlePrev} lang={lang} />
+        </Suspense>
+      );
+    }
+    
     if (viewState.view === 'conclusion') {
         const footerBg = theme === 'dark' ? 'bg-[#1a1a1a]' : 'bg-[#FAFAFA]';
         return (
-            <div className="w-full">
-                <ManifestoPage 
-                    onRestart={closeReport} 
-                    onNext={handleNext}
-                    onPrev={handlePrev}
-                    theme={theme} 
-                    lang={lang}
-                />
-                <div className={`h-40 ${footerBg}`}></div> 
-            </div>
+            <Suspense fallback={<LoadingSpinner />}>
+              <div className="w-full">
+                  <ManifestoPage 
+                      onRestart={closeReport} 
+                      onNext={handleNext}
+                      onPrev={handlePrev}
+                      theme={theme} 
+                      lang={lang}
+                  />
+                  <div className={`h-40 ${footerBg}`}></div> 
+              </div>
+            </Suspense>
         );
     }
+    
     if (viewState.view === 'manifesto') {
         return (
-            <ManifestoPage 
-                onRestart={closeReport} 
-                onNext={handleNext}
-                onPrev={handlePrev}
-                theme={theme} 
-                lang={lang}
-            />
+            <Suspense fallback={<LoadingSpinner />}>
+              <ManifestoPage 
+                  onRestart={closeReport} 
+                  onNext={handleNext}
+                  onPrev={handlePrev}
+                  theme={theme} 
+                  lang={lang}
+              />
+            </Suspense>
         );
     }
+    
     if (viewState.view === 'report') {
         const currentItem = timeline[viewState.index];
         if (!currentItem) return null;
@@ -336,10 +353,15 @@ export default function App() {
         const prevLabel = getPrevTitle();
         const nextLabel = getNextTitle();
         
-        if (currentItem.type === 'layer') return <LayerView data={currentItem.data as LayerData} onNext={handleNext} onPrev={handlePrev} onBack={closeReport} nextTitle={""} theme={theme} toggleTheme={toggleTheme} />;
-        if (currentItem.type === 'summary') return <SummaryView onNext={handleNext} onPrev={handlePrev} theme={theme} lang={lang} />;
-        return <ReportView onBack={closeReport} data={currentItem.data as ShiftData} onNext={handleNext} onPrev={handlePrev} isFirst={viewState.index === 0} isLast={viewState.index === timeline.length - 1} theme={theme} toggleTheme={toggleTheme} lang={lang} prevLabel={prevLabel} nextLabel={nextLabel} />;
+        return (
+          <Suspense fallback={<LoadingSpinner />}>
+            {currentItem.type === 'layer' && <LayerView data={currentItem.data as LayerData} onNext={handleNext} onPrev={handlePrev} onBack={closeReport} nextTitle={""} theme={theme} toggleTheme={toggleTheme} />}
+            {currentItem.type === 'summary' && <SummaryView onNext={handleNext} onPrev={handlePrev} theme={theme} lang={lang} />}
+            {currentItem.type === 'shift' && <ReportView onBack={closeReport} data={currentItem.data as ShiftData} onNext={handleNext} onPrev={handlePrev} isFirst={viewState.index === 0} isLast={viewState.index === timeline.length - 1} theme={theme} toggleTheme={toggleTheme} lang={lang} prevLabel={prevLabel} nextLabel={nextLabel} />}
+          </Suspense>
+        );
     }
+    
     return (
         <main className="w-full overflow-x-hidden">
             <Hero lang={lang} />
