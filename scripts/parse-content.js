@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Languages to process
-const languages = ['ru', 'by', 'ro'];
+// Languages to process  
+const languages = ['en', 'ru', 'by', 'ro'];
 
 // Parse evidence data from English slides.md
 function parseEnglishEvidence() {
@@ -64,7 +64,7 @@ function parseEnglishEvidence() {
       }
       
       // Parse Research
-      const researchMatch = shiftContent.match(/\*\*Research:\*\*(.*?)(?=\*\*AI Mindset Evidence:|\*\*Tags:|$)/s);
+      const researchMatch = shiftContent.match(/\*\*Research:\*\*(.*?)(?=\*\*AI Mindset Evidence:|$)/s);
       if (researchMatch) {
         const researchLines = researchMatch[1].split('\n').filter(l => l.trim().startsWith('-'));
         researchLines.forEach(line => {
@@ -126,16 +126,6 @@ function parseEnglishEvidence() {
         });
       }
       
-      // Parse source: lines (additional links after Tags)
-      const sourceMatches = shiftContent.matchAll(/^source:\s*(.+?)\s*—\s*(.+?)\s*\|\s*(.+?)$/gm);
-      for (const match of sourceMatches) {
-        evidence.research.push({
-          title: match[1].replace(/^"|"$/g, '').trim(),
-          url: match[3].trim(),
-          description: match[2].trim()
-        });
-      }
-      
       evidenceMap[shiftId] = evidence;
     }
   });
@@ -144,7 +134,8 @@ function parseEnglishEvidence() {
 }
 
 function parseLanguage(lang) {
-  const inputPath = path.join(__dirname, `../content/slides.${lang}.md`);
+  const inputFile = lang === 'en' ? 'slides.md' : `slides.${lang}.md`;
+  const inputPath = path.join(__dirname, `../content/${inputFile}`);
   const outputPath = path.join(__dirname, `../public/content/shifts-${lang}.json`);
 
   // Check if input file exists

@@ -16,11 +16,6 @@ export const useShiftsData = (lang: 'en' | 'ru' | 'by' | 'ro' = 'en'): ShiftsDat
 
   useEffect(() => {
     const loadData = async () => {
-      if (lang === 'en') {
-        setData({ shifts: defaultShifts, layers: defaultLayers, loading: false });
-        return;
-      }
-
       setData(prev => ({ ...prev, loading: true }));
 
       try {
@@ -29,7 +24,10 @@ export const useShiftsData = (lang: 'en' | 'ru' | 'by' | 'ro' = 'en'): ShiftsDat
         const basePath = import.meta.env.MODE === 'production' 
           ? (import.meta.env.BASE_URL || '/') 
           : '/';
-        const response = await fetch(`${basePath}content/shifts-${lang}.json`);
+        
+        // Always load from JSON, including English
+        const jsonLang = lang === 'en' ? 'en' : lang;
+        const response = await fetch(`${basePath}content/shifts-${jsonLang}.json`);
         if (response.ok) {
           const content = await response.json();
           

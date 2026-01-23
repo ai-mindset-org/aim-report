@@ -96,9 +96,6 @@ export default function App() {
     if (typeof window !== 'undefined') {
         const saved = localStorage.getItem('aim-theme');
         if (saved === 'light' || saved === 'dark') return saved;
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return 'light';
-        }
     }
     return 'dark';
   });

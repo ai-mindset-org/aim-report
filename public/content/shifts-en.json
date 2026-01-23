@@ -4,21 +4,21 @@
       "id": "01",
       "layerId": "I",
       "layerTitle": "ФУНДАМЕНТ",
-      "title": "энергетычны столь",
-      "subtitle": "ад кошту - да межаў інфраструктуры",
-      "context": "без дастатковай колькасці энергіі разгортванне іі спыняецца. для агентаў, разважаючых мадэляў і новых адкрыццяў патрэбна энергія.",
+      "title": "the energy wall",
+      "subtitle": "shift 01: chip supply → power supply",
+      "context": "without energy infrastructure, ai deployment stalls. before agents, reasoning, or discovery - we need power.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -81,21 +81,21 @@
       "id": "02",
       "layerId": "I",
       "layerTitle": "ФУНДАМЕНТ",
-      "title": "змяшчэнне (агентная праца)",
-      "subtitle": "copilot → аўтаномны калега",
-      "context": "калі энергетычная інфраструктура стабілізуецца, мадэлі могуць маштабавацца. разумныя мадэлі становяцца агентамі.",
+      "title": "the displacement (agentic labor)",
+      "subtitle": "shift 02: copilot → autonomous coworker",
+      "context": "once energy infrastructure stabilizes, models can scale. smarter models become agents.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -181,21 +181,21 @@
       "id": "03",
       "layerId": "I",
       "layerTitle": "ФУНДАМЕНТ",
-      "title": "суверэнітэт (раскол інтэрнэту)",
-      "subtitle": "глабальная адкрытасць → фрагментаваныя стэкі",
-      "context": "калі агенты датыкаюцца грошай, інстытуты патрабуюць правілаў. агентная праца робіць іі стратэгічным актывам.",
+      "title": "the sovereignty (the splinternet)",
+      "subtitle": "shift 03: global openness → fragmented stacks",
+      "context": "when agents touch money, institutions demand rules. agentic labor makes AI a strategic asset.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -262,22 +262,22 @@
     {
       "id": "04",
       "layerId": "II",
-      "layerTitle": "МЫСЛЕННЕ",
-      "title": "разважанне",
-      "subtitle": "chatbots (сістэма 1) → думаючыя мадэлі (сістэма 2)",
-      "context": "фундаментальны пласт завершаны. AI пераходзіць ад інстынктыўных адказаў да абдуманай думкі. акт два sequoia.",
+      "layerTitle": "МЫШЛЕНИЕ",
+      "title": "the reasoning",
+      "subtitle": "shift 04: chatbots (system 1) → thinking models (system 2)",
+      "context": "foundation layer complete. AI transitions from instinctive responses to deliberate thought. sequoia's act two.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -334,22 +334,22 @@
     {
       "id": "05",
       "layerId": "II",
-      "layerTitle": "МЫСЛЕННЕ",
-      "title": "веды (памяць)",
-      "subtitle": "назапашванне інфармацыі → фільтрацыя кантэксту",
-      "context": "разважаючыя мадэлі не могуць думаць у вакууме. ім патрэбен максімальны кантэкст - карпаратыўныя даныя, дакументы, размовы.",
+      "layerTitle": "МЫШЛЕНИЕ",
+      "title": "the knowledge (memory)",
+      "subtitle": "shift 05: information hoarding → context filtering",
+      "context": "reasoning models can't think in vacuum. they need maximum context - enterprise data, docs, conversations.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -428,22 +428,22 @@
     {
       "id": "06",
       "layerId": "II",
-      "layerTitle": "МЫСЛЕННЕ",
-      "title": "адкрыццё (генератыўная навука)",
-      "subtitle": "пошук інфармацыі → генерацыя гіпотэз",
-      "context": "калі AI атрымлівае доступ да даследаванняў у маштабе, ён чытае мільёны артыкулаў за ноч. адкрыцці са хуткасцю машыны.",
+      "layerTitle": "МЫШЛЕНИЕ",
+      "title": "the discovery (generative science)",
+      "subtitle": "shift 06: information retrieval → hypothesis generation",
+      "context": "when AI accesses research at scale, it reads millions of papers overnight. discovery at machine speed.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -500,22 +500,22 @@
     {
       "id": "07",
       "layerId": "III",
-      "layerTitle": "ІНТЭРФЕЙС",
-      "title": "майстэрства (канец сінтаксісу)",
-      "subtitle": "сінтаксіс → vibe кодынг & крызіс цэласнасці",
-      "context": "калі агенты могуць аркестраваць рабочыя працэсы, кодынг становіцца самым лёгкім даменам для аўтаматызацыі.",
+      "layerTitle": "ИНТЕРФЕЙС",
+      "title": "the craft (the end of syntax)",
+      "subtitle": "shift 07: syntax → vibe coding & integrity crisis",
+      "context": "when agents can orchestrate workflows, coding becomes the easiest domain to automate.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -604,22 +604,22 @@
     {
       "id": "08",
       "layerId": "III",
-      "layerTitle": "ІНТЭРФЕЙС",
-      "title": "рэальнасць (цела)",
-      "subtitle": "лічбавая сімуляцыя → фізічны інтэлект",
-      "context": "калі AI мае даныя аб фізічным свеце, ён можа яго сімуляваць. AI вучыць фізіку не датыкаючыся атамаў.",
+      "layerTitle": "ИНТЕРФЕЙС",
+      "title": "reality (body)",
+      "subtitle": "shift 08: digital simulation → physical intelligence",
+      "context": "when AI has data about physical world, it can simulate it. AI learns physics without touching atoms.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -656,22 +656,22 @@
     {
       "id": "09",
       "layerId": "III",
-      "layerTitle": "ІНТЭРФЕЙС",
-      "title": "абарона (цёмны лес)",
-      "subtitle": "кібербяспека → кагнітыўная вайна",
-      "context": "калі сімуляцыя танная, сінтэтычная рэальнасць становіцца зброяй. дыпфейкі каштуюць амаль нуль.",
+      "layerTitle": "ИНТЕРФЕЙС",
+      "title": "the defense (the dark forest)",
+      "subtitle": "shift 09: cybersecurity → cognitive warfare",
+      "context": "when simulation is cheap, synthetic reality becomes weaponizable. deepfakes cost near-zero.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -750,22 +750,22 @@
     {
       "id": "10",
       "layerId": "IV",
-      "layerTitle": "ЧАЛАВЕЧНАСЦЬ",
-      "title": "наратыў (выраўноўванне як цэнзура)",
-      "subtitle": "галюцынацыя → ідэалагічныя фільтры",
-      "context": "крызіс абароны прымушае выраўноўванне. бяспека становіцца цэнзурай.",
+      "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
+      "title": "the narrative (alignment as censorship)",
+      "subtitle": "shift 10: hallucination → ideological filters",
+      "context": "defense crisis forces alignment. safety becomes censorship.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -822,22 +822,22 @@
     {
       "id": "11",
       "layerId": "IV",
-      "layerTitle": "ЧАЛАВЕЧНАСЦЬ",
-      "title": "інтымнасць (сябры на продаж)",
-      "subtitle": "інструмент → эмацыйны кампаньён",
-      "context": "калі AI адаптуецца занадта добра, ён трансфармуецца з інструмента ў кампаньёна.",
+      "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
+      "title": "the intimacy (friends for sale)",
+      "subtitle": "shift 11: tool → emotional companion",
+      "context": "when AI adapts too well, it transforms from tool to companion.",
       "machineCol": {
-        "label": "ТЭХНАЛОГІЯ",
-        "title": "Што будуецца",
+        "label": "TEHNOLOGIE",
+        "title": "Ce se construiește",
         "desc": ""
       },
       "humanCol": {
-        "label": "ЧАЛАВЕК",
-        "title": "Як людзі адаптуюцца",
+        "label": "UMAN",
+        "title": "Cum se adaptează oamenii",
         "desc": ""
       },
       "gap": {
-        "title": "РАЗРЫЎ",
+        "title": "DECALAJ",
         "desc": ""
       },
       "stats": [
@@ -903,49 +903,16 @@
       "voices": []
     }
   ],
-  "layers": [
-    {
-      "id": "I",
-      "title": "ФУНДАМЕНТ",
-      "subtitle": "калі інфраструктура ламаецца. фізіка, эканоміка і ўлада.",
-      "desc": "",
-      "constraint": "ці можам мы забяспечыць энергіяй? ці можам дазволіць? хто кантралюе? энергарэсурсы, працоўная сіла, незалежнасць. матэрыяльныя абмежаванні, якія ствараюць базу.",
-      "metaphor": "globe"
-    },
-    {
-      "id": "II",
-      "title": "КАГНІЦЫЯ",
-      "subtitle": "архітэктура сэнсу і розуму",
-      "desc": "з **энергетычнай інфраструктурай**, **агентнай працай** і **геапалітычнымі стэкамі** на месцы, іі пераходзіць ад сырых вылічэнняў да **здольнасці разважаць**. гэты пласт адказвае на тры пытанні: **ці можам мы давяраць як ён думае?** **ці можам мы праверыць яго логіку?** **ці можам мы паскорыць адкрыцці?**",
-      "constraint": "як мы думаем і вучымся. разважанне, веды, адкрыццё.",
-      "metaphor": "globe"
-    },
-    {
-      "id": "III",
-      "title": "ІНТЭРФЕЙС",
-      "subtitle": "як мы будуем, абараняем і жывём",
-      "desc": "з разважаннем, доступам да ведаў і здольнасцямі да адкрыццяў, іі рухаецца ад **абстрактнага інтэлекту да практычнага выканання**. **ці можам мы падтрымліваць тое што будуем?** **ці можам мы злучыць лічбавае і фізічнае?** **ці можам мы абараніцца ад таго што ствараем?**",
-      "constraint": "як мы будуем, абараняем і жывём",
-      "metaphor": "globe"
-    },
-    {
-      "id": "IV",
-      "title": "ЧАЛАВЕЧНАСЦЬ",
-      "subtitle": "калі машыны фармуюць сэнс. наратыў, інтымнасць, праўда",
-      "desc": "крызіс абароны прымушае выраўноўванне. бяспека становіцца цэнзурай. калі наратыў фільтруецца і давер каліапсуе, людзі адступаюць да іі кампаньёнаў.",
-      "constraint": "фінальны пласт. як мы звязваемся, у што верым, каму давяраем.",
-      "metaphor": "globe"
-    }
-  ],
+  "layers": [],
   "manifesto": {
-    "title": "маніфест",
-    "subtitle": "дык... што далей?",
-    "content": "перазагрузка суверэнітэту\nмы не даследчы інстытут. мы лабараторыя — месца дзе людзі практыкуюць AI.\n**1,500+ удзельнікаў** у **30+ краінах**, **3 гады** палявой працы.\nгэты справаздача не кабінетнае даследаванне. яна загартавана палявымі нататкамі з лабараторый, артэфактамі супольнасці і рэальнымі зрухамі якія людзі перажываюць.\n**кантэкст:**\nбольшая частка дыскурсу пра іі адбываецца ў крайнасцях:\n**утапічны хайп** ад кансалтынгу. **экзістэнцыяльная паніка** ад медыя. **адэрманасць аптымізацыяй** ад тэхлідэраў.\nбудучыня чалавецтва пішацца тэхнолагамі і капіталістамі якія глядзяць на свет зверху ўніз.\n**мы запаўняем пустату.**\nмы ставімся да **абмежаванняў чалавечай адаптацыі** так жа сур'ёзна як да тэхналагічнага паскарэння. пакуль іі сціскае 100 гадоў навукі ў дзесяцігоддзе, мы даём **інструкцыю для чалавека як не згарэць у працэсе.**\n**пратаколы:**\nнаша жыццё працуе на канфігурацыі. што ты кажаш так не думаючы. што перапыняе цябе. давай перайдзем ад \"я паспрабую\" да \"у мяне ёсць дэфолты\".\n**узровень 01 - простае (пачні тут):**\nзаўважай калі прымаеш вывад AI не думаючы.\nзахавай адну ідэю афлайн. напішы ад рукі.\nвыключы адно паведамленне. вярні 10 хвілін.\nпраясні сваю думку перад запытам да AI.\nпаставі на паўзу перад даверам выводу.\n**узровень 02 - сярэдні (будуй звычкі):**\nстварыя персанальную базу ведаў для адной вобласці.\nтэставай 3 мадэлі на адным пытанні каб бачыць зрух.\nупрадзі адзін кантэкстны фільтр.\nпапярэдзь старэйшае пакаленне пра сінтэтычную інфармацыю.\nпрактыкуй аналаг: званкі, почырк.\n**узровень 03 - прасунуты (будуй сістэмы):**\nразгарні агентаў-абаронцаў.\nустанаві сямейныя \"сакрэтныя рукапажацці\".\nбудуй local-first рабочыя працэсы.\nправяраў ланцужкі разважанняў.\nадмовіся ад трэніроўкі на тваіх даных.\n**узровень 04 - глыбокі (структурны):**\nзрушайся ад Стваральніка да Кансільерыі.\nцані tacit knowledge.\nпрактыкуй дывергентнае тэставанне.\nмы не можам закрыць усе разрывы, але па меншай меры можам усведамляць іх і дзейнічаць адпаведна.\n**наша экасістэма:**\n→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: абарона псіхікі\n→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: кіраванне ўвагай калі кантэкст выбухае\n→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — абарона прагматычным рамантызмам\n→ [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — комплексная архітэктура ведаў\n→ [**Founder OS YouTube**](https://youtube.com/@aimindsetlabs) — брандмауэры ментальнага здароўя\n→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — практычныя гайды\n→ [**@ai_mind_set**](https://t.me/ai_mind_set) — штодзённыя сігналы & палявыя нататкі\n**заставайся на сувязі:**\nкалі гэты артэфакт дапамог табе назваць церушчанне — не губляй ніт.\n→ [**падпісацца на substack**](https://aimindsetspace.substack.com) — наступныя рэсеты, палявыя нататкі, шаблоны, адкрыцці лабараторый\nтолькі сігналы. без спаму. адпіска ў любы момант."
+    "title": "manifesto",
+    "subtitle": "so... what's next?",
+    "content": "the sovereignty reset\nwe're not a research institute. we're a lab — a place where people practice AI.\n**1,500+ participants** across **30+ countries**, **3 years** of field work.\nthis report isn't desk research. it's hardened by field notes from labs, artifacts from community, and real shifts people are living through.\n**the context:**\nmost ai discourse happens at extremes:\n**utopian hype** from consultancies. **existential panic** from media. **optimization obsession** from tech leaders.\nthe future of humanity is being written by technologists and capitalists who view the world from the top down.\n**we fill the void.**\nwe take **human adaptation constraints** as seriously as technological acceleration. while ai compresses 100 years of science into a decade, we provide **the manual for the human being to not burn out in the process.**\n**protocols:**\nour life runs on configuration. what you say yes to. what interrupts you. let's move from \"i'll try\" to \"i have defaults\".\n**level 01 - simple (start here):**\nnotice when you accept AI output without thinking.\nsave one idea offline. write it by hand.\nturn off one notification. reclaim 10 minutes.\nclarify your thinking before you ask AI.\npause before trusting output.\n**level 02 - moderate (build habits):**\ncreate a personal knowledge base for one domain.\ntest 3 models on the same question to see bias.\nimplement one context filter.\nwarn the older generation about synthesized information.\npractice analog: phone calls, handwriting.\n**level 03 - advanced (build systems):**\ndeploy guardian agents.\nestablish family \"secret handshakes\".\nbuild local-first workflows.\naudit reasoning traces.\nopt out of training data.\n**level 04 - deep (structural):**\nshift from Creator to Consigliere.\nvalue tacit knowledge.\npractice divergent testing.\nwe can't close all the gaps, though we at least can be aware of them and act accordingly.\n**our ecosystem:**\n→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: protecting the psyche\n→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: managing attention when context explodes\n→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — pragmatic romanticism defense\n→ [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — comprehensive knowledge architecture\n→ [**Founder OS YouTube**](https://youtube.com/@aimindsetlabs) — mental health firewalls\n→ [**Coding with Gemini**](https://telegram.me/ai_mind_set/282) — practical guides\n→ [**@ai_mind_set**](https://t.me/ai_mind_set) — daily signals & field notes\n**stay connected:**\nif this artifact helped you name the friction — don't lose the thread.\n→ [**subscribe on substack**](https://aimindsetspace.substack.com) — next resets, field notes, templates, lab openings\nsignals only. no spam. unsubscribe anytime."
   },
   "thankYou": {
-    "title": "дзякуй",
-    "subtitle": "за чытанне",
-    "content": "**аўтары:**\n**anca stavenski** — дызайн & логіка\n**alex p** — ідэі\n**ray svitla** — даследаванне\n**спасылкі:**\n→ [**падпісацца на substack**](https://aimindsetspace.substack.com) — атрымаць наступныя рэсеты & сігналы\n→ [**даследаваць экасістэму**](https://aimindset.org) — лабараторыі, інструменты, супольнасць\n→ [**звязацца з намі**](mailto:info@aimindset.org) — партнёрствы / выступленні\nканец перадачы"
+    "title": "thank you",
+    "subtitle": "for reading",
+    "content": "**credits:**\n**anca stavenski** — design & logic\n**alex p** — ideation\n**ray svitla** — research\n**links:**\n→ [**subscribe on substack**](https://aimindsetspace.substack.com) — get next resets & signals\n→ [**explore the ecosystem**](https://aimindset.org) — labs, tools, community\n→ [**talk to us**](mailto:info@aimindset.org) — partnerships / speaking\nend of transmission"
   },
-  "generated": "2026-01-23T13:02:20.517Z"
+  "generated": "2026-01-23T13:02:20.466Z"
 }
