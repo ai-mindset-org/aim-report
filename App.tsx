@@ -335,18 +335,20 @@ export default function App() {
             return;
           }
           
-          // Jump to next snap point - each is a clear, complete state
-          // 1: "They intersect" clear
-          // 2: "They intersect" + "For a moment" both visible  
-          // 3: "And diverge" clear
-          // 4: "Creating" clear
-          // 5: "THE CONTEXT GAP" + definition visible
-          // 6: "11 TECTONIC SHIFTS" clear
-          // 7: "IN 4 LAYERS" all 4 rows visible (final state)
-          // 8: "INPUT/RESPONSE" manifesto complete with THE GAP
-          // 9: "11" red grid
-          // 10: Final -> next page
-          const snapPoints = [0.03, 0.08, 0.12, 0.28, 0.38, 0.48, 0.58, 0.72, 0.85, 0.97];
+          // Jump to next snap point based on timeline timings (total ~28 units)
+          // Timeline: intersect(0) -> moment(1) -> diverge(2.8) -> creating(7.3) -> gap(8.5) -> bridge(12.5) -> layers(15) -> manifesto(18) -> shifts(23) -> report(26.2)
+          const snapPoints = [
+            0.04,  // 1: "They intersect" clear (time ~1)
+            0.07,  // 2: "They intersect" + "For a moment" both visible (time ~2)
+            0.11,  // 3: "And diverge" clear (time ~3)
+            0.27,  // 4: "Creating" clear (time ~7.5)
+            0.38,  // 5: "THE CONTEXT GAP" + definition (time ~10.5)
+            0.46,  // 6: "11 TECTONIC SHIFTS" (time ~13)
+            0.57,  // 7: "IN 4 LAYERS" all 4 rows (time ~16)
+            0.75,  // 8: "INPUT/RESPONSE" with THE GAP (time ~21)
+            0.87,  // 9: "11" red grid (time ~24.5)
+            0.96,  // 10: Final report screen -> next page
+          ];
           const nextSnap = snapPoints.find(p => p > currentProgress + 0.01);
           if (nextSnap) {
             const targetScroll = st.start + nextSnap * (st.end - st.start);
