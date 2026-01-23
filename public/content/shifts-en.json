@@ -3,22 +3,22 @@
     {
       "id": "01",
       "layerId": "I",
-      "layerTitle": "ФУНДАМЕНТ",
+      "layerTitle": "FOUNDATION",
       "title": "the energy wall",
       "subtitle": "shift 01: chip supply → power supply",
       "context": "without energy infrastructure, ai deployment stalls. before agents, reasoning, or discovery - we need power.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -80,22 +80,22 @@
     {
       "id": "02",
       "layerId": "I",
-      "layerTitle": "ФУНДАМЕНТ",
+      "layerTitle": "FOUNDATION",
       "title": "the displacement (agentic labor)",
       "subtitle": "shift 02: copilot → autonomous coworker",
       "context": "once energy infrastructure stabilizes, models can scale. smarter models become agents.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -180,22 +180,22 @@
     {
       "id": "03",
       "layerId": "I",
-      "layerTitle": "ФУНДАМЕНТ",
+      "layerTitle": "FOUNDATION",
       "title": "the sovereignty (the splinternet)",
       "subtitle": "shift 03: global openness → fragmented stacks",
       "context": "when agents touch money, institutions demand rules. agentic labor makes AI a strategic asset.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -262,22 +262,22 @@
     {
       "id": "04",
       "layerId": "II",
-      "layerTitle": "МЫШЛЕНИЕ",
+      "layerTitle": "COGNITION",
       "title": "the reasoning",
       "subtitle": "shift 04: chatbots (system 1) → thinking models (system 2)",
       "context": "foundation layer complete. AI transitions from instinctive responses to deliberate thought. sequoia's act two.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -334,22 +334,22 @@
     {
       "id": "05",
       "layerId": "II",
-      "layerTitle": "МЫШЛЕНИЕ",
+      "layerTitle": "COGNITION",
       "title": "the knowledge (memory)",
       "subtitle": "shift 05: information hoarding → context filtering",
       "context": "reasoning models can't think in vacuum. they need maximum context - enterprise data, docs, conversations.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -428,22 +428,22 @@
     {
       "id": "06",
       "layerId": "II",
-      "layerTitle": "МЫШЛЕНИЕ",
+      "layerTitle": "COGNITION",
       "title": "the discovery (generative science)",
       "subtitle": "shift 06: information retrieval → hypothesis generation",
       "context": "when AI accesses research at scale, it reads millions of papers overnight. discovery at machine speed.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -500,22 +500,22 @@
     {
       "id": "07",
       "layerId": "III",
-      "layerTitle": "ИНТЕРФЕЙС",
+      "layerTitle": "INTERFACE",
       "title": "the craft (the end of syntax)",
       "subtitle": "shift 07: syntax → vibe coding & integrity crisis",
       "context": "when agents can orchestrate workflows, coding becomes the easiest domain to automate.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -604,22 +604,22 @@
     {
       "id": "08",
       "layerId": "III",
-      "layerTitle": "ИНТЕРФЕЙС",
+      "layerTitle": "INTERFACE",
       "title": "reality (body)",
       "subtitle": "shift 08: digital simulation → physical intelligence",
       "context": "when AI has data about physical world, it can simulate it. AI learns physics without touching atoms.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -656,22 +656,22 @@
     {
       "id": "09",
       "layerId": "III",
-      "layerTitle": "ИНТЕРФЕЙС",
+      "layerTitle": "INTERFACE",
       "title": "the defense (the dark forest)",
       "subtitle": "shift 09: cybersecurity → cognitive warfare",
       "context": "when simulation is cheap, synthetic reality becomes weaponizable. deepfakes cost near-zero.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -750,22 +750,22 @@
     {
       "id": "10",
       "layerId": "IV",
-      "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
+      "layerTitle": "HUMANITY",
       "title": "the narrative (alignment as censorship)",
       "subtitle": "shift 10: hallucination → ideological filters",
       "context": "defense crisis forces alignment. safety becomes censorship.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -822,22 +822,22 @@
     {
       "id": "11",
       "layerId": "IV",
-      "layerTitle": "ЧЕЛОВЕЧНОСТЬ",
+      "layerTitle": "HUMANITY",
       "title": "the intimacy (friends for sale)",
       "subtitle": "shift 11: tool → emotional companion",
       "context": "when AI adapts too well, it transforms from tool to companion.",
       "machineCol": {
-        "label": "TEHNOLOGIE",
-        "title": "Ce se construiește",
+        "label": "MACHINE",
+        "title": "What's being built",
         "desc": ""
       },
       "humanCol": {
-        "label": "UMAN",
-        "title": "Cum se adaptează oamenii",
+        "label": "HUMAN",
+        "title": "How humans adapt",
         "desc": ""
       },
       "gap": {
-        "title": "DECALAJ",
+        "title": "GAP",
         "desc": ""
       },
       "stats": [
@@ -914,5 +914,5 @@
     "subtitle": "for reading",
     "content": "**credits:**\n**anca stavenski** — design & logic\n**alex p** — ideation\n**ray svitla** — research\n**links:**\n→ [**subscribe on substack**](https://aimindsetspace.substack.com) — get next resets & signals\n→ [**explore the ecosystem**](https://aimindset.org) — labs, tools, community\n→ [**talk to us**](mailto:info@aimindset.org) — partnerships / speaking\nend of transmission"
   },
-  "generated": "2026-01-23T13:02:20.466Z"
+  "generated": "2026-01-23T13:02:58.806Z"
 }
