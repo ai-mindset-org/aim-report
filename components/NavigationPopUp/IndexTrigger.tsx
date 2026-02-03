@@ -56,7 +56,7 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
 
     return (
         <>
-            <div className={`fixed top-6 right-6 z-[100] pointer-events-auto flex items-center gap-4 transition-opacity duration-1000 ease-out ${isReady ? 'opacity-100' : 'opacity-0'}`}>
+            <div data-header-element className={`fixed top-6 right-6 z-[100] pointer-events-auto flex items-center gap-4`}>
 
                 {/* 1. TOOLKIT - small red dot, same size as theme toggle */}
                 <button

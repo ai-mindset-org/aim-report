@@ -8,8 +8,10 @@ interface StyleCTAProps {
 // Text labels that cycle through
 const LABELS = [
   { text: "getstyle", duration: 2500 },
-  { text: "toolkit", duration: 2000 },
-  { text: "free", duration: 1500 },
+  { text: "want this style?", duration: 2500 },
+  { text: "get the toolkit", duration: 2500 },
+  { text: "presentations like this", duration: 3000 },
+  { text: "free download", duration: 2000 },
 ];
 
 export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
@@ -66,11 +68,11 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
           });
         }
 
-        // Next label after pause
+        // Next label after pause (8-10 seconds)
         timeoutId = setTimeout(() => {
           labelIndex = (labelIndex + 1) % LABELS.length;
           showNextLabel();
-        }, 15000); // 15 sec pause between labels
+        }, 8000 + Math.random() * 2000); // 8-10 sec pause between labels
       }, label.duration);
     };
 
@@ -134,25 +136,25 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
 
   return (
     <>
-      {/* Floating CTA - bottom right, semi-transparent */}
+      {/* Floating CTA - bottom right, always visible but semi-transparent */}
       <button
         onClick={() => setIsModalOpen(true)}
         className={`fixed z-[90] right-6 bottom-6 flex items-center group transition-opacity duration-1000
           ${isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Get Style Toolkit"
       >
-        {/* Small red dot - always visible but semi-transparent */}
-        <div className="w-3 h-3 rounded-full bg-[#DC2626] opacity-40 group-hover:opacity-100 transition-opacity"
-             style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.3)' }} />
-
-        {/* Animated label */}
+        {/* Animated label - on the left */}
         <span
           ref={labelRef}
-          className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626] ml-2"
+          className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626] mr-2"
           style={{ width: 0, opacity: 0 }}
         >
           {currentLabel}
         </span>
+
+        {/* Small red dot - always visible, semi-transparent (visible on all pages) */}
+        <div className="w-3 h-3 rounded-full bg-[#DC2626] opacity-50 group-hover:opacity-100 transition-opacity"
+             style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.4)' }} />
       </button>
 
       {/* Compact Modal - mobile friendly */}

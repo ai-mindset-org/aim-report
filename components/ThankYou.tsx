@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useCallback } from 'react';
 import { gsap } from '../lib/gsap-config';
 
 // Core team
@@ -43,10 +43,51 @@ interface ThankYouProps {
 export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) => {
   const isDark = theme === 'dark';
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollTweenRef = useRef<gsap.core.Tween | null>(null);
+  const scrollVelocityRef = useRef(0);
+  const baseSpeedRef = useRef(1);
+  const rafRef = useRef<number | null>(null);
 
   const bgMain = isDark ? 'bg-[#050505]' : 'bg-[#F4F4F5]';
   const textMain = isDark ? 'text-white' : 'text-neutral-900';
   const textSecondary = isDark ? 'text-neutral-600' : 'text-neutral-500';
+
+  // Handle wheel events for scroll acceleration
+  const handleWheel = useCallback((e: WheelEvent) => {
+    e.preventDefault();
+
+    // Add velocity based on scroll direction and intensity
+    // Positive deltaY = scroll down = accelerate credits (scroll up faster)
+    const scrollMultiplier = 0.015; // Sensitivity factor
+    const maxVelocity = 8; // Maximum speed multiplier
+
+    scrollVelocityRef.current += e.deltaY * scrollMultiplier;
+    scrollVelocityRef.current = Math.max(-2, Math.min(maxVelocity, scrollVelocityRef.current));
+  }, []);
+
+  // Smooth velocity decay and tween speed update
+  const updateScrollSpeed = useCallback(() => {
+    // Apply velocity to base speed with smooth interpolation
+    const targetSpeed = baseSpeedRef.current + scrollVelocityRef.current;
+
+    // Decay velocity smoothly back to 0
+    scrollVelocityRef.current *= 0.95;
+
+    // Stop decay when very small
+    if (Math.abs(scrollVelocityRef.current) < 0.01) {
+      scrollVelocityRef.current = 0;
+    }
+
+    // Update tween timeScale for smooth speed changes
+    if (scrollTweenRef.current) {
+      const currentScale = scrollTweenRef.current.timeScale();
+      const newScale = Math.max(0.1, targetSpeed); // Minimum speed to prevent stopping
+      // Smooth interpolation for fluid feel
+      scrollTweenRef.current.timeScale(currentScale + (newScale - currentScale) * 0.15);
+    }
+
+    rafRef.current = requestAnimationFrame(updateScrollSpeed);
+  }, []);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -66,20 +107,38 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
         const contentHeight = (scrollContent as HTMLElement).scrollHeight;
         const containerHeight = (scrollContainer as HTMLElement).offsetHeight;
 
-        // Start partially visible (not fully below)
-        gsap.set(scrollContent, { y: containerHeight * 0.6 });
+        // Start with credits already visible - show them earlier
+        gsap.set(scrollContent, { y: containerHeight * 0.2 });
 
         // Scroll up through the container - starts immediately
-        gsap.to(scrollContent, {
+        scrollTweenRef.current = gsap.to(scrollContent, {
           y: -contentHeight,
-          duration: 32,
+          duration: 28, // Slightly faster base duration
           ease: "none",
           repeat: -1
         });
       }
     }, containerRef);
-    return () => ctx.revert();
-  }, []);
+
+    // Add wheel listener for scroll acceleration
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('wheel', handleWheel, { passive: false });
+    }
+
+    // Start the velocity update loop
+    rafRef.current = requestAnimationFrame(updateScrollSpeed);
+
+    return () => {
+      ctx.revert();
+      if (container) {
+        container.removeEventListener('wheel', handleWheel);
+      }
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, [handleWheel, updateScrollSpeed]);
 
   return (
     <section ref={containerRef} className={`relative w-full h-screen ${bgMain} ${textMain} flex flex-col overflow-hidden font-sans`}>
