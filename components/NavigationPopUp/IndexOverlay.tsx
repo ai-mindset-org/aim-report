@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from '../../lib/gsap-config';
 import { layers, shifts } from '../shiftsData';
 import { ShiftMetaphor } from '../ShiftMetaphor';
@@ -13,6 +13,9 @@ interface IndexOverlayProps {
 export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onNavigate, theme }) => {
     const overlayRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [activeCardId, setActiveCardId] = useState<string | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
     const isDark = theme === 'dark';
 
     // Grid Animation Refs
@@ -42,6 +45,60 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
     // Grid Color - Reduced opacity for light mode visibility (0.15 -> 0.10)
     const gridColor = isDark ? '#DC2626' : '#000000';
     const gridOpacity = isDark ? 0.15 : 0.10; 
+
+    // Check for mobile
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Scroll-based active card detection for mobile
+    const handleScroll = useCallback(() => {
+        if (!isMobile || !scrollContainerRef.current) return;
+
+        const container = scrollContainerRef.current;
+        const cards = container.querySelectorAll('[data-card-id]');
+        const containerRect = container.getBoundingClientRect();
+        const centerY = containerRect.top + containerRect.height / 2;
+
+        let closestCard: Element | null = null;
+        let closestDistance = Infinity;
+
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(cardCenter - centerY);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestCard = card;
+            }
+        });
+
+        if (closestCard) {
+            const cardId = closestCard.getAttribute('data-card-id');
+            if (cardId !== activeCardId) {
+                setActiveCardId(cardId);
+            }
+        }
+    }, [isMobile, activeCardId]);
+
+    useEffect(() => {
+        if (!isOpen || !isMobile) return;
+
+        const scrollContainer = scrollContainerRef.current;
+        if (!scrollContainer) return;
+
+        scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+        // Initial check
+        setTimeout(handleScroll, 100);
+
+        return () => {
+            scrollContainer.removeEventListener('scroll', handleScroll);
+        };
+    }, [isOpen, isMobile, handleScroll]);
 
     // --- ANIMATION LOGIC ---
     useEffect(() => {
@@ -174,15 +231,17 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                 </div>
 
                 {/* Scrollable Content */}
-                <div 
+                <div
+                    ref={scrollContainerRef}
                     onClick={handleBackgroundClick} // Clicking empty space in scroll area closes modal
                     className={`relative z-10 flex-1 overflow-y-auto p-6 md:p-8 ${scrollbarClass}`}
                 >
                     
                     {/* Intro */}
-                    <div 
+                    <div
+                        data-card-id="intro"
                         onClick={(e) => { e.stopPropagation(); handleNavClick('landing'); }}
-                        className={`toc-anim mb-8 p-4 ${cardBg} border ${borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all flex items-center justify-between group`}
+                        className={`toc-anim mb-8 p-4 ${cardBg} border ${isMobile && activeCardId === 'intro' ? 'border-[#DC2626] bg-[#DC2626]/10' : borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all flex items-center justify-between group ${isMobile && activeCardId === 'intro' ? 'scale-[1.02] shadow-lg shadow-[#DC2626]/20' : ''}`}
                     >
                          <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded bg-[#DC2626] flex items-center justify-center text-white shadow-sm">
@@ -212,11 +271,14 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                                     </div>
 
                                     {/* Shifts Grid */}
-                                    {layerShifts.map((shift) => (
-                                        <div 
+                                    {layerShifts.map((shift) => {
+                                        const isActive = isMobile && activeCardId === `shift-${shift.id}`;
+                                        return (
+                                        <div
                                             key={shift.id}
+                                            data-card-id={`shift-${shift.id}`}
                                             onClick={(e) => { e.stopPropagation(); handleNavClick('shift', shift.id); }}
-                                            className={`toc-anim relative h-32 p-4 ${cardBg} border ${borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-between`}
+                                            className={`toc-anim relative h-32 p-4 ${cardBg} border ${isActive ? 'border-[#DC2626] bg-[#DC2626]/10' : borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-between ${isActive ? 'scale-[1.02] shadow-lg shadow-[#DC2626]/20' : ''}`}
                                             style={{ overflow: 'clip' }}
                                         >
                                             {/* Top Right Visual - passing hoverTrigger=true to enforce hover-only animation */}
@@ -227,13 +289,13 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                                             </div>
 
                                             <div className="relative z-10 pointer-events-none">
-                                                <span className="font-mono text-[#DC2626] text-xs font-bold mb-2 block">{shift.id}</span>
-                                                <h3 className={`text-base md:text-sm font-bold uppercase leading-tight ${textMain} pr-8 group-hover:text-[#DC2626] transition-colors`}>
+                                                <span className={`font-mono text-[#DC2626] text-xs font-bold mb-2 block ${isActive ? 'text-[#DC2626]' : ''}`}>{shift.id}</span>
+                                                <h3 className={`text-base md:text-sm font-bold uppercase leading-tight ${isActive ? 'text-[#DC2626]' : textMain} pr-8 group-hover:text-[#DC2626] transition-colors`}>
                                                     {shift.title}
                                                 </h3>
                                             </div>
                                         </div>
-                                    ))}
+                                    );})}
                                 </React.Fragment>
                             );
                          })}
@@ -243,29 +305,32 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                         </div>
 
                         {/* Summary */}
-                        <div 
+                        <div
+                            data-card-id="summary"
                             onClick={(e) => { e.stopPropagation(); handleNavClick('summary'); }}
-                            className={`toc-anim h-24 p-4 ${cardBg} border ${borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-center`}
+                            className={`toc-anim h-24 p-4 ${cardBg} border ${isMobile && activeCardId === 'summary' ? 'border-[#DC2626] bg-[#DC2626]/10 scale-[1.02] shadow-lg shadow-[#DC2626]/20' : borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-center`}
                         >
-                             <h3 className={`text-sm font-black uppercase ${textMain} group-hover:text-[#DC2626] transition-colors`}>Summary</h3>
+                             <h3 className={`text-sm font-black uppercase ${isMobile && activeCardId === 'summary' ? 'text-[#DC2626]' : textMain} group-hover:text-[#DC2626] transition-colors`}>Summary</h3>
                              <p className={`text-[10px] font-mono ${textDim}`}>Recap</p>
                         </div>
 
                         {/* Manifesto */}
-                        <div 
+                        <div
+                            data-card-id="manifesto"
                             onClick={(e) => { e.stopPropagation(); handleNavClick('manifesto'); }}
-                            className={`toc-anim h-24 p-4 bg-[#DC2626] text-white rounded-lg cursor-pointer transition-all group flex flex-col justify-center hover:bg-red-600 shadow-md hover:shadow-red-500/20`}
+                            className={`toc-anim h-24 p-4 bg-[#DC2626] text-white rounded-lg cursor-pointer transition-all group flex flex-col justify-center hover:bg-red-600 shadow-md hover:shadow-red-500/20 ${isMobile && activeCardId === 'manifesto' ? 'scale-[1.02] ring-2 ring-white/50' : ''}`}
                         >
                              <h3 className="text-sm font-black uppercase">Manifesto</h3>
                              <p className="text-[10px] font-mono opacity-80">The Plan</p>
                         </div>
 
                         {/* Thank You */}
-                        <div 
+                        <div
+                            data-card-id="thankyou"
                             onClick={(e) => { e.stopPropagation(); handleNavClick('thankyou'); }}
-                            className={`toc-anim h-24 p-4 ${cardBg} border ${borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-center`}
+                            className={`toc-anim h-24 p-4 ${cardBg} border ${isMobile && activeCardId === 'thankyou' ? 'border-[#DC2626] bg-[#DC2626]/10 scale-[1.02] shadow-lg shadow-[#DC2626]/20' : borderMain} ${cardShadow} ${cardHover} rounded-lg cursor-pointer transition-all group flex flex-col justify-center`}
                         >
-                             <h3 className={`text-sm font-black uppercase ${textMain} group-hover:text-[#DC2626] transition-colors`}>Thank You</h3>
+                             <h3 className={`text-sm font-black uppercase ${isMobile && activeCardId === 'thankyou' ? 'text-[#DC2626]' : textMain} group-hover:text-[#DC2626] transition-colors`}>Thank You</h3>
                              <p className={`text-[10px] font-mono ${textDim}`}>End</p>
                         </div>
 

@@ -168,11 +168,6 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
           });
       }
 
-      // 6. FOOTER LINKS
-      gsap.from(q('.footer-link'), {
-          scrollTrigger: { trigger: ".footer-section", start: "top 98%" },
-          opacity: 0, stagger: 0.04, duration: 0.3
-      });
 
     }, containerRef);
 
@@ -392,63 +387,40 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
 
         <div className={`relative py-20 md:py-32 px-6 ${styles.bg}`}><div className="max-w-7xl mx-auto"><h2 className={`text-4xl font-black uppercase mb-12 text-center md:text-left ${styles.textMain}`}>Our Ecosystem</h2><div ref={ecoGridRef} className="eco-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[250px]">{ecosystemItems.map((item) => (<div key={item.id} onClick={() => openBrowser(item.url, item.title)} className={`eco-card group relative ${styles.cardBg} border ${styles.cardBorder} rounded-xl overflow-hidden hover:border-[#DC2626] ${isDark ? 'hover:bg-[#161616]' : 'hover:bg-neutral-50'} transition-all duration-300 flex flex-col cursor-pointer ${item.span} min-h-[250px] shadow-sm`}><div className="absolute top-0 right-0 w-full h-full opacity-20 group-hover:opacity-30 transition-opacity pointer-events-none"><EcoVisual type={item.type} theme={theme} /></div><div className="p-6 flex flex-col justify-end h-full relative z-10"><span className="font-mono text-[10px] text-[#DC2626] uppercase tracking-widest mb-3 block">{item.type}</span><h3 className={`text-2xl font-bold ${styles.textMain} leading-tight mb-3 group-hover:text-[#DC2626] transition-colors`}>{item.title}</h3><p className={`text-sm ${styles.textDim} line-clamp-3 leading-relaxed`}>{item.desc}</p></div></div>))}</div></div></div>
 
-        <div className={`footer-section relative pt-32 pb-12 px-6 ${styles.footerBg} ${isDark ? 'text-white' : 'text-neutral-900'}`}>
-            <div className="max-w-4xl mx-auto text-center mb-24">
-                <p className={`font-mono text-sm uppercase tracking-widest mb-8 ${styles.textDim}`}>Stay Connected</p>
-                <h2 className="text-4xl md:text-7xl font-black uppercase mb-8 leading-none tracking-tighter">Don't lose<br/>the thread.</h2>
-                <p className={`text-lg md:text-xl ${styles.textDim} mb-12 max-w-2xl mx-auto`}>If this artifact helped you name the friction, join us for the next resets, field notes, and lab openings.</p>
-                <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-                    <a href="https://aimindsetspace.substack.com" target="_blank" rel="noreferrer" className={`px-10 py-5 bg-[#DC2626] text-white font-bold uppercase tracking-widest ${isDark ? 'hover:bg-white hover:text-black' : 'hover:bg-black hover:text-white'} transition-colors text-sm`}>Subscribe on Substack</a>
-                    <a href="#" className={`px-10 py-5 border ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-black text-black hover:bg-black hover:text-white'} font-bold uppercase tracking-widest transition-colors text-sm`}>Enroll in Labs</a>
-                </div>
-                <p className={`mt-8 font-mono text-xs ${styles.textDim} uppercase`}>Signals only. No spam. Unsubscribe anytime.</p>
-            </div>
-            
-            <div className={`max-w-6xl mx-auto pt-24 border-t ${styles.border}`}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-                    <a href="https://t.me/ai_mind_set" target="_blank" rel="noreferrer" className="footer-link group"><div className={`font-mono text-xs uppercase tracking-widest ${styles.textDim} mb-2`}>Telegram</div><div className={`text-2xl font-bold ${styles.textMain} group-hover:text-[#DC2626] transition-colors`}>Subscribe</div></a>
-                    <a href="https://aimindset.org" target="_blank" rel="noreferrer" className="footer-link group"><div className={`font-mono text-xs uppercase tracking-widest ${styles.textDim} mb-2`}>Website</div><div className={`text-2xl font-bold ${styles.textMain} group-hover:text-[#DC2626] transition-colors`}>aimindset.org</div></a>
-                    <a href="mailto:info@aimindset.org" className="footer-link group"><div className={`font-mono text-xs uppercase tracking-widest ${styles.textDim} mb-2`}>Email</div><div className={`text-2xl font-bold ${styles.textMain} group-hover:text-[#DC2626] transition-colors`}>info@aimindset.org</div></a>
-                    <a href="https://www.youtube.com/@A-I-Mindset/videos" target="_blank" rel="noreferrer" className="footer-link group"><div className={`font-mono text-xs uppercase tracking-widest ${styles.textDim} mb-2`}>YouTube</div><div className={`text-2xl font-bold ${styles.textMain} group-hover:text-[#DC2626] transition-colors`}>@A-I-Mindset</div></a>
-                </div>
-
-                {/* --- FINISH TRANSITION - BIG BUTTON WITH ANIMATION --- */}
-                <div className="flex flex-col items-center mt-24 mb-16">
+        {/* Navigation Section */}
+        <div className={`relative py-24 px-6 ${styles.bg}`}>
+            <div className="max-w-4xl mx-auto">
+                {/* Finish Transition Button */}
+                <div className="flex flex-col items-center mb-16">
                     <button
                         onClick={onNext}
-                        className="finish-btn group relative px-20 py-6 bg-[#DC2626] text-white font-black text-xl md:text-2xl uppercase tracking-[0.2em] hover:bg-white hover:text-[#DC2626] transition-all duration-300 shadow-2xl hover:shadow-[0_0_60px_rgba(220,38,38,0.5)] overflow-hidden border-2 border-transparent hover:border-[#DC2626]"
+                        className="finish-btn group relative px-16 md:px-20 py-5 md:py-6 bg-[#DC2626] text-white font-black text-lg md:text-2xl uppercase tracking-[0.15em] md:tracking-[0.2em] hover:bg-white hover:text-[#DC2626] transition-all duration-300 shadow-2xl hover:shadow-[0_0_60px_rgba(220,38,38,0.5)] overflow-hidden border-2 border-transparent hover:border-[#DC2626]"
                     >
-                        {/* Corner brackets */}
                         <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
                         <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
                         <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
                         <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
-
-                        <span className="relative z-10 flex items-center gap-6">
+                        <span className="relative z-10 flex items-center gap-4 md:gap-6">
                             Finish Transition
-                            <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </span>
                     </button>
-                    <p className={`mt-8 font-mono text-[10px] ${styles.textDim} uppercase tracking-[0.3em]`}>
+                    <p className={`mt-6 font-mono text-[10px] ${styles.textDim} uppercase tracking-[0.3em]`}>
                         See credits & contributors
                     </p>
                 </div>
 
-                {/* Back button - smaller, secondary */}
-                <div className="flex justify-center mb-12">
+                {/* Back button */}
+                <div className="flex justify-center">
                     <button
                         onClick={onPrev}
-                        className={`px-8 py-3 border ${isDark ? 'border-neutral-700 text-neutral-500' : 'border-neutral-300 text-neutral-600'} font-mono text-[10px] uppercase tracking-[0.25em] hover:text-[#DC2626] hover:border-[#DC2626] transition-all flex items-center justify-center gap-3`}
+                        className={`px-6 md:px-8 py-3 border ${isDark ? 'border-neutral-700 text-neutral-500' : 'border-neutral-300 text-neutral-600'} font-mono text-[10px] uppercase tracking-[0.25em] hover:text-[#DC2626] hover:border-[#DC2626] transition-all flex items-center justify-center gap-3`}
                     >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                         Back to Report
                     </button>
-                </div>
-
-                <div className={`mt-12 pt-8 border-t ${styles.border} flex flex-col md:flex-row justify-between items-center text-sm font-mono ${styles.textDim}`}>
-                    <p>&copy; 2026 AI Mindset Lab.</p>
                 </div>
             </div>
         </div>

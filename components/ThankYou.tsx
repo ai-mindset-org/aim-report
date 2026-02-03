@@ -85,7 +85,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
     <section ref={containerRef} className={`relative w-full h-screen ${bgMain} ${textMain} flex flex-col overflow-hidden font-sans`}>
 
         {/* TITLE - top */}
-        <div className="thank-title text-center pt-12 pb-6 relative z-20">
+        <div className="thank-title text-center pt-20 md:pt-12 pb-6 relative z-20">
             <h1 className={`text-[12vw] md:text-[7rem] font-black leading-[0.85] tracking-tighter uppercase select-none ${textMain}`}>
                 Thank You
             </h1>
@@ -170,7 +170,7 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
         </div>
 
         {/* END OF TRANSMISSION - fixed bottom */}
-        <div className={`absolute bottom-0 left-0 right-0 ${bgMain} py-6 pb-32 md:pb-40 flex justify-center z-30`}>
+        <div className={`absolute bottom-0 left-0 right-0 ${bgMain} py-6 pb-40 md:pb-40 flex justify-center z-30`}>
              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-[#DC2626] rounded-full animate-pulse"></div>
                 <p className="font-mono text-[#DC2626] text-[10px] uppercase tracking-[0.3em]">
