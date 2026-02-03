@@ -5,6 +5,46 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Import voices from shiftsData.ts (read as text and parse)
+function getVoicesFromShiftsData() {
+  const shiftsDataPath = path.join(__dirname, '../components/shiftsData.ts');
+  const content = fs.readFileSync(shiftsDataPath, 'utf-8');
+
+  const voicesMap = {};
+
+  // Match each shift's voices array
+  const shiftPattern = /id:\s*"(\d+)"[\s\S]*?voices:\s*\[([\s\S]*?)\](?=,?\s*sources:|,?\s*\})/g;
+  let match;
+
+  while ((match = shiftPattern.exec(content)) !== null) {
+    const shiftId = match[1];
+    const voicesBlock = match[2];
+
+    if (voicesBlock.trim()) {
+      const voices = [];
+      // Parse individual voice objects
+      const voicePattern = /\{\s*quote:\s*"([^"]+)",\s*author:\s*"([^"]+)",\s*role:\s*"([^"]+)"\s*\}/g;
+      let voiceMatch;
+
+      while ((voiceMatch = voicePattern.exec(voicesBlock)) !== null) {
+        voices.push({
+          quote: voiceMatch[1],
+          author: voiceMatch[2],
+          role: voiceMatch[3]
+        });
+      }
+
+      if (voices.length > 0) {
+        voicesMap[shiftId] = voices;
+      }
+    }
+  }
+
+  return voicesMap;
+}
+
+const shiftsDataVoices = getVoicesFromShiftsData();
+
 // Languages to process (Russian removed - report is English-only)
 const languages = ['en', 'by', 'ro'];
 
@@ -361,7 +401,8 @@ function parseLanguage(lang) {
         researchTop: evidence.researchTop,
         research: evidence.research,
         aimEvidence: evidence.aimEvidence,
-        voices: evidence.voices
+        // Use voices from shiftsData.ts as source of truth
+        voices: shiftsDataVoices[shiftId] || evidence.voices || []
       });
     } else if (slide.metadata.layout === 'manifesto') {
       manifesto = {

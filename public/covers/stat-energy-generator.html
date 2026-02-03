@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2160px;
+            height: 2160px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2160px;
+            height: 2160px;
+            background: #0a0a0a;
+            padding: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.04) 1px, transparent 1px);
+            background-size: 120px 120px;
+            pointer-events: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .logo {
+            width: 140px;
+            height: 140px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .stat-huge {
+            font-size: 480px;
+            font-weight: 900;
+            color: #DC2626;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+        .stat-unit {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 120px;
+            color: #DC2626;
+            margin-left: 20px;
+            vertical-align: top;
+        }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 48px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 60px;
+        }
+        .stat-description {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 40px;
+            color: #888;
+            max-width: 1400px;
+            line-height: 1.5;
+            margin-top: 60px;
+        }
+        .visual-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        /* Lightning bolts */
+        .bolt {
+            position: absolute;
+            width: 8px;
+            background: linear-gradient(180deg, #DC2626, transparent);
+            opacity: 0.3;
+        }
+        .bolt-1 { height: 400px; left: 200px; top: 300px; transform: rotate(15deg); }
+        .bolt-2 { height: 300px; right: 300px; top: 400px; transform: rotate(-10deg); }
+        .bolt-3 { height: 350px; left: 400px; bottom: 400px; transform: rotate(5deg); }
+        .bolt-4 { height: 250px; right: 200px; bottom: 300px; transform: rotate(-20deg); }
+        .footer {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-color: #DC2626;
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.4;
+        }
+        .corner-tl { top: 80px; left: 80px; border-top-width: 4px; border-left-width: 4px; }
+        .corner-tr { top: 80px; right: 80px; border-top-width: 4px; border-right-width: 4px; }
+        .corner-bl { bottom: 80px; left: 80px; border-bottom-width: 4px; border-left-width: 4px; }
+        .corner-br { bottom: 80px; right: 80px; border-bottom-width: 4px; border-right-width: 4px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="visual-elements">
+            <div class="bolt bolt-1"></div>
+            <div class="bolt bolt-2"></div>
+            <div class="bolt bolt-3"></div>
+            <div class="bolt bolt-4"></div>
+        </div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">2025</div>
+        </div>
+
+        <div class="main">
+            <div class="stat-huge">160<span class="stat-unit">%</span></div>
+            <div class="stat-label">AI Energy Demand Surge by 2030</div>
+            <p class="stat-description">The physical grid cannot be built fast enough to support AI expansion</p>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Energy Wall</span>
+        </div>
+    </div>
+</body>
+</html>

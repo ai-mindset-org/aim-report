@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2160px;
+            height: 2160px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2160px;
+            height: 2160px;
+            background: #0a0a0a;
+            padding: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.04) 1px, transparent 1px);
+            background-size: 120px 120px;
+            pointer-events: none;
+        }
+        /* Factory/Assembly line visual */
+        .assembly-line {
+            position: absolute;
+            bottom: 200px;
+            left: 0;
+            right: 0;
+            height: 300px;
+        }
+        .conveyor {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: #333;
+        }
+        .conveyor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                #333 0px,
+                #333 40px,
+                #222 40px,
+                #222 80px
+            );
+        }
+        .worker {
+            position: absolute;
+            bottom: 20px;
+            width: 80px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .worker-head {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #444;
+        }
+        .worker-body {
+            width: 60px;
+            height: 120px;
+            background: #333;
+            border-radius: 10px 10px 0 0;
+            margin-top: 10px;
+        }
+        .worker.human .worker-head { background: #666; }
+        .worker.human .worker-body { background: #555; }
+        .worker.robot .worker-head {
+            background: #DC2626;
+            box-shadow: 0 0 30px rgba(220,38,38,0.5);
+        }
+        .worker.robot .worker-body {
+            background: #991b1b;
+            border: 2px solid #DC2626;
+        }
+        .worker:nth-child(2) { left: 200px; }
+        .worker:nth-child(3) { left: 400px; }
+        .worker:nth-child(4) { left: 600px; }
+        .worker:nth-child(5) { left: 800px; }
+        .worker:nth-child(6) { left: 1000px; }
+        .worker:nth-child(7) { left: 1200px; }
+        .worker:nth-child(8) { left: 1400px; }
+        .worker:nth-child(9) { left: 1600px; }
+        .worker:nth-child(10) { left: 1800px; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .logo {
+            width: 140px;
+            height: 140px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .stat-huge {
+            font-size: 400px;
+            font-weight: 900;
+            color: #DC2626;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+        .stat-unit {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 100px;
+            color: #DC2626;
+            margin-left: 20px;
+            vertical-align: top;
+        }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 48px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: 40px;
+        }
+        .stat-description {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 36px;
+            color: #888;
+            max-width: 1400px;
+            line-height: 1.5;
+            margin-top: 40px;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .corner {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-color: #DC2626;
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.4;
+        }
+        .corner-tl { top: 80px; left: 80px; border-top-width: 4px; border-left-width: 4px; }
+        .corner-tr { top: 80px; right: 80px; border-top-width: 4px; border-right-width: 4px; }
+        .corner-bl { bottom: 80px; left: 80px; border-bottom-width: 4px; border-left-width: 4px; }
+        .corner-br { bottom: 80px; right: 80px; border-bottom-width: 4px; border-right-width: 4px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="assembly-line">
+            <div class="worker human"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker human"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker human"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker human"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker human"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker robot"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker robot"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker robot"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker robot"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="worker robot"><div class="worker-head"></div><div class="worker-body"></div></div>
+            <div class="conveyor"></div>
+        </div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">2025</div>
+        </div>
+
+        <div class="main">
+            <div class="stat-huge">47<span class="stat-unit">%</span></div>
+            <div class="stat-label">Workforce Tasks Automatable by 2030</div>
+            <p class="stat-description">Companies deploy agents faster than society can define new roles for humans</p>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Displacement</span>
+        </div>
+    </div>
+</body>
+</html>

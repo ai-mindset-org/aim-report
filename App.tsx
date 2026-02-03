@@ -497,14 +497,14 @@ export default function App() {
 
   return (
     <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
-        {/* Fixed Logo Header - fades in smoothly, hidden until scroll on manifesto */}
-        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-all duration-500 ease-out ${headerReady && scrolledPastThreshold ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+        {/* Fixed Logo Header - fades in smoothly */}
+        <div className={`fixed top-6 left-6 z-[200] transition-all duration-500 ease-out ${headerReady && scrolledPastThreshold ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             <button
                 onClick={handleJumpToConclusion}
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-white/5 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+                className={`flex items-center gap-2 transition-opacity hover:opacity-70 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
-                <AIMindsetLogo className="w-8 h-8" color={theme === 'dark' ? 'white' : 'black'} />
-                <span className="font-mono text-[13px] font-bold tracking-wide hidden md:inline">MINDSET</span>
+                <AIMindsetLogo className="w-6 h-6" color={theme === 'dark' ? 'white' : 'black'} />
+                <span className={`font-mono text-[10px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>mindset</span>
             </button>
         </div>
 

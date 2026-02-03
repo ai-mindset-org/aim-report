@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2400px;
+            height: 1260px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2400px;
+            height: 1260px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 120px 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+        /* Code rain effect */
+        .code-rain {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 800px;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+        .code-column {
+            position: absolute;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #DC2626;
+            writing-mode: vertical-lr;
+            line-height: 2;
+        }
+        .code-column:nth-child(1) { left: 50px; animation-delay: 0s; }
+        .code-column:nth-child(2) { left: 150px; }
+        .code-column:nth-child(3) { left: 250px; }
+        .code-column:nth-child(4) { left: 350px; }
+        .code-column:nth-child(5) { left: 450px; }
+        .code-column:nth-child(6) { left: 550px; }
+        .code-column:nth-child(7) { left: 650px; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border: 2px solid rgba(220,38,38,0.3);
+            background: rgba(220,38,38,0.05);
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .shift-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            color: #DC2626;
+            letter-spacing: 0.3em;
+            margin-bottom: 24px;
+        }
+        .title {
+            font-size: 160px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 40px;
+            color: #666;
+            max-width: 1400px;
+            line-height: 1.5;
+        }
+        .code-example {
+            margin-top: 60px;
+            padding: 40px 60px;
+            background: rgba(0,0,0,0.5);
+            border-left: 4px solid #DC2626;
+            max-width: 1200px;
+        }
+        .code-line {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #888;
+            line-height: 1.8;
+        }
+        .code-line .keyword { color: #DC2626; }
+        .code-line .string { color: #6EE7B7; }
+        .code-line .comment { color: #444; }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #333;
+        }
+        .stats {
+            display: flex;
+            gap: 60px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #DC2626;
+        }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 18px;
+            color: #555;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="code-rain">
+            <div class="code-column">function() { return ai.generate(); } const code = await</div>
+            <div class="code-column">import { claude } from 'anthropic'; async function build()</div>
+            <div class="code-column">const intent = "make it work"; ai.execute(intent);</div>
+            <div class="code-column">// vibe coding: describe what you want let result = ai</div>
+            <div class="code-column">syntax → intent → outcome // the craft evolution</div>
+            <div class="code-column">65% of new code is AI-generated // Google 2025</div>
+            <div class="code-column">legacy on day one // code integrity crisis</div>
+        </div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">Shift 07</div>
+        </div>
+
+        <div class="main">
+            <div class="shift-num">Syntax → Natural Language</div>
+            <h1 class="title"><span class="accent">VIBE</span> CODING</h1>
+            <p class="subtitle">Programming shifts to natural language intent. The machine handles implementation.</p>
+            <div class="code-example">
+                <div class="code-line"><span class="comment">// old way</span></div>
+                <div class="code-line"><span class="keyword">function</span> sortByDate(arr) { <span class="keyword">return</span> arr.sort((a,b) => ...) }</div>
+                <div class="code-line"><span class="comment">// new way</span></div>
+                <div class="code-line">ai(<span class="string">"sort this array by date"</span>)</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">65%</div>
+                    <div class="stat-label">AI-generated code</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">46%</div>
+                    <div class="stat-label">Distrust AI code</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

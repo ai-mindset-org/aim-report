@@ -623,16 +623,16 @@ people tire of performing the self - exhaustion from maintaining multiple synthe
 
 **Key Stats:**
 - **2+ hours:** Daily sessions in Character.ai, Replika, Talkie ([Character.AI Stats](https://www.aboutchromebooks.com/character-ai-statistics/))
-- **#1:** Companionship is top retention category in Gen AI apps ([a16z Top 100](https://a16z.com/100-gen-ai-apps-2025/))
+- **#1:** Companionship is top retention category in Gen AI apps ([a16z Top 100](https://a16z.com/100-gen-ai-apps-5/))
 - **95%:** GenAI pilots failing to deliver ROI ([MIT](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/))
 
 **Research:**
 - [TOP] [**Marwick & Boyd Context Collapse**](https://www.microsoft.com/en-us/research/publication/i-tweet-honestly-i-tweet-passionately-twitter-users-context-collapse-and-the-imagined-audience/): Personal, professional, public contexts blur into one - same identity across different audiences
 - [TOP] [**Ada Lovelace Institute AI Companions**](https://www.adalovelaceinstitute.org/blog/ai-companions/): AI companions optimized for engagement metrics, not wellbeing - "friends for sale"
-- [TOP] [**a16z Top 100 Gen AI Apps**](https://a16z.com/100-gen-ai-apps-2025/): Companionship is #1 retention category, 2+ hours daily sessions
+- [TOP] [**a16z Top 100 Gen AI Apps**](https://a16z.com/100-gen-ai-apps-5/): Companionship is #1 retention category, 2+ hours daily sessions
 - [**Deepstrike Deepfake Statistics**](https://deepstrike.io/blog/deepfake-statistics-2025): $200M+ deepfake fraud Q1 2025, voice cloning requires 20-30 seconds
 - [**AI Mindset Founder OS Mental Health**](https://aimindsetspace.substack.com/p/founder-os-mental-health): Mental health firewalls - protecting boundaries from AI manipulation
-- [**Ubisoft NEO NPC**](https://www.ubisoft.com/en-us/studio/laforge/news/7Cm4VJVbWKHzHmRgqwYbAX/neos-the-future-of-npcs): NPCs with psychological profiles reacting to player tone/mood - "as big a revolution as shift to 3D"
+- [**Ubisoft NEO NPC**](https://news.ubisoft.com/en-us/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs): NPCs with psychological profiles reacting to player tone/mood - "as big a revolution as shift to 3D"
 
 **AI Mindset Evidence:**
 → [**IFS + AI**](https://ivanov.aimindset.org) — Protecting the psyche in the age of machine intimacy. Mental health framework for boundaries.
@@ -641,8 +641,8 @@ people tire of performing the self - exhaustion from maintaining multiple synthe
 **Tags:** AI Companions, Synthetic Intimacy, Parasocial AI, Mental Health, Sovereign Intimacy
 
 source: Ada Lovelace Institute — Friends for Sale | https://www.adalovelaceinstitute.org/blog/ai-companions/
-source: a16z — Top 100 Gen AI Apps | https://a16z.com/100-gen-ai-apps-2025/
-source: Ubisoft — NEO NPC | https://www.ubisoft.com/en-us/studio/laforge/news/7Cm4VJVbWKHzHmRgqwYbAX/neos-the-future-of-npcs
+source: a16z — Top 100 Gen AI Apps | https://a16z.com/100-gen-ai-apps-5/
+source: Ubisoft — NEO NPC | https://news.ubisoft.com/en-us/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs
 source: AI Mindset — Mental Health Boundaries | https://aimindsetspace.substack.com/p/founder-os-mental-health
 
 ---

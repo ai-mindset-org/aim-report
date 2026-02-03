@@ -8,8 +8,8 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
-            width: 1080px;
-            height: 1920px;
+            width: 2160px;
+            height: 3840px;
             overflow: hidden;
         }
         body {
@@ -17,10 +17,10 @@
             background: #0a0a0a;
         }
         .card {
-            width: 1080px;
-            height: 1920px;
+            width: 2160px;
+            height: 3840px;
             background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
-            padding: 100px 80px;
+            padding: 200px 160px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -35,7 +35,7 @@
             background-image:
                 linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+            background-size: 120px 120px;
             pointer-events: none;
         }
         /* Vertical accent line */
@@ -44,7 +44,7 @@
             position: absolute;
             left: 50%;
             top: 0;
-            width: 1px;
+            width: 2px;
             height: 100%;
             background: linear-gradient(180deg,
                 transparent 0%,
@@ -62,19 +62,27 @@
             z-index: 1;
         }
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 180px;
+            height: 180px;
             opacity: 0.95;
+            margin-bottom: 60px;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 36px;
+            letter-spacing: 0.2em;
+            color: #666;
+            text-transform: uppercase;
             margin-bottom: 40px;
         }
         .badge {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 14px;
+            font-size: 28px;
             letter-spacing: 0.3em;
             color: #DC2626;
             text-transform: uppercase;
-            padding: 12px 32px;
-            border: 1px solid rgba(220,38,38,0.3);
+            padding: 24px 64px;
+            border: 2px solid rgba(220,38,38,0.3);
         }
         .main {
             flex: 1;
@@ -87,68 +95,66 @@
             z-index: 1;
         }
         .title {
-            font-size: 120px;
+            font-size: 260px;
             font-weight: 900;
             color: #fff;
             line-height: 0.95;
             letter-spacing: -0.04em;
-            margin-bottom: 60px;
+            margin-bottom: 100px;
         }
         .title .accent {
             color: #DC2626;
             display: block;
-            font-size: 140px;
+            font-size: 300px;
         }
         .subtitle {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 24px;
+            font-size: 48px;
             color: #666;
-            max-width: 800px;
+            max-width: 1600px;
             line-height: 1.6;
-            margin-bottom: 80px;
+            margin-bottom: 120px;
         }
         .stats {
             display: flex;
-            gap: 60px;
+            gap: 120px;
         }
         .stat {
             text-align: center;
         }
         .stat-value {
-            font-size: 64px;
+            font-size: 120px;
             font-weight: 800;
             color: #DC2626;
             line-height: 1;
         }
         .stat-label {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 14px;
+            font-size: 28px;
             color: #666;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-top: 8px;
+            margin-top: 16px;
         }
         .footer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 40px;
             position: relative;
             z-index: 1;
         }
         .cta {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 16px;
+            font-size: 32px;
             color: #888;
             text-transform: uppercase;
             letter-spacing: 0.2em;
         }
-        .url {
+        .context-text {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 18px;
-            color: #DC2626;
-            padding: 16px 40px;
-            border: 2px solid #DC2626;
+            font-size: 28px;
+            color: #333;
         }
     </style>
 </head>
@@ -156,6 +162,7 @@
     <div class="card">
         <div class="header">
             <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+            <span class="brand-text">AI Mindset</span>
             <div class="badge">Annual Report 2025</div>
         </div>
 
@@ -172,15 +179,15 @@
                     <div class="stat-label">Layers</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">50+</div>
-                    <div class="stat-label">Sources</div>
+                    <div class="stat-value">1.5K+</div>
+                    <div class="stat-label">Participants</div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
             <span class="cta">Read the full report</span>
-            <span class="attribution" style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: #333; border: none; padding: 0;">by AI Mindset</span>
+            <span class="context-text">by AI Mindset</span>
         </div>
     </div>
 </body>

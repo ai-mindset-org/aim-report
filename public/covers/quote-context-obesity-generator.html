@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2160px;
+            height: 2160px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2160px;
+            height: 2160px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+            background-size: 120px 120px;
+            pointer-events: none;
+        }
+        /* Large quote mark */
+        .quote-mark {
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            font-size: 600px;
+            font-weight: 900;
+            color: rgba(220,38,38,0.1);
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .logo {
+            width: 140px;
+            height: 140px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding-left: 80px;
+        }
+        .quote {
+            font-size: 100px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            max-width: 1600px;
+            margin-bottom: 80px;
+        }
+        .quote .highlight {
+            color: #DC2626;
+        }
+        .quote-source {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            color: #666;
+            padding-left: 8px;
+            border-left: 4px solid #DC2626;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #333;
+        }
+        .shift-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #DC2626;
+            padding: 16px 32px;
+            border: 2px solid rgba(220,38,38,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="quote-mark">"</div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">2025</div>
+        </div>
+
+        <div class="main">
+            <p class="quote">You're not <span class="highlight">burned out</span>.<br>You have <span class="highlight">context obesity</span>.</p>
+            <p class="quote-source">Consuming more information than can be metabolized into meaning</p>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+            <span class="shift-tag">Shift 05: The Knowledge</span>
+        </div>
+    </div>
+</body>
+</html>
