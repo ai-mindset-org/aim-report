@@ -185,14 +185,14 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
 
   const ecosystemItems = [
     // Row 1: Lab (big) + Sprint + Masterclass
-    { id: 'lab', type: 'lab', title: 'AI Mindset Lab', desc: 'Deep immersion environments for psychological safety and experimentation. Long-term transformation and habit formation.', url: 'https://learn.aimindset.org/ecosystem', span: 'md:col-span-2 md:row-span-2' },
+    { id: 'lab', type: 'lab', title: 'AI Mindset Lab', desc: 'Deep immersion environments for psychological safety and experimentation. Long-term transformation and habit formation.', url: 'https://aimindset.org/ai-mindset-w25', span: 'md:col-span-2 md:row-span-2' },
     { id: 'sprint', type: 'sprint', title: 'Neuro-Symbolic Sprints', desc: '7-day intensive architectural shifts. Fast-paced implementation of new cognitive workflows.', url: 'https://learn.aimindset.org/ecosystem', span: 'col-span-1' },
     { id: 'masterclass', type: 'masterclass', title: 'Masterclasses', desc: 'Specific cognitive tools. "Thinking with AI", "Prompt Engineering", "Context Management".', url: 'https://learn.aimindset.org/ecosystem', span: 'col-span-1' },
     // Row 2: Community (big)
     { id: 'community', type: 'community', title: 'Network & Signals', desc: 'The alumni network. Daily signal channel. A high-trust environment.', url: 'https://aimindset.org/ai-mindset-community', span: 'md:col-span-2' },
     // Row 3: Knowledge artifacts
-    { id: 'ark', type: 'ark', title: 'AI ARK Knowledge System', desc: 'Comprehensive knowledge architecture for the AI age.', url: 'https://aimindsetspace.substack.com/p/ai-ark-knowledge-system', span: 'md:col-span-2' },
-    { id: 'founder', type: 'media', title: 'Founder OS', desc: 'Mental health firewalls on YouTube.', url: 'https://youtube.com/@aimindsetlabs', span: 'col-span-1' },
+    { id: 'ark', type: 'ark', title: 'AI ARK Knowledge System', desc: 'Comprehensive knowledge architecture for the AI age.', url: 'https://aimindsetspace.substack.com', span: 'md:col-span-2' },
+    { id: 'founder', type: 'media', title: 'Founder OS', desc: 'Mental health firewalls on YouTube.', url: 'https://youtu.be/mejkUQwcZLo?list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd', span: 'col-span-1' },
     { id: 'telegram', type: 'signal', title: '@ai_mind_set', desc: 'Daily signals & field notes.', url: 'https://t.me/ai_mind_set', span: 'col-span-1' },
   ];
 
