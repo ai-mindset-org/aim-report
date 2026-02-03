@@ -151,13 +151,27 @@ export default function App() {
   }, [viewState, timeline]);
 
   const [isNavVisible, setIsNavVisible] = useState(false);
-  const [headerReady, setHeaderReady] = useState(false);
+  const [headerReady, setHeaderReady] = useState(() => {
+    // On landing page, start hidden for delayed animation
+    if (typeof window !== 'undefined') {
+      const idx = getIndexFromHash(window.location.hash);
+      return idx !== -1 || idx === -2 || idx === -3; // Show immediately if not on landing
+    }
+    return false;
+  });
 
-  // Delayed header appearance for smooth load
+  // Delayed header appearance for smooth load on landing page
   useEffect(() => {
-    const timer = setTimeout(() => setHeaderReady(true), 800);
-    return () => clearTimeout(timer);
-  }, []);
+    // If on landing page, delay header appearance until after hero animation
+    if (viewState.view === 'landing') {
+      setHeaderReady(false);
+      const timer = setTimeout(() => setHeaderReady(true), 2800); // After hero animation (~2.5s + 0.4s delay)
+      return () => clearTimeout(timer);
+    } else {
+      // On other pages, show immediately
+      setHeaderReady(true);
+    }
+  }, [viewState.view]);
 
   useEffect(() => {
       let targetHash = 'main';
@@ -387,18 +401,14 @@ export default function App() {
     }
     
     if (viewState.view === 'conclusion') {
-        const footerBg = theme === 'dark' ? 'bg-[#1a1a1a]' : 'bg-[#FAFAFA]';
         return (
             <Suspense fallback={<LoadingSpinner />}>
-              <div className="w-full">
-                  <ManifestoPage
-                      onRestart={closeReport}
-                      onNext={handleNext}
-                      onPrev={handlePrev}
-                      theme={theme}
-                  />
-                  <div className={`h-40 ${footerBg}`}></div> 
-              </div>
+              <ManifestoPage
+                  onRestart={closeReport}
+                  onNext={handleNext}
+                  onPrev={handlePrev}
+                  theme={theme}
+              />
             </Suspense>
         );
     }
@@ -475,12 +485,12 @@ export default function App() {
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-white/5 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
                 <AIMindsetLogo className="w-8 h-8" color={theme === 'dark' ? 'white' : 'black'} />
-                <span className="font-mono text-sm font-bold tracking-wide hidden md:inline">MINDSET</span>
+                <span className="font-mono text-sm font-bold tracking-wide hidden md:inline">AI MINDSET</span>
             </a>
         </div>
 
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={headerReady} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
     </div>
   );

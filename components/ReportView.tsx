@@ -696,51 +696,53 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
 
       {/* NAVIGATION SECTION */}
       <section className={`relative py-16 md:py-32 px-4 md:px-10 border-t ${borderMain} ${bgMain}`}>
-          <div className="max-w-7xl mx-auto flex justify-between items-center gap-8">
+          <div className="max-w-7xl mx-auto flex justify-between items-center gap-4 md:gap-8">
               {/* PREVIOUS BUTTON */}
-              {!isFirst && prevLabel && (
-                <button 
-                  onClick={onPrev} 
-                  className={`group flex items-center gap-4 hover:opacity-70 transition-opacity`}
+              {!isFirst && prevLabel ? (
+                <button
+                  onClick={onPrev}
+                  className={`group flex items-center gap-3 md:gap-4 hover:opacity-70 transition-opacity`}
                 >
-                  <div className={`w-12 h-12 rounded-full border ${borderMain} flex items-center justify-center flex-shrink-0`}>
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full border ${borderMain} flex items-center justify-center flex-shrink-0`}>
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path d="M15 19l-7-7 7-7"/>
                     </svg>
                   </div>
-                  <div className="flex flex-col items-start">
-                    <span className={`font-mono text-[10px] tracking-widest ${textSecondary} mb-1 lowercase`}>
+                  <div className="flex flex-col items-start text-left">
+                    <span className={`font-mono text-[9px] md:text-[10px] tracking-widest ${textSecondary} mb-0.5 md:mb-1 lowercase`}>
                       {i18n?.ui.prev || "previous"}
                     </span>
-                    <span className={`font-sans text-[11px] md:text-base font-semibold ${textMain} max-w-[120px] md:max-w-[300px] line-clamp-2 lowercase leading-tight`}>
+                    <span className={`font-sans text-[10px] md:text-base font-semibold ${textMain} max-w-[100px] md:max-w-[300px] line-clamp-2 lowercase leading-tight text-left`}>
                       {prevLabel}
                     </span>
                   </div>
                 </button>
+              ) : (
+                <div></div>
               )}
-              
-              {isFirst && <div></div>}
-              
+
               {/* NEXT BUTTON */}
-              {!isLast && nextLabel && (
-                <button 
-                  onClick={onNext} 
-                  className="group flex items-center gap-4 hover:opacity-70 transition-opacity ml-auto"
+              {!isLast && nextLabel ? (
+                <button
+                  onClick={onNext}
+                  className="group flex items-center gap-3 md:gap-4 hover:opacity-70 transition-opacity ml-auto"
                 >
-                  <div className="flex flex-col items-end">
-                    <span className={`font-mono text-[10px] tracking-widest ${textSecondary} mb-1 lowercase`}>
+                  <div className="flex flex-col items-end text-right">
+                    <span className={`font-mono text-[9px] md:text-[10px] tracking-widest ${textSecondary} mb-0.5 md:mb-1 lowercase`}>
                       {i18n?.ui.next || "next"}
                     </span>
-                    <span className={`font-sans text-[11px] md:text-base font-semibold ${textMain} max-w-[120px] md:max-w-[300px] line-clamp-2 lowercase leading-tight text-right`}>
+                    <span className={`font-sans text-[10px] md:text-base font-semibold ${textMain} max-w-[100px] md:max-w-[300px] line-clamp-2 lowercase leading-tight text-right`}>
                       {nextLabel}
                     </span>
                   </div>
-                  <div className="w-14 h-14 rounded-full bg-[#DC2626] flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#DC2626] flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path d="M9 5l7 7-7 7"/>
                     </svg>
                   </div>
                 </button>
+              ) : (
+                <div></div>
               )}
           </div>
       </section>
