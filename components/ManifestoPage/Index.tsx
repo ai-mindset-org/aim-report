@@ -6,6 +6,7 @@ import { EcoVisual } from './EcoVisuals';
 import { useI18n } from '../../hooks/useI18n';
 import { useManifestoData } from '../../hooks/useManifestoData';
 import { AIMindsetLogo } from '../AIMindsetLogo';
+import { trackEcosystemClick, trackExternalLink } from '../../lib/analytics';
 
 const BLOCKED_DOMAINS = [
   'youtube.com',
@@ -129,7 +130,13 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
       });
   };
 
-  const openBrowser = (url: string, _title: string) => {
+  const openBrowser = (url: string, title: string, itemId?: string) => {
+      // Track the click
+      if (itemId) {
+        trackEcosystemClick(itemId, url);
+      } else {
+        trackExternalLink(url, title);
+      }
       // Open directly in new tab, no preview
       window.open(url, '_blank');
   };
@@ -406,7 +413,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
               {ecosystemItems.map((item: any) => (
                 <div
                   key={item.id}
-                  onClick={() => openBrowser(item.url, item.title)}
+                  onClick={() => openBrowser(item.url, item.title, item.id)}
                   className={`eco-card group relative ${styles.cardBg} border ${styles.cardBorder} rounded-xl overflow-hidden hover:border-[#DC2626] ${isDark ? 'hover:bg-[#161616]' : 'hover:bg-neutral-50'} transition-all duration-300 flex flex-col cursor-pointer ${item.span} min-h-[250px] shadow-sm`}
                 >
                   {/* Large SVG Visual - takes most of the card */}
@@ -436,6 +443,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
                 href="https://learn.aimindset.org/ecosystem"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackExternalLink('https://learn.aimindset.org/ecosystem', 'enroll-in-labs')}
                 className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#DC2626] text-white font-bold text-base uppercase tracking-wider hover:bg-white hover:text-[#DC2626] border-2 border-[#DC2626] transition-all duration-300 shadow-lg hover:shadow-[0_0_40px_rgba(220,38,38,0.5)]"
               >
                 <span>Enroll in Labs</span>
@@ -447,6 +455,7 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
                 href="https://learn.aimindset.org/ecosystem"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackExternalLink('https://learn.aimindset.org/ecosystem', 'view-roadmap-2026')}
                 className={`inline-flex items-center gap-2 font-mono text-xs ${styles.textDim} hover:text-[#DC2626] transition-colors uppercase tracking-wider`}
               >
                 <span>View full roadmap 2026</span>

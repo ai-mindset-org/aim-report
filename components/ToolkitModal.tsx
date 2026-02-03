@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap-config';
+import { trackToolkitSubscribe, track } from '../lib/analytics';
 
 interface ToolkitModalProps {
   isOpen: boolean;
@@ -40,6 +41,8 @@ export const ToolkitModal: React.FC<ToolkitModalProps> = ({ isOpen, onClose, the
       const data = await response.json();
 
       if (data.success) {
+        trackToolkitSubscribe(email, 'index-button');
+        track('toolkit-download', { source: 'index-button' });
         setSubmitStatus('success');
         setTimeout(() => {
           const link = document.createElement('a');
