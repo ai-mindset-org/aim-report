@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2400px;
+            height: 1260px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2400px;
+            height: 1260px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 120px 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border: 2px solid rgba(220,38,38,0.3);
+            background: rgba(220,38,38,0.05);
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .content {
+            flex: 1;
+        }
+        .shift-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            color: #DC2626;
+            letter-spacing: 0.3em;
+            margin-bottom: 24px;
+        }
+        .title {
+            font-size: 140px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 36px;
+            color: #666;
+            max-width: 1000px;
+            line-height: 1.5;
+        }
+        /* Globe visual - fragmented */
+        .visual {
+            width: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .globe-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        .globe-segment {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .segment-us {
+            top: 50px;
+            left: 50px;
+            background: rgba(59, 130, 246, 0.2);
+            border: 3px solid rgba(59, 130, 246, 0.5);
+            color: #3B82F6;
+        }
+        .segment-cn {
+            top: 50px;
+            right: 50px;
+            background: rgba(220, 38, 38, 0.2);
+            border: 3px solid rgba(220, 38, 38, 0.5);
+            color: #DC2626;
+        }
+        .segment-eu {
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(234, 179, 8, 0.2);
+            border: 3px solid rgba(234, 179, 8, 0.5);
+            color: #EAB308;
+        }
+        .fragment-lines {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+        .fragment-line {
+            position: absolute;
+            background: rgba(220,38,38,0.3);
+            transform-origin: center;
+        }
+        .line-1 {
+            width: 3px;
+            height: 200px;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+        .line-2 {
+            width: 3px;
+            height: 200px;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+        .line-3 {
+            width: 200px;
+            height: 3px;
+            top: 50%;
+            left: 150px;
+            transform: translateY(-50%);
+        }
+        .segment-label {
+            position: absolute;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 18px;
+            color: #444;
+        }
+        .label-us { top: 20px; left: 80px; }
+        .label-cn { top: 20px; right: 80px; }
+        .label-eu { bottom: 40px; left: 50%; transform: translateX(-50%); }
+        .stacks-list {
+            margin-top: 60px;
+            display: flex;
+            gap: 40px;
+        }
+        .stack-item {
+            padding: 20px 40px;
+            border: 2px solid;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 20px;
+        }
+        .stack-us { border-color: rgba(59, 130, 246, 0.5); color: #3B82F6; }
+        .stack-cn { border-color: rgba(220, 38, 38, 0.5); color: #DC2626; }
+        .stack-eu { border-color: rgba(234, 179, 8, 0.5); color: #EAB308; }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #333;
+        }
+        .stat {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #555;
+        }
+        .stat-value {
+            color: #DC2626;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">Shift 03</div>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <div class="shift-num">Global Openness → Fragmented Stacks</div>
+                <h1 class="title">THE<br><span class="accent">SPLINTERNET</span></h1>
+                <p class="subtitle">Three distinct AI stacks emerge. Truth becomes geographically dependent.</p>
+                <div class="stacks-list">
+                    <div class="stack-item stack-us">US AI: Corporate/Closed</div>
+                    <div class="stack-item stack-cn">CN AI: State-Controlled</div>
+                    <div class="stack-item stack-eu">EU AI: Regulated</div>
+                </div>
+            </div>
+            <div class="visual">
+                <div class="globe-container">
+                    <div class="fragment-lines">
+                        <div class="fragment-line line-1"></div>
+                        <div class="fragment-line line-2"></div>
+                        <div class="fragment-line line-3"></div>
+                    </div>
+                    <div class="globe-segment segment-us">US</div>
+                    <div class="globe-segment segment-cn">CN</div>
+                    <div class="globe-segment segment-eu">EU</div>
+                    <span class="segment-label label-us">OpenAI, Anthropic</span>
+                    <span class="segment-label label-cn">DeepSeek</span>
+                    <span class="segment-label label-eu">AI Act</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+            <span class="stat"><span class="stat-value">3%</span> paying users (97% are the product)</span>
+        </div>
+    </div>
+</body>
+</html>

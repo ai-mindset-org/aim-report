@@ -338,7 +338,7 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
 
                     {/* Footer / Socials */}
                     <div className={`toc-anim border-t ${borderMain} pt-10 mt-20 mb-12`}>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
                             <a href="https://t.me/ai_mind_set" target="_blank" rel="noreferrer" className="group">
                                 <div className={`font-mono text-[10px] uppercase tracking-widest ${textDim} mb-1`}>Telegram</div>
                                 <div className={`text-sm font-bold ${textMain} group-hover:text-[#DC2626] transition-colors`}>Subscribe</div>
@@ -355,6 +355,17 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                                 <div className={`font-mono text-[10px] uppercase tracking-widest ${textDim} mb-1`}>YouTube</div>
                                 <div className={`text-sm font-bold ${textMain} group-hover:text-[#DC2626] transition-colors`}>@A-I-Mindset</div>
                             </a>
+                            <button onClick={() => {
+                                onClose();
+                                // Trigger toolkit modal via custom event
+                                window.dispatchEvent(new CustomEvent('open-toolkit-modal'));
+                            }} className="group text-left">
+                                <div className={`font-mono text-[10px] uppercase tracking-widest ${textDim} mb-1`}>Toolkit</div>
+                                <div className="flex items-center gap-1.5">
+                                    <div className="w-2 h-2 rounded-full bg-[#DC2626]" />
+                                    <span className="text-sm font-bold text-[#DC2626]">getstyle</span>
+                                </div>
+                            </button>
                         </div>
                     </div>
 

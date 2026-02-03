@@ -46,8 +46,15 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
   const ogCache = useRef<Record<string, any>>({});
   const i18n = useI18n('en');
   const { manifesto, loading: manifestoLoading } = useManifestoData('en');
-  
+  const [contentReady, setContentReady] = useState(false);
+
   const isDark = theme === 'dark';
+
+  // Delay content visibility for clean load
+  useEffect(() => {
+    const timer = setTimeout(() => setContentReady(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // --- THEME CONFIGURATION ---
   const styles = {
@@ -168,6 +175,8 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
           });
       }
 
+      // 5. ECOSYSTEM - now uses CSS transition for clean load
+
 
     }, containerRef);
 
@@ -175,13 +184,16 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
   }, [theme]);
 
   const ecosystemItems = [
-    { id: 'ivanov', type: 'psych', title: 'Ivanov Psych', desc: 'IFS + AI: Protecting the psyche.', url: 'https://ivanov.aimindset.org', span: 'col-span-1' },
-    { id: 'attention', type: 'attention', title: 'Intention OS', desc: 'Managing attention when context explodes.', url: 'https://intention.aimindset.org', span: 'col-span-1' },
-    { id: 'spiridonov', type: 'philo', title: 'Pragmatic Romanticism', desc: 'Defense against cold logic.', url: 'https://spiridonov.aimindset.org', span: 'col-span-1' },
-    { id: 'founder', type: 'media', title: 'Founder OS', desc: 'Mental health firewalls on YouTube.', url: 'https://youtube.com/@aimindsetlabs', span: 'col-span-1' },
+    // Row 1: Lab (big) + Sprint + Masterclass
+    { id: 'lab', type: 'lab', title: 'AI Mindset Lab', desc: 'Deep immersion environments for psychological safety and experimentation. Long-term transformation and habit formation.', url: 'https://learn.aimindset.org/ecosystem', span: 'md:col-span-2 md:row-span-2' },
+    { id: 'sprint', type: 'sprint', title: 'Neuro-Symbolic Sprints', desc: '7-day intensive architectural shifts. Fast-paced implementation of new cognitive workflows.', url: 'https://learn.aimindset.org/ecosystem', span: 'col-span-1' },
+    { id: 'masterclass', type: 'masterclass', title: 'Masterclasses', desc: 'Specific cognitive tools. "Thinking with AI", "Prompt Engineering", "Context Management".', url: 'https://learn.aimindset.org/ecosystem', span: 'col-span-1' },
+    // Row 2: Community (big)
+    { id: 'community', type: 'community', title: 'Network & Signals', desc: 'The alumni network. Daily signal channel. A high-trust environment.', url: 'https://aimindset.org/ai-mindset-community', span: 'md:col-span-2' },
+    // Row 3: Knowledge artifacts
     { id: 'ark', type: 'ark', title: 'AI ARK Knowledge System', desc: 'Comprehensive knowledge architecture for the AI age.', url: 'https://aimindsetspace.substack.com/p/ai-ark-knowledge-system', span: 'md:col-span-2' },
-    { id: 'gemini', type: 'code', title: 'Gemini 3.0 Guide', desc: 'Practical guides from community.', url: 'https://telegram.me/ai_mind_set/282', span: 'col-span-1' },
-    { id: 'telegram', type: 'community', title: '@ai_mind_set', desc: 'Daily signals & field notes.', url: 'https://t.me/ai_mind_set', span: 'md:col-span-1 lg:col-span-1' },
+    { id: 'founder', type: 'media', title: 'Founder OS', desc: 'Mental health firewalls on YouTube.', url: 'https://youtube.com/@aimindsetlabs', span: 'col-span-1' },
+    { id: 'telegram', type: 'signal', title: '@ai_mind_set', desc: 'Daily signals & field notes.', url: 'https://t.me/ai_mind_set', span: 'col-span-1' },
   ];
 
   return (
@@ -385,31 +397,112 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
             </div>
         </div>
 
-        <div className={`relative py-20 md:py-32 px-6 ${styles.bg}`}><div className="max-w-7xl mx-auto"><h2 className={`text-4xl font-black uppercase mb-12 text-center md:text-left ${styles.textMain}`}>Our Ecosystem</h2><div ref={ecoGridRef} className="eco-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-[250px]">{ecosystemItems.map((item) => (<div key={item.id} onClick={() => openBrowser(item.url, item.title)} className={`eco-card group relative ${styles.cardBg} border ${styles.cardBorder} rounded-xl overflow-hidden hover:border-[#DC2626] ${isDark ? 'hover:bg-[#161616]' : 'hover:bg-neutral-50'} transition-all duration-300 flex flex-col cursor-pointer ${item.span} min-h-[250px] shadow-sm`}><div className="absolute top-0 right-0 w-full h-full opacity-20 group-hover:opacity-30 transition-opacity pointer-events-none"><EcoVisual type={item.type} theme={theme} /></div><div className="p-6 flex flex-col justify-end h-full relative z-10"><span className="font-mono text-[10px] text-[#DC2626] uppercase tracking-widest mb-3 block">{item.type}</span><h3 className={`text-2xl font-bold ${styles.textMain} leading-tight mb-3 group-hover:text-[#DC2626] transition-colors`}>{item.title}</h3><p className={`text-sm ${styles.textDim} line-clamp-3 leading-relaxed`}>{item.desc}</p></div></div>))}</div></div></div>
+        <div className={`relative py-20 md:py-32 px-6 ${styles.bg}`}>
+          <div className="max-w-7xl mx-auto">
+            <h2 className={`text-4xl font-black uppercase mb-12 ${styles.textMain} transition-opacity duration-500 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>Our Ecosystem</h2>
+
+            {/* Ecosystem Grid - Visual Design */}
+            <div ref={ecoGridRef} className={`eco-grid grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[250px] transition-opacity duration-500 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
+              {ecosystemItems.map((item: any) => (
+                <div
+                  key={item.id}
+                  onClick={() => openBrowser(item.url, item.title)}
+                  className={`eco-card group relative ${styles.cardBg} border ${styles.cardBorder} rounded-xl overflow-hidden hover:border-[#DC2626] ${isDark ? 'hover:bg-[#161616]' : 'hover:bg-neutral-50'} transition-all duration-300 flex flex-col cursor-pointer ${item.span} min-h-[250px] shadow-sm`}
+                >
+                  {/* Large SVG Visual - takes most of the card */}
+                  <div className="absolute top-0 right-0 w-full h-full opacity-30 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none">
+                    <EcoVisual type={item.type} theme={theme} />
+                  </div>
+
+                  {/* Content at bottom */}
+                  <div className="p-6 flex flex-col justify-end h-full relative z-10">
+                    <span className="font-mono text-[10px] text-[#DC2626] uppercase tracking-widest mb-3 block">
+                      {item.type}
+                    </span>
+                    <h3 className={`text-2xl font-bold ${styles.textMain} leading-tight mb-3 group-hover:text-[#DC2626] transition-colors`}>
+                      {item.title}
+                    </h3>
+                    <p className={`text-sm ${styles.textDim} line-clamp-3 leading-relaxed`}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Section */}
+            <div className={`mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 transition-opacity duration-500 delay-200 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
+              <a
+                href="https://learn.aimindset.org/ecosystem"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-[#DC2626] text-white font-bold text-base uppercase tracking-wider hover:bg-white hover:text-[#DC2626] border-2 border-[#DC2626] transition-all duration-300 shadow-lg hover:shadow-[0_0_40px_rgba(220,38,38,0.5)]"
+              >
+                <span>Enroll in Labs</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a
+                href="https://learn.aimindset.org/ecosystem"
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center gap-2 font-mono text-xs ${styles.textDim} hover:text-[#DC2626] transition-colors uppercase tracking-wider`}
+              >
+                <span>View full roadmap 2026</span>
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
         {/* Navigation Section */}
-        <div className={`relative py-24 px-6 ${styles.bg}`}>
-            <div className="max-w-4xl mx-auto">
-                {/* Finish Transition Button */}
-                <div className="flex flex-col items-center mb-16">
+        <div className={`relative py-32 md:py-48 px-6 ${styles.bg}`}>
+            {/* Radial glow background */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#DC2626] opacity-[0.08] blur-[150px] rounded-full"></div>
+            </div>
+
+            <div className="max-w-4xl mx-auto relative z-10">
+                {/* Finish Transition Button - LARGE & PROMINENT */}
+                <div className="flex flex-col items-center mb-20">
                     <button
                         onClick={onNext}
-                        className="finish-btn group relative px-16 md:px-20 py-5 md:py-6 bg-[#DC2626] text-white font-black text-lg md:text-2xl uppercase tracking-[0.15em] md:tracking-[0.2em] hover:bg-white hover:text-[#DC2626] transition-all duration-300 shadow-2xl hover:shadow-[0_0_60px_rgba(220,38,38,0.5)] overflow-hidden border-2 border-transparent hover:border-[#DC2626]"
+                        className="finish-btn group relative px-12 md:px-24 lg:px-32 py-6 md:py-8 bg-[#DC2626] text-white font-black text-xl md:text-3xl lg:text-4xl uppercase tracking-[0.1em] md:tracking-[0.15em] hover:bg-white hover:text-[#DC2626] transition-all duration-500 shadow-2xl shadow-red-900/40 hover:shadow-[0_0_80px_rgba(220,38,38,0.6)] overflow-hidden border-3 border-transparent hover:border-[#DC2626] active:scale-[0.98]"
                     >
-                        <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
-                        <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
-                        <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
-                        <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
-                        <span className="relative z-10 flex items-center gap-4 md:gap-6">
-                            Finish Transition
-                            <svg className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                        {/* Corner decorations */}
+                        <span className="absolute top-0 left-0 w-6 h-6 border-t-3 border-l-3 border-white/50 group-hover:border-[#DC2626]/70 transition-colors"></span>
+                        <span className="absolute top-0 right-0 w-6 h-6 border-t-3 border-r-3 border-white/50 group-hover:border-[#DC2626]/70 transition-colors"></span>
+                        <span className="absolute bottom-0 left-0 w-6 h-6 border-b-3 border-l-3 border-white/50 group-hover:border-[#DC2626]/70 transition-colors"></span>
+                        <span className="absolute bottom-0 right-0 w-6 h-6 border-b-3 border-r-3 border-white/50 group-hover:border-[#DC2626]/70 transition-colors"></span>
+
+                        {/* Animated background pulse */}
+                        <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+
+                        <span className="relative z-10 flex items-center gap-4 md:gap-8">
+                            <span>Finish Transition</span>
+                            <svg className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-3 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </span>
                     </button>
-                    <p className={`mt-6 font-mono text-[10px] ${styles.textDim} uppercase tracking-[0.3em]`}>
-                        See credits & contributors
-                    </p>
+
+                    <div className="mt-8 flex flex-col items-center gap-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-px bg-gradient-to-r from-transparent to-[#DC2626]/30"></div>
+                        <p className={`font-mono text-xs ${styles.textDim} uppercase tracking-[0.2em]`}>
+                            See credits & contributors
+                        </p>
+                        <div className="w-8 h-px bg-gradient-to-l from-transparent to-[#DC2626]/30"></div>
+                      </div>
+                      <div className="flex items-center gap-2 opacity-50">
+                        <div className="w-2 h-2 rounded-full bg-[#DC2626] animate-pulse"></div>
+                        <span className={`font-mono text-[10px] ${styles.textDim}`}>Final slide</span>
+                      </div>
+                    </div>
                 </div>
 
                 {/* Back button */}

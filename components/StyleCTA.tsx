@@ -5,129 +5,80 @@ interface StyleCTAProps {
   theme: 'dark' | 'light';
 }
 
-// Wider visible ranges for the ball
-const VISIBLE_RANGES = [
-  { start: 0.25, end: 0.55 },  // First half - longer duration
-  { start: 0.65, end: 0.95 },  // Second half - longer duration
-];
-
-// Text phrases that appear at specific moments
-const POPUP_RANGES = [
-  { start: 0.28, end: 0.35, text: "Like this?" },
-  { start: 0.40, end: 0.48, text: "Get toolkit" },
-  { start: 0.68, end: 0.75, text: "Free style" },
-  { start: 0.82, end: 0.90, text: "Download" },
+// Text labels that cycle through
+const LABELS = [
+  { text: "getstyle", duration: 2500 },
+  { text: "toolkit", duration: 2000 },
+  { text: "free", duration: 1500 },
 ];
 
 export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [popupText, setPopupText] = useState('');
+  const [isReady, setIsReady] = useState(false);
+  const [currentLabel, setCurrentLabel] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const ballRef = useRef<HTMLButtonElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const pulseRef = useRef<SVGCircleElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
 
   const isDark = theme === 'dark';
 
-  // Track scroll and determine visibility/expansion
+  // Show after 3 seconds
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-      const scrollProgress = scrollY / (docHeight - viewportHeight);
-
-      // Check if in any visible range
-      const shouldBeVisible = VISIBLE_RANGES.some(
-        range => scrollProgress >= range.start && scrollProgress <= range.end
-      );
-
-      // Check if should be expanded (popup mode)
-      const popupMatch = POPUP_RANGES.find(
-        range => scrollProgress >= range.start && scrollProgress <= range.end
-      );
-
-      setIsVisible(shouldBeVisible);
-      setIsExpanded(!!popupMatch);
-      setPopupText(popupMatch?.text || '');
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
+    const timer = setTimeout(() => setIsReady(true), 3000);
+    return () => clearTimeout(timer);
   }, []);
 
-  // Ball pulse animation
+  // Listen for open event from Index
   useEffect(() => {
-    if (!pulseRef.current || !isVisible) return;
+    const handleOpen = () => setIsModalOpen(true);
+    window.addEventListener('open-toolkit-modal', handleOpen);
+    return () => window.removeEventListener('open-toolkit-modal', handleOpen);
+  }, []);
 
-    const ctx = gsap.context(() => {
-      gsap.to(pulseRef.current, {
-        scale: 2,
-        opacity: 0,
-        duration: 2,
-        repeat: -1,
-        ease: "power2.out",
-        transformOrigin: "center center"
-      });
-    });
-
-    return () => ctx.revert();
-  }, [isVisible]);
-
-  // Animate ball entrance/exit
+  // Cycle through labels
   useEffect(() => {
-    if (!ballRef.current) return;
+    if (!isReady) return;
 
-    if (isVisible) {
-      gsap.fromTo(ballRef.current,
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }
-      );
-    } else {
-      gsap.to(ballRef.current, {
-        scale: 0,
-        opacity: 0,
-        duration: 0.4,
-        ease: "power2.in"
-      });
-    }
-  }, [isVisible]);
+    let labelIndex = 0;
+    let timeoutId: NodeJS.Timeout;
 
-  // Animate text appearance
-  useEffect(() => {
-    if (!textRef.current) return;
+    const showNextLabel = () => {
+      const label = LABELS[labelIndex];
+      setCurrentLabel(label.text);
 
-    if (isExpanded && popupText) {
-      gsap.fromTo(textRef.current,
-        { width: 0, opacity: 0, marginLeft: 0 },
-        { width: 'auto', opacity: 1, marginLeft: 8, duration: 0.3, ease: "power2.out" }
-      );
-    } else {
-      gsap.to(textRef.current, {
-        width: 0, opacity: 0, marginLeft: 0,
-        duration: 0.2, ease: "power2.in"
-      });
-    }
-  }, [isExpanded, popupText]);
+      // Animate in
+      if (labelRef.current) {
+        gsap.fromTo(labelRef.current,
+          { width: 0, opacity: 0 },
+          { width: 'auto', opacity: 0.6, duration: 0.4, ease: "power2.out" }
+        );
+      }
 
-  // Modal animation
-  useEffect(() => {
-    if (!modalRef.current) return;
+      // Hide after duration
+      timeoutId = setTimeout(() => {
+        if (labelRef.current) {
+          gsap.to(labelRef.current, {
+            width: 0, opacity: 0,
+            duration: 0.3, ease: "power2.in"
+          });
+        }
 
-    if (isModalOpen) {
-      gsap.fromTo(modalRef.current,
-        { opacity: 0, scale: 0.9, y: 20 },
-        { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power3.out" }
-      );
-    }
-  }, [isModalOpen]);
+        // Next label after pause
+        timeoutId = setTimeout(() => {
+          labelIndex = (labelIndex + 1) % LABELS.length;
+          showNextLabel();
+        }, 15000); // 15 sec pause between labels
+      }, label.duration);
+    };
+
+    // Start after initial delay
+    timeoutId = setTimeout(showNextLabel, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [isReady]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -172,10 +123,8 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
       return;
     }
     gsap.to(modalRef.current, {
-      opacity: 0,
-      scale: 0.9,
-      y: 20,
-      duration: 0.25,
+      opacity: 0, scale: 0.95,
+      duration: 0.2,
       onComplete: () => {
         setIsModalOpen(false);
         setSubmitStatus('idle');
@@ -183,263 +132,123 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
     });
   };
 
-  // Modal content for detailed toolkit description
-  const TOOLKIT_ITEMS = [
-    {
-      title: "Claude Code Skill",
-      desc: "AI prompt that generates full presentations in this style. Describe your content — get a visual deck with animations, metaphors, and layouts."
-    },
-    {
-      title: "Visual DNA Guide",
-      desc: "Complete specification: color tokens (#DC2626, #0A0A0A), Roboto Flex variable font setup, spacing ratios, glow effects, animation timings."
-    },
-    {
-      title: "72+ SVG Metaphors",
-      desc: "Animated visuals for abstract concepts: bottleneck, network, transformation, timeline, burnout, clarity, and dozens more with GSAP code."
-    },
-    {
-      title: "React Components",
-      desc: "Production-ready Hero, Section, Card, Modal, Navigation components. Dark/light themes, scroll triggers, responsive design."
-    },
-  ];
-
-  const USE_CASES = [
-    "Annual reports",
-    "Pitch decks",
-    "Keynotes",
-    "Documentation",
-    "Courses",
-  ];
-
   return (
     <>
-      {/* Floating Ball CTA - no border, bigger ball */}
+      {/* Floating CTA - bottom right, semi-transparent */}
       <button
-        ref={ballRef}
         onClick={() => setIsModalOpen(true)}
-        className={`fixed z-[90] right-6 bottom-24 flex items-center group
-          ${!isVisible ? 'pointer-events-none' : ''}
-        `}
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'scale(1)' : 'scale(0)'
-        }}
+        className={`fixed z-[90] right-6 bottom-6 flex items-center group transition-opacity duration-1000
+          ${isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Get Style Toolkit"
       >
-        {/* Bigger animated ball SVG */}
-        <svg
-          viewBox="0 0 60 60"
-          className="w-16 h-16 transition-transform duration-300 group-hover:scale-110"
-        >
-          <defs>
-            <filter id="ball-glow-main" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
+        {/* Small red dot - always visible but semi-transparent */}
+        <div className="w-3 h-3 rounded-full bg-[#DC2626] opacity-40 group-hover:opacity-100 transition-opacity"
+             style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.3)' }} />
 
-          {/* Outer pulse ring */}
-          <circle
-            ref={pulseRef}
-            cx="30"
-            cy="30"
-            r="12"
-            fill="none"
-            stroke="#DC2626"
-            strokeWidth="1"
-            opacity="0.5"
-          />
-
-          {/* Rotating dashed orbit */}
-          <circle
-            cx="30"
-            cy="30"
-            r="22"
-            fill="none"
-            stroke="#DC2626"
-            strokeWidth="0.5"
-            strokeDasharray="4 6"
-            opacity="0.3"
-            className="animate-[spin_20s_linear_infinite]"
-          />
-
-          {/* Core ball - bigger */}
-          <circle
-            cx="30"
-            cy="30"
-            r="12"
-            fill="#DC2626"
-            filter="url(#ball-glow-main)"
-          />
-
-          {/* Inner highlight */}
-          <circle
-            cx="26"
-            cy="26"
-            r="3"
-            fill="rgba(255,255,255,0.3)"
-          />
-        </svg>
-
-        {/* Animated text label */}
+        {/* Animated label */}
         <span
-          ref={textRef}
-          className="overflow-hidden whitespace-nowrap font-mono text-sm font-bold uppercase tracking-wider text-[#DC2626]"
+          ref={labelRef}
+          className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626] ml-2"
           style={{ width: 0, opacity: 0 }}
         >
-          {popupText}
+          {currentLabel}
         </span>
       </button>
 
-      {/* Modal - no emojis, detailed descriptions */}
+      {/* Compact Modal - mobile friendly */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4"
           onClick={closeModal}
         >
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/80" />
 
-          {/* Modal Content */}
           <div
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            className={`relative w-full max-w-lg rounded-2xl overflow-hidden
+            className={`relative w-full sm:max-w-md sm:rounded-xl overflow-hidden
               ${isDark ? 'bg-[#0A0A0A]' : 'bg-white'}
-              border border-[#DC2626]/20 shadow-[0_0_80px_rgba(220,38,38,0.15)]`}
+              border-t sm:border border-[#DC2626]/20
+              max-h-[85vh] overflow-y-auto`}
           >
-            {/* Close button */}
+            {/* Close */}
             <button
               onClick={closeModal}
-              className={`absolute top-4 right-4 p-2 rounded-full transition-colors z-10
-                ${isDark ? 'text-neutral-600 hover:text-white hover:bg-white/10' : 'text-neutral-400 hover:text-black hover:bg-black/10'}`}
+              className={`absolute top-3 right-3 p-2 z-10 ${isDark ? 'text-neutral-600 hover:text-white' : 'text-neutral-400 hover:text-black'}`}
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
 
-            {/* Header */}
-            <div className="p-8 pb-4">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 bg-[#DC2626] rounded-full animate-pulse" />
-                <span className="text-[10px] font-mono text-[#DC2626] uppercase tracking-[0.2em]">
-                  Free Download
-                </span>
+            {/* Content */}
+            <div className="p-5 sm:p-6">
+              {/* Header */}
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-2 h-2 bg-[#DC2626] rounded-full" />
+                <span className="text-[10px] font-mono text-[#DC2626] uppercase tracking-wider">free toolkit</span>
               </div>
 
-              <h2 className={`text-3xl font-black tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h2 className={`text-xl sm:text-2xl font-black tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
                 AIM Style Toolkit
               </h2>
-              <p className={`text-sm leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                Everything you need to create presentations, reports, and visual artifacts in this exact style.
-              </p>
-            </div>
 
-            {/* Detailed items - no emojis */}
-            <div className="px-8 pb-6">
-              <div className="space-y-3">
-                {TOOLKIT_ITEMS.map((item, i) => (
-                  <div
-                    key={i}
-                    className={`p-4 rounded-lg border-l-2 border-[#DC2626]/50
-                      ${isDark ? 'bg-neutral-900/50' : 'bg-neutral-50'}`}
-                  >
-                    <h4 className={`text-sm font-bold mb-1 ${isDark ? 'text-white' : 'text-black'}`}>
-                      {item.title}
-                    </h4>
-                    <p className={`text-xs leading-relaxed ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Use cases */}
-            <div className="px-8 pb-4">
-              <p className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${isDark ? 'text-neutral-600' : 'text-neutral-500'}`}>
-                Use for:
+              <p className={`text-xs mb-4 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+                Claude skill + Visual DNA + 72 SVG metaphors + React components
               </p>
-              <div className="flex flex-wrap gap-2">
-                {USE_CASES.map((useCase, i) => (
-                  <span
-                    key={i}
-                    className={`text-[10px] px-2 py-1 rounded
-                      ${isDark ? 'bg-neutral-800 text-neutral-400' : 'bg-neutral-200 text-neutral-600'}`}
-                  >
-                    {useCase}
+
+              {/* Compact tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {['Reports', 'Decks', 'Docs', 'Courses'].map((tag) => (
+                  <span key={tag} className={`text-[9px] px-2 py-0.5 rounded ${isDark ? 'bg-neutral-800 text-neutral-500' : 'bg-neutral-200 text-neutral-600'}`}>
+                    {tag}
                   </span>
                 ))}
               </div>
-            </div>
 
-            {/* Form */}
-            <div className={`p-8 pt-4 border-t ${isDark ? 'border-neutral-800' : 'border-neutral-200'}`}>
+              {/* Form */}
               {submitStatus !== 'success' ? (
-                <form onSubmit={handleSubmit}>
-                  <p className={`text-xs mb-3 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-                    Enter your email to download the toolkit
-                  </p>
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
-                      required
-                      className={`flex-1 px-4 py-3 rounded-lg text-sm outline-none transition-all
-                        ${isDark
-                          ? 'bg-neutral-900 border border-neutral-800 text-white placeholder:text-neutral-600 focus:border-[#DC2626]'
-                          : 'bg-neutral-100 border border-neutral-200 text-black placeholder:text-neutral-400 focus:border-[#DC2626]'}`}
-                    />
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="px-6 py-3 bg-[#DC2626] text-white text-sm font-bold uppercase tracking-wider rounded-lg
-                        hover:bg-red-700 transition-colors disabled:opacity-50
-                        shadow-[0_0_20px_rgba(220,38,38,0.3)]"
-                    >
-                      {isSubmitting ? '...' : 'Get'}
-                    </button>
-                  </div>
-
-                  {submitStatus === 'error' && (
-                    <p className="text-xs text-red-500 mt-3">Something went wrong. Please try again.</p>
-                  )}
+                <form onSubmit={handleSubmit} className="flex gap-2">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="email"
+                    required
+                    className={`flex-1 px-3 py-2.5 rounded text-sm outline-none
+                      ${isDark
+                        ? 'bg-neutral-900 border border-neutral-800 text-white placeholder:text-neutral-600 focus:border-[#DC2626]'
+                        : 'bg-neutral-100 border border-neutral-200 text-black placeholder:text-neutral-400 focus:border-[#DC2626]'}`}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-4 py-2.5 bg-[#DC2626] text-white text-xs font-bold uppercase rounded
+                      hover:bg-red-700 disabled:opacity-50"
+                  >
+                    {isSubmitting ? '...' : 'Get'}
+                  </button>
                 </form>
               ) : (
-                <div className="text-center py-4">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#DC2626]/10 flex items-center justify-center">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </div>
-                  <p className={`text-base font-bold ${isDark ? 'text-white' : 'text-black'}`}>
-                    Downloading...
-                  </p>
-                  <p className={`text-xs mt-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-                    Check your downloads folder
-                  </p>
+                <div className="flex items-center gap-2 py-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span className={`text-sm ${isDark ? 'text-white' : 'text-black'}`}>Downloading...</span>
                 </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <p className="text-xs text-red-500 mt-2">Error. Try again.</p>
               )}
             </div>
 
-            {/* Contact footer */}
-            <div className={`px-8 py-4 border-t ${isDark ? 'border-neutral-800 bg-neutral-900/30' : 'border-neutral-200 bg-neutral-50'}`}>
-              <p className={`text-[11px] text-center ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-                Want us to create something like this for you?{' '}
-                <a
-                  href="mailto:info@aimindset.org?subject=Custom%20Visual%20Style"
-                  className="text-[#DC2626] hover:underline"
-                >
-                  info@aimindset.org
-                </a>
-              </p>
+            {/* Footer */}
+            <div className={`px-5 sm:px-6 py-3 border-t text-center ${isDark ? 'border-neutral-800 bg-neutral-900/50' : 'border-neutral-200 bg-neutral-50'}`}>
+              <a href="mailto:info@aimindset.org" className={`text-[10px] ${isDark ? 'text-neutral-600' : 'text-neutral-500'} hover:text-[#DC2626]`}>
+                Custom design? info@aimindset.org
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2400px;
+            height: 1260px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2400px;
+            height: 1260px;
+            background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+            padding: 120px 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Dark forest trees */
+        .trees {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 600px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            opacity: 0.15;
+        }
+        .tree {
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 400px solid #DC2626;
+            position: relative;
+        }
+        .tree:nth-child(odd) {
+            border-bottom-color: #991b1b;
+            transform: scale(0.8);
+        }
+        .tree::before {
+            content: '';
+            position: absolute;
+            top: 400px;
+            left: -10px;
+            width: 20px;
+            height: 80px;
+            background: #333;
+        }
+        /* Glowing eyes in the dark */
+        .eyes {
+            position: absolute;
+            display: flex;
+            gap: 30px;
+        }
+        .eye {
+            width: 20px;
+            height: 20px;
+            background: #DC2626;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #DC2626, 0 0 60px #DC2626;
+            opacity: 0.8;
+        }
+        .eyes-1 { bottom: 400px; left: 300px; }
+        .eyes-2 { bottom: 350px; right: 400px; }
+        .eyes-3 { bottom: 500px; left: 800px; opacity: 0.5; }
+        .eyes-4 { bottom: 300px; right: 700px; opacity: 0.6; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border: 2px solid rgba(220,38,38,0.3);
+            background: rgba(220,38,38,0.05);
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .shift-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            color: #DC2626;
+            letter-spacing: 0.3em;
+            margin-bottom: 24px;
+        }
+        .title {
+            font-size: 160px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+            text-transform: uppercase;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 40px;
+            color: #666;
+            max-width: 1200px;
+            line-height: 1.5;
+        }
+        .warning-box {
+            margin-top: 60px;
+            padding: 40px 60px;
+            border: 2px solid rgba(220,38,38,0.4);
+            background: rgba(220,38,38,0.05);
+            max-width: 1000px;
+        }
+        .warning-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #DC2626;
+            line-height: 1.6;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #333;
+        }
+        .stat {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #555;
+        }
+        .stat-value {
+            color: #DC2626;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="trees">
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+            <div class="tree"></div>
+        </div>
+        <div class="eyes eyes-1"><div class="eye"></div><div class="eye"></div></div>
+        <div class="eyes eyes-2"><div class="eye"></div><div class="eye"></div></div>
+        <div class="eyes eyes-3"><div class="eye"></div><div class="eye"></div></div>
+        <div class="eyes eyes-4"><div class="eye"></div><div class="eye"></div></div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">Shift 09</div>
+        </div>
+
+        <div class="main">
+            <div class="shift-num">Cybersecurity → Cognitive Warfare</div>
+            <h1 class="title">THE <span class="accent">DARK</span><br>FOREST</h1>
+            <p class="subtitle">Every entity you encounter might be AI. Default assumption becomes distrust.</p>
+            <div class="warning-box">
+                <p class="warning-text">Zero trust default: assume fake until cryptographically verified</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+            <span class="stat"><span class="stat-value">1,265%</span> AI-driven phishing increase</span>
+        </div>
+    </div>
+</body>
+</html>

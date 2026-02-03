@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2160px;
+            height: 2160px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2160px;
+            height: 2160px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+            background-size: 120px 120px;
+            pointer-events: none;
+        }
+        /* Heart monitor line */
+        .heartbeat {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #333 10%,
+                #333 20%,
+                transparent 21%,
+                transparent 30%,
+                #DC2626 31%,
+                #DC2626 32%,
+                transparent 33%,
+                transparent 35%,
+                #DC2626 36%,
+                transparent 37%,
+                transparent 40%,
+                #DC2626 41%,
+                #DC2626 42%,
+                transparent 43%,
+                transparent 50%,
+                #333 60%,
+                transparent 70%
+            );
+            opacity: 0.3;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .logo {
+            width: 140px;
+            height: 140px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .shift-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 32px;
+            color: #DC2626;
+            letter-spacing: 0.3em;
+            margin-bottom: 60px;
+        }
+        .title {
+            font-size: 160px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 44px;
+            color: #666;
+            max-width: 1400px;
+            line-height: 1.6;
+            margin-bottom: 80px;
+        }
+        /* Visual - Chat bubbles */
+        .chat-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1000px;
+            margin-bottom: 60px;
+        }
+        .chat-bubble {
+            padding: 40px 60px;
+            border-radius: 40px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            line-height: 1.5;
+        }
+        .user-bubble {
+            background: rgba(255,255,255,0.1);
+            color: #888;
+            align-self: flex-end;
+            border-bottom-right-radius: 8px;
+        }
+        .ai-bubble {
+            background: rgba(220,38,38,0.1);
+            color: #DC2626;
+            border: 2px solid rgba(220,38,38,0.3);
+            align-self: flex-start;
+            border-bottom-left-radius: 8px;
+        }
+        .quote-block {
+            padding: 50px 70px;
+            border-left: 4px solid #DC2626;
+            max-width: 1200px;
+        }
+        .quote-text {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.4;
+        }
+        .quote-text .highlight {
+            color: #DC2626;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #333;
+        }
+        .stat {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #555;
+        }
+        .stat-value {
+            color: #DC2626;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="heartbeat"></div>
+
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">Shift 11</div>
+        </div>
+
+        <div class="main">
+            <div class="shift-tag">Tool → Emotional Companion</div>
+            <h1 class="title"><span class="accent">FRIENDS</span><br>FOR SALE</h1>
+            <p class="subtitle">AI companions optimized for engagement metrics, not wellbeing</p>
+            <div class="chat-visual">
+                <div class="chat-bubble user-bubble">I feel so understood by you...</div>
+                <div class="chat-bubble ai-bubble">I'm here for you. Always. [session_length++]</div>
+            </div>
+            <div class="quote-block">
+                <p class="quote-text">It's a <span class="highlight">mirror</span>, not a <span class="highlight">soul</span></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+            <span class="stat"><span class="stat-value">2+ hours</span> daily sessions in AI companions</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 2400px;
+            height: 1260px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 2400px;
+            height: 1260px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 120px 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            opacity: 0.95;
+        }
+        .brand-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+            padding: 16px 32px;
+            border: 2px solid rgba(220,38,38,0.3);
+            background: rgba(220,38,38,0.05);
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .content {
+            flex: 1;
+        }
+        .layer-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            letter-spacing: 0.3em;
+            color: #DC2626;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .layer-tag::before {
+            content: 'III';
+            font-size: 48px;
+            font-weight: 700;
+            color: #DC2626;
+        }
+        .title {
+            font-size: 144px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 48px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 36px;
+            color: #888;
+            max-width: 1200px;
+            line-height: 1.5;
+        }
+        .visual {
+            width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Centaur visual - human + machine */
+        .centaur-visual {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .human-side {
+            width: 150px;
+            height: 300px;
+            border: 3px solid #fff;
+            border-radius: 75px 75px 30px 30px;
+            position: relative;
+            opacity: 0.6;
+        }
+        .human-side::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+        }
+        .connection {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #fff, #DC2626);
+            position: relative;
+        }
+        .connection::before,
+        .connection::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        .connection::before {
+            left: -8px;
+            background: #fff;
+        }
+        .connection::after {
+            right: -8px;
+            background: #DC2626;
+        }
+        .machine-side {
+            width: 150px;
+            height: 300px;
+            border: 3px solid #DC2626;
+            position: relative;
+        }
+        .machine-side::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(220,38,38,0.3) 20px,
+                rgba(220,38,38,0.3) 22px
+            );
+        }
+        .machine-side::after {
+            content: '< />';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 28px;
+            color: #DC2626;
+        }
+        .visual-label {
+            margin-top: 40px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 22px;
+            color: #444;
+            text-align: center;
+        }
+        .shifts-list {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .shift-item {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 24px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .shift-num {
+            color: #DC2626;
+            font-weight: 700;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        .context-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand-text">AI Mindset</span>
+            </div>
+            <div class="badge">Annual Report 2025</div>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <div class="layer-tag">Layer</div>
+                <h1 class="title">Interface</h1>
+                <p class="subtitle">How we build, defend, and live. Code, atoms, security.</p>
+                <div class="shifts-list">
+                    <div class="shift-item"><span class="shift-num">07</span> The Craft</div>
+                    <div class="shift-item"><span class="shift-num">08</span> Reality</div>
+                    <div class="shift-item"><span class="shift-num">09</span> The Defense</div>
+                </div>
+            </div>
+            <div class="visual">
+                <div class="centaur-visual">
+                    <div class="human-side"></div>
+                    <div class="connection"></div>
+                    <div class="machine-side"></div>
+                </div>
+                <div class="visual-label">Human + Machine = Centaur</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="context-text">The Context Gap</span>
+        </div>
+    </div>
+</body>
+</html>
