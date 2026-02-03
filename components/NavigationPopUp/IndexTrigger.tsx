@@ -18,7 +18,7 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
     const hoverText = isDark ? 'hover:text-white' : 'hover:text-black';
 
     return (
-        <div className="fixed top-6 right-6 z-[100] pointer-events-auto flex items-start gap-2 font-mono text-[10px] uppercase tracking-widest animate-fade-in" style={{ animationDelay: '0.1s', animationFillMode: 'backwards' }}>
+        <div className="fixed top-6 right-6 z-[100] pointer-events-auto flex items-start gap-2 font-mono text-[10px] uppercase tracking-widest animate-fade-in" style={{ animationDelay: '0.8s', animationDuration: '1s', animationFillMode: 'backwards' }}>
             
             {/* 1. THEME TOGGLE (Hidden on Landing) */}
             {showThemeToggle && (
