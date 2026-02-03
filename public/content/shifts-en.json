@@ -81,7 +81,18 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "$100B+ clusters by 2026, $1T+ individual clusters by 2030 — the exponential is in full swing now",
+          "author": "Leopold Aschenbrenner",
+          "role": "Situational Awareness"
+        },
+        {
+          "quote": "intelligence per watt becomes the critical metric — more compute doesn't equal more value if it can't be powered",
+          "author": "R_om",
+          "role": "AI Mindset Community"
+        }
+      ]
     },
     {
       "id": "02",
@@ -181,14 +192,14 @@
       ],
       "voices": [
         {
-          "tag": "from tool to participant",
-          "text": "from 'ai as smart assistant' to 'ai as full participant in the process'",
-          "author": "Yakov Vasiliev, AI Strategy × Product Architecture"
+          "quote": "from tool to participant — from 'ai as smart assistant' to 'ai as full participant in the process'",
+          "author": "Yakov Vasiliev",
+          "role": "AI Strategy × Product Architecture"
         },
         {
-          "tag": "from consumer to builder",
-          "text": "business coach → ai chatbot developer. \"vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months",
-          "author": "Natalya Savenkova, Project Lead → Product Automation"
+          "quote": "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'",
+          "author": "Natalya Savenkova",
+          "role": "Project Lead → Product Automation"
         }
       ]
     },
@@ -278,7 +289,18 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "datacenters must remain in democratic nations — not under the thumb of brutal, capricious autocrats",
+          "author": "Leopold Aschenbrenner",
+          "role": "Situational Awareness"
+        },
+        {
+          "quote": "the guerrilla stack emerges — employees bring their own AI to bypass corporate limitations and censorship",
+          "author": "AI Mindset Community",
+          "role": "Shadow AI Survey"
+        }
+      ]
     },
     {
       "id": "04",
@@ -356,7 +378,18 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "the difference between a smart person spending a few minutes vs. a few months on a problem — test-time compute unlocks deliberate thinking",
+          "author": "Leopold Aschenbrenner",
+          "role": "Situational Awareness"
+        },
+        {
+          "quote": "actively using roleplay with LLM: I assign it an expert role and ask it to talk to me as if we're sitting in a coffee shop — and that's how I learn",
+          "author": "ML Engineer",
+          "role": "Aviasales, AI Mindset Community"
+        }
+      ]
     },
     {
       "id": "05",
@@ -447,14 +480,19 @@
       ],
       "voices": [
         {
-          "tag": "context engineering as key skill",
-          "text": "building products through parsing → classification → aggregation → human decision. claude code as working environment",
-          "author": "Yakov Vasiliev, AI Strategy × Product Architecture"
+          "quote": "context engineering as key skill — building products through parsing → classification → aggregation → human decision. claude code as working environment",
+          "author": "Yakov Vasiliev",
+          "role": "AI Strategy × Product Architecture"
         },
         {
-          "tag": "speed as new baseline",
-          "text": "content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes",
-          "author": "Nikolay Senin, Developer & Consultant"
+          "quote": "speed as new baseline — content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes",
+          "author": "Nikolay Senin",
+          "role": "Developer & Consultant"
+        },
+        {
+          "quote": "total documentation of corporate context — using this context for interaction with LLM. built an AI regulator that accelerated formalization of business processes",
+          "author": "R_om",
+          "role": "IT Education Executive"
         }
       ]
     },
@@ -534,7 +572,23 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "powerful AI could compress 50-100 years of scientific progress into 5-10 years — a compressed 21st century",
+          "author": "Dario Amodei",
+          "role": "CEO, Anthropic"
+        },
+        {
+          "quote": "AI shouldn't function as merely a tool to analyze data but rather as a virtual biologist who performs all the tasks biologists do",
+          "author": "Dario Amodei",
+          "role": "Machines of Loving Grace"
+        },
+        {
+          "quote": "token consumption by programmers will grow x5-x10 by year end — saturation of ARC-AGI 2, autonomous AI scientist making discoveries in hours",
+          "author": "Nikolay Senin",
+          "role": "Developer & Consultant"
+        }
+      ]
     },
     {
       "id": "07",
@@ -635,14 +689,19 @@
       ],
       "voices": [
         {
-          "tag": "barrier falling",
-          "text": "vibe coding will become the norm. the 'i can't do it' barrier will fall, replaced by 'let me ask ai how to do this'",
-          "author": "Alexander Stashenko, Business Coach → AI Chatbot Developer"
+          "quote": "barrier falling — vibe coding will become the norm. the 'i can't do it' barrier will fall, replaced by 'let me ask ai how to do this'",
+          "author": "Alexander Stashenko",
+          "role": "Business Coach → AI Chatbot Developer"
         },
         {
-          "tag": "vibe-coded prototypes",
-          "text": "made in half an hour what couldn't do for 1.5 months. full app in App Store/Google Play",
-          "author": "Natalya Savenkova, Project Lead → Product Automation"
+          "quote": "vibe-coded prototypes — made in half an hour what couldn't do for 1.5 months. full app in App Store/Google Play",
+          "author": "Natalya Savenkova",
+          "role": "Project Lead → Product Automation"
+        },
+        {
+          "quote": "15+ years writing code by hand. was skeptical for a long time. what helped reduce anxiety — writing my own rules for AI and using them everywhere",
+          "author": "Senior Developer",
+          "role": "15+ Years Experience, AI Mindset Community"
         }
       ]
     },
@@ -700,7 +759,18 @@
       ],
       "research": [],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "technology opens the space of what it can mean to be human — we are the apex predator; the lightning works for us",
+          "author": "Marc Andreessen",
+          "role": "Techno-Optimist Manifesto"
+        },
+        {
+          "quote": "we buy robots not for novelty, but to buy back life hours — the craft premium emerges as simulation gets cheaper",
+          "author": "AI Mindset Community",
+          "role": "Community Insight"
+        }
+      ]
     },
     {
       "id": "09",
@@ -806,7 +876,18 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "perhaps they will be an odd footnote in history, or perhaps they will go down in history like Szilard and Oppenheimer and Teller",
+          "author": "Leopold Aschenbrenner",
+          "role": "On AI Researchers"
+        },
+        {
+          "quote": "dark forest and digital bunkers — retreat to closed communities with cryptographic proof-of-human as internet fragments",
+          "author": "AI Mindset Community",
+          "role": "Community Analysis"
+        }
+      ]
     },
     {
       "id": "10",
@@ -884,7 +965,18 @@
         }
       ],
       "aimEvidence": [],
-      "voices": []
+      "voices": [
+        {
+          "quote": "the arc of the moral universe trends toward compassion and cooperation; powerful AI accelerates this tendency rather than creating it",
+          "author": "Dario Amodei",
+          "role": "CEO, Anthropic"
+        },
+        {
+          "quote": "we are, have been, and will always be the masters of technology, not mastered by technology — we are the apex predator",
+          "author": "Marc Andreessen",
+          "role": "Techno-Optimist Manifesto"
+        }
+      ]
     },
     {
       "id": "11",
@@ -918,7 +1010,7 @@
           "label": "",
           "value": "#1",
           "desc": "Companionship is top retention category in Gen AI apps",
-          "url": "https://a16z.com/100-gen-ai-apps-2025/"
+          "url": "https://a16z.com/100-gen-ai-apps-5/"
         },
         {
           "label": "",
@@ -940,7 +1032,7 @@
         },
         {
           "title": "a16z Top 100 Gen AI Apps",
-          "url": "https://a16z.com/100-gen-ai-apps-2025/",
+          "url": "https://a16z.com/100-gen-ai-apps-5/",
           "description": "Companionship is #1 retention category, 2+ hours daily sessions"
         }
       ],
@@ -957,7 +1049,7 @@
         },
         {
           "title": "Ubisoft NEO NPC",
-          "url": "https://www.ubisoft.com/en-us/studio/laforge/news/7Cm4VJVbWKHzHmRgqwYbAX/neos-the-future-of-npcs",
+          "url": "https://news.ubisoft.com/en-us/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs",
           "description": "NPCs with psychological profiles reacting to player tone/mood - \"as big a revolution as shift to 3D\""
         }
       ],
@@ -973,7 +1065,18 @@
           "description": "Mental health firewalls and sovereign workflows."
         }
       ],
-      "voices": []
+      "voices": [
+        {
+          "quote": "actively using roleplay with LLM — I assign it an expert role and ask it to talk to me as if we're sitting in a coffee shop. that's how I learn, as if I actually talked to a smart person",
+          "author": "ML Engineer",
+          "role": "Aviasales, AI Mindset Community"
+        },
+        {
+          "quote": "you need to take people by the hand and show them how to solve their task with AI, not give them a universal tool",
+          "author": "Evgeniy",
+          "role": "IT Integrator Marketing"
+        }
+      ]
     }
   ],
   "layers": [
@@ -1020,5 +1123,5 @@
     "subtitle": "the context gap · annual report 2025",
     "content": "**credits:**\n\n**anca stavenski** — design & logic\n\n**alex p** — ideation\n\n**ray svitla** — research\n\n**links:**\n\n→ [**subscribe on substack**](https://aimindsetspace.substack.com) — get next resets & signals\n\n→ [**explore the ecosystem**](https://aimindset.org) — labs, tools, community\n\n→ [**talk to us**](mailto:info@aimindset.org) — partnerships / speaking\n\nend of transmission"
   },
-  "generated": "2026-02-03T14:34:51.377Z"
+  "generated": "2026-02-03T15:02:56.653Z"
 }

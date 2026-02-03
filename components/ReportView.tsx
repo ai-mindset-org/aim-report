@@ -559,31 +559,76 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
           <div className="max-w-7xl mx-auto">
               <h2 className={`text-5xl md:text-7xl font-black ${textMain} uppercase tracking-tighter leading-none mb-12`}>{i18n?.ui.realityCheck || 'Reality Check'}</h2>
               
-              {/* COMMUNITY VOICES - First */}
-              {data.voices && data.voices.length > 0 && (
-                  <div className="mb-12">
-                      <div className={`p-8 md:p-12 rounded-xl border ${borderMain} ${isDark ? 'bg-neutral-900/50' : 'bg-neutral-100'}`}>
-                          <div className="flex items-center gap-4 mb-8">
-                              <span className={`font-mono text-xs font-bold uppercase tracking-widest ${textSecondary}`}>{i18n?.ui.voices || 'Community Voices'}</span>
-                          </div>
-                          <div className="space-y-8">
-                              {data.voices.map((voice, idx) => (
-                                  <div key={idx} className="relative pl-12">
-                                      {/* Opening quote */}
-                                      <div className="absolute left-0 top-0 text-5xl text-[#DC2626] opacity-40 font-serif leading-none">"</div>
-                                      <p className={`text-lg md:text-xl leading-relaxed mb-3 ${textMain}`}>
-                                          {voice.tag} — {voice.text}
-                                      </p>
-                                      <div className="flex items-center gap-3">
-                                          <span className="w-8 h-px bg-[#DC2626]"></span>
-                                          <p className={`font-mono text-sm ${textSecondary}`}>{voice.author}</p>
+              {/* VOICES: Community + Thought Leaders */}
+              {data.voices && data.voices.length > 0 && (() => {
+                  // Separate thought leaders from community voices
+                  const thoughtLeaderNames = ['dario amodei', 'marc andreessen', 'leopold aschenbrenner', 'fei-fei li', 'sam altman', 'ilya sutskever', 'demis hassabis', 'yann lecun', 'geoffrey hinton'];
+                  const thoughtLeaderRoles = ['CEO', 'Anthropic', 'a16z', 'Situational Awareness', 'Techno-Optimist', 'Manifesto', 'OpenAI', 'DeepMind', 'Google', 'Meta AI', 'On AI'];
+                  const isThoughtLeader = (voice: { author: string; role: string }) =>
+                    thoughtLeaderNames.some(n => voice.author?.toLowerCase().includes(n)) ||
+                    thoughtLeaderRoles.some(r => voice.role?.includes(r));
+
+                  const communityVoices = data.voices.filter(v => !isThoughtLeader(v));
+                  const thoughtLeaders = data.voices.filter(v => isThoughtLeader(v));
+
+                  return (
+                      <div className="mb-12">
+                          <div className={`p-6 md:p-10 rounded-xl border ${borderMain} ${isDark ? 'bg-neutral-900/50' : 'bg-neutral-100'}`}>
+
+                              {/* Thought Leaders Section */}
+                              {thoughtLeaders.length > 0 && (
+                                  <div className="mb-10">
+                                      <div className="flex items-center gap-3 mb-6">
+                                          <div className="w-2 h-2 bg-[#DC2626] rounded-full"></div>
+                                          <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#DC2626]`}>Thought Leaders</span>
+                                      </div>
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                          {thoughtLeaders.map((voice, idx) => (
+                                              <div key={idx} className={`relative p-6 rounded-lg border-l-2 border-[#DC2626] ${isDark ? 'bg-black/30' : 'bg-white/50'}`}>
+                                                  <p className={`text-base md:text-lg leading-relaxed mb-4 ${textMain} italic`}>
+                                                      "{voice.quote}"
+                                                  </p>
+                                                  <div className="flex items-center gap-3">
+                                                      <span className="font-bold text-[#DC2626]">{voice.author}</span>
+                                                      <span className={`font-mono text-xs ${textSecondary}`}>{voice.role}</span>
+                                                  </div>
+                                              </div>
+                                          ))}
                                       </div>
                                   </div>
-                              ))}
+                              )}
+
+                              {/* Divider if both sections exist */}
+                              {thoughtLeaders.length > 0 && communityVoices.length > 0 && (
+                                  <div className={`border-t ${borderMain} my-8`}></div>
+                              )}
+
+                              {/* Community Voices Section */}
+                              {communityVoices.length > 0 && (
+                                  <div>
+                                      <div className="flex items-center gap-3 mb-6">
+                                          <div className={`w-2 h-2 ${isDark ? 'bg-white/50' : 'bg-black/50'} rounded-full`}></div>
+                                          <span className={`font-mono text-[10px] font-bold uppercase tracking-[0.2em] ${textSecondary}`}>Community Voices</span>
+                                      </div>
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                          {communityVoices.map((voice, idx) => (
+                                              <div key={idx} className={`relative p-5 rounded-lg ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
+                                                  <p className={`text-sm md:text-base leading-relaxed mb-3 ${textMain}`}>
+                                                      "{voice.quote}"
+                                                  </p>
+                                                  <div className="flex items-center gap-2 flex-wrap">
+                                                      <span className={`font-medium ${textMain}`}>{voice.author}</span>
+                                                      <span className={`font-mono text-[10px] ${textSecondary}`}>• {voice.role}</span>
+                                                  </div>
+                                              </div>
+                                          ))}
+                                      </div>
+                                  </div>
+                              )}
                           </div>
                       </div>
-                  </div>
-              )}
+                  );
+              })()}
 
               {/* AI MINDSET EVIDENCE - Second */}
               {data.aimEvidence && data.aimEvidence.length > 0 && (

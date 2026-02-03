@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 1500px;
+            height: 500px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .banner {
+            width: 1500px;
+            height: 500px;
+            background: linear-gradient(90deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%);
+            padding: 60px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Grid */
+        .banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+        /* Horizontal accent line */
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(220,38,38,0.3) 20%,
+                rgba(220,38,38,0.5) 50%,
+                rgba(220,38,38,0.3) 80%,
+                transparent 100%
+            );
+        }
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 56px;
+            height: 56px;
+            opacity: 0.9;
+        }
+        .title-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .title {
+            font-size: 64px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+        .cta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #DC2626;
+            padding: 16px 32px;
+            border: 2px solid #DC2626;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="left">
+            <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+            <div class="title-block">
+                <h1 class="title">THE <span class="accent">CONTEXT</span> GAP</h1>
+                <p class="subtitle">AI Mindset Annual Report 2025</p>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="stat">
+                <div class="stat-value">11</div>
+                <div class="stat-label">Shifts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Layers</div>
+            </div>
+            <div class="cta">Read Now</div>
+        </div>
+    </div>
+</body>
+</html>

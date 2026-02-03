@@ -151,6 +151,13 @@ export default function App() {
   }, [viewState, timeline]);
 
   const [isNavVisible, setIsNavVisible] = useState(false);
+  const [headerReady, setHeaderReady] = useState(false);
+
+  // Delayed header appearance for smooth load
+  useEffect(() => {
+    const timer = setTimeout(() => setHeaderReady(true), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
       let targetHash = 'main';
@@ -459,11 +466,11 @@ export default function App() {
 
   return (
     <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
-        {/* Fixed Logo Header */}
-        <div className="fixed top-0 left-0 z-[200] p-4 md:p-6">
-            <a 
-                href="https://aimindset.org" 
-                target="_blank" 
+        {/* Fixed Logo Header - fades in smoothly */}
+        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-all duration-700 ease-out ${headerReady ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <a
+                href="https://aimindset.org"
+                target="_blank"
                 rel="noreferrer"
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-white/5 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
@@ -471,9 +478,11 @@ export default function App() {
                 <span className="font-mono text-sm font-bold tracking-wide hidden md:inline">MINDSET</span>
             </a>
         </div>
-        
+
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
+        <div className={`transition-all duration-700 ease-out delay-200 ${headerReady ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
+        </div>
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
     </div>
   );

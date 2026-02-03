@@ -30,23 +30,39 @@ export const Hero: React.FC<HeroProps> = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Set initial state - hidden with blur
+      gsap.set(titleRef.current, {
+        y: 60,
+        opacity: 0,
+        filter: 'blur(20px)',
+        scale: 0.95
+      });
+      gsap.set(subtitleRef.current, {
+        y: 30,
+        opacity: 0,
+        filter: 'blur(12px)'
+      });
+
       const tl = gsap.timeline();
 
-      // Intro Animation
-      tl.from(titleRef.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power4.out',
-        delay: 0.2,
-      })
-      .from(subtitleRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 1,
+      // Intro Animation - smoother and slower with blur reveal
+      tl.to(titleRef.current, {
+        y: 0,
+        opacity: 1,
+        filter: 'blur(0px)',
+        scale: 1,
+        duration: 2.5,
         ease: 'power3.out',
-      }, '-=1');
-      
+        delay: 0.4,
+      })
+      .to(subtitleRef.current, {
+        y: 0,
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration: 1.8,
+        ease: 'power2.out',
+      }, '-=1.8');
+
     }, containerRef);
 
     return () => {
