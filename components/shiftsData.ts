@@ -134,6 +134,10 @@ export const shifts: ShiftData[] = [
        { id: 3, title: "AI Power Demand", author: "Goldman Sachs", type: "Article", url: "https://www.goldmansachs.com/insights/articles/ai-to-drive-165-increase-in-data-center-power-demand-by-2030" },
        { id: 4, title: "Intelligence per Watt", author: "Snorkel AI", type: "Metric", url: "https://snorkel.ai/blog/intelligence-per-watt-a-new-metric-for-ais-future/" },
        { id: 5, title: "Grid Bottleneck", author: "IT Brief", type: "News", url: "https://itbrief.news/story/when-the-grid-becomes-the-bottleneck-the-real-threat-to-ai-deployment" }
+    ],
+    voices: [
+      { quote: "$100B+ clusters by 2026, $1T+ individual clusters by 2030 — the exponential is in full swing now", author: "leopold aschenbrenner", role: "Situational Awareness" },
+      { quote: "intelligence per watt becomes the critical metric — more compute doesn't equal more value if it can't be powered", author: "r_om", role: "AI Mindset Community" }
     ]
   },
   {
@@ -167,8 +171,8 @@ export const shifts: ShiftData[] = [
       { title: "Founder OS YouTube Playlist", desc: "Mental health firewalls and sovereign workflows for founders navigating AI transformation.", url: "https://youtube.com/@aimindsetlabs" }
     ],
     voices: [
-      { quote: "from tool to participant — from 'ai as smart assistant' to 'ai as full participant in the process'", author: "Yakov Vasiliev", role: "AI Strategy × Product Architecture" },
-      { quote: "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'", author: "Natalya Savenkova", role: "Project Lead → Product Automation" }
+      { quote: "from tool to participant — from 'ai as smart assistant' to 'ai as full participant in the process'", author: "yakov vasiliev", role: "AI Strategy × Product Architecture" },
+      { quote: "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'", author: "natalya savenkova", role: "Project Lead → Product Automation" }
     ],
     sources: [
       { id: 1, title: "Model Context Protocol", author: "Anthropic", type: "Standard", url: "https://www.anthropic.com/news/model-context-protocol" },
@@ -208,6 +212,10 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "AI Index 2025", author: "Stanford HAI", type: "Report", url: "https://hai.stanford.edu/ai-index/2025-ai-index-report" },
       { id: 3, title: "Sovereign AI", author: "McKinsey", type: "Strategy", url: "https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/accelerating-europes-ai-adoption-the-role-of-sovereign-ai" },
       { id: 4, title: "DeepSeek Open-Source", author: "GitHub", type: "Code", url: "https://github.com/deepseek-ai/DeepSeek-V3" }
+    ],
+    voices: [
+      { quote: "datacenters must remain in democratic nations — not under the thumb of brutal, capricious autocrats", author: "leopold aschenbrenner", role: "Situational Awareness" },
+      { quote: "the guerrilla stack emerges — employees bring their own AI to bypass corporate limitations and censorship", author: "ai mindset community", role: "Shadow AI Survey" }
     ]
   },
   {
@@ -241,6 +249,10 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "STaR Self-Taught Reasoner", author: "ArXiv", type: "Paper", url: "https://arxiv.org/abs/2203.11171" },
       { id: 3, title: "OpenAI o3 Benchmark", author: "OpenAI", type: "Technical", url: "https://openai.com/index/deliberative-alignment/" },
       { id: 4, title: "$67B Hallucination Risk", author: "Korra AI", type: "Report", url: "https://korra.ai/the-67-billion-warning-how-ai-hallucinations-hurt-enterprises-and-how-to-stop-them/" }
+    ],
+    voices: [
+      { quote: "the difference between a smart person spending a few minutes vs. a few months on a problem — test-time compute unlocks deliberate thinking", author: "leopold aschenbrenner", role: "Situational Awareness" },
+      { quote: "actively using roleplay with LLM: I assign it an expert role and ask it to talk to me as if we're sitting in a coffee shop — and that's how I learn", author: "ml engineer", role: "Aviasales, AI Mindset Community" }
     ]
   },
   {
@@ -274,8 +286,9 @@ export const shifts: ShiftData[] = [
       { title: "AI ARK Knowledge System", desc: "Comprehensive knowledge architecture for AI age. Personal RAG and context management framework.", url: "https://aimindsetspace.substack.com/p/ai-ark-knowledge-system" }
     ],
     voices: [
-      { quote: "context engineering as key skill — building products through parsing → classification → aggregation → human decision. claude code as working environment", author: "Yakov Vasiliev", role: "AI Strategy × Product Architecture" },
-      { quote: "speed as new baseline — content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes", author: "Nikolay Senin", role: "Developer & Consultant" }
+      { quote: "context engineering as key skill — building products through parsing → classification → aggregation → human decision. claude code as working environment", author: "yakov vasiliev", role: "AI Strategy × Product Architecture" },
+      { quote: "speed as new baseline — content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes", author: "nikolay senin", role: "Developer & Consultant" },
+      { quote: "total documentation of corporate context — using this context for interaction with LLM. built an AI regulator that accelerated formalization of business processes", author: "r_om", role: "IT Education Executive" }
     ],
     sources: [
       { id: 1, title: "Model Context Protocol", author: "Anthropic", type: "Standard", url: "https://www.anthropic.com/news/model-context-protocol" },
@@ -315,6 +328,11 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "Verification Bottleneck", author: "Nature", type: "Journal", url: "https://www.nature.com/articles/s41586-023-06792-0" },
       { id: 3, title: "AlphaFold 3", author: "Google DeepMind", type: "Blog", url: "https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/" },
       { id: 4, title: "Synthetic Data 2025", author: "Gretel", type: "Report", url: "https://gretel.ai/blog/2025-the-year-synthetic-data-goes-mainstream" }
+    ],
+    voices: [
+      { quote: "powerful AI could compress 50-100 years of scientific progress into 5-10 years — a compressed 21st century", author: "dario amodei", role: "CEO, Anthropic" },
+      { quote: "AI shouldn't function as merely a tool to analyze data but rather as a virtual biologist who performs all the tasks biologists do", author: "dario amodei", role: "Machines of Loving Grace" },
+      { quote: "token consumption by programmers will grow x5-x10 by year end — saturation of ARC-AGI 2, autonomous AI scientist making discoveries in hours", author: "nikolay senin", role: "Developer & Consultant" }
     ]
   },
   {
@@ -348,8 +366,9 @@ export const shifts: ShiftData[] = [
       { title: "Pragmatic Romanticism", desc: "Why pragmatic romanticism is the only defense against cold machine logic. Reclaiming craft and authorship.", url: "https://spiridonov.aimindset.org" }
     ],
     voices: [
-      { quote: "barrier falling — vibe coding will become the norm. the 'i can't do it' barrier will fall, replaced by 'let me ask ai how to do this'", author: "Alexander Stashenko", role: "Business Coach → AI Chatbot Developer" },
-      { quote: "vibe-coded prototypes — made in half an hour what couldn't do for 1.5 months. full app in App Store/Google Play", author: "Natalya Savenkova", role: "Project Lead → Product Automation" }
+      { quote: "barrier falling — vibe coding will become the norm. the 'i can't do it' barrier will fall, replaced by 'let me ask ai how to do this'", author: "alexander stashenko", role: "Business Coach → AI Chatbot Developer" },
+      { quote: "vibe-coded prototypes — made in half an hour what couldn't do for 1.5 months. full app in App Store/Google Play", author: "natalya savenkova", role: "Project Lead → Product Automation" },
+      { quote: "15+ years writing code by hand. was skeptical for a long time. what helped reduce anxiety — writing my own rules for AI and using them everywhere", author: "senior developer", role: "15+ Years Experience, AI Mindset Community" }
     ],
     sources: [
       { id: 1, title: "SWE-bench Verified", author: "OpenAI", type: "Benchmark", url: "https://openai.com/index/introducing-swe-bench-verified/" },
@@ -389,6 +408,10 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "NVIDIA Cosmos", author: "NVIDIA", type: "Tech", url: "https://developer.nvidia.com/cosmos" },
       { id: 3, title: "Studio Halt", author: "Hollywood Reporter", type: "News", url: "https://www.hollywoodreporter.com/business/business-news/tyler-perry-ai-alarm-1235833276/" },
       { id: 4, title: "Robot Timeline", author: "Kyle Vogt", type: "Interview", url: "https://www.theverge.com/2024/3/13/24099757/kyle-vogt-cruise-robotics-startup" }
+    ],
+    voices: [
+      { quote: "technology opens the space of what it can mean to be human — we are the apex predator; the lightning works for us", author: "marc andreessen", role: "Techno-Optimist Manifesto" },
+      { quote: "we buy robots not for novelty, but to buy back life hours — the craft premium emerges as simulation gets cheaper", author: "ai mindset community", role: "Community Insight" }
     ]
   },
   {
@@ -422,6 +445,10 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "AI Cyber Threats", author: "CrowdStrike", type: "Analysis", url: "https://www.crowdstrike.com/en-us/cybersecurity-101/cyberattacks/ai-powered-cyberattacks/" },
       { id: 3, title: "Guardian Agents", author: "Gartner", type: "Trend", url: "https://www.gartner.com/en/newsroom/press-releases/2024-10-21-gartner-identifies-the-top-10-strategic-technology-trends-for-2025" },
       { id: 4, title: "Deepfake-as-a-Service", author: "Cyble", type: "Report", url: "https://cyble.com/knowledge-hub/deepfake-as-a-service-exploded-in-2025/" }
+    ],
+    voices: [
+      { quote: "perhaps they will be an odd footnote in history, or perhaps they will go down in history like Szilard and Oppenheimer and Teller", author: "leopold aschenbrenner", role: "On AI Researchers" },
+      { quote: "dark forest and digital bunkers — retreat to closed communities with cryptographic proof-of-human as internet fragments", author: "ai mindset community", role: "Community Analysis" }
     ]
   },
   {
@@ -455,6 +482,10 @@ export const shifts: ShiftData[] = [
       { id: 2, title: "Refusal Behavior", author: "ArXiv", type: "Study", url: "https://arxiv.org/abs/2308.01263" },
       { id: 3, title: "o3 System Card", author: "OpenAI", type: "Technical", url: "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf" },
       { id: 4, title: "Alignment as Censorship", author: "LessWrong", type: "Essay", url: "https://www.lesswrong.com/posts/pRkFkzwKZ2zfa3R6H/without-specific-countermeasures-the-easiest-path-to" }
+    ],
+    voices: [
+      { quote: "the arc of the moral universe trends toward compassion and cooperation; powerful AI accelerates this tendency rather than creating it", author: "dario amodei", role: "CEO, Anthropic" },
+      { quote: "we are, have been, and will always be the masters of technology, not mastered by technology — we are the apex predator", author: "marc andreessen", role: "Techno-Optimist Manifesto" }
     ]
   },
   {
@@ -479,19 +510,23 @@ export const shifts: ShiftData[] = [
       desc: "loneliness isn't solved by information. **we confuse 'attention' with 'care'.** AI simulates empathy perfectly but feels nothing. It is a loop of validation without the risk of real connection. synthetic intimacy feels real enough to satisfy short-term but creates long-term dependency."
     },
     stats: [
-      { label: "Time", value: "2h+", desc: "Daily sessions in companion apps (a16z)", url: "https://a16z.com/100-gen-ai-apps-2025/" },
-      { label: "Rank", value: "#1", desc: "Companionship is top retention category in Gen AI apps (a16z)", url: "https://a16z.com/100-gen-ai-apps-2025/" },
+      { label: "Time", value: "2h+", desc: "Daily sessions in companion apps (a16z)", url: "https://a16z.com/100-gen-ai-apps-5/" },
+      { label: "Rank", value: "#1", desc: "Companionship is top retention category in Gen AI apps (a16z)", url: "https://a16z.com/100-gen-ai-apps-5/" },
       { label: "ROI", value: "Low", desc: "95% of generic GenAI pilots failing to deliver ROI (MIT)", url: "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/" }
     ],
     evidence: [
       { title: "IFS + AI", desc: "Protecting the psyche in the age of machine intimacy. Mental health framework for boundaries.", url: "https://ivanov.aimindset.org" },
       { title: "Founder OS Mental Health", desc: "Mental health firewalls and sovereign workflows.", url: "https://aimindsetspace.substack.com/p/founder-os-mental-health" }
     ],
+    voices: [
+      { quote: "actively using roleplay with LLM — I assign it an expert role and ask it to talk to me as if we're sitting in a coffee shop. that's how I learn, as if I actually talked to a smart person", author: "ml engineer", role: "Aviasales, AI Mindset Community" },
+      { quote: "you need to take people by the hand and show them how to solve their task with AI, not give them a universal tool", author: "evgeniy", role: "IT Integrator Marketing" }
+    ],
     sources: [
       { id: 1, title: "Friends for Sale", author: "Ada Lovelace Inst", type: "Report", url: "https://www.adalovelaceinstitute.org/blog/ai-companions/" },
       { id: 2, title: "Context Collapse", author: "Marwick & Boyd", type: "Paper", url: "https://www.microsoft.com/en-us/research/publication/i-tweet-honestly-i-tweet-passionately-twitter-users-context-collapse-and-the-imagined-audience/" },
-      { id: 3, title: "Top 100 Gen AI Apps", author: "a16z", type: "Analysis", url: "https://a16z.com/100-gen-ai-apps-2025/" },
-      { id: 4, title: "NEO NPC", author: "Ubisoft", type: "Demo", url: "https://www.ubisoft.com/en-us/studio/laforge/news/7Cm4VJVbWKHzHmRgqwYbAX/neos-the-future-of-npcs" }
+      { id: 3, title: "Top 100 Gen AI Apps", author: "a16z", type: "Analysis", url: "https://a16z.com/100-gen-ai-apps-5/" },
+      { id: 4, title: "NEO NPC", author: "Ubisoft", type: "Demo", url: "https://news.ubisoft.com/en-us/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs" }
     ]
   }
 ];

@@ -412,21 +412,38 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
                     <a href="https://www.youtube.com/@A-I-Mindset/videos" target="_blank" rel="noreferrer" className="footer-link group"><div className={`font-mono text-xs uppercase tracking-widest ${styles.textDim} mb-2`}>YouTube</div><div className={`text-2xl font-bold ${styles.textMain} group-hover:text-[#DC2626] transition-colors`}>@A-I-Mindset</div></a>
                 </div>
 
-                {/* --- NAVIGATION BUTTONS (Relocated to the very bottom) --- */}
-                <div className="flex flex-col md:flex-row justify-center mt-20 mb-12 gap-6 md:gap-8 w-full">
-                    <button 
-                        onClick={onPrev} 
-                        className={`px-8 py-4 border ${isDark ? 'border-neutral-800 text-neutral-500' : 'border-neutral-300 text-neutral-600'} font-mono text-[10px] uppercase tracking-[0.2em] hover:text-[#DC2626] hover:border-[#DC2626] transition-all flex items-center justify-center gap-3`}
+                {/* --- FINISH TRANSITION - BIG BUTTON WITH ANIMATION --- */}
+                <div className="flex flex-col items-center mt-24 mb-16">
+                    <button
+                        onClick={onNext}
+                        className="finish-btn group relative px-20 py-6 bg-[#DC2626] text-white font-black text-xl md:text-2xl uppercase tracking-[0.2em] hover:bg-white hover:text-[#DC2626] transition-all duration-300 shadow-2xl hover:shadow-[0_0_60px_rgba(220,38,38,0.5)] overflow-hidden border-2 border-transparent hover:border-[#DC2626]"
+                    >
+                        {/* Corner brackets */}
+                        <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
+                        <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
+                        <span className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
+                        <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white/40 group-hover:border-[#DC2626]/60"></span>
+
+                        <span className="relative z-10 flex items-center gap-6">
+                            Finish Transition
+                            <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <p className={`mt-8 font-mono text-[10px] ${styles.textDim} uppercase tracking-[0.3em]`}>
+                        See credits & contributors
+                    </p>
+                </div>
+
+                {/* Back button - smaller, secondary */}
+                <div className="flex justify-center mb-12">
+                    <button
+                        onClick={onPrev}
+                        className={`px-8 py-3 border ${isDark ? 'border-neutral-700 text-neutral-500' : 'border-neutral-300 text-neutral-600'} font-mono text-[10px] uppercase tracking-[0.25em] hover:text-[#DC2626] hover:border-[#DC2626] transition-all flex items-center justify-center gap-3`}
                     >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                        Back to Summary
-                    </button>
-                    <button 
-                        onClick={onNext} 
-                        className={`${isDark ? 'bg-white text-black' : 'bg-black text-white'} px-10 py-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-[#DC2626] hover:text-white transition-all shadow-xl flex items-center justify-center gap-3`}
-                    >
-                        Finish Transmission
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        Back to Report
                     </button>
                 </div>
 

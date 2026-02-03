@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 794px; /* A4 at 96dpi */
+            height: 1123px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
+        }
+        .page {
+            width: 794px;
+            height: 1123px;
+            background: #0a0a0a;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Subtle grid */
+        .page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .logo {
+            width: 36px;
+            height: 36px;
+            opacity: 0.9;
+        }
+        .brand {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .title-section {
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .pre-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+        .section {
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        .section-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: #DC2626;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(220,38,38,0.3);
+        }
+        .checklist {
+            list-style: none;
+        }
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #444;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .item-text {
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.4;
+        }
+        .item-text strong {
+            color: #fff;
+        }
+        .footer {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .url {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #444;
+        }
+        .qr-placeholder {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: #333;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo-block">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand">AI Mindset</span>
+            </div>
+        </div>
+
+        <div class="title-section">
+            <div class="pre-title">The Context Gap — Sovereignty Protocols</div>
+            <h1 class="title">AI Adaptation Checklist</h1>
+            <p class="subtitle">Move from "I'll try" to "I have defaults". Your life runs on configuration.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Level 01 — Simple (Start Here)</h2>
+            <ul class="checklist">
+                <li><div class="checkbox"></div><span class="item-text"><strong>Notice</strong> when you accept AI output without thinking</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Save</strong> one idea offline. Write it by hand</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Turn off</strong> one notification. Reclaim 10 minutes</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Clarify</strong> your thinking before you ask AI</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Pause</strong> before trusting output</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Level 02 — Moderate (Build Habits)</h2>
+            <ul class="checklist">
+                <li><div class="checkbox"></div><span class="item-text"><strong>Create</strong> a personal knowledge base for one domain</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Test</strong> 3 models on the same question to see bias</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Implement</strong> one context filter</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Warn</strong> the older generation about synthesized information</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Practice</strong> analog: phone calls, handwriting</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Level 03 — Advanced (Build Systems)</h2>
+            <ul class="checklist">
+                <li><div class="checkbox"></div><span class="item-text"><strong>Deploy</strong> guardian agents</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Establish</strong> family "secret handshakes"</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Build</strong> local-first workflows</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Audit</strong> reasoning traces</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Opt out</strong> of training data</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Level 04 — Deep (Structural)</h2>
+            <ul class="checklist">
+                <li><div class="checkbox"></div><span class="item-text"><strong>Shift</strong> from Creator to Consigliere</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Value</strong> tacit knowledge</span></li>
+                <li><div class="checkbox"></div><span class="item-text"><strong>Practice</strong> divergent testing</span></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <span class="url">aim-report-2025.netlify.app</span>
+            <span class="qr-placeholder">by AI Mindset · 2025</span>
+        </div>
+    </div>
+</body>
+</html>

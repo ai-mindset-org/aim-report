@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 1080px;
+            height: 1080px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .card {
+            width: 1080px;
+            height: 1080px;
+            background: #0a0a0a;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Grid background */
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(220,38,38,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220,38,38,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 56px;
+            height: 56px;
+            opacity: 0.9;
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            color: #DC2626;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .pre-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 16px;
+            letter-spacing: 0.3em;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        .title {
+            font-size: 96px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.04em;
+            margin-bottom: 40px;
+        }
+        .title .accent {
+            color: #DC2626;
+            display: block;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 20px;
+            color: #666;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .url {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 16px;
+            color: #444;
+            padding: 12px 24px;
+            border: 1px solid #222;
+        }
+        /* Decorative corner brackets */
+        .corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-color: #DC2626;
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.4;
+        }
+        .corner-tl { top: 40px; left: 40px; border-top-width: 2px; border-left-width: 2px; }
+        .corner-tr { top: 40px; right: 40px; border-top-width: 2px; border-right-width: 2px; }
+        .corner-bl { bottom: 40px; left: 40px; border-bottom-width: 2px; border-left-width: 2px; }
+        .corner-br { bottom: 40px; right: 40px; border-bottom-width: 2px; border-right-width: 2px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="header">
+            <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+            <div class="badge">2025</div>
+        </div>
+
+        <div class="main">
+            <div class="pre-title">Annual Report</div>
+            <h1 class="title">THE<br><span class="accent">CONTEXT</span><br>GAP</h1>
+            <p class="subtitle">11 tectonic shifts between machine capability and human adaptation</p>
+        </div>
+
+        <div class="footer">
+            <span class="url">aim-report-2025.netlify.app</span>
+        </div>
+    </div>
+</body>
+</html>

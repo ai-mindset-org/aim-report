@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+        }
+        .og-card {
+            width: 1200px;
+            height: 630px;
+            background: #0a0a0a;
+            padding: 50px 60px;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+        .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-right: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo {
+            width: 40px;
+            height: 40px;
+            opacity: 0.9;
+        }
+        .brand {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            color: #666;
+            text-transform: uppercase;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .year {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #DC2626;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
+        }
+        .title {
+            font-size: 56px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        .title .accent {
+            color: #DC2626;
+        }
+        .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #666;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+        .url {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #333;
+        }
+        .right {
+            width: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .shift-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.02);
+            border-left: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .shift-row:nth-child(odd) {
+            border-left-color: rgba(220,38,38,0.5);
+        }
+        .shift-num {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: #DC2626;
+            width: 24px;
+        }
+        .shift-title {
+            font-size: 13px;
+            color: #888;
+            flex: 1;
+        }
+        .shift-layer {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        /* Decorative */
+        .decor-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(220,38,38,0.2), transparent);
+        }
+    </style>
+</head>
+<body>
+    <div class="og-card">
+        <div class="decor-line"></div>
+
+        <div class="left">
+            <div class="header">
+                <img src="../logo_rb.png" class="logo" alt="AI Mindset">
+                <span class="brand">AI Mindset</span>
+            </div>
+            <div class="main">
+                <div class="year">Annual Report 2025</div>
+                <h1 class="title">THE<br><span class="accent">CONTEXT</span><br>GAP</h1>
+                <p class="subtitle">11 tectonic shifts where machine capability outpaces human adaptation</p>
+            </div>
+            <span class="url">aim-report-2025.netlify.app</span>
+        </div>
+
+        <div class="right">
+            <div class="shift-row"><span class="shift-num">01</span><span class="shift-title">Compute Ceiling</span><span class="shift-layer">Foundation</span></div>
+            <div class="shift-row"><span class="shift-num">02</span><span class="shift-title">Autonomous Coworker</span><span class="shift-layer">Foundation</span></div>
+            <div class="shift-row"><span class="shift-num">03</span><span class="shift-title">Fragmented Stacks</span><span class="shift-layer">Foundation</span></div>
+            <div class="shift-row"><span class="shift-num">04</span><span class="shift-title">Thinking Models</span><span class="shift-layer">Cognition</span></div>
+            <div class="shift-row"><span class="shift-num">05</span><span class="shift-title">Context Filtering</span><span class="shift-layer">Cognition</span></div>
+            <div class="shift-row"><span class="shift-num">06</span><span class="shift-title">Hypothesis Generation</span><span class="shift-layer">Cognition</span></div>
+            <div class="shift-row"><span class="shift-num">07</span><span class="shift-title">Vibe Coding</span><span class="shift-layer">Interface</span></div>
+            <div class="shift-row"><span class="shift-num">08</span><span class="shift-title">Physical Intelligence</span><span class="shift-layer">Interface</span></div>
+            <div class="shift-row"><span class="shift-num">09</span><span class="shift-title">Cognitive Warfare</span><span class="shift-layer">Interface</span></div>
+            <div class="shift-row"><span class="shift-num">10</span><span class="shift-title">Ideological Filters</span><span class="shift-layer">Humanity</span></div>
+            <div class="shift-row"><span class="shift-num">11</span><span class="shift-title">Emotional Companion</span><span class="shift-layer">Humanity</span></div>
+        </div>
+    </div>
+</body>
+</html>
