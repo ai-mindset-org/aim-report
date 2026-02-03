@@ -18,7 +18,7 @@ interface ManifestoDataResult {
   loading: boolean;
 }
 
-export const useManifestoData = (lang: 'en' | 'ru' | 'by' | 'ro' = 'en'): ManifestoDataResult => {
+export const useManifestoData = (lang: 'en' = 'en'): ManifestoDataResult => {
   const [data, setData] = useState<ManifestoDataResult>({
     manifesto: null,
     thankYou: null,

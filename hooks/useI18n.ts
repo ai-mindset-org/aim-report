@@ -13,12 +13,12 @@ type TranslationKeys = {
 
 const cache: Record<string, TranslationKeys> = {};
 
-export const useI18n = (lang: 'en' | 'ru' | 'by' | 'ro' = 'en') => {
+export const useI18n = (lang: 'en' = 'en') => {
   const [t, setT] = useState<TranslationKeys | null>(null);
 
   useEffect(() => {
     const loadTranslations = async () => {
-      const effectiveLang = ['en', 'ru'].includes(lang) ? lang : 'en';
+      const effectiveLang = 'en';
       
       if (cache[effectiveLang]) {
         setT(cache[effectiveLang]);

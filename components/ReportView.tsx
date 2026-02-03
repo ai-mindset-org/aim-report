@@ -7,50 +7,96 @@ import { OpenGraphPreview } from './OpenGraphPreview';
 import { useI18n } from '../hooks/useI18n';
 
 const BLOCKED_DOMAINS = [
+  // Social & Video
   'youtube.com',
   'youtu.be',
   't.me',
   'telegram.me',
+  'twitter.com',
+  'x.com',
+  'linkedin.com',
+  'facebook.com',
+  'instagram.com',
+  'reddit.com',
+  'tiktok.com',
+  // AI Mindset ecosystem
   'intention.aimindset.org',
-  'nature.com',
   'spiridonov.aimindset.org',
+  'ivanov.aimindset.org',
+  'substack.com',
+  // News & Media
+  'nature.com',
   'science.org',
   'technologyreview.com',
   'theverge.com',
   'techcrunch.com',
+  'wired.com',
+  'fortune.com',
+  'cnbc.com',
+  'hollywoodreporter.com',
+  'reuters.com',
+  'nytimes.com',
+  'time.com',
+  // Research & Academia
   'iea.org',
   'mckinsey.com',
-  'substack.com',
-  'ivanov.aimindset.org',
-  'twitter.com', 
-  'x.com', 
-  'linkedin.com', 
-  'facebook.com', 
-  'instagram.com', 
-  'reddit.com', 
-  'tiktok.com',
-  'ark-invest.com', 
-  'menlovc.com', 
-  'wired.com',
-  'fortune.com', 
-  'qodo.ai', 
-  'nngroup.com', 
+  'gartner.com',
+  'arxiv.org',
+  'mit.edu',
+  'stanford.edu',
+  'europa.eu',
+  'pewresearch.org',
+  'niemanlab.org',
+  'ieee.org',
+  'wikipedia.org',
+  'lesswrong.com',
+  'ribbonfarm.com',
+  'adalovelaceinstitute.org',
+  // AI Companies & Tools
+  'anthropic.com',
+  'openai.com',
+  'google.com',
+  'microsoft.com',
+  'amazon.com',
+  'nvidia.com',
+  'github.com',
+  'deeplearning.ai',
+  'langchain.dev',
+  'pinecone.io',
+  'snorkel.ai',
+  'gretel.ai',
+  'webai.com',
+  'epoch.ai',
+  'epochai.org',
   'korra.ai',
-  'gartner.com', 
-  'anthropic.com', 
-  'darioamodei.com', 
-  'stackoverflow.co',
-  'epochai.org', 
-  'cnbc.com', 
-  'gitclear.com', 
-  'hollywoodreporter.com', 
-  'cybersecuritydive.com', 
+  'qodo.ai',
+  // Investment & Business
+  'ark-invest.com',
+  'menlovc.com',
+  'a16z.com',
+  'goldmansachs.com',
+  'cbinsights.com',
+  // Security
+  'cybersecuritydive.com',
   'deepstrike.io',
-  'crowdstrike.com', 
-  'allaboutai.com', 
-  'forbes.com', 
+  'crowdstrike.com',
+  'cyble.com',
+  // Tech & Benchmarks
+  'darioamodei.com',
+  'stackoverflow.co',
+  'gitclear.com',
+  'swebench.com',
+  'linuxfoundation.org',
+  'x402.org',
+  'ubisoft.com',
+  'itbrief.news',
+  'hackernoon.com',
+  'aboutchromebooks.com',
+  // Other
+  'allaboutai.com',
+  'forbes.com',
   'isaca.org',
-  'a16z.com'
+  'nngroup.com'
 ];
 
 const isUrlBlocked = (url: string): boolean => {
@@ -74,10 +120,9 @@ interface ReportViewProps {
   prevLabel?: string;
   theme: 'dark' | 'light';
   toggleTheme: () => void;
-  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
-export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, onPrev, isFirst, isLast, theme, toggleTheme, nextLabel, prevLabel, lang = 'en' }) => {
+export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, onPrev, isFirst, isLast, theme, toggleTheme, nextLabel, prevLabel }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedSource, setSelectedSource] = useState<any | null>(null);
   const [selectedStat, setSelectedStat] = useState<any | null>(null);
@@ -89,7 +134,8 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
   const [ogLoading, setOgLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const ogCache = useRef<Record<string, any>>({});
-  const i18n = useI18n(lang);
+  const prevDataIdRef = useRef<string>(data.id);
+  const i18n = useI18n('en');
   const isDark = theme === 'dark';
 
   useEffect(() => {
@@ -98,6 +144,19 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Handle Escape key to close modals
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (selectedSource) setSelectedSource(null);
+        if (selectedStat) setSelectedStat(null);
+        if (showOgPreview) setShowOgPreview(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedSource, selectedStat, showOgPreview]);
 
   const plate1Ref = useRef<SVGRectElement>(null);
   const plate2Ref = useRef<SVGRectElement>(null);
@@ -117,8 +176,16 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
 
       setOgLoading(true);
       setOgData(null);
+
+      // Use AbortController for timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 second timeout
+
       try {
-        const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
+        const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`, {
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         const data = await response.json();
         if (data.status === 'success') {
           const ogResult = {
@@ -135,7 +202,8 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
           setOgData(ogResult);
         }
       } catch (error) {
-        console.error('Failed to fetch OG data:', error);
+        clearTimeout(timeoutId);
+        // Silent fail - will show fallback UI
       } finally {
         setOgLoading(false);
       }
@@ -222,7 +290,13 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
     };
   }, []);
 
-  useLayoutEffect(() => { window.scrollTo(0, 0); }, [data]); 
+  useLayoutEffect(() => {
+    // Only scroll to top when navigating to a different shift, not when language changes
+    if (prevDataIdRef.current !== data.id) {
+      window.scrollTo(0, 0);
+      prevDataIdRef.current = data.id;
+    }
+  }, [data]); 
 
   // Dynamic Theme Styles
   const bgMain = isDark ? 'bg-[#0A0A0A]' : 'bg-[#F4F4F5]';

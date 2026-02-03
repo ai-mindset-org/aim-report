@@ -18,14 +18,7 @@ const ThankYou = lazy(() => import('./components/ThankYou').then(m => ({ default
 const ManifestoPage = lazy(() => import('./components/ManifestoPage/Index').then(m => ({ default: m.ManifestoPage })));
 
 export default function App() {
-  const [lang, setLang] = useState<'en' | 'ru' | 'by' | 'ro'>(() => {
-    if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem('aim-language');
-        if (saved === 'en' || saved === 'ru' || saved === 'by' || saved === 'ro') return saved;
-    }
-    return 'en';
-  });
-  const { shifts, layers, loading } = useShiftsData(lang);
+  const { shifts, layers, loading } = useShiftsData('en');
 
   const timeline = useMemo<TimelineItem[]>(() => {
     const items: TimelineItem[] = [];
@@ -41,20 +34,20 @@ export default function App() {
 
     const summaryLayer: LayerData = {
         id: "SUM",
-        title: lang === 'ru' ? "ИСПОЛНИТЕЛЬНОЕ РЕЗЮМЕ" : "EXECUTIVE SUMMARY",
-        subtitle: lang === 'ru' ? "11 тектонических сдвигов" : "11 Tectonic Shifts",
-        desc: lang === 'ru' ? "Консолидированный взгляд на расхождение между возможностями машин и адаптацией человека." : "A consolidated view of the divergence between machine capability and human adaptation.",
-        constraint: lang === 'ru' ? "Контекстный разрыв" : "The Context Gap",
-        metaphor: 'globe' 
+        title: "EXECUTIVE SUMMARY",
+        subtitle: "11 Tectonic Shifts",
+        desc: "A consolidated view of the divergence between machine capability and human adaptation.",
+        constraint: "The Context Gap",
+        metaphor: 'globe'
     };
 
-    items.push({ 
-        type: 'summary', 
-        data: { ...summaryLayer, shifts: sortedShifts } 
+    items.push({
+        type: 'summary',
+        data: { ...summaryLayer, shifts: sortedShifts }
     });
 
     return items;
-  }, [shifts, layers, lang]);
+  }, [shifts, layers]);
 
   const getHashFromIndex = (idx: number) => {
       const item = timeline[idx];
@@ -109,9 +102,6 @@ export default function App() {
       document.body.style.backgroundColor = theme === 'dark' ? '#0A0A0A' : '#F4F4F5';
   }, [theme]);
 
-  useEffect(() => {
-      localStorage.setItem('aim-language', lang);
-  }, [lang]);
 
   // Update meta tags based on current view
   useEffect(() => {
@@ -161,17 +151,6 @@ export default function App() {
   }, [viewState, timeline]);
 
   const [isNavVisible, setIsNavVisible] = useState(false);
-
-  // Update timeline index when language changes to keep user on same item
-  useEffect(() => {
-    if (viewState.view === 'report' && !loading) {
-      const currentItem = timeline[viewState.index];
-      if (!currentItem) {
-        // If current index is invalid, reset to first shift
-        setViewState({ view: 'report', index: 1 });
-      }
-    }
-  }, [lang, loading, timeline, viewState.view, viewState.index]);
 
   useEffect(() => {
       let targetHash = 'main';
@@ -391,15 +370,11 @@ export default function App() {
   );
 
   const renderContent = () => {
-    // Show loading while shifts data is loading
-    if (loading && lang !== 'en') {
-      return <LoadingSpinner />;
-    }
 
     if (viewState.view === 'thankyou') {
       return (
         <Suspense fallback={<LoadingSpinner />}>
-          <ThankYou theme={theme} onPrev={handlePrev} lang={lang} />
+          <ThankYou theme={theme} onPrev={handlePrev} />
         </Suspense>
       );
     }
@@ -409,12 +384,11 @@ export default function App() {
         return (
             <Suspense fallback={<LoadingSpinner />}>
               <div className="w-full">
-                  <ManifestoPage 
-                      onRestart={closeReport} 
+                  <ManifestoPage
+                      onRestart={closeReport}
                       onNext={handleNext}
                       onPrev={handlePrev}
-                      theme={theme} 
-                      lang={lang}
+                      theme={theme}
                   />
                   <div className={`h-40 ${footerBg}`}></div> 
               </div>
@@ -425,12 +399,11 @@ export default function App() {
     if (viewState.view === 'manifesto') {
         return (
             <Suspense fallback={<LoadingSpinner />}>
-              <ManifestoPage 
-                  onRestart={closeReport} 
+              <ManifestoPage
+                  onRestart={closeReport}
                   onNext={handleNext}
                   onPrev={handlePrev}
-                  theme={theme} 
-                  lang={lang}
+                  theme={theme}
               />
             </Suspense>
         );
@@ -466,17 +439,17 @@ export default function App() {
         return (
           <Suspense fallback={<LoadingSpinner />}>
             {currentItem.type === 'layer' && <LayerView data={currentItem.data as LayerData} onNext={handleNext} onPrev={handlePrev} onBack={closeReport} nextTitle={""} theme={theme} toggleTheme={toggleTheme} />}
-            {currentItem.type === 'summary' && <SummaryView onNext={handleNext} onPrev={handlePrev} theme={theme} lang={lang} />}
-            {currentItem.type === 'shift' && <ReportView onBack={closeReport} data={currentItem.data as ShiftData} onNext={handleNext} onPrev={handlePrev} isFirst={viewState.index === 0} isLast={viewState.index === timeline.length - 1} theme={theme} toggleTheme={toggleTheme} lang={lang} prevLabel={prevLabel} nextLabel={nextLabel} />}
+            {currentItem.type === 'summary' && <SummaryView onNext={handleNext} onPrev={handlePrev} theme={theme} />}
+            {currentItem.type === 'shift' && <ReportView onBack={closeReport} data={currentItem.data as ShiftData} onNext={handleNext} onPrev={handlePrev} isFirst={viewState.index === 0} isLast={viewState.index === timeline.length - 1} theme={theme} toggleTheme={toggleTheme} prevLabel={prevLabel} nextLabel={nextLabel} />}
           </Suspense>
         );
     }
     
     return (
         <main className="w-full overflow-x-hidden">
-            <Hero lang={lang} />
-            <VariableTextSection lang={lang} />
-            <TectonicShifts onOpenReport={openReport} lang={lang} />
+            <Hero />
+            <VariableTextSection />
+            <TectonicShifts onOpenReport={openReport} />
             <div className={`h-10 ${theme === 'dark' ? 'bg-[#0A0A0A]' : 'bg-[#FAFAFA]'}`}></div>
         </main>
     );
@@ -500,7 +473,7 @@ export default function App() {
         </div>
         
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} lang={lang} setLang={setLang} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
     </div>
   );

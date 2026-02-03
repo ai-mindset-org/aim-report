@@ -7,13 +7,12 @@ interface ThankYouProps {
   theme?: 'dark' | 'light';
   toggleTheme?: () => void;
   onPrev?: () => void;
-  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
-export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev, lang = 'en' }) => {
+export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) => {
   const isDark = theme === 'dark';
-  const i18n = useI18n(lang);
-  const { thankYou, loading } = useManifestoData(lang);
+  const i18n = useI18n('en');
+  const { thankYou, loading } = useManifestoData('en');
   const containerRef = useRef<HTMLDivElement>(null);
 
   const bgMain = isDark ? 'bg-[#050505]' : 'bg-[#F4F4F5]';

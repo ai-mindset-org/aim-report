@@ -12,7 +12,6 @@ interface SummaryViewProps {
   nextLabel?: string;
   theme: 'dark' | 'light';
   toggleTheme?: () => void;
-  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
 // --- SUBCOMPONENT: RuptureLine ---
@@ -94,10 +93,10 @@ const RuptureLine: React.FC = () => {
   );
 };
 
-export const SummaryView: React.FC<SummaryViewProps> = ({ onNext, onPrev, theme, lang = 'en' }) => {
+export const SummaryView: React.FC<SummaryViewProps> = ({ onNext, onPrev, theme }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const bgSvgRef = useRef<SVGSVGElement>(null);
-  const i18n = useI18n(lang);
+  const i18n = useI18n('en');
   const isDark = theme === 'dark';
   const bgCol = isDark ? 'bg-[#0A0A0A]' : 'bg-[#F4F4F5]';
   const textMain = isDark ? 'text-white' : 'text-neutral-900';
