@@ -332,31 +332,40 @@ export default function App() {
         // Landing page
         if (viewState.view === 'landing') {
           const pinnedSection = document.getElementById('pinned-svg-section');
-          if (!pinnedSection) return;
-          
+
+          // Fallback: if pinned section not found, go to report
+          if (!pinnedSection) {
+            openReport();
+            return;
+          }
+
           const rect = pinnedSection.getBoundingClientRect();
-          
+
           // Before pinned section - scroll down to it
           if (rect.top > 10) {
             window.scrollBy({ top: window.innerHeight * 0.9, behavior: 'smooth' });
             return;
           }
-          
+
           // In pinned section - use snap points
           const triggers = ScrollTrigger.getAll();
           const st = triggers.find(t => t.vars.trigger === pinnedSection);
-          if (!st) return;
-          
-          const currentProgress = st.progress;
-          
-          // Animation complete - go to report
-          if (currentProgress >= 0.94) {
+
+          // Fallback: if ScrollTrigger not found, go to report
+          if (!st) {
             openReport();
             return;
           }
-          
+
+          const currentProgress = st.progress;
+
+          // Animation complete or near end - go to report
+          if (currentProgress >= 0.90) {
+            openReport();
+            return;
+          }
+
           // Jump to next snap point based on timeline timings (total ~28 units)
-          // Timeline: intersect(0) -> moment(1) -> diverge(2.8) -> creating(7.3) -> gap(8.5) -> bridge(12.5) -> layers(15) -> manifesto(18) -> shifts(23) -> report(26.2)
           const snapPoints = [
             0.04,  // 1: "They intersect" clear (time ~1)
             0.07,  // 2: "They intersect" + "For a moment" both visible (time ~2)
@@ -367,12 +376,14 @@ export default function App() {
             0.57,  // 7: "IN 4 LAYERS" all 4 rows (time ~16)
             0.75,  // 8: "INPUT/RESPONSE" with THE GAP (time ~21)
             0.87,  // 9: "11" red grid (time ~24.5)
-            0.96,  // 10: Final report screen -> next page
           ];
           const nextSnap = snapPoints.find(p => p > currentProgress + 0.01);
           if (nextSnap) {
             const targetScroll = st.start + nextSnap * (st.end - st.start);
             st.scroll(targetScroll);
+          } else {
+            // Past all snap points - go to report
+            openReport();
           }
           return;
         }
