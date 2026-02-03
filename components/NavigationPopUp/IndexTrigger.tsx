@@ -11,19 +11,33 @@ interface IndexTriggerProps {
     isReady?: boolean;
 }
 
+// Rotating labels for the toolkit button
+const TOOLKIT_LABELS = [
+    "feel creative?",
+    "want this style?",
+    "explore style?",
+    "get inspired?",
+    "grab assets?",
+    "try this look?",
+    "design system?",
+    "need visuals?"
+];
+
 export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggleTheme, showThemeToggle = true, forceDarkTheme = false, isReady = true }) => {
     const [isToolkitOpen, setIsToolkitOpen] = useState(false);
     const [showToolkitLabel, setShowToolkitLabel] = useState(false);
+    const [currentLabelIndex, setCurrentLabelIndex] = useState(0);
     const labelRef = useRef<HTMLSpanElement>(null);
 
     const isDark = forceDarkTheme ? true : theme === 'dark';
     const textCol = isDark ? 'text-neutral-500' : 'text-neutral-500';
 
-    // Periodically show label
+    // Periodically show label with rotating text
     useEffect(() => {
         if (!isReady) return;
 
         const showLabel = () => {
+            setCurrentLabelIndex(prev => (prev + 1) % TOOLKIT_LABELS.length);
             setShowToolkitLabel(true);
             setTimeout(() => setShowToolkitLabel(false), 2500);
         };
@@ -64,13 +78,13 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
                     className="relative flex items-center group"
                     aria-label="Get Style Toolkit"
                 >
-                    {/* Animated label */}
+                    {/* Animated label - rotating questions */}
                     <span
                         ref={labelRef}
                         className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626]/70 mr-1"
                         style={{ width: 0, opacity: 0 }}
                     >
-                        getstyle
+                        {TOOLKIT_LABELS[currentLabelIndex]}
                     </span>
 
                     {/* Small red dot - same size as theme toggle */}

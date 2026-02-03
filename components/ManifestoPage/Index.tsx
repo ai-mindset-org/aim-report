@@ -129,9 +129,9 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
       });
   };
 
-  const openBrowser = (url: string, title: string) => {
-      setBrowserUrl(url);
-      setBrowserTitle(title);
+  const openBrowser = (url: string, _title: string) => {
+      // Open directly in new tab, no preview
+      window.open(url, '_blank');
   };
 
   useLayoutEffect(() => {

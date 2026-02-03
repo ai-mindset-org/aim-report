@@ -9,7 +9,6 @@ import { ShiftData, LayerData } from './components/shiftsData';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
 import { useShiftsData } from './hooks/useShiftsData';
 import { updateMetaTags } from './lib/updateMetaTags';
-import { StyleCTA } from './components/StyleCTA';
 
 // Lazy load heavy components
 const ReportView = lazy(() => import('./components/ReportView').then(m => ({ default: m.ReportView })));
@@ -513,7 +512,6 @@ export default function App() {
         {renderContent()}
         <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={showHeader} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
-        <StyleCTA theme={theme} />
     </div>
   );
 }
