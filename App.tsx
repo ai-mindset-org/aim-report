@@ -175,25 +175,23 @@ export default function App() {
     }
   }, [viewState.view]);
 
-  // Track scroll for header visibility on conclusion/manifesto page
+  // Header visibility: hidden on conclusion page, appears after 1 second
   useEffect(() => {
     if (viewState.view !== 'conclusion') {
+      // On other pages - always visible
       setScrolledPastThreshold(true);
       return;
     }
 
-    // Start hidden on conclusion page
+    // On conclusion page - start hidden, appear after 1 second
     setScrolledPastThreshold(false);
+    window.scrollTo(0, 0);
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolledPastThreshold(scrollY > 10);
-    };
+    const timer = setTimeout(() => {
+      setScrolledPastThreshold(true);
+    }, 1000);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Check initial position
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => clearTimeout(timer);
   }, [viewState.view]);
 
   useEffect(() => {
