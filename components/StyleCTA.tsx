@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap-config';
+import { trackToolkitOpen, trackToolkitSubscribe, track } from '../lib/analytics';
 
 interface StyleCTAProps {
   theme: 'dark' | 'light';
@@ -35,7 +36,10 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
 
   // Listen for open event from Index
   useEffect(() => {
-    const handleOpen = () => setIsModalOpen(true);
+    const handleOpen = () => {
+      trackToolkitOpen('index-button');
+      setIsModalOpen(true);
+    };
     window.addEventListener('open-toolkit-modal', handleOpen);
     return () => window.removeEventListener('open-toolkit-modal', handleOpen);
   }, []);
@@ -99,6 +103,8 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
       const data = await response.json();
 
       if (data.success) {
+        trackToolkitSubscribe(email, 'floating-ball');
+        track('toolkit-download', { source: 'floating-ball' });
         setSubmitStatus('success');
         setTimeout(() => {
           const link = document.createElement('a');
@@ -138,7 +144,10 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
     <>
       {/* Floating CTA - bottom right, always visible but semi-transparent */}
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          trackToolkitOpen('floating-ball');
+          setIsModalOpen(true);
+        }}
         className={`fixed z-[90] right-6 bottom-6 flex items-center group transition-opacity duration-1000
           ${isReady ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         aria-label="Get Style Toolkit"

@@ -9,6 +9,7 @@ import { ShiftData, LayerData } from './components/shiftsData';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
 import { useShiftsData } from './hooks/useShiftsData';
 import { updateMetaTags } from './lib/updateMetaTags';
+import { track, trackShiftView, trackLayerView, trackThemeToggle } from './lib/analytics';
 
 // Lazy load heavy components
 const ReportView = lazy(() => import('./components/ReportView').then(m => ({ default: m.ReportView })));
@@ -93,7 +94,11 @@ export default function App() {
     return 'dark';
   });
 
-  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => setTheme(prev => {
+    const newTheme = prev === 'dark' ? 'light' : 'dark';
+    trackThemeToggle(newTheme);
+    return newTheme;
+  });
 
   useEffect(() => {
       localStorage.setItem('aim-theme', theme);
@@ -102,6 +107,28 @@ export default function App() {
       document.body.style.backgroundColor = theme === 'dark' ? '#0A0A0A' : '#F4F4F5';
   }, [theme]);
 
+
+  // Track view changes for analytics
+  useEffect(() => {
+    if (viewState.view === 'landing') return; // Don't track landing, it's the default
+
+    if (viewState.view === 'thankyou') {
+      track('thankyou-view');
+    } else if (viewState.view === 'conclusion') {
+      track('manifesto-view');
+    } else if (viewState.view === 'report' && timeline[viewState.index]) {
+      const item = timeline[viewState.index];
+      if (item.type === 'layer') {
+        const layer = item.data as LayerData;
+        trackLayerView(layer.id, layer.title);
+      } else if (item.type === 'shift') {
+        const shift = item.data as ShiftData;
+        trackShiftView(shift.id, shift.title, shift.layerId);
+      } else if (item.type === 'summary') {
+        track('summary-view');
+      }
+    }
+  }, [viewState, timeline]);
 
   // Update meta tags based on current view
   useEffect(() => {
@@ -222,8 +249,14 @@ export default function App() {
       return () => window.removeEventListener('popstate', handlePopState);
   }, [timeline]);
 
-  const openReport = useCallback(() => setViewState({ view: 'report', index: 0 }), []);
-  const closeReport = useCallback(() => setViewState({ view: 'landing', index: 0 }), []);
+  const openReport = useCallback(() => {
+    track('report-enter');
+    setViewState({ view: 'report', index: 0 });
+  }, []);
+  const closeReport = useCallback(() => {
+    track('report-exit');
+    setViewState({ view: 'landing', index: 0 });
+  }, []);
   const handleNavigate = useCallback((index: number) => setViewState({ view: 'report', index }), []);
 
   const handleNext = useCallback(() => {
@@ -276,6 +309,7 @@ export default function App() {
       const minSwipeDistance = 50;
       
       if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+        track('swipe-navigation', { direction: diffX > 0 ? 'next' : 'prev' });
         if (diffX > 0) handleNext();
         else handlePrev();
       }
