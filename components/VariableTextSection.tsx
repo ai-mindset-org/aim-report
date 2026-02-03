@@ -2,12 +2,10 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '../lib/gsap-config';
 import { useI18n } from '../hooks/useI18n';
 
-interface VariableTextSectionProps {
-  lang?: 'en' | 'ru' | 'by' | 'ro';
-}
+interface VariableTextSectionProps {}
 
-export const VariableTextSection: React.FC<VariableTextSectionProps> = ({ lang = 'en' }) => {
-  const i18n = useI18n(lang);
+export const VariableTextSection: React.FC<VariableTextSectionProps> = () => {
+  const i18n = useI18n('en');
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Captions Refs

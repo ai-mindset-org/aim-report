@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from '../lib/gsap-config';
 import { useI18n } from '../hooks/useI18n';
 
-interface HeroProps {
-  lang?: 'en' | 'ru' | 'by' | 'ro';
-}
+interface HeroProps {}
 
-export const Hero: React.FC<HeroProps> = ({ lang = 'en' }) => {
-  const i18n = useI18n(lang);
+export const Hero: React.FC<HeroProps> = () => {
+  const i18n = useI18n('en');
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);

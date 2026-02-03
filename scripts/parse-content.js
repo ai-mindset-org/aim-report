@@ -5,8 +5,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Languages to process
-const languages = ['en', 'ru', 'by', 'ro'];
+// Languages to process (Russian removed - report is English-only)
+const languages = ['en', 'by', 'ro'];
 
 // Parse evidence data from English slides.md
 function parseEnglishEvidence() {

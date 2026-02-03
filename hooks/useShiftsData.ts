@@ -7,7 +7,7 @@ interface ShiftsDataResult {
   loading: boolean;
 }
 
-export const useShiftsData = (lang: 'en' | 'ru' | 'by' | 'ro' = 'en'): ShiftsDataResult => {
+export const useShiftsData = (lang: 'en' = 'en'): ShiftsDataResult => {
   const [data, setData] = useState<ShiftsDataResult>({
     shifts: defaultShifts,
     layers: defaultLayers,

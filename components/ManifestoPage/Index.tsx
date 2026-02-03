@@ -35,7 +35,7 @@ const isUrlBlocked = (url: string): boolean => {
   }
 };
 
-export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext, onPrev, theme = 'dark', lang = 'en' }) => {
+export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext, onPrev, theme = 'dark' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const protocolsRef = useRef<HTMLDivElement>(null);
@@ -44,8 +44,8 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
   const [ogData, setOgData] = useState<any>(null);
   const [ogLoading, setOgLoading] = useState(false);
   const ogCache = useRef<Record<string, any>>({});
-  const i18n = useI18n(lang);
-  const { manifesto, loading: manifestoLoading } = useManifestoData(lang);
+  const i18n = useI18n('en');
+  const { manifesto, loading: manifestoLoading } = useManifestoData('en');
   
   const isDark = theme === 'dark';
 

@@ -53,11 +53,10 @@ const CoreGeometry = React.memo(({ color, shape }: { color: string, shape: 'squa
 
 interface TectonicShiftsProps {
   onOpenReport?: () => void;
-  lang?: 'en' | 'ru' | 'by' | 'ro';
 }
 
-export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, lang = 'en' }) => {
-  const i18n = useI18n(lang);
+export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) => {
+  const i18n = useI18n('en');
   const containerRef = useRef<HTMLDivElement>(null);
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const mouseGroupRef = useRef<SVGGElement>(null); 
@@ -180,10 +179,10 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
   };
 
   const layersData = [
-    { id: 1, title: "FOUNDATION", subtitle: "Energy & Infrastructure", shifts: "3 SHIFTS", desc: "Physics, economics, and power.", details: "Energy infrastructure, agentic labor, data sovereignty.", constraint: "Can we power it? Can we afford it? Who controls it?" },
-    { id: 2, title: "COGNITION", subtitle: "Reasoning & Models", shifts: "3 SHIFTS", desc: "The architecture of meaning and reason.", details: "Reasoning models, knowledge systems, scientific discovery.", constraint: "Can we trust how it thinks? Can we verify its logic?" },
-    { id: 3, title: "INTERFACE", subtitle: "Agents & Context", shifts: "3 SHIFTS", desc: "Craft, matter, and defense. How we build and protect.", details: "Coding tools, physical intelligence, security systems.", constraint: "Can we maintain what we build? Can we defend against what we create?" },
-    { id: 4, title: "HUMANITY", subtitle: "Integration & Outcome", shifts: "2 SHIFTS", desc: "Narrative and intimacy. What keeps us human.", details: "Storytelling, relationships, meaning-making.", constraint: "Can we preserve agency? Can we stay connected?" }
+    { id: 1, title: i18n?.intro?.layer1 || "FOUNDATION", subtitle: i18n?.intro?.layer1sub || "Energy & Infrastructure", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Физика, экономика и власть." : "Physics, economics, and power.", details: lang === 'ru' ? "Энергетическая инфраструктура, агентный труд, суверенитет данных." : "Energy infrastructure, agentic labor, data sovereignty.", constraint: lang === 'ru' ? "Можем ли запитать? Можем ли позволить? Кто контролирует?" : "Can we power it? Can we afford it? Who controls it?" },
+    { id: 2, title: i18n?.intro?.layer2 || "COGNITION", subtitle: i18n?.intro?.layer2sub || "Reasoning & Models", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Архитектура смысла и рассуждения." : "The architecture of meaning and reason.", details: lang === 'ru' ? "Рассуждающие модели, системы знаний, научные открытия." : "Reasoning models, knowledge systems, scientific discovery.", constraint: lang === 'ru' ? "Можем ли доверять логике? Можем ли проверить рассуждения?" : "Can we trust how it thinks? Can we verify its logic?" },
+    { id: 3, title: i18n?.intro?.layer3 || "INTERFACE", subtitle: i18n?.intro?.layer3sub || "Agents & Context", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Мастерство, материя и защита. Как мы строим и защищаем." : "Craft, matter, and defense. How we build and protect.", details: lang === 'ru' ? "Инструменты кодинга, физический интеллект, системы безопасности." : "Coding tools, physical intelligence, security systems.", constraint: lang === 'ru' ? "Можем ли поддерживать построенное? Можем ли защититься от созданного?" : "Can we maintain what we build? Can we defend against what we create?" },
+    { id: 4, title: i18n?.intro?.layer4 || "HUMANITY", subtitle: i18n?.intro?.layer4sub || "Integration & Outcome", shifts: "2 SHIFTS", desc: lang === 'ru' ? "Нарратив и близость. Что делает нас людьми." : "Narrative and intimacy. What keeps us human.", details: lang === 'ru' ? "Истории, отношения, создание смысла." : "Storytelling, relationships, meaning-making.", constraint: lang === 'ru' ? "Можем ли сохранить агентность? Можем ли остаться связанными?" : "Can we preserve agency? Can we stay connected?" }
   ];
 
   const getLayerData = (id: number | null) => layersData.find(l => l.id === id);
@@ -588,24 +587,24 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-50">
         
         <div ref={textIntersectRef} className="absolute w-full text-center z-50 p-4 md:p-0 bg-black/40 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none rounded-xl will-change-transform">
-          <h2 className="vf-anim text-[8vw] md:text-[5vw] leading-none text-white tracking-wide" style={{"--wght": 300} as React.CSSProperties}>They intersect.</h2>
+          <h2 className="vf-anim text-[8vw] md:text-[5vw] leading-none text-white tracking-wide" style={{"--wght": 300} as React.CSSProperties}>{i18n?.intro?.intersect || 'They intersect.'}</h2>
         </div>
         <div ref={textMomentRef} className="absolute text-center z-50 will-change-transform">
-          <p className="vf-anim text-[3vw] md:text-[2vw] text-neutral-400 font-normal tracking-[0.2em] uppercase font-mono" style={{ opacity: 0.8 }}>— for a moment —</p>
+          <p className="vf-anim text-[3vw] md:text-[2vw] text-neutral-400 font-normal tracking-[0.2em] uppercase font-mono" style={{ opacity: 0.8 }}>{i18n?.intro?.moment || '— for a moment —'}</p>
         </div>
 
         {/* UPDATED: DIVERGE is now white and matches intersect style */}
         <div ref={textDivergeRef} className="absolute w-full text-center z-50 p-4 md:p-0 bg-black/40 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none rounded-xl will-change-transform">
-           <h2 className="vf-anim text-[8vw] md:text-[5vw] leading-none text-white tracking-wide" style={{"--wght": 300} as React.CSSProperties}>And diverge.</h2>
+           <h2 className="vf-anim text-[8vw] md:text-[5vw] leading-none text-white tracking-wide" style={{"--wght": 300} as React.CSSProperties}>{i18n?.intro?.diverge || 'And diverge.'}</h2>
         </div>
 
         <div ref={textCreatingRef} className="absolute text-center z-50 will-change-transform">
-           <p className="vf-anim text-[15vw] md:text-[3vw] text-[#DC2626] font-black tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,1)] bg-black/30 backdrop-blur-sm px-4 rounded" style={{"--wght": 900} as React.CSSProperties}>Creating...</p>
+           <p className="vf-anim text-[15vw] md:text-[3vw] text-[#DC2626] font-black tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,1)] bg-black/30 backdrop-blur-sm px-4 rounded" style={{"--wght": 900} as React.CSSProperties}>{i18n?.intro?.creating || 'Creating...'}</p>
         </div>
 
         <div ref={textGapTitleRef} className="absolute text-center w-full px-4 top-[20%] md:top-[30%] z-50 flex flex-col items-center will-change-transform">
           <h2 className="vf-anim text-[10vw] md:text-[8vw] leading-none text-white tracking-tighter drop-shadow-2xl font-sans" style={{"--wght": 700} as React.CSSProperties}>
-            THE CONTEXT <span className="word-gap inline-block vf-anim text-[#DC2626]" style={{"--wdth": 25} as React.CSSProperties}>GAP</span>
+            {i18n?.intro?.contextGap || 'THE CONTEXT'} <span className="word-gap inline-block vf-anim text-[#DC2626]" style={{"--wdth": 25} as React.CSSProperties}>{i18n?.intro?.gap || 'GAP'}</span>
           </h2>
         </div>
 
@@ -617,10 +616,10 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/40"></div>
              <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/40"></div>
              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/40"></div>
-             
-             <p className="font-mono text-xs md:text-sm text-[#DC2626] mb-2 uppercase tracking-widest text-left">{'>> System Definition:'}</p>
+
+             <p className="font-mono text-xs md:text-sm text-[#DC2626] mb-2 uppercase tracking-widest text-left">{i18n?.intro?.systemDef || '>> System Definition:'}</p>
              <p className="font-mono text-sm md:text-xl text-neutral-300 tracking-wide leading-relaxed uppercase text-left">
-               <span className="text-white">"The distance between</span> the volume of data a machine can generate and the amount of meaning a human can integrate."
+               {i18n?.intro?.gapDefinition || '"The distance between the volume of data a machine can generate and the amount of meaning a human can integrate."'}
                <span className="animate-pulse inline-block w-2 h-4 bg-[#DC2626] ml-2 align-middle"></span>
              </p>
            </div>
@@ -629,16 +628,16 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
         {/* UPDATED: HIGH IMPACT HIERARCHY FOR BRIDGE */}
         <div ref={textBridgeRef} className="absolute flex flex-col items-center justify-center w-full px-4 z-50 will-change-transform">
            <p className="font-mono text-[8px] md:text-sm text-[#DC2626] uppercase tracking-[0.3em] mb-2 md:mb-4 bg-red-950/30 border border-red-900/50 px-2 md:px-4 py-0.5 md:py-1 rounded-full">
-              Status Update: Critical
+              {i18n?.intro?.statusCritical || 'Status Update: Critical'}
            </p>
            <h2 className="text-[8vw] md:text-[5vw] font-bold text-white leading-none tracking-tighter mb-2">
-             THE GAP THAT WE SEE IN
+             {i18n?.intro?.gapWeeSee || 'THE GAP THAT WE SEE IN'}
            </h2>
            <h2 className="text-[16vw] md:text-[8vw] font-black text-transparent leading-[0.85] tracking-tighter uppercase font-sans text-center" style={{ WebkitTextStroke: "1px white", "--wght": 900 } as React.CSSProperties}>
-             {i18n?.tectonic.title.toUpperCase() || '11 TECTONIC SHIFTS'}
+             {i18n?.tectonic?.title?.toUpperCase() || '11 TECTONIC SHIFTS'}
            </h2>
            <p className="font-mono text-sm text-neutral-500 mt-4 tracking-widest uppercase">
-              of the AI World in 2025
+              {i18n?.intro?.aiWorld2025 || 'of the AI World in 2025'}
            </p>
         </div>
 
@@ -647,7 +646,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                 
                 <div className="flex flex-col gap-3 w-full max-w-full md:max-w-[450px]">
                    <h3 className="text-[6vw] md:text-[4vw] font-bold text-white mb-6 md:mb-8 leading-none tracking-tighter mix-blend-overlay font-sans">
-                     In 4 Layers:
+                     {i18n?.intro?.in4Layers || 'In 4 Layers:'}
                    </h3>
                    {layersData.map((layer) => (
                       <div 
@@ -766,8 +765,8 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                           <div className="chaos-ring absolute top-1/2 left-1/2 w-40 h-40 border border-red-500 rounded-full -translate-x-1/2 -translate-y-1/2 border-dashed"></div>
                           <div className="chaos-ring absolute top-1/2 left-1/2 w-32 h-32 border border-red-400 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
                       </div>
-                      <span className="relative block text-[10px] md:text-[12px] font-mono text-red-400 mb-2 tracking-[0.2em] uppercase z-10 text-right">Input</span>
-                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10 text-right">MACHINE<br/>SIGNAL</span>
+                      <span className="relative block text-[10px] md:text-[12px] font-mono text-red-400 mb-2 tracking-[0.2em] uppercase z-10 text-right">{i18n?.intro?.input || 'Input'}</span>
+                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10 text-right">{lang === 'ru' ? <>СИГНАЛ<br/>МАШИНЫ</> : <>MACHINE<br/>SIGNAL</>}</span>
                     </div>
                   </div>
 
@@ -821,8 +820,8 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                            <div className="breath-circle absolute w-24 h-24 bg-neutral-200 rounded-full blur-xl"></div>
                            <div className="breath-circle absolute w-16 h-16 border border-neutral-400 rounded-full"></div>
                       </div>
-                      <span className="relative block text-[10px] md:text-[12px] font-mono text-neutral-400 mb-2 tracking-[0.2em] uppercase z-10">Response</span>
-                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10">HUMAN<br/>SIGNAL</span>
+                      <span className="relative block text-[10px] md:text-[12px] font-mono text-neutral-400 mb-2 tracking-[0.2em] uppercase z-10">{i18n?.intro?.response || 'Response'}</span>
+                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10">{lang === 'ru' ? <>СИГНАЛ<br/>ЧЕЛОВЕКА</> : <>HUMAN<br/>SIGNAL</>}</span>
                     </div>
                   </div>
 
@@ -831,15 +830,15 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
               {/* RIGHT ALIGNED GAP */}
               <div className="gap-group flex flex-col items-center w-full opacity-0 transform translate-y-10 mt-2">
                   <div className="p-4 px-8 border-2 border-[#DC2626] bg-red-950/80 backdrop-blur-md rounded-xl text-center w-full md:w-auto">
-                    <span className="block font-black text-[#DC2626] text-2xl md:text-4xl tracking-tighter uppercase font-sans">CONTEXT GAP</span>
-                    <span className="block text-xs font-mono text-red-300/80 mt-1 tracking-widest text-center">where coordination breaks</span>
+                    <span className="block font-black text-[#DC2626] text-2xl md:text-4xl tracking-tighter uppercase font-sans">{i18n?.intro?.contextGapTitle || 'CONTEXT GAP'}</span>
+                    <span className="block text-xs font-mono text-red-300/80 mt-1 tracking-widest text-center">{i18n?.intro?.whereBreaks || 'where coordination breaks'}</span>
                   </div>
                </div>
 
                {/* CENTERED QUOTE */}
                <div className="quote-group w-full text-center mt-4 opacity-0 transform translate-y-4">
                   <p className="font-mono text-xs text-neutral-400 leading-relaxed uppercase tracking-wide opacity-80">
-                    this is a map of fractures in our reality
+                    {i18n?.intro?.mapFractures || 'this is a map of fractures in our reality'}
                   </p>
                </div>
 
@@ -855,7 +854,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
           <div className="flex flex-col items-center mb-10 md:mb-12">
              <div className="mapping-line h-8 w-[1px] bg-white/50 origin-top mb-4 md:mb-4"></div>
              <div className="mapping-text border border-white/20 bg-black/50 px-4 py-1 backdrop-blur-sm">
-                <p className="text-xs md:text-sm font-bold text-neutral-300 uppercase tracking-widest font-mono">[ System: Mapping The Fracture ]</p>
+                <p className="text-xs md:text-sm font-bold text-neutral-300 uppercase tracking-widest font-mono">{i18n?.intro?.mappingFracture || '[ System: Mapping The Fracture ]'}</p>
              </div>
           </div>
         </div>
@@ -869,14 +868,14 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
               <div className="mt-8 flex flex-col items-center gap-2 relative z-10 text-center">
                  {/* Updated typography here */}
                  <p ref={subText1Ref} className="font-sans text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
-                    machines ↔ humans <span className="text-[#DC2626]">2025</span>
+                    {lang === 'ru' ? 'машины ↔ люди' : 'machines ↔ humans'} <span className="text-[#DC2626]">2025</span>
                  </p>
                  <p ref={subText2Ref} className="font-mono text-lg md:text-xl text-neutral-400 tracking-[0.3em] uppercase mt-2">
-                    across 4 layers
+                    {i18n?.intro?.across4Layers || 'across 4 layers'}
                  </p>
                  <div className="mt-8 flex items-center justify-center gap-4">
                      <div className="h-[1px] w-20 bg-neutral-500"></div>
-                     <p className="font-mono text-xs text-neutral-400 uppercase tracking-widest">AI Mindset Annual Report 2025/26</p>
+                     <p className="font-mono text-xs text-neutral-400 uppercase tracking-widest">{i18n?.intro?.annualReport || 'AI Mindset Annual Report 2025/26'}</p>
                      <div className="h-[1px] w-20 bg-neutral-500"></div>
                  </div>
               </div>
@@ -899,7 +898,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                  <>
                    <div className="flex flex-col items-center gap-3 group cursor-help">
                      <div className="w-5 h-8 border border-neutral-600 rounded-full flex justify-center pt-1.5 transition-colors duration-300 group-hover:border-white group-hover:bg-white/10"><div className="mouse-anim w-1 h-2 bg-neutral-400 rounded-full group-hover:bg-white"></div></div>
-                     <span className="text-[10px] uppercase tracking-widest font-mono transition-colors group-hover:text-white">Scroll</span>
+                     <span className="text-[10px] uppercase tracking-widest font-mono transition-colors group-hover:text-white">{i18n?.intro?.scroll || 'Scroll'}</span>
                    </div>
                    <div className="h-8 w-[1px] bg-neutral-800"></div>
                    <div className="flex flex-col items-center gap-3">
@@ -909,7 +908,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                        </div>
                      </div>
-                     <span className="text-[10px] uppercase tracking-widest font-mono">Navigate</span>
+                     <span className="text-[10px] uppercase tracking-widest font-mono">{i18n?.intro?.navigate || 'Navigate'}</span>
                    </div>
                  </>
                )}
@@ -923,7 +922,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport, la
                            </svg>
                         </div>
                      </div>
-                     <span className="text-[10px] uppercase tracking-widest font-mono text-white/60">Scroll / Swipe</span>
+                     <span className="text-[10px] uppercase tracking-widest font-mono text-white/60">{i18n?.intro?.scrollSwipe || 'Scroll / Swipe'}</span>
                   </div>
                )}
             </div>
