@@ -9,6 +9,7 @@ import { ShiftData, LayerData } from './components/shiftsData';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
 import { useShiftsData } from './hooks/useShiftsData';
 import { updateMetaTags } from './lib/updateMetaTags';
+import { StyleCTA } from './components/StyleCTA';
 
 // Lazy load heavy components
 const ReportView = lazy(() => import('./components/ReportView').then(m => ({ default: m.ReportView })));
@@ -159,6 +160,7 @@ export default function App() {
     }
     return false;
   });
+  const [scrolledPastThreshold, setScrolledPastThreshold] = useState(false);
 
   // Delayed header appearance for smooth load on landing page
   useEffect(() => {
@@ -171,6 +173,27 @@ export default function App() {
       // On other pages, show immediately
       setHeaderReady(true);
     }
+  }, [viewState.view]);
+
+  // Track scroll for header visibility on conclusion/manifesto page
+  useEffect(() => {
+    if (viewState.view !== 'conclusion') {
+      setScrolledPastThreshold(true);
+      return;
+    }
+
+    // Start hidden on conclusion page
+    setScrolledPastThreshold(false);
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setScrolledPastThreshold(scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [viewState.view]);
 
   useEffect(() => {
@@ -476,22 +499,21 @@ export default function App() {
 
   return (
     <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
-        {/* Fixed Logo Header - fades in smoothly */}
-        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-opacity duration-1000 ease-out ${headerReady ? 'opacity-100' : 'opacity-0'}`}>
-            <a
-                href="https://aimindset.org"
-                target="_blank"
-                rel="noreferrer"
+        {/* Fixed Logo Header - fades in smoothly, hidden until scroll on manifesto */}
+        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-all duration-500 ease-out ${headerReady && scrolledPastThreshold ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+            <button
+                onClick={handleJumpToConclusion}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-white/5 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
                 <AIMindsetLogo className="w-8 h-8" color={theme === 'dark' ? 'white' : 'black'} />
-                <span className="font-mono text-sm font-bold tracking-wide hidden md:inline">AI MINDSET</span>
-            </a>
+                <span className="font-mono text-[13px] font-bold tracking-wide hidden md:inline">MINDSET</span>
+            </button>
         </div>
 
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={headerReady} />
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={headerReady && scrolledPastThreshold} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
+        <StyleCTA theme={theme} />
     </div>
   );
 }
