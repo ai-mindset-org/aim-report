@@ -467,7 +467,7 @@ export default function App() {
   return (
     <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
         {/* Fixed Logo Header - fades in smoothly */}
-        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-all duration-700 ease-out ${headerReady ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+        <div className={`fixed top-0 left-0 z-[200] p-4 md:p-6 transition-opacity duration-1000 ease-out ${headerReady ? 'opacity-100' : 'opacity-0'}`}>
             <a
                 href="https://aimindset.org"
                 target="_blank"
@@ -480,9 +480,7 @@ export default function App() {
         </div>
 
         {renderContent()}
-        <div className={`transition-all duration-700 ease-out delay-200 ${headerReady ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-            <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
-        </div>
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
     </div>
   );
