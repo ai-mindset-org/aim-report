@@ -495,21 +495,23 @@ export default function App() {
 
   const globalBg = theme === 'dark' ? 'bg-[#0A0A0A]' : 'bg-[#F4F4F5]';
 
+  const showHeader = headerReady && scrolledPastThreshold;
+
   return (
-    <div className={`${globalBg} min-h-screen transition-colors duration-500`}>
-        {/* Fixed Logo Header - fades in smoothly */}
-        <div className={`fixed top-6 left-6 z-[200] transition-all duration-500 ease-out ${headerReady && scrolledPastThreshold ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+    <div className={`${globalBg} min-h-screen transition-colors duration-500 ${showHeader ? 'header-ready' : ''}`}>
+        {/* Fixed Logo Header - hidden by CSS until header-ready class is added */}
+        <div data-header-element className="fixed top-6 left-6 z-[200]">
             <button
                 onClick={handleJumpToConclusion}
                 className={`flex items-center gap-2 transition-opacity hover:opacity-70 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
                 <AIMindsetLogo className="w-6 h-6" color={theme === 'dark' ? 'white' : 'black'} />
-                <span className={`font-mono text-[10px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}>mindset</span>
+                <span className={`font-mono text-[10px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}><span className="font-semibold">AI</span> mindset</span>
             </button>
         </div>
 
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={headerReady && scrolledPastThreshold} />
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={showHeader} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
         <StyleCTA theme={theme} />
     </div>

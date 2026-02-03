@@ -114,16 +114,86 @@ export const ToolkitModal: React.FC<ToolkitModalProps> = ({ isOpen, onClose, the
             AIM Style Toolkit
           </h2>
 
-          <p className={`text-xs mb-4 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-            Claude skill + Visual DNA + 72 SVG metaphors + React components
+          <p className={`text-sm mb-4 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>
+            Everything you need to create AI-focused content with the distinctive visual language of this report.
           </p>
 
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {['Reports', 'Decks', 'Docs', 'Courses'].map((tag) => (
-              <span key={tag} className={`text-[9px] px-2 py-0.5 rounded ${isDark ? 'bg-neutral-800 text-neutral-500' : 'bg-neutral-200 text-neutral-600'}`}>
-                {tag}
-              </span>
-            ))}
+          {/* What's Inside */}
+          <div className={`space-y-3 mb-5 p-3 rounded-lg ${isDark ? 'bg-neutral-900/70' : 'bg-neutral-100'}`}>
+            <h3 className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
+              What's Inside
+            </h3>
+
+            <div className="space-y-2.5">
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <div className="w-1.5 h-1.5 bg-[#DC2626] rounded-full flex-shrink-0" />
+                  <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-black'}`}>Claude Skill</span>
+                </div>
+                <p className={`text-[11px] ml-3.5 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+                  Prompt engineering that teaches Claude to generate SVG metaphors, data visualizations, and editorial illustrations in this exact style.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <div className="w-1.5 h-1.5 bg-[#DC2626] rounded-full flex-shrink-0" />
+                  <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-black'}`}>Visual DNA Guide</span>
+                </div>
+                <p className={`text-[11px] ml-3.5 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+                  The complete design system: color palette, typography rules, grid layouts, and compositional principles that make this style work.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <div className="w-1.5 h-1.5 bg-[#DC2626] rounded-full flex-shrink-0" />
+                  <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-black'}`}>72+ SVG Metaphors</span>
+                </div>
+                <p className={`text-[11px] ml-3.5 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+                  Production-ready vector illustrations covering AI themes: neural networks, data flows, human-machine interaction, algorithmic concepts, and more.
+                </p>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <div className="w-1.5 h-1.5 bg-[#DC2626] rounded-full flex-shrink-0" />
+                  <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-black'}`}>React Components</span>
+                </div>
+                <p className={`text-[11px] ml-3.5 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+                  Drop-in UI components with animations: card layouts, stat displays, timeline views, and interactive elements ready for your projects.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Use Cases */}
+          <div className="mb-5">
+            <h3 className={`text-[10px] font-mono uppercase tracking-wider mb-2 ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
+              Perfect For
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {[
+                'Annual Reports',
+                'Pitch Decks',
+                'Keynote Slides',
+                'Technical Docs',
+                'Online Courses',
+                'Research Papers',
+                'Blog Posts',
+                'Social Media'
+              ].map((useCase) => (
+                <span
+                  key={useCase}
+                  className={`text-[10px] px-2 py-1 rounded-full border
+                    ${isDark
+                      ? 'border-neutral-700 text-neutral-400 bg-neutral-800/50'
+                      : 'border-neutral-300 text-neutral-600 bg-neutral-50'}`}
+                >
+                  {useCase}
+                </span>
+              ))}
+            </div>
           </div>
 
           {submitStatus !== 'success' ? (
