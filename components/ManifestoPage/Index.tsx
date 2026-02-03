@@ -191,9 +191,9 @@ export const ManifestoPage: React.FC<ManifestoPageProps> = ({ onRestart, onNext,
     // Row 2: Community (big)
     { id: 'community', type: 'community', title: 'Network & Signals', desc: 'The alumni network. Daily signal channel. A high-trust environment.', url: 'https://aimindset.org/ai-mindset-community', span: 'md:col-span-2' },
     // Row 3: Knowledge artifacts
-    { id: 'ark', type: 'ark', title: 'AI ARK Knowledge System', desc: 'Comprehensive knowledge architecture for the AI age.', url: 'https://aimindsetspace.substack.com', span: 'md:col-span-2' },
+    { id: 'ark', type: 'ark', title: 'Knowledge System', desc: 'Writing on Substack. Comprehensive knowledge architecture for the AI age.', url: 'https://aimindsetspace.substack.com', span: 'md:col-span-2' },
     { id: 'founder', type: 'media', title: 'Founder OS', desc: 'Mental health firewalls on YouTube.', url: 'https://youtu.be/mejkUQwcZLo?list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd', span: 'col-span-1' },
-    { id: 'telegram', type: 'signal', title: '@ai_mind_set', desc: 'Daily signals & field notes.', url: 'https://t.me/ai_mind_set', span: 'col-span-1' },
+    { id: 'telegram', type: 'signal', title: 'Signal', desc: 'Frequent signals & field notes.', url: 'https://t.me/ai_mind_set', span: 'col-span-1' },
   ];
 
   return (
