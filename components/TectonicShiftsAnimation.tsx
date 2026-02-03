@@ -179,10 +179,10 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
   };
 
   const layersData = [
-    { id: 1, title: i18n?.intro?.layer1 || "FOUNDATION", subtitle: i18n?.intro?.layer1sub || "Energy & Infrastructure", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Физика, экономика и власть." : "Physics, economics, and power.", details: lang === 'ru' ? "Энергетическая инфраструктура, агентный труд, суверенитет данных." : "Energy infrastructure, agentic labor, data sovereignty.", constraint: lang === 'ru' ? "Можем ли запитать? Можем ли позволить? Кто контролирует?" : "Can we power it? Can we afford it? Who controls it?" },
-    { id: 2, title: i18n?.intro?.layer2 || "COGNITION", subtitle: i18n?.intro?.layer2sub || "Reasoning & Models", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Архитектура смысла и рассуждения." : "The architecture of meaning and reason.", details: lang === 'ru' ? "Рассуждающие модели, системы знаний, научные открытия." : "Reasoning models, knowledge systems, scientific discovery.", constraint: lang === 'ru' ? "Можем ли доверять логике? Можем ли проверить рассуждения?" : "Can we trust how it thinks? Can we verify its logic?" },
-    { id: 3, title: i18n?.intro?.layer3 || "INTERFACE", subtitle: i18n?.intro?.layer3sub || "Agents & Context", shifts: "3 SHIFTS", desc: lang === 'ru' ? "Мастерство, материя и защита. Как мы строим и защищаем." : "Craft, matter, and defense. How we build and protect.", details: lang === 'ru' ? "Инструменты кодинга, физический интеллект, системы безопасности." : "Coding tools, physical intelligence, security systems.", constraint: lang === 'ru' ? "Можем ли поддерживать построенное? Можем ли защититься от созданного?" : "Can we maintain what we build? Can we defend against what we create?" },
-    { id: 4, title: i18n?.intro?.layer4 || "HUMANITY", subtitle: i18n?.intro?.layer4sub || "Integration & Outcome", shifts: "2 SHIFTS", desc: lang === 'ru' ? "Нарратив и близость. Что делает нас людьми." : "Narrative and intimacy. What keeps us human.", details: lang === 'ru' ? "Истории, отношения, создание смысла." : "Storytelling, relationships, meaning-making.", constraint: lang === 'ru' ? "Можем ли сохранить агентность? Можем ли остаться связанными?" : "Can we preserve agency? Can we stay connected?" }
+    { id: 1, title: i18n?.intro?.layer1 || "FOUNDATION", subtitle: i18n?.intro?.layer1sub || "Energy & Infrastructure", shifts: "3 SHIFTS", desc: "Physics, economics, and power.", details: "Energy infrastructure, agentic labor, data sovereignty.", constraint: "Can we power it? Can we afford it? Who controls it?" },
+    { id: 2, title: i18n?.intro?.layer2 || "COGNITION", subtitle: i18n?.intro?.layer2sub || "Reasoning & Models", shifts: "3 SHIFTS", desc: "The architecture of meaning and reason.", details: "Reasoning models, knowledge systems, scientific discovery.", constraint: "Can we trust how it thinks? Can we verify its logic?" },
+    { id: 3, title: i18n?.intro?.layer3 || "INTERFACE", subtitle: i18n?.intro?.layer3sub || "Agents & Context", shifts: "3 SHIFTS", desc: "Craft, matter, and defense. How we build and protect.", details: "Coding tools, physical intelligence, security systems.", constraint: "Can we maintain what we build? Can we defend against what we create?" },
+    { id: 4, title: i18n?.intro?.layer4 || "HUMANITY", subtitle: i18n?.intro?.layer4sub || "Integration & Outcome", shifts: "2 SHIFTS", desc: "Narrative and intimacy. What keeps us human.", details: "Storytelling, relationships, meaning-making.", constraint: "Can we preserve agency? Can we stay connected?" }
   ];
 
   const getLayerData = (id: number | null) => layersData.find(l => l.id === id);
@@ -766,7 +766,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
                           <div className="chaos-ring absolute top-1/2 left-1/2 w-32 h-32 border border-red-400 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
                       </div>
                       <span className="relative block text-[10px] md:text-[12px] font-mono text-red-400 mb-2 tracking-[0.2em] uppercase z-10 text-right">{i18n?.intro?.input || 'Input'}</span>
-                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10 text-right">{lang === 'ru' ? <>СИГНАЛ<br/>МАШИНЫ</> : <>MACHINE<br/>SIGNAL</>}</span>
+                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10 text-right"><>MACHINE<br/>SIGNAL</></span>
                     </div>
                   </div>
 
@@ -821,7 +821,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
                            <div className="breath-circle absolute w-16 h-16 border border-neutral-400 rounded-full"></div>
                       </div>
                       <span className="relative block text-[10px] md:text-[12px] font-mono text-neutral-400 mb-2 tracking-[0.2em] uppercase z-10">{i18n?.intro?.response || 'Response'}</span>
-                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10">{lang === 'ru' ? <>СИГНАЛ<br/>ЧЕЛОВЕКА</> : <>HUMAN<br/>SIGNAL</>}</span>
+                      <span className="relative block font-bold text-white text-lg md:text-3xl leading-none z-10"><>HUMAN<br/>SIGNAL</></span>
                     </div>
                   </div>
 
@@ -868,7 +868,7 @@ export const TectonicShifts: React.FC<TectonicShiftsProps> = ({ onOpenReport }) 
               <div className="mt-8 flex flex-col items-center gap-2 relative z-10 text-center">
                  {/* Updated typography here */}
                  <p ref={subText1Ref} className="font-sans text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
-                    {lang === 'ru' ? 'машины ↔ люди' : 'machines ↔ humans'} <span className="text-[#DC2626]">2025</span>
+                    machines ↔ humans <span className="text-[#DC2626]">2025</span>
                  </p>
                  <p ref={subText2Ref} className="font-mono text-lg md:text-xl text-neutral-400 tracking-[0.3em] uppercase mt-2">
                     {i18n?.intro?.across4Layers || 'across 4 layers'}
