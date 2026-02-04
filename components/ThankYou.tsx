@@ -107,8 +107,8 @@ export const ThankYou: React.FC<ThankYouProps> = ({ theme = 'dark', onPrev }) =>
         const contentHeight = (scrollContent as HTMLElement).scrollHeight;
         const containerHeight = (scrollContainer as HTMLElement).offsetHeight;
 
-        // Start with credits already visible - show them earlier
-        gsap.set(scrollContent, { y: containerHeight * 0.2 });
+        // Start with "Created By" visible in the middle of the screen
+        gsap.set(scrollContent, { y: containerHeight * 0.5 });
 
         // Scroll up through the container - starts immediately
         scrollTweenRef.current = gsap.to(scrollContent, {
