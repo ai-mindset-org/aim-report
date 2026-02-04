@@ -383,7 +383,7 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
       {/* HEADER SECTION */}
       <section className={`relative min-h-screen flex flex-col items-center justify-center pt-6 md:pt-0 pb-32`} style={{ minHeight: '100vh' }}>
          <div className="relative z-10 text-center max-w-5xl flex flex-col items-center w-full px-4">
-            <div className="mb-6 relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center opacity-90">
+            <div className="mb-6 relative w-14 h-14 md:w-20 md:h-20 flex items-center justify-center opacity-90">
                 <svg viewBox="-100 -100 200 200" className="w-full h-full overflow-visible">
                     <ShiftMetaphor id={data.id} isDark={isDark} centered={true} />
                 </svg>

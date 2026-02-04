@@ -292,32 +292,46 @@ export default function App() {
     let touchEndX = 0;
     let touchStartY = 0;
     let touchEndY = 0;
-    
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartX = e.changedTouches[0].screenX;
       touchStartY = e.changedTouches[0].screenY;
     };
-    
+
     const handleTouchEnd = (e: TouchEvent) => {
       // Don't handle swipe on landing page
       if (viewState.view === 'landing') return;
-      
+
       touchEndX = e.changedTouches[0].screenX;
       touchEndY = e.changedTouches[0].screenY;
       const diffX = touchStartX - touchEndX;
       const diffY = touchStartY - touchEndY;
-      const minSwipeDistance = 50;
-      
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+      const absDiffX = Math.abs(diffX);
+      const absDiffY = Math.abs(diffY);
+
+      // Swipe thresholds to distinguish from vertical scrolling:
+      // 1. Minimum horizontal distance for a valid swipe
+      const minSwipeDistance = 80;
+      // 2. Maximum vertical movement allowed (ignore if scrolling vertically)
+      const maxVerticalThreshold = 100;
+      // 3. Horizontal must be at least 2x vertical movement (clear horizontal intent)
+      const horizontalRatio = 2;
+
+      const isHorizontalSwipe =
+        absDiffX > minSwipeDistance &&           // Moved enough horizontally
+        absDiffY < maxVerticalThreshold &&       // Didn't move too much vertically
+        absDiffX > absDiffY * horizontalRatio;   // Clearly more horizontal than vertical
+
+      if (isHorizontalSwipe) {
         track('swipe-navigation', { direction: diffX > 0 ? 'next' : 'prev' });
         if (diffX > 0) handleNext();
         else handlePrev();
       }
     };
-    
+
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
     document.addEventListener('touchend', handleTouchEnd, { passive: true });
-    
+
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
@@ -549,7 +563,7 @@ export default function App() {
                 onClick={handleJumpToConclusion}
                 className={`flex items-center gap-2 transition-opacity hover:opacity-70 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
-                <AIMindsetLogo className="w-6 h-6" color={theme === 'dark' ? 'white' : 'black'} />
+                <AIMindsetLogo className="w-8 h-8" color={theme === 'dark' ? 'white' : 'black'} />
                 <span className={`font-mono text-[10px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}><span className="font-semibold">AI</span> mindset</span>
             </button>
         </div>

@@ -2,6 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap-config';
 import { trackToolkitOpen, trackToolkitSubscribe, track } from '../lib/analytics';
 
+// Pulsing glow animation styles
+const pulseGlowStyles = `
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4), 0 0 16px rgba(220, 38, 38, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(220, 38, 38, 0.6), 0 0 32px rgba(220, 38, 38, 0.3);
+    transform: scale(1.05);
+  }
+}
+`;
+
 interface StyleCTAProps {
   theme: 'dark' | 'light';
 }
@@ -55,28 +69,28 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
       const label = LABELS[labelIndex];
       setCurrentLabel(label.text);
 
-      // Animate in
+      // Animate in - smoother with fade and slide
       if (labelRef.current) {
         gsap.fromTo(labelRef.current,
-          { width: 0, opacity: 0 },
-          { width: 'auto', opacity: 0.6, duration: 0.4, ease: "power2.out" }
+          { width: 0, opacity: 0, x: 10 },
+          { width: 'auto', opacity: 0.8, x: 0, duration: 0.5, ease: "power3.out" }
         );
       }
 
-      // Hide after duration
+      // Hide after duration - smoother fade out
       timeoutId = setTimeout(() => {
         if (labelRef.current) {
           gsap.to(labelRef.current, {
-            width: 0, opacity: 0,
-            duration: 0.3, ease: "power2.in"
+            width: 0, opacity: 0, x: -5,
+            duration: 0.4, ease: "power2.inOut"
           });
         }
 
-        // Next label after pause (8-10 seconds)
+        // Next label after pause (5 seconds)
         timeoutId = setTimeout(() => {
           labelIndex = (labelIndex + 1) % LABELS.length;
           showNextLabel();
-        }, 8000 + Math.random() * 2000); // 8-10 sec pause between labels
+        }, 5000); // 5 sec pause between labels
       }, label.duration);
     };
 
@@ -142,6 +156,9 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
 
   return (
     <>
+      {/* Inject pulsing glow animation styles */}
+      <style>{pulseGlowStyles}</style>
+
       {/* Floating CTA - bottom right, always visible but semi-transparent */}
       <button
         onClick={() => {
@@ -155,15 +172,19 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
         {/* Animated label - on the left */}
         <span
           ref={labelRef}
-          className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626] mr-2"
+          className="overflow-hidden whitespace-nowrap font-mono text-[11px] tracking-wider text-[#DC2626] mr-3"
           style={{ width: 0, opacity: 0 }}
         >
           {currentLabel}
         </span>
 
-        {/* Small red dot - always visible, semi-transparent (visible on all pages) */}
-        <div className="w-3 h-3 rounded-full bg-[#DC2626] opacity-50 group-hover:opacity-100 transition-opacity"
-             style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.4)' }} />
+        {/* Red ball - bigger with pulsing glow animation */}
+        <div
+          className="w-5 h-5 rounded-full bg-[#DC2626] opacity-60 group-hover:opacity-100 transition-opacity"
+          style={{
+            animation: 'pulseGlow 2s ease-in-out infinite',
+          }}
+        />
       </button>
 
       {/* Compact Modal - mobile friendly */}
