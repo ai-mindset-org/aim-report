@@ -9,7 +9,7 @@ import { ShiftData, LayerData } from './components/shiftsData';
 import { AIMindsetLogo } from './components/AIMindsetLogo';
 import { useShiftsData } from './hooks/useShiftsData';
 import { updateMetaTags } from './lib/updateMetaTags';
-import { track, trackShiftView, trackLayerView, trackThemeToggle } from './lib/analytics';
+import { track, trackShiftView, trackLayerView, trackThemeToggle, trackKeyboardNavigation, trackScrollDepth, trackLandingView } from './lib/analytics';
 
 // Lazy load heavy components
 const ReportView = lazy(() => import('./components/ReportView').then(m => ({ default: m.ReportView })));
@@ -110,7 +110,10 @@ export default function App() {
 
   // Track view changes for analytics
   useEffect(() => {
-    if (viewState.view === 'landing') return; // Don't track landing, it's the default
+    if (viewState.view === 'landing') {
+      trackLandingView();
+      return;
+    }
 
     if (viewState.view === 'thankyou') {
       track('thankyou-view');
@@ -129,6 +132,31 @@ export default function App() {
       }
     }
   }, [viewState, timeline]);
+
+  // Track scroll depth on landing page (25%, 50%, 75%, 100%)
+  useEffect(() => {
+    if (viewState.view !== 'landing') return;
+
+    const milestones = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      // Track at 25%, 50%, 75%, 90% milestones
+      const checkpoints = [25, 50, 75, 90];
+      for (const checkpoint of checkpoints) {
+        if (scrollPercent >= checkpoint && !milestones.has(checkpoint)) {
+          milestones.add(checkpoint);
+          trackScrollDepth(checkpoint, 'landing');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [viewState.view]);
 
   // Update meta tags based on current view
   useEffect(() => {
@@ -364,10 +392,22 @@ export default function App() {
       // Arrows: next/prev page
       if (isArrowForward || isArrowBackward) {
         if (viewState.view !== 'landing') e.preventDefault();
+        const currentView = viewState.view === 'report' && timeline[viewState.index]
+          ? `${timeline[viewState.index].type}-${timeline[viewState.index].data.id}`
+          : viewState.view;
+
         if (isArrowForward) {
-          if (viewState.view === 'landing') openReport();
-          else handleNext();
+          const key = e.key === 'ArrowRight' ? 'arrow-right' : 'arrow-down';
+          if (viewState.view === 'landing') {
+            trackKeyboardNavigation('landing', 'report', key);
+            openReport();
+          } else {
+            trackKeyboardNavigation(currentView, 'next', key);
+            handleNext();
+          }
         } else if (isArrowBackward && viewState.view !== 'landing') {
+          const key = e.key === 'ArrowLeft' ? 'arrow-left' : 'arrow-up';
+          trackKeyboardNavigation(currentView, 'prev', key);
           handlePrev();
         }
         return;
@@ -383,6 +423,7 @@ export default function App() {
 
           // Fallback: if pinned section not found, go to report
           if (!pinnedSection) {
+            trackKeyboardNavigation('landing', 'report', 'space');
             openReport();
             return;
           }
@@ -401,6 +442,7 @@ export default function App() {
 
           // Fallback: if ScrollTrigger not found, go to report
           if (!st) {
+            trackKeyboardNavigation('landing', 'report', 'space');
             openReport();
             return;
           }
@@ -409,6 +451,7 @@ export default function App() {
 
           // Animation complete or near end - go to report
           if (currentProgress >= 0.90) {
+            trackKeyboardNavigation('landing', 'report', 'space');
             openReport();
             return;
           }
@@ -431,6 +474,7 @@ export default function App() {
             st.scroll(targetScroll);
           } else {
             // Past all snap points - go to report
+            trackKeyboardNavigation('landing', 'report', 'space');
             openReport();
           }
           return;
@@ -447,6 +491,10 @@ export default function App() {
           window.scrollBy({ top: windowHeight * 0.7, behavior: 'smooth' });
         } else {
           // At bottom - go to next page
+          const currentView = viewState.view === 'report' && timeline[viewState.index]
+            ? `${timeline[viewState.index].type}-${timeline[viewState.index].data.id}`
+            : viewState.view;
+          trackKeyboardNavigation(currentView, 'next', 'space');
           handleNext();
         }
       }
@@ -561,15 +609,15 @@ export default function App() {
         <div data-header-element className="fixed top-6 left-6 z-[200]">
             <button
                 onClick={handleJumpToConclusion}
-                className={`flex items-center gap-2 transition-opacity hover:opacity-70 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+                className={`flex items-center gap-2.5 transition-opacity hover:opacity-70 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             >
-                <AIMindsetLogo className="w-8 h-8" color={theme === 'dark' ? 'white' : 'black'} />
-                <span className={`font-mono text-[10px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-500' : 'text-neutral-500'}`}><span className="font-semibold">AI</span> mindset</span>
+                <AIMindsetLogo className="w-9 h-9" color={theme === 'dark' ? 'white' : 'black'} />
+                <span className={`font-mono text-[11px] tracking-wide hidden md:inline ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`}><span className="font-semibold">AI</span> mindset</span>
             </button>
         </div>
 
         {renderContent()}
-        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={showHeader} />
+        <IndexNavigation onNavigate={handleIndexNavigate} theme={theme} toggleTheme={toggleTheme} showThemeToggle={viewState.view !== 'landing'} forceDarkTheme={viewState.view === 'landing'} isReady={showHeader} alwaysShowLabel={viewState.view === 'thankyou'} />
         <TimelineNav timeline={timeline} currentIndex={viewState.view === 'report' ? viewState.index : 0} viewState={viewState.view} onNavigate={handleNavigate} onNavigateToConclusion={handleJumpToConclusion} onNavigateToLanding={closeReport} onNavigateToThankYou={handleJumpToThankYou} theme={theme} visible={isNavVisible} />
     </div>
   );

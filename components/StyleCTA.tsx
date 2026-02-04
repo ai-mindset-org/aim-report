@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap-config';
-import { trackToolkitOpen, trackToolkitSubscribe, track } from '../lib/analytics';
+import { trackToolkitOpen, trackToolkitSubscribe, track, trackToolkitError } from '../lib/analytics';
 
 // Pulsing glow animation styles
 const pulseGlowStyles = `
@@ -129,10 +129,12 @@ export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
           document.body.removeChild(link);
         }, 500);
       } else {
+        trackToolkitError('api-error', 'floating-ball');
         setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Subscription error:', error);
+      trackToolkitError('network-error', 'floating-ball');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

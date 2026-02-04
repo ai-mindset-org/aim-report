@@ -9,6 +9,7 @@ interface IndexTriggerProps {
     showThemeToggle?: boolean;
     forceDarkTheme?: boolean;
     isReady?: boolean;
+    alwaysShowLabel?: boolean;
 }
 
 // Rotating labels for the toolkit button
@@ -23,14 +24,13 @@ const TOOLKIT_LABELS = [
     "need visuals?"
 ];
 
-export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggleTheme, showThemeToggle = true, forceDarkTheme = false, isReady = true }) => {
+export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggleTheme, showThemeToggle = true, forceDarkTheme = false, isReady = true, alwaysShowLabel = false }) => {
     const [isToolkitOpen, setIsToolkitOpen] = useState(false);
-    const [showToolkitLabel, setShowToolkitLabel] = useState(false);
+    const [showToolkitLabel, setShowToolkitLabel] = useState(alwaysShowLabel);
     const [currentLabelIndex, setCurrentLabelIndex] = useState(0);
     const labelRef = useRef<HTMLSpanElement>(null);
 
     const isDark = forceDarkTheme ? true : theme === 'dark';
-    const textCol = isDark ? 'text-neutral-500' : 'text-neutral-500';
 
     // Listen for open-toolkit-modal event (from Index footer button)
     useEffect(() => {
@@ -39,9 +39,16 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
         return () => window.removeEventListener('open-toolkit-modal', handleOpenToolkit);
     }, []);
 
-    // Periodically show label with rotating text
+    // Always show label on certain pages (like ThankYou)
     useEffect(() => {
-        if (!isReady) return;
+        if (alwaysShowLabel) {
+            setShowToolkitLabel(true);
+        }
+    }, [alwaysShowLabel]);
+
+    // Periodically show label with rotating text (only if not always showing)
+    useEffect(() => {
+        if (!isReady || alwaysShowLabel) return;
 
         const showLabel = () => {
             setCurrentLabelIndex(prev => (prev + 1) % TOOLKIT_LABELS.length);
@@ -49,14 +56,14 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
             setTimeout(() => setShowToolkitLabel(false), 4000); // Show for 4 seconds
         };
 
-        const initialTimer = setTimeout(showLabel, 8000);
-        const interval = setInterval(showLabel, 25000);
+        const initialTimer = setTimeout(showLabel, 6000);
+        const interval = setInterval(showLabel, 20000);
 
         return () => {
             clearTimeout(initialTimer);
             clearInterval(interval);
         };
-    }, [isReady]);
+    }, [isReady, alwaysShowLabel]);
 
     // Animate label
     useEffect(() => {
@@ -88,15 +95,15 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
                     {/* Animated label - rotating questions */}
                     <span
                         ref={labelRef}
-                        className="overflow-hidden whitespace-nowrap font-mono text-[10px] tracking-wider text-[#DC2626]/70 mr-1"
-                        style={{ width: 0, opacity: 0 }}
+                        className="overflow-hidden whitespace-nowrap font-mono text-[11px] tracking-wider text-[#DC2626] mr-2"
+                        style={{ width: alwaysShowLabel ? 'auto' : 0, opacity: alwaysShowLabel ? 1 : 0 }}
                     >
                         {TOOLKIT_LABELS[currentLabelIndex]}
                     </span>
 
-                    {/* Red dot - larger, with pulse animation */}
-                    <div className="w-5 h-5 rounded-full bg-[#DC2626] opacity-80 group-hover:opacity-100 transition-opacity animate-pulse"
-                         style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.5)' }} />
+                    {/* Red dot - with pulse animation */}
+                    <div className="w-4 h-4 rounded-full bg-[#DC2626] opacity-90 group-hover:opacity-100 transition-opacity"
+                         style={{ boxShadow: '0 0 10px rgba(220, 38, 38, 0.6)', animation: 'pulse 2s ease-in-out infinite' }} />
                 </button>
 
                 {/* 2. THEME TOGGLE - small white/black dot */}
