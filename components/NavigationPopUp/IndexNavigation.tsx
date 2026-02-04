@@ -10,9 +10,10 @@ interface IndexNavigationProps {
     showThemeToggle?: boolean;
     forceDarkTheme?: boolean;
     isReady?: boolean;
+    alwaysShowLabel?: boolean;
 }
 
-export const IndexNavigation: React.FC<IndexNavigationProps> = ({ onNavigate, theme, toggleTheme, showThemeToggle = true, forceDarkTheme = false, isReady = true }) => {
+export const IndexNavigation: React.FC<IndexNavigationProps> = ({ onNavigate, theme, toggleTheme, showThemeToggle = true, forceDarkTheme = false, isReady = true, alwaysShowLabel = false }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleOpen = () => {
@@ -34,6 +35,7 @@ export const IndexNavigation: React.FC<IndexNavigationProps> = ({ onNavigate, th
                 showThemeToggle={showThemeToggle}
                 forceDarkTheme={forceDarkTheme}
                 isReady={isReady}
+                alwaysShowLabel={alwaysShowLabel}
             />
             <IndexOverlay
                 isOpen={isOpen}

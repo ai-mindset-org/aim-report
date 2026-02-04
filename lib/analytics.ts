@@ -12,6 +12,7 @@ declare global {
 }
 
 type EventName =
+  | 'landing-view'
   | 'report-enter'
   | 'report-exit'
   | 'shift-view'
@@ -21,6 +22,7 @@ type EventName =
   | 'thankyou-view'
   | 'toolkit-modal-open'
   | 'toolkit-subscribe'
+  | 'toolkit-subscribe-error'
   | 'toolkit-download'
   | 'ecosystem-click'
   | 'theme-toggle'
@@ -28,7 +30,8 @@ type EventName =
   | 'nav-index-click'
   | 'external-link'
   | 'swipe-navigation'
-  | 'keyboard-navigation';
+  | 'keyboard-navigation'
+  | 'scroll-depth';
 
 interface EventData {
   // Shift/Layer events
@@ -56,6 +59,13 @@ interface EventData {
 
   // Generic
   label?: string;
+
+  // Scroll
+  depth?: number;
+  page?: string;
+
+  // Errors
+  error?: string;
 }
 
 /**
@@ -145,4 +155,36 @@ export function trackThemeToggle(theme: 'dark' | 'light'): void {
  */
 export function trackExternalLink(url: string, label?: string): void {
   track('external-link', { url, label: label || url });
+}
+
+/**
+ * Track keyboard navigation (arrows, space)
+ */
+export function trackKeyboardNavigation(
+  from: string,
+  to: string,
+  key: 'arrow-right' | 'arrow-left' | 'arrow-up' | 'arrow-down' | 'space'
+): void {
+  track('keyboard-navigation', { from, to, method: key });
+}
+
+/**
+ * Track scroll depth on landing page
+ */
+export function trackScrollDepth(depth: number, page: string = 'landing'): void {
+  track('scroll-depth', { depth, page });
+}
+
+/**
+ * Track landing page view
+ */
+export function trackLandingView(): void {
+  track('landing-view');
+}
+
+/**
+ * Track toolkit subscription error
+ */
+export function trackToolkitError(error: string, source: string): void {
+  track('toolkit-subscribe-error', { error, source });
 }

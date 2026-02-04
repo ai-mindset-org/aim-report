@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from '../lib/gsap-config';
-import { trackToolkitSubscribe, track } from '../lib/analytics';
+import { trackToolkitSubscribe, track, trackToolkitError } from '../lib/analytics';
 
 interface ToolkitModalProps {
   isOpen: boolean;
@@ -53,10 +53,12 @@ export const ToolkitModal: React.FC<ToolkitModalProps> = ({ isOpen, onClose, the
           document.body.removeChild(link);
         }, 500);
       } else {
+        trackToolkitError('api-error', 'index-button');
         setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Subscription error:', error);
+      trackToolkitError('network-error', 'index-button');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -106,105 +108,66 @@ export const ToolkitModal: React.FC<ToolkitModalProps> = ({ isOpen, onClose, the
           </svg>
         </button>
 
-        {/* Content - larger padding on mobile */}
-        <div className="p-6 sm:p-8">
+        {/* Content */}
+        <div className="p-5 sm:p-6">
           {/* Header */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-[#DC2626] rounded-full animate-pulse" />
-            <span className="text-sm font-mono text-[#DC2626] uppercase tracking-wider font-bold">Free Toolkit</span>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-2.5 h-2.5 bg-[#DC2626] rounded-full" />
+            <span className="text-xs font-mono text-[#DC2626] tracking-wider">free toolkit</span>
           </div>
 
-          <h2 className={`text-2xl sm:text-3xl font-black tracking-tight mb-3 ${isDark ? 'text-white' : 'text-black'}`}>
-            Create in This Style
+          <h2 className={`text-xl sm:text-2xl font-black tracking-tight mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            create visuals like this
           </h2>
 
-          <p className={`text-base mb-6 leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>
-            Want to create visuals, metaphors, and presentations like this report? Get the complete toolkit with everything you need.
+          <p className={`text-sm mb-4 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
+            claude prompts + visual guide + 72 svg metaphors + react components
           </p>
 
-          {/* What's Inside - simplified, larger text */}
-          <div className={`mb-6 p-4 rounded-xl ${isDark ? 'bg-neutral-900' : 'bg-neutral-100'}`}>
-            <h3 className={`text-sm font-mono uppercase tracking-wider mb-4 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
-              What's Inside
-            </h3>
-
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-[#DC2626] rounded-full flex-shrink-0" />
-                <div>
-                  <span className={`text-base font-bold block ${isDark ? 'text-white' : 'text-black'}`}>Claude Skill</span>
-                  <span className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>AI prompts for generating SVG metaphors</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-[#DC2626] rounded-full flex-shrink-0" />
-                <div>
-                  <span className={`text-base font-bold block ${isDark ? 'text-white' : 'text-black'}`}>Visual DNA Guide</span>
-                  <span className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Colors, typography, grid system</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-[#DC2626] rounded-full flex-shrink-0" />
-                <div>
-                  <span className={`text-base font-bold block ${isDark ? 'text-white' : 'text-black'}`}>72+ SVG Metaphors</span>
-                  <span className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Ready-to-use vector illustrations</span>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 mt-2 bg-[#DC2626] rounded-full flex-shrink-0" />
-                <div>
-                  <span className={`text-base font-bold block ${isDark ? 'text-white' : 'text-black'}`}>React Components</span>
-                  <span className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Drop-in UI with animations</span>
-                </div>
-              </div>
-            </div>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {['reports', 'decks', 'docs', 'courses', 'landing pages'].map((tag) => (
+              <span key={tag} className={`text-[10px] px-2 py-0.5 rounded ${isDark ? 'bg-neutral-800 text-neutral-400' : 'bg-neutral-200 text-neutral-500'}`}>
+                {tag}
+              </span>
+            ))}
           </div>
 
-          {/* Form - larger elements, more spacing */}
+          {/* Form */}
           {submitStatus !== 'success' ? (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className={`w-full px-4 py-4 rounded-lg text-base outline-none
+                className={`w-full px-4 py-3 rounded-lg text-sm outline-none
                   ${isDark
-                    ? 'bg-neutral-900 border-2 border-neutral-700 text-white placeholder:text-neutral-500 focus:border-[#DC2626]'
-                    : 'bg-neutral-100 border-2 border-neutral-200 text-black placeholder:text-neutral-400 focus:border-[#DC2626]'}`}
+                    ? 'bg-neutral-900 border border-neutral-700 text-white placeholder:text-neutral-500 focus:border-[#DC2626]'
+                    : 'bg-neutral-100 border border-neutral-200 text-black placeholder:text-neutral-400 focus:border-[#DC2626]'}`}
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-4 bg-[#DC2626] text-white text-base font-bold uppercase rounded-lg
+                className="w-full px-5 py-3 bg-[#DC2626] text-white text-sm font-bold rounded-lg
                   hover:bg-red-700 disabled:opacity-50 transition-colors"
               >
-                {isSubmitting ? 'Sending...' : 'Get Free Toolkit'}
+                {isSubmitting ? 'sending...' : 'get free toolkit'}
               </button>
             </form>
           ) : (
-            <div className="flex items-center justify-center gap-3 py-6 bg-green-500/10 rounded-lg">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+            <div className="flex items-center justify-center gap-2 py-4 bg-green-500/10 rounded-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              <span className={`text-lg font-bold ${isDark ? 'text-white' : 'text-black'}`}>Downloading...</span>
+              <span className={`text-sm ${isDark ? 'text-white' : 'text-black'}`}>downloading...</span>
             </div>
           )}
 
           {submitStatus === 'error' && (
-            <p className="text-sm text-red-500 mt-3 text-center">Something went wrong. Please try again.</p>
+            <p className="text-xs text-red-500 mt-2 text-center">something went wrong. try again.</p>
           )}
-        </div>
-
-        {/* Footer */}
-        <div className={`px-6 sm:px-8 py-4 border-t text-center ${isDark ? 'border-neutral-800 bg-neutral-900/50' : 'border-neutral-200 bg-neutral-50'}`}>
-          <a href="mailto:info@aimindset.org" className={`text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-500'} hover:text-[#DC2626]`}>
-            Need custom design? Contact us
-          </a>
         </div>
       </div>
     </div>
