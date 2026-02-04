@@ -32,6 +32,13 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
     const isDark = forceDarkTheme ? true : theme === 'dark';
     const textCol = isDark ? 'text-neutral-500' : 'text-neutral-500';
 
+    // Listen for open-toolkit-modal event (from Index footer button)
+    useEffect(() => {
+        const handleOpenToolkit = () => setIsToolkitOpen(true);
+        window.addEventListener('open-toolkit-modal', handleOpenToolkit);
+        return () => window.removeEventListener('open-toolkit-modal', handleOpenToolkit);
+    }, []);
+
     // Periodically show label with rotating text
     useEffect(() => {
         if (!isReady) return;
@@ -39,7 +46,7 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
         const showLabel = () => {
             setCurrentLabelIndex(prev => (prev + 1) % TOOLKIT_LABELS.length);
             setShowToolkitLabel(true);
-            setTimeout(() => setShowToolkitLabel(false), 2500);
+            setTimeout(() => setShowToolkitLabel(false), 4000); // Show for 4 seconds
         };
 
         const initialTimer = setTimeout(showLabel, 8000);
@@ -70,7 +77,7 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
 
     return (
         <>
-            <div data-header-element className={`fixed top-6 right-6 z-[100] pointer-events-auto flex items-center gap-4`}>
+            <div data-header-element className={`fixed top-6 right-6 z-[100] pointer-events-auto flex items-center gap-5`}>
 
                 {/* 1. TOOLKIT - small red dot, same size as theme toggle */}
                 <button
@@ -87,9 +94,9 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
                         {TOOLKIT_LABELS[currentLabelIndex]}
                     </span>
 
-                    {/* Small red dot - same size as theme toggle */}
-                    <div className="w-3 h-3 rounded-full bg-[#DC2626] opacity-60 group-hover:opacity-100 transition-opacity"
-                         style={{ boxShadow: '0 0 8px rgba(220, 38, 38, 0.4)' }} />
+                    {/* Red dot - larger, with pulse animation */}
+                    <div className="w-5 h-5 rounded-full bg-[#DC2626] opacity-80 group-hover:opacity-100 transition-opacity animate-pulse"
+                         style={{ boxShadow: '0 0 12px rgba(220, 38, 38, 0.5)' }} />
                 </button>
 
                 {/* 2. THEME TOGGLE - small white/black dot */}
@@ -100,10 +107,10 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
                         aria-label="Toggle Theme"
                     >
                         {isDark ? (
-                            <div className="w-3 h-3 rounded-full bg-white opacity-60 group-hover:opacity-100 transition-opacity"
-                                 style={{ boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)' }} />
+                            <div className="w-5 h-5 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"
+                                 style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.4)' }} />
                         ) : (
-                            <div className="w-3 h-3 rounded-full border border-black/40 group-hover:border-black transition-colors" />
+                            <div className="w-5 h-5 rounded-full border-2 border-black/40 group-hover:border-black group-hover:bg-black/10 transition-all" />
                         )}
                     </button>
                 )}
