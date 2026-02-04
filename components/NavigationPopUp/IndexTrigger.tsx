@@ -108,15 +108,15 @@ export const IndexTrigger: React.FC<IndexTriggerProps> = ({ onOpen, theme, toggl
                     </button>
                 )}
 
-                {/* 3. INDEX - simple text */}
+                {/* 3. INDEX - styled button matching CLOSE button */}
                 <button
                     onClick={onOpen}
-                    className={`flex items-center gap-2.5 ${textCol} hover:text-[#DC2626] transition-colors group`}
+                    className={`group flex items-center gap-2 px-3 py-1.5 border ${isDark ? 'border-neutral-700' : 'border-neutral-300'} rounded hover:bg-[#DC2626] hover:border-[#DC2626] transition-all bg-transparent`}
                 >
-                    <span className="font-mono text-[11px] tracking-wide font-medium">index</span>
-                    <div className="flex flex-col gap-[3px] w-2.5 items-end">
+                    <span className={`font-mono text-[10px] font-bold uppercase ${isDark ? 'text-white' : 'text-neutral-900'} group-hover:text-white`}>Index</span>
+                    <div className={`flex flex-col gap-[2px] w-2.5 items-end ${isDark ? 'text-white' : 'text-neutral-900'} group-hover:text-white`}>
                         <span className="w-full h-[1.5px] bg-current"></span>
-                        <span className="w-1/2 h-[1.5px] bg-current group-hover:w-full transition-all"></span>
+                        <span className="w-2/3 h-[1.5px] bg-current group-hover:w-full transition-all"></span>
                         <span className="w-full h-[1.5px] bg-current"></span>
                     </div>
                 </button>

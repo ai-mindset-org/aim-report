@@ -20,13 +20,13 @@ interface StyleCTAProps {
   theme: 'dark' | 'light';
 }
 
-// Text labels that cycle through
+// Text labels that cycle through - minimum 3 seconds display time
 const LABELS = [
-  { text: "getstyle", duration: 2500 },
-  { text: "want this style?", duration: 2500 },
-  { text: "get the toolkit", duration: 2500 },
-  { text: "presentations like this", duration: 3000 },
-  { text: "free download", duration: 2000 },
+  { text: "getstyle", duration: 3000 },
+  { text: "want this style?", duration: 3000 },
+  { text: "get the toolkit", duration: 3000 },
+  { text: "presentations like this", duration: 3500 },
+  { text: "free download", duration: 3000 },
 ];
 
 export const StyleCTA: React.FC<StyleCTAProps> = ({ theme }) => {
