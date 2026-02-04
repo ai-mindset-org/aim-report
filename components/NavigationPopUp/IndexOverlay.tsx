@@ -356,14 +356,14 @@ export const IndexOverlay: React.FC<IndexOverlayProps> = ({ isOpen, onClose, onN
                                 <div className={`text-sm font-bold ${textMain} group-hover:text-[#DC2626] transition-colors`}>@A-I-Mindset</div>
                             </a>
                             <button onClick={() => {
-                                onClose();
-                                // Trigger toolkit modal via custom event
+                                // Trigger toolkit modal first, then close overlay with delay
                                 window.dispatchEvent(new CustomEvent('open-toolkit-modal'));
+                                setTimeout(() => onClose(), 100);
                             }} className="group text-left">
                                 <div className={`font-mono text-[10px] uppercase tracking-widest ${textDim} mb-1`}>Toolkit</div>
-                                <div className="flex items-center gap-1.5">
-                                    <div className="w-2 h-2 rounded-full bg-[#DC2626]" />
-                                    <span className="text-sm font-bold text-[#DC2626]">getstyle</span>
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#DC2626] animate-pulse" />
+                                    <span className="text-base font-bold text-[#DC2626]">Get Style Kit</span>
                                 </div>
                             </button>
                         </div>
