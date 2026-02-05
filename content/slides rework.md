@@ -134,7 +134,7 @@ the klarna benchmark: one ai assistant replaced **700 full-time agents**, slashe
 
 **AI Mindset Evidence:**
 → [**Intention OS**](https://intention.aimindset.org) — Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering.
-→ [**Founder OS YouTube Playlist**](https://youtube.com/@aimindsetlabs) — Mental health firewalls and sovereign workflows for founders navigating AI transformation.
+→ [**Founder OS YouTube Playlist**](https://www.youtube.com/watch?v=mejkUQwcZLo&list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd) — Mental health firewalls and sovereign workflows for founders navigating AI transformation.
 
 **Tags:** Agentic AI, Autonomous Agents, Service-as-Software, Workforce Transformation
 
@@ -827,7 +827,7 @@ the field-tested frameworks, tools, and community resources:
 
 → [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — comprehensive knowledge architecture for AI age
 
-→ [**Founder OS YouTube playlist**](https://youtube.com/@aimindsetlabs) — mental health firewalls and sovereign workflows
+→ [**Founder OS YouTube playlist**](https://www.youtube.com/watch?v=mejkUQwcZLo&list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd) — mental health firewalls and sovereign workflows
 
 → [**Coding with Claude 3.5**](https://telegram.me/ai_mind_set/282) — practical guides from the community
 
