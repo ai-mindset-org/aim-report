@@ -168,7 +168,7 @@ export const shifts: ShiftData[] = [
     ],
     evidence: [
       { title: "Intention OS", desc: "Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering.", url: "https://intention.aimindset.org" },
-      { title: "Founder OS YouTube Playlist", desc: "Mental health firewalls and sovereign workflows for founders navigating AI transformation.", url: "https://youtube.com/@aimindsetlabs" }
+      { title: "Founder OS YouTube Playlist", desc: "Mental health firewalls and sovereign workflows for founders navigating AI transformation.", url: "https://www.youtube.com/watch?v=mejkUQwcZLo&list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd" }
     ],
     voices: [
       { quote: "from tool to participant — from 'ai as smart assistant' to 'ai as full participant in the process'", author: "yakov vasiliev", role: "AI Strategy × Product Architecture" },
