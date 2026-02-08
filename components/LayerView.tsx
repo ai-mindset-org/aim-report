@@ -21,28 +21,32 @@ export const LayerView: React.FC<LayerViewProps> = ({ data, onNext, onPrev, onBa
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             // SVG Animations - SLOWED DOWN (3-4x slower) for ambient feel
+            // Use scoped selectors via svgRef to avoid cross-layer conflicts
+            const svg = svgRef.current;
+            if (!svg) return;
+
             if (data.metaphor === 'globe') {
-                const radarScan = document.querySelector(".radar-scan");
-                const arcRotate1 = document.querySelector(".arc-rotate-1");
-                const arcRotate2 = document.querySelector(".arc-rotate-2");
-                const arcRotate3 = document.querySelector(".arc-rotate-3");
-                const pulseFast = document.querySelector(".pulse-fast");
-                
+                const radarScan = svg.querySelector(".radar-scan");
+                const arcRotate1 = svg.querySelector(".arc-rotate-1");
+                const arcRotate2 = svg.querySelector(".arc-rotate-2");
+                const arcRotate3 = svg.querySelector(".arc-rotate-3");
+                const pulseFast = svg.querySelector(".pulse-fast");
+
                 if (radarScan) gsap.to(radarScan, { rotation: 360, transformOrigin: "50px 50px", duration: 15, repeat: -1, ease: "linear" });
                 if (arcRotate1 || arcRotate3) gsap.to([arcRotate1, arcRotate3].filter(Boolean), { rotation: -360, transformOrigin: "50px 50px", duration: 100, repeat: -1, ease: "linear" });
                 if (arcRotate2) gsap.to(arcRotate2, { rotation: 360, transformOrigin: "50px 50px", duration: 90, repeat: -1, ease: "linear" });
                 if (pulseFast) gsap.to(pulseFast, { scale: 1.3, opacity: 0.4, transformOrigin: "50px 50px", duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut" });
-            } 
+            }
             else if (data.metaphor === 'neural') {
-                gsap.to(".neural-pulse", { scale: 1.5, opacity: 0, transformOrigin: "center", duration: 6, repeat: -1, ease: "sine.out", stagger: 1.5 });
-                gsap.to(".node-float", { y: "random(-10, 10)", x: "random(-10, 10)", duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.5 });
+                gsap.to(svg.querySelectorAll(".neural-pulse"), { scale: 1.5, opacity: 0, transformOrigin: "center", duration: 6, repeat: -1, ease: "sine.out", stagger: 1.5 });
+                gsap.to(svg.querySelectorAll(".node-float"), { y: "random(-10, 10)", x: "random(-10, 10)", duration: 10, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.5 });
             }
             else if (data.metaphor === 'construct') {
-                gsap.to(".construct-rotate", { rotation: 360, transformOrigin: "center", duration: 80, repeat: -1, ease: "linear" });
-                gsap.to(".block-float", { y: -20, opacity: 0.8, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.5 });
+                gsap.to(svg.querySelectorAll(".construct-rotate"), { rotation: 360, transformOrigin: "center", duration: 80, repeat: -1, ease: "linear" });
+                gsap.to(svg.querySelectorAll(".block-float"), { y: -20, opacity: 0.8, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut", stagger: 0.5 });
             }
             else if (data.metaphor === 'human') {
-                gsap.to(".ripple", { scale: 2, opacity: 0, transformOrigin: "center", duration: 12, repeat: -1, ease: "sine.out", stagger: 2.5 });
+                gsap.to(svg.querySelectorAll(".ripple"), { scale: 2, opacity: 0, transformOrigin: "center", duration: 12, repeat: -1, ease: "sine.out", stagger: 2.5 });
             }
 
         }, containerRef);
