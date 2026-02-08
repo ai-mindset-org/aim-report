@@ -6,8 +6,9 @@ import { AIMindsetLogo } from './AIMindsetLogo';
 import { OpenGraphPreview } from './OpenGraphPreview';
 import { useI18n } from '../hooks/useI18n';
 
+// Only block domains that actually deny iframes (X-Frame-Options)
 const BLOCKED_DOMAINS = [
-  // Social & Video
+  // Social & Video - block iframes
   'youtube.com',
   'youtu.be',
   't.me',
@@ -15,88 +16,10 @@ const BLOCKED_DOMAINS = [
   'twitter.com',
   'x.com',
   'linkedin.com',
-  'facebook.com',
-  'instagram.com',
-  'reddit.com',
-  'tiktok.com',
-  // AI Mindset ecosystem
+  // AI Mindset ecosystem - block iframes
   'intention.aimindset.org',
   'spiridonov.aimindset.org',
   'ivanov.aimindset.org',
-  'substack.com',
-  // News & Media
-  'nature.com',
-  'science.org',
-  'technologyreview.com',
-  'theverge.com',
-  'techcrunch.com',
-  'wired.com',
-  'fortune.com',
-  'cnbc.com',
-  'hollywoodreporter.com',
-  'reuters.com',
-  'nytimes.com',
-  'time.com',
-  // Research & Academia
-  'iea.org',
-  'mckinsey.com',
-  'gartner.com',
-  'arxiv.org',
-  'mit.edu',
-  'stanford.edu',
-  'europa.eu',
-  'pewresearch.org',
-  'niemanlab.org',
-  'ieee.org',
-  'wikipedia.org',
-  'lesswrong.com',
-  'ribbonfarm.com',
-  'adalovelaceinstitute.org',
-  // AI Companies & Tools
-  'anthropic.com',
-  'openai.com',
-  'google.com',
-  'microsoft.com',
-  'amazon.com',
-  'nvidia.com',
-  'github.com',
-  'deeplearning.ai',
-  'langchain.dev',
-  'pinecone.io',
-  'snorkel.ai',
-  'gretel.ai',
-  'webai.com',
-  'epoch.ai',
-  'epochai.org',
-  'korra.ai',
-  'qodo.ai',
-  // Investment & Business
-  'ark-invest.com',
-  'menlovc.com',
-  'a16z.com',
-  'goldmansachs.com',
-  'cbinsights.com',
-  // Security
-  'cybersecuritydive.com',
-  'deepstrike.io',
-  'crowdstrike.com',
-  'cyble.com',
-  // Tech & Benchmarks
-  'darioamodei.com',
-  'stackoverflow.co',
-  'gitclear.com',
-  'swebench.com',
-  'linuxfoundation.org',
-  'x402.org',
-  'ubisoft.com',
-  'itbrief.news',
-  'hackernoon.com',
-  'aboutchromebooks.com',
-  // Other
-  'allaboutai.com',
-  'forbes.com',
-  'isaca.org',
-  'nngroup.com'
 ];
 
 const isUrlBlocked = (url: string): boolean => {
