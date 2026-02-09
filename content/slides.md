@@ -965,7 +965,7 @@ dark: true
 
 **ray svitla** — research
 
-**voices & contributors:**
+**thought leaders:**
 
 **stepan gershuni** — cyber.fund
 
