@@ -176,6 +176,11 @@
           "title": "Josh Bersin Hiring for AI",
           "url": "https://www.linkedin.com/pulse/hiring-ai-new-hr-frontier-josh-bersin/",
           "description": "Emergence of AI talent management as new HR discipline"
+        },
+        {
+          "title": "DVC: VC Fund Run by AI Agents",
+          "url": "https://pathfounders.com/p/dvc-davidovs-venture-collective-vc-raise-75m-ai-agents",
+          "description": "Davidovs Venture Collective raised $75M — no analysts, 170 founder-LPs with AI agents handling deal memos, due diligence, and screening"
         }
       ],
       "aimEvidence": [
@@ -200,6 +205,11 @@
           "quote": "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'",
           "author": "natalya savenkova",
           "role": "Project Lead → Product Automation"
+        },
+        {
+          "quote": "a company is a token flow, not people. agents are the workforce — humans become overseers, not executors",
+          "author": "stepan gershuni",
+          "role": "cyber.fund (200+ AI-native portfolio companies)"
         }
       ]
     },
@@ -286,6 +296,11 @@
           "title": "WebAI Local-First AI",
           "url": "https://www.webai.com/blog/what-is-local-ai",
           "description": "Private drafting, smaller circles, local storage, intentional friction against performative posting"
+        },
+        {
+          "title": "Liberman Brothers on Decentralized AI",
+          "url": "https://www.youtube.com/watch?v=wp7izqZmiWM&t=4839s",
+          "description": "Decentralized GPU network Gonka as counter to AI monopoly — full open source and decentralization as path to sovereignty"
         }
       ],
       "aimEvidence": [],
@@ -294,6 +309,11 @@
           "quote": "datacenters must remain in democratic nations — not under the thumb of brutal, capricious autocrats",
           "author": "leopold aschenbrenner",
           "role": "Situational Awareness"
+        },
+        {
+          "quote": "full open source and decentralization are the only path to preserving sovereignty — a decentralized GPU network as a counter to AI monopoly",
+          "author": "daniil & david liberman",
+          "role": "Gonka, Decentralized AI Network"
         },
         {
           "quote": "the guerrilla stack emerges — employees bring their own AI to bypass corporate limitations and censorship",
@@ -464,6 +484,11 @@
           "title": "AI Mindset Context Obesity",
           "url": "https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity",
           "description": "You're not burned out, you have context obesity"
+        },
+        {
+          "title": "Seva Ustinov: Cursor as AI-Native OS",
+          "url": "https://youtu.be/CLHb3aYr9Is?t=2882",
+          "description": "Running entire team on Cursor — no SaaS zoo, just agents, repos, and context rules"
         }
       ],
       "aimEvidence": [
@@ -493,6 +518,11 @@
           "quote": "total documentation of corporate context — using this context for interaction with LLM. built an AI regulator that accelerated formalization of business processes",
           "author": "r_om",
           "role": "IT Education Executive"
+        },
+        {
+          "quote": "the entire team runs on Cursor as an AI-native OS: no SaaS zoo — just agents, repos, and context rules",
+          "author": "seva ustinov",
+          "role": "Founder & CEO Elly, AI Mindset Community"
         }
       ]
     },
@@ -1123,5 +1153,5 @@
     "subtitle": "pentru citit",
     "content": "**credite:**\n\n**anca stavenski** — design & logică\n\n**alex p** — idei\n\n**ray svitla** — cercetare\n\n**link-uri:**\n\n→ [**abonează-te pe substack**](https://aimindsetspace.substack.com) — primește următoarele resetări & semnale\n\n→ [**explorează ecosistemul**](https://aimindset.org) — laboratoare, instrumente, comunitate\n\n→ [**vorbește cu noi**](mailto:info@aimindset.org) — parteneriate / speaking\n\nsfârșit de transmisie"
   },
-  "generated": "2026-02-04T02:06:40.371Z"
+  "generated": "2026-02-08T21:56:43.429Z"
 }
