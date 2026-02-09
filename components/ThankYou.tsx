@@ -19,7 +19,10 @@ const thoughtLeaders = [
   { name: 'kyle vogt', role: 'Robotics Pioneer' },
   { name: 'alexey ivanov', role: 'IFS + AI Framework' },
   { name: 'mike yan', role: 'Intention OS' },
-  { name: 'stepan | e/acc gershuni', role: 'Effective Accelerationism' },
+  { name: 'stepan gershuni', role: 'cyber.fund' },
+  { name: 'daniil & david liberman', role: 'Gonka, Decentralized AI' },
+  { name: 'seva ustinov', role: 'Founder & CEO, Elly' },
+  { name: 'nick & marina davidov', role: 'DVC, AI-Native VC' },
 ];
 
 // Community contributors who shared their voices
