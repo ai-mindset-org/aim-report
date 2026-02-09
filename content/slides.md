@@ -120,6 +120,7 @@ the klarna benchmark: one ai assistant replaced **700 full-time agents**, slashe
 - [**DeepLearning.AI Agentic Workflows**](https://www.deeplearning.ai/the-batch/issue-242/): Andrew Ng on transition from assistants to autonomous agents
 - [**LangChain Cognitive Architectures**](https://blog.langchain.dev/cognitive-architectures/): Framework patterns for agent reasoning and decision-making
 - [**Josh Bersin Hiring for AI**](https://www.linkedin.com/pulse/hiring-ai-new-hr-frontier-josh-bersin/): Emergence of AI talent management as new HR discipline
+- [**DVC: VC Fund Run by AI Agents**](https://pathfounders.com/p/dvc-davidovs-venture-collective-vc-raise-75m-ai-agents): Davidovs Venture Collective raised $75M — no analysts, 170 founder-LPs with AI agents handling deal memos, due diligence, and screening
 
 **AI Mindset Evidence:**
 → [**Intention OS**](https://intention.aimindset.org) — Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering.
@@ -181,6 +182,7 @@ privacy becomes status – not secrecy, but control.
 - [**DeepSeek Open-Source**](https://github.com/deepseek-ai/DeepSeek-V3): Chinese open-source models bypassing US export controls
 - [**Forbes BYOAI Movement**](https://www.forbes.com/sites/forbestechcouncil/2024/05/20/the-rise-of-bring-your-own-ai/): Employees bypassing corporate AI restrictions with personal tools
 - [**WebAI Local-First AI**](https://www.webai.com/blog/what-is-local-ai): Private drafting, smaller circles, local storage, intentional friction against performative posting
+- [**Liberman Brothers on Decentralized AI**](https://www.youtube.com/watch?v=wp7izqZmiWM&t=4839s): Decentralized GPU network Gonka as counter to AI monopoly — full open source and decentralization as path to sovereignty
 
 **Tags:** Data Sovereignty, AI Regulation, Geopolitical AI, Privacy Economics, Shadow AI
 
@@ -289,6 +291,7 @@ loopNumber: 5
 - [**Pinecone Vector Database**](https://www.pinecone.io/): Critical infrastructure for semantic search and RAG implementations
 - [**Google Cloud Semantic Search**](https://cloud.google.com/discover/what-is-semantic-search): Replaces keyword search as primary discovery method
 - [**AI Mindset Context Obesity**](https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity): You're not burned out, you have context obesity
+- [**Seva Ustinov: Cursor as AI-Native OS**](https://youtu.be/CLHb3aYr9Is?t=2882): Running entire team on Cursor — no SaaS zoo, just agents, repos, and context rules
 
 **AI Mindset Evidence:**
 → [**Context Obesity**](https://hackernoon.com/youre-not-burned-out-youve-got-context-obesity) — You're not burned out, you have context obesity. Diagnosis framework for working memory overflow.
@@ -961,6 +964,16 @@ dark: true
 **alex p** — ideation
 
 **ray svitla** — research
+
+**voices & contributors:**
+
+**stepan gershuni** — cyber.fund
+
+**daniil & david liberman** — gonka
+
+**seva ustinov** — elly
+
+**nick & marina davidov** — dvc
 
 **links:**
 

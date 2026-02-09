@@ -172,7 +172,8 @@ export const shifts: ShiftData[] = [
     ],
     voices: [
       { quote: "from tool to participant — from 'ai as smart assistant' to 'ai as full participant in the process'", author: "yakov vasiliev", role: "AI Strategy × Product Architecture" },
-      { quote: "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'", author: "natalya savenkova", role: "Project Lead → Product Automation" }
+      { quote: "from consumer to builder — business coach → ai chatbot developer. 'vibe-coded prototypes, shipped in 30 minutes what stalled 1.5 months'", author: "natalya savenkova", role: "Project Lead → Product Automation" },
+      { quote: "a company is a token flow, not people. agents are the workforce — humans become overseers, not executors", author: "stepan gershuni", role: "cyber.fund (200+ AI-native portfolio companies)" }
     ],
     sources: [
       { id: 1, title: "Model Context Protocol", author: "Anthropic", type: "Standard", url: "https://www.anthropic.com/news/model-context-protocol" },
@@ -215,6 +216,7 @@ export const shifts: ShiftData[] = [
     ],
     voices: [
       { quote: "datacenters must remain in democratic nations — not under the thumb of brutal, capricious autocrats", author: "leopold aschenbrenner", role: "Situational Awareness" },
+      { quote: "full open source and decentralization are the only path to preserving sovereignty — a decentralized GPU network as a counter to AI monopoly", author: "daniil & david liberman", role: "Gonka, Decentralized AI Network" },
       { quote: "the guerrilla stack emerges — employees bring their own AI to bypass corporate limitations and censorship", author: "ai mindset community", role: "Shadow AI Survey" }
     ]
   },
@@ -288,7 +290,8 @@ export const shifts: ShiftData[] = [
     voices: [
       { quote: "context engineering as key skill — building products through parsing → classification → aggregation → human decision. claude code as working environment", author: "yakov vasiliev", role: "AI Strategy × Product Architecture" },
       { quote: "speed as new baseline — content on 2 weeks in 30 min. 8 hours filtered video in knowledge base in 30-40 minutes", author: "nikolay senin", role: "Developer & Consultant" },
-      { quote: "total documentation of corporate context — using this context for interaction with LLM. built an AI regulator that accelerated formalization of business processes", author: "r_om", role: "IT Education Executive" }
+      { quote: "total documentation of corporate context — using this context for interaction with LLM. built an AI regulator that accelerated formalization of business processes", author: "r_om", role: "IT Education Executive" },
+      { quote: "the entire team runs on Cursor as an AI-native OS: no SaaS zoo — just agents, repos, and context rules", author: "seva ustinov", role: "Founder & CEO Elly, AI Mindset Community" }
     ],
     sources: [
       { id: 1, title: "Model Context Protocol", author: "Anthropic", type: "Standard", url: "https://www.anthropic.com/news/model-context-protocol" },
