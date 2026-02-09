@@ -485,8 +485,8 @@ export const ReportView: React.FC<ReportViewProps> = ({ onBack, data, onNext, on
               {/* VOICES: Community + Thought Leaders */}
               {data.voices && data.voices.length > 0 && (() => {
                   // Separate thought leaders from community voices
-                  const thoughtLeaderNames = ['dario amodei', 'marc andreessen', 'leopold aschenbrenner', 'fei-fei li', 'sam altman', 'ilya sutskever', 'demis hassabis', 'yann lecun', 'geoffrey hinton', 'daniil & david liberman'];
-                  const thoughtLeaderRoles = ['CEO', 'Anthropic', 'a16z', 'Situational Awareness', 'Techno-Optimist', 'Manifesto', 'OpenAI', 'DeepMind', 'Google', 'Meta AI', 'On AI', 'Gonka'];
+                  const thoughtLeaderNames = ['dario amodei', 'marc andreessen', 'leopold aschenbrenner', 'fei-fei li', 'sam altman', 'ilya sutskever', 'demis hassabis', 'yann lecun', 'geoffrey hinton', 'daniil & david liberman', 'stepan gershuni', 'seva ustinov'];
+                  const thoughtLeaderRoles = ['CEO', 'Anthropic', 'a16z', 'Situational Awareness', 'Techno-Optimist', 'Manifesto', 'OpenAI', 'DeepMind', 'Google', 'Meta AI', 'On AI', 'Gonka', 'cyber.fund', 'Elly'];
                   const isThoughtLeader = (voice: { author: string; role: string }) =>
                     thoughtLeaderNames.some(n => voice.author?.toLowerCase().includes(n)) ||
                     thoughtLeaderRoles.some(r => voice.role?.includes(r));
