@@ -50,3 +50,4 @@ SESSION-*-HANDOFF.md
 .env
 .env.*
 !.env.example
+.worktrees/

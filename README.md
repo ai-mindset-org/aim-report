@@ -4,6 +4,10 @@
 
 # Run and deploy your AI Studio app
 
+<!-- aim-public-links:start -->
+[AI Mindset labs](https://aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report#learning) · [Knowledge base](https://base.aimindset.org/?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report)
+<!-- aim-public-links:end -->
+
 This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/drive/1XWx5BQgk7Z1qywviy8jAdDlN1oaF_8NL
