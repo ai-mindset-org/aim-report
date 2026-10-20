@@ -128,11 +128,11 @@ build one personal automation that saves cognitive load, not just time.
 
 the field-tested frameworks, tools, and community resources:
 
-→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — IFS + AI: protecting the psyche in the age of machine intimacy
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: protecting the psyche in the age of machine intimacy
 
-→ [**intention.aimindset.org**](https://intention.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Mike Yan's Intention OS: managing attention when context explodes
+→ [**intention.aimindset.org**](https://intention.aimindset.org) — Mike Yan's Intention OS: managing attention when context explodes
 
-→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — why pragmatic romanticism is the only defense against cold machine logic
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — why pragmatic romanticism is the only defense against cold machine logic
 
 → [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — comprehensive knowledge architecture for AI age
 

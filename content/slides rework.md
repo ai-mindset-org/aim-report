@@ -133,7 +133,7 @@ the klarna benchmark: one ai assistant replaced **700 full-time agents**, slashe
 - [**Josh Bersin Hiring for AI**](https://www.linkedin.com/pulse/hiring-ai-new-hr-frontier-josh-bersin/): Emergence of AI talent management as new HR discipline
 
 **AI Mindset Evidence:**
-→ [**Intention OS**](https://intention.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering.
+→ [**Intention OS**](https://intention.aimindset.org) — Mike Yan's framework for managing attention when context explodes. Agentic workflow for context engineering.
 → [**Founder OS YouTube Playlist**](https://www.youtube.com/watch?v=mejkUQwcZLo&list=PLs9wHgNIg4ZP6aqRFgDcX1-rA2yAlmwHd) — Mental health firewalls and sovereign workflows for founders navigating AI transformation.
 
 **Tags:** Agentic AI, Autonomous Agents, Service-as-Software, Workforce Transformation
@@ -436,7 +436,7 @@ role shift: the programmer transforms into an architect who verifies systems rat
 
 **AI Mindset Evidence:**
 → [**Telegram: Coding with Claude 3.5**](https://telegram.me/ai_mind_set/282) — Practical guides from community on Cursor + Claude Code workflows. Field stories: "vibe-coded real prototypes. shipped in 30 minutes what stalled 1.5 months."
-→ [**Pragmatic Romanticism**](https://spiridonov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Why pragmatic romanticism is the only defense against cold machine logic. Reclaiming craft and authorship.
+→ [**Pragmatic Romanticism**](https://spiridonov.aimindset.org) — Why pragmatic romanticism is the only defense against cold machine logic. Reclaiming craft and authorship.
 
 **Tags:** AI Coding Tools, Vibe Coding, Code Generation, Developer Productivity
 
@@ -672,7 +672,7 @@ people tire of performing the self - exhaustion from maintaining multiple synthe
 - [**Ubisoft NEO NPC**](https://news.ubisoft.com/en-us/article/5qXdxhshJBXoanFZApdG3L/how-ubisofts-new-generative-ai-prototype-changes-the-narrative-for-npcs): NPCs with psychological profiles reacting to player tone/mood - "as big a revolution as shift to 3D"
 
 **AI Mindset Evidence:**
-→ [**IFS + AI**](https://ivanov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Protecting the psyche in the age of machine intimacy. Mental health framework for boundaries.
+→ [**IFS + AI**](https://ivanov.aimindset.org) — Protecting the psyche in the age of machine intimacy. Mental health framework for boundaries.
 → [**Founder OS Mental Health**](https://aimindsetspace.substack.com/p/founder-os-mental-health) — Mental health firewalls and sovereign workflows.
 
 **Tags:** AI Companions, Synthetic Intimacy, Parasocial AI, Mental Health, Sovereign Intimacy
@@ -819,11 +819,11 @@ If you need community for that, join us.
 
 the field-tested frameworks, tools, and community resources:
 
-→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — IFS + AI: protecting the psyche in the age of machine intimacy
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: protecting the psyche in the age of machine intimacy
 
-→ [**intention.aimindset.org**](https://intention.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Mike Yan's Intention OS: managing attention when context explodes
+→ [**intention.aimindset.org**](https://intention.aimindset.org) — Mike Yan's Intention OS: managing attention when context explodes
 
-→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — why pragmatic romanticism is the only defense against cold machine logic
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — why pragmatic romanticism is the only defense against cold machine logic
 
 → [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — comprehensive knowledge architecture for AI age
 
