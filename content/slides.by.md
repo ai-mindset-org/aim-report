@@ -490,11 +490,11 @@ dark: true
 
 **наша экасістэма:**
 
-→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: абарона псіхікі
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — IFS + AI: абарона псіхікі
 
-→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: кіраванне ўвагай калі кантэкст выбухае
+→ [**intention.aimindset.org**](https://intention.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Intention OS: кіраванне ўвагай калі кантэкст выбухае
 
-→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — абарона прагматычным рамантызмам
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — абарона прагматычным рамантызмам
 
 → [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — комплексная архітэктура ведаў
 
@@ -530,7 +530,7 @@ dark: true
 
 → [**падпісацца на substack**](https://aimindsetspace.substack.com) — атрымаць наступныя рэсеты & сігналы
 
-→ [**даследаваць экасістэму**](https://aimindset.org) — лабараторыі, інструменты, супольнасць
+→ [**даследаваць экасістэму**](https://aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — лабараторыі, інструменты, супольнасць
 
 → [**звязацца з намі**](mailto:info@aimindset.org) — партнёрствы / выступленні
 
