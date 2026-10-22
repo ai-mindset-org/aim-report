@@ -919,7 +919,7 @@ stress-tested against field signals, enterprise benchmarks, and peer review
 
 subscribe: https://aimindsetspace.substack.com/
 connect: https://t.me/ai_mind_set
-website: [aimindset.org](https://aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report)
+website: [aimindset.org](https://aimindset.org)
 
 ---
 title: end

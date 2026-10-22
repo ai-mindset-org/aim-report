@@ -488,11 +488,11 @@ nu putem închide toate decalajele, dar măcar putem fi conștienți de ele și 
 
 **ecosistemul nostru:**
 
-→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — IFS + AI: apărarea psihicului
+→ [**ivanov.aimindset.org**](https://ivanov.aimindset.org) — IFS + AI: apărarea psihicului
 
-→ [**intention.aimindset.org**](https://intention.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — Intention OS: gestionarea atenției când contextul explodează
+→ [**intention.aimindset.org**](https://intention.aimindset.org) — Intention OS: gestionarea atenției când contextul explodează
 
-→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — apărare prin romantism pragmatic
+→ [**spiridonov.aimindset.org**](https://spiridonov.aimindset.org) — apărare prin romantism pragmatic
 
 → [**AI ARK knowledge system**](https://aimindsetspace.substack.com/p/ai-ark-knowledge-system) — arhitectură comprehensivă de cunoaștere
 
@@ -528,7 +528,7 @@ dark: true
 
 → [**abonează-te pe substack**](https://aimindsetspace.substack.com) — primește următoarele resetări & semnale
 
-→ [**explorează ecosistemul**](https://aimindset.org?utm_source=website&utm_medium=article&utm_campaign=start&utm_content=github-aim-report) — laboratoare, instrumente, comunitate
+→ [**explorează ecosistemul**](https://aimindset.org) — laboratoare, instrumente, comunitate
 
 → [**vorbește cu noi**](mailto:info@aimindset.org) — parteneriate / speaking
 
