@@ -37,5 +37,8 @@ publish the report. To release a change, integrate the built report into
 
 The legacy GitHub Pages and Netlify deployment workflows have been retired.
 GitHub Pages returned 404, and new releases use the AIM publication lane.
+`netlify.toml` skips Git-triggered builds, including PR previews. This does not
+disable Netlify build hooks or direct uploads; retiring those account-level
+entry points requires a separate Netlify configuration change.
 The local build uses `/` as its asset base. No deployment credentials are needed
 for this repository's CI.
