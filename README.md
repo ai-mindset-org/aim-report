@@ -22,3 +22,23 @@ View your app in AI Studio: https://ai.studio/apps/drive/1XWx5BQgk7Z1qywviy8jAdD
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Publication and CI
+
+The live report is https://gap.aimindset.org/ on AIM infrastructure (VM120/Caddy).
+Its publication source is `ai-mindset-org/lab-sites`, under `pages/gap/`;
+that repository builds the shared shell and publishes `sites/gap/`.
+
+This repository contains the React/Vite report source. Its `Build` workflow runs
+`npm ci` and `npm run build` on pull requests and pushes to `main`, then retains
+`dist/` as a review artifact for seven days. A successful build here does not
+publish the report. To release a change, integrate the built report into
+`lab-sites/pages/gap/` through that repository's page contract and release checks.
+
+The legacy GitHub Pages and Netlify deployment workflows have been retired.
+GitHub Pages returned 404, and new releases use the AIM publication lane.
+`netlify.toml` skips Git-triggered builds, including PR previews. This does not
+disable Netlify build hooks or direct uploads; retiring those account-level
+entry points requires a separate Netlify configuration change.
+The local build uses `/` as its asset base. No deployment credentials are needed
+for this repository's CI.

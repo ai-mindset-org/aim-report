@@ -1,4 +1,7 @@
 [build]
+  # Publication moved to lab-sites/pages/gap on AIM infrastructure.
+  # Skip Git-triggered production, branch and PR preview builds.
+  ignore = "exit 0"
   command = "npm run build"
   publish = "dist"
   functions = "netlify/functions"
