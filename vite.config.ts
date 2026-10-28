@@ -4,10 +4,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
-    // Use '/aim-report/' for GitHub Pages, '/' for Netlify and local dev
-    const isGitHubPages = process.env.GITHUB_PAGES === 'true';
     return {
-      base: isGitHubPages ? '/aim-report/' : '/',
+      base: '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
